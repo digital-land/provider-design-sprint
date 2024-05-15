@@ -1,0 +1,56 @@
+<div class="task-div">
+    <h2 class="govuk-heading-m">Provide your Article 4 direction areas</h2>
+    {{ govukTaskList({
+    idPrefix: "provide-article-4-direction-areas",
+    items: [
+        {
+            title: {
+                text: "Create your data file"
+            },
+            href: "/guidance/article-4-direction-areas/create-data-file",
+            status: {
+                text: "Completed"
+            }
+        },
+        {
+            title: {
+                text: "Check your data file"
+            },
+            href: "https://publish.development.digital-land.info/",
+            status: {
+                tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+                }
+            }
+        },
+        {
+            title: {
+                text: "Publish your data"
+            },
+            href: "/guidance/publish-data",
+            status: {
+                tag: {
+                    text: "Incomplete",
+                    classes: "govuk-tag--blue"
+                }
+            }
+        },
+        {
+            title: {
+                text: "Endpoint submission"
+            },
+            hint: {
+                text: "Include 5 years of the company’s relevant financial information."
+            },
+            href: "/endpoint-submission",
+            status: {
+                tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+                }
+            }
+        }
+    ]
+    }) }}
+</div>

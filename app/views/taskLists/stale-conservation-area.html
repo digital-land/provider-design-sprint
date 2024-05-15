@@ -1,0 +1,29 @@
+<div class="task-div">
+    <h2 class="govuk-heading-m">Your conservation area data might be stale</h2>
+    {{ govukTaskList({
+    idPrefix: "provide-article-4-direction-areas",
+    items: [
+        {
+            title: {
+                text: "View your data"
+            },
+            href: "https://www.planning.data.gov.uk/entity/?dataset=conservation-area&Organisation=Historic%England",
+            status: {
+                text: "Completed"
+            }
+        },
+        {
+            title: {
+                text: "Let us know if your data is up to date"
+            },
+            href: "/guidance/let-us-know-if-your-data-is-up-to-date",
+            status: {
+                tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+                }
+            }
+        }
+    ]
+    }) }}
+</div>

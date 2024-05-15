@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+{% set organisation = "Borechester" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{organisation}} {{ serviceName }}
+    </h1>
+
+    {{ govukWarningText({
+        text: "You have 3 tasks to complete",
+        iconFallbackText: "Warning"
+    }) }}
+
+    {% include "./taskLists/provide-article-4.html "%}
+    {% include "./taskLists/fix-tree.html" %}
+    {% include "./taskLists/stale-conservation-area.html" %}
+
+    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+  </div>
+</div>
+
+{% endblock %}
