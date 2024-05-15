@@ -1,3 +1,5 @@
+{% from 'macros/statusIndicator.njk' import statusIndicator  %}
+
 <div class="task-div">
     <h2 class="govuk-heading-m">Provide your Article 4 direction areas</h2>
     {{ govukTaskList({
@@ -7,25 +9,21 @@
             title: {
                 text: "Read the data guidance"
             },
-            href: "https://www.planning.data.gov.uk/guidance/specifications/article-4-direction#article-4-direction-area",
-            status: {
-                text: "Completed"
-            }
+            href: "./article4DataGuidance",
+            status: data.check.article4GuidanceStatus | toStatusIndicator
         },
         {
             title: {
                 text: "Create your data file"
             },
-            href: "/guidance/article-4-direction-areas/create-data-file",
-            status: {
-                text: "Completed"
-            }
+            href: "./createYourDataFile",
+            status: data.check.createYourDataFileStatus | toStatusIndicator
         },
         {
             title: {
                 text: "Check your data file"
             },
-            href: "https://publish.development.digital-land.info/",
+            href: "/columnMapping/start",
             status: {
                 tag: {
                 text: "Incomplete",
@@ -37,13 +35,8 @@
             title: {
                 text: "Publish your data"
             },
-            href: "https://www.planning.data.gov.uk/guidance/publish-data-on-your-website",
-            status: {
-                tag: {
-                    text: "Incomplete",
-                    classes: "govuk-tag--blue"
-                }
-            }
+            href: "./publishYourDataFile",
+            status: data.check.publishYourDataFileStatus | toStatusIndicator
         },
         {
             title: {

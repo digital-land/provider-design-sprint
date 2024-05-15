@@ -35,7 +35,21 @@ router.post('/columnMapping/end-date', (req, res) => {
 })
 
 router.post('/taskLists/conservation-area-results', (req, res) => {
-    if(req.body.data)
+    if(req.body.check.dataLooksUpToDate == 'yes'){
+        req.body.check.progress.provideArticle4.read = true
+    }
+    res.redirect('/taskLists/taskChecklist')
+})
+
+router.post('/taskLists/article4DataGuidance', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
+router.post('/taskLists/createYourDataFile', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
+router.post('/taskLists/publishYourDataFile', (req, res) => {
     res.redirect('/taskLists/taskChecklist')
 })
 
