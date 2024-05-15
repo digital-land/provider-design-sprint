@@ -1,6 +1,5 @@
 {% extends "layouts/main.html" %}
-
-{% set pageName = 'Which column contains your end dates?' %}
+{% from "macros/columnMappingForm.njk" import columnMappingForm %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,61 +13,14 @@
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
 
-        {{ govukRadios({
-          name: "check[endDateColumn]",
-          fieldset: {
-            legend: {
-              text: pageName,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          value: data.check.endDateColumn,
-          items: [
-            {
-              value: "reference",
-              text: "reference"
-            },
-            {
-              value: "name",
-              text: "name"
-            },
-            {
-                value: "documentation-url",
-                text: "documentation-url"
-            },
-            {
-                value: "location",
-                text: "location"
-            },
-            {
-                value: "notes",
-                text: "notes"
-            },
-            {
-                value: "date-of-creation",
-                text: "date-of-creation"
-            },
-            {
-                value: "date-of-expiry",
-                text: "date-of-expiry"
-            },
-            {
-                value: "entry-date",
-                text: "entry-date"
-            },
-            {
-                value: "This data is missing",
-                text: "This data is missing"
-            }
-          ]
-        }) }}
+        {{
+          columnMappingForm({
+            data: data, 
+            columnName: "end-date",
+            hint: "An end-date is the date the validity of the record ends."
+          })  
+        }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-        <p class="govuk-!-padding-top-4 govuk-!-padding-bottom-4"><a style="color: #fff" href="/no-errors">No errors</a></p>
       </form>
     </div>
   </div>

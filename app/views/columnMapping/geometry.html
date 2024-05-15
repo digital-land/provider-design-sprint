@@ -1,6 +1,8 @@
 {% extends "layouts/main.html" %}
+{% from "macros/columnMappingForm.njk" import columnMappingForm %}
 
-{% set pageName = 'Which column contains your geometry data?' %}
+
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,61 +16,14 @@
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
 
-        {{ govukRadios({
-          name: "check[geometryColumn]",
-          fieldset: {
-            legend: {
-              text: pageName,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          value: data.check.geometryColumn,
-          items: [
-            {
-              value: "reference",
-              text: "reference"
-            },
-            {
-              value: "name",
-              text: "name"
-            },
-            {
-                value: "documentation-url",
-                text: "documentation-url"
-            },
-            {
-                value: "location",
-                text: "location"
-            },
-            {
-                value: "notes",
-                text: "notes"
-            },
-            {
-                value: "date-of-creation",
-                text: "date-of-creation"
-            },
-            {
-                value: "date-of-expiry",
-                text: "date-of-expiry"
-            },
-            {
-                value: "entry-date",
-                text: "entry-date"
-            },
-            {
-                value: "This data is missing",
-                text: "This data is missing"
-            }
-          ]
-        }) }}
+        {{
+          columnMappingForm({
+            data: data, 
+            columnName: "geometry",
+            hint: "Geometry is the boundary for an area as a single polygon or multipolygon value."
+          })  
+        }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-        <p class="govuk-!-padding-top-4 govuk-!-padding-bottom-4"><a style="color: #fff" href="/no-errors">No errors</a></p>
       </form>
     </div>
   </div>
