@@ -10,3 +10,5 @@ usage-data-config.json
 # General ignores
 .DS_Store
 .idea
+
+package-lock.json

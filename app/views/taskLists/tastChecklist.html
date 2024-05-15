@@ -8,13 +8,13 @@
 
 {% block content %}
 
-{% set organisation = "Borechester" %}
+{% set organisation = "Borechester local planning authority" %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      {{organisation}} {{ serviceName }}
+      {{organisation}} tasks
     </h1>
 
     {{ govukWarningText({
@@ -25,8 +25,6 @@
     {% include "../taskLists/provide-article-4.html "%}
     {% include "../taskLists/fix-tree.html" %}
     {% include "../taskLists/stale-conservation-area.html" %}
-
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
   </div>
 </div>
 
