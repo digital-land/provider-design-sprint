@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'How do you want to provide your data?' %}
+{% set pageName = 'URL' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,28 +14,16 @@
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
 
-        {{ govukRadios({
-          name: "check[uploadMethod]",
-          fieldset: {
-            legend: {
-              text: pageName,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
+        {{ govukInput({
+          id: "check[url]",
+          name: "check[url]",
+          label: {
+            text: pageName,
+            isPageHeading: true,
+            classes: 'govuk-label--l'
           },
-          value: data.check.uploadMethod,
-          items: [
-            {
-              value: "file",
-              text: "File upload"
-            },
-            {
-              value: "url",
-              text: "URL"
-            }
-          ]
+          value: data.check.url
         }) }}
-
         {{ govukButton({
           text: "Continue"
         }) }}

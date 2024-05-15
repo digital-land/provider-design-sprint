@@ -1,0 +1,75 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Which column contains your end dates?' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form novalidate method="post">
+
+        {{ govukRadios({
+          name: "check[endDateColumn]",
+          fieldset: {
+            legend: {
+              text: pageName,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          value: data.check.endDateColumn,
+          items: [
+            {
+              value: "reference",
+              text: "reference"
+            },
+            {
+              value: "name",
+              text: "name"
+            },
+            {
+                value: "documentation-url",
+                text: "documentation-url"
+            },
+            {
+                value: "location",
+                text: "location"
+            },
+            {
+                value: "notes",
+                text: "notes"
+            },
+            {
+                value: "date-of-creation",
+                text: "date-of-creation"
+            },
+            {
+                value: "date-of-expiry",
+                text: "date-of-expiry"
+            },
+            {
+                value: "entry-date",
+                text: "entry-date"
+            },
+            {
+                value: "This data is missing",
+                text: "This data is missing"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p class="govuk-!-padding-top-4 govuk-!-padding-bottom-4"><a style="color: #fff" href="/no-errors">No errors</a></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}
