@@ -1,0 +1,63 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{% macro columnMappingForm(params) %}
+
+        {{ govukRadios({
+            name: "check["+params.columnName+"Column]",
+            fieldset: {
+                legend: {
+                    text: 'Which column contains your ' + params.columnName + ' data?',
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                }
+            },
+            hint: {
+                text: params.hint
+            },
+            value: params.data.check[params.columnName+"Column"],
+            items: [
+                {
+                    value: "reference",
+                    text: "reference"
+                },
+                {
+                    value: "name",
+                    text: "name"
+                },
+                {
+                        value: "documentation-url",
+                        text: "documentation-url"
+                },
+                {
+                        value: "location",
+                        text: "location"
+                },
+                {
+                        value: "notes",
+                        text: "notes"
+                },
+                {
+                        value: "date-of-creation",
+                        text: "date-of-creation"
+                },
+                {
+                        value: "date-of-expiry",
+                        text: "date-of-expiry"
+                },
+                {
+                        value: "entry-date",
+                        text: "entry-date"
+                },
+                {
+                        value: "This data is missing",
+                        text: "This data is missing"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+{% endmacro %}

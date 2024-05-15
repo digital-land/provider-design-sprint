@@ -1,0 +1,117 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Borechester overview" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ govukBreadcrumbs({
+      items: [
+        {
+        text: "Home",
+        href: "#"
+        },
+        {
+          text: "Organisations",
+          href: "#"
+        }
+      ]
+    }) }}
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <ul class="dataset-overview-list">
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Article 4 direction</a></h2>
+
+        <div class="status status--good">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item">Endpoint added</li>
+            <li class="status-message-list-item">No issues</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Article 4 direction area</a></h2>
+
+        <div class="status status--good">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item">Endpoint added</li>
+            <li class="status-message-list-item">No issues</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Conservation area</a></a></h2>
+
+        <div class="status status--not-supplied">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item">No endpoint</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Conservation area direction</a></h2>
+
+        <div class="status status--not-supplied">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item">No endpoint</li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Listed building outline</a></h2>
+
+        <div class="status status--issues">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item">Endpoint added</li>
+            <li class="status-message-list-item"><a href="#">5 issues to fix</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Tree</a></h2>
+
+        <div class="status status--errors">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item"><a href="#">Endpoint broken</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Tree preservation order</a></h2>
+
+        <div class="status status--errors">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item"><a href="#">Endpoint broken</a></li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="dataset-overview-list-item">
+        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Tree preservation zone</a></h2>
+
+        <div class="status status--errors">
+          <ul class="govuk-list status-message-list">
+            <li class="status-message-list-item"><a href="#">Endpoint broken</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+{% endblock %}
