@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'How do you want to provide your data?' %}
+{% set pageName = 'Upload data' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,28 +14,18 @@
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
 
-        {{ govukRadios({
-          name: "check[uploadMethod]",
-          fieldset: {
-            legend: {
-              text: pageName,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
+        {{ govukFileUpload({
+          id: "check[file]",
+          name: "check[file]",
+          label: {
+            text: pageName,
+            isPageHeading: true,
+            classes: 'govuk-label--l'
           },
-          value: data.check.uploadMethod,
-          items: [
-            {
-              value: "file",
-              text: "File upload"
-            },
-            {
-              value: "url",
-              text: "URL"
-            }
-          ]
+          hint: {
+            text: "You can upload a CSV, GeoJSON, GML or Geopackage file"
+          }
         }) }}
-
         {{ govukButton({
           text: "Continue"
         }) }}
