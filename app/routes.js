@@ -34,4 +34,9 @@ router.post('/columnMapping/end-date', (req, res) => {
     res.redirect('/columnMapping/submit')
 })
 
+router.post('/taskLists/conservation-area-results', (req, res) => {
+    if(req.body.data)
+    res.redirect('/taskLists/taskChecklist')
+})
+
 // Add your routes here
