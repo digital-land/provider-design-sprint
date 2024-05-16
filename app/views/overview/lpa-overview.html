@@ -23,104 +23,215 @@
       {{ pageName }}
     </h1>
 
-    <ul class="dataset-overview-list govuk-!-margin-bottom-8">
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="#">Article 4 direction</a></h2>
+    <div class="dataset-summary-grid">
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Article 4 direction
+          </h2>
 
-        <div class="status status--not supplied">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item">No endpoint</li>
-            <li class="status-message-list-item"><a href="/taskLists/taskChecklist">Add endpoint</a></li>
-          </ul>
+          {{govukTag({
+            text: "Not provided",
+            classes: "govuk-tag--grey"
+          })}}
         </div>
-      </li>
-
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="#">Article 4 direction area</a></h2>
-
-        <div class="status status--not supplied">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item">No endpoint</li>
-            <li class="status-message-list-item"><a href="/taskLists/taskChecklist">Add endpoint</a></li>
-          </ul>
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint not provided</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/taskLists/taskChecklist">Add endpoint</a>
+            </p>
+          </div>
         </div>
-      </li>
+      </div>
 
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Conservation area</a></a></h2>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Article 4 direction area
+          </h2>
 
-        <div class="status status--issues">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item">Endpoint added</li>
-            <li class="status-message-list-item"><a href="/taskLists/taskChecklist">Data might be out of date</a></li>
-          </ul>
+          {{govukTag({
+                text: "Not provided",
+                classes: "govuk-tag--grey"
+              })}}
         </div>
-      </li>
-
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="/overview/dataset-details">Conservation area direction</a></h2>
-
-        <div class="status status--good">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item">Endpoint added</li>
-            <li class="status-message-list-item">No issues</li>
-          </ul>
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint not provided</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/taskLists/taskChecklist">Add endpoint</a>
+            </p>
+          </div>
         </div>
-      </li>
+      </div>
 
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Conservation area
+          </h2>
 
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="#">Listed building outline</a></h2>
-
-        <div class="status status--good">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item">Endpoint added</li>
-            <li class="status-message-list-item">No issues</li>
-          </ul>
+          {{govukTag({
+                text: "Issues",
+                classes: "govuk-tag--yellow"
+              })}}
         </div>
-      </li>
 
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="#">Tree</a></h2>
-
-        <div class="status status--issues">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item">Endpoint added</li>
-            <li class="status-message-list-item"><a href="/taskLists/taskChecklist">20 issues to fix</a></li>
-          </ul>
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint provided</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>Data might be out of date</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/taskLists/taskChecklist">Fix issues</a>
+              <a href="/overview/dataset-details">View data</a>
+            </p>
+          </div>
         </div>
-      </li>
+      </div>
 
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="#">Tree preservation order</a></h2>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Conservation area direction
+          </h2>
 
-        <div class="status status--errors">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item"><a href="/taskLists/taskChecklist">Endpoint broken</a></li>
-          </ul>
+          {{govukTag({
+                text: "No issues",
+                classes: "govuk-tag--green"
+              })}}
         </div>
-      </li>
 
-
-      <li class="dataset-overview-list-item">
-        <h2 class="govuk-heading-m"><a href="#">Tree preservation zone</a></h2>
-
-        <div class="status status--errors">
-          <ul class="govuk-list status-message-list">
-            <li class="status-message-list-item"><a href="/taskLists/taskChecklist">Endpoint broken</a></li>
-          </ul>
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint provided</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/overview/dataset-details">View data</a>
+            </p>
+          </div>
         </div>
-      </li>
-    </ul>
+      </div>
 
-  </div>
-</div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <p>View your <a href="/taskLists/taskChecklist">task list</a> to fix and improve your datasets</p>
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Listed building outline
+          </h2>
 
-  </div>
-</div>
+          {{govukTag({
+                text: "No issues",
+                classes: "govuk-tag--green"
+              })}}
+        </div>
 
-{% endblock %}
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint provided</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/overview/dataset-details">View data</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Tree
+          </h2>
+
+          {{govukTag({
+                    text: "Issues",
+                    classes: "govuk-tag--yellow"
+                  })}}
+        </div>
+
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint provided</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>20 issues to fix</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/taskLists/taskChecklist">Fix issues</a>
+              <a href="/overview/dataset-details">View data</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Tree preservation order
+          </h2>
+
+          {{govukTag({
+            text: "Error",
+            classes: "govuk-tag--red"
+          })}}
+        </div>
+
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint broken</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/taskLists/taskChecklist">Fix errors</a>
+              <a href="/overview/dataset-details">View data</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Tree preservation zone
+          </h2>
+
+          {{govukTag({
+                    text: "Error",
+                    classes: "govuk-tag--red"
+                  })}}
+        </div>
+
+        <div class="govuk-summary-card__content">
+          <div class="govuk-summary-list__row">
+            <p>Endpoint broken</p>
+          </div>
+          <div class="govuk-summary-list__row">
+            <p>
+              <a href="/taskLists/taskChecklist">Fix errors</a>
+              <a href="/overview/dataset-details">View data</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p>View your <a href="/taskLists/taskChecklist">task list</a> to fix and improve your datasets</p>
+
+      </div>
+    </div>
+
+    {% endblock %}
