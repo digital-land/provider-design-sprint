@@ -6,33 +6,73 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.post('/columnMapping/upload-method', (req, res) => {
+router.post('/columnMappingArticle4/upload-method', (req, res) => {
     if(req.body.check.uploadMethod == 'file') {
-      res.redirect('/columnMapping/upload')
+      res.redirect('/columnMappingArticle4/upload')
     } else {
-      res.redirect('/columnMapping/url')
+      res.redirect('/columnMappingArticle4/url')
     }
 })
 
-router.post('/columnMapping/upload', (req, res) => {
-    res.redirect('/columnMapping/columns')
+router.post('/columnMappingArticle4/upload', (req, res) => {
+    res.redirect('/columnMappingArticle4/columns')
 })
 
-router.post('/columnMapping/url', (req, res) => {
-    res.redirect('/columnMapping/columns')
+router.post('/columnMappingArticle4/url', (req, res) => {
+    res.redirect('/columnMappingArticle4/columns')
 })
 
-router.post('/columnMapping/geometry', (req, res) => {
-    res.redirect('/columnMapping/start-date')
+router.post('/columnMappingArticle4/geometry', (req, res) => {
+    res.redirect('/columnMappingArticle4/start-date')
 })
 
-router.post('/columnMapping/start-date', (req, res) => {
-    res.redirect('/columnMapping/end-date')
+router.post('/columnMappingArticle4/start-date', (req, res) => {
+    res.redirect('/columnMappingArticle4/end-date')
 })
 
-router.post('/columnMapping/end-date', (req, res) => {
-    res.redirect('/columnMapping/submit')
+router.post('/columnMappingArticle4/end-date', (req, res) => {
+    res.redirect('/columnMappingArticle4/submit')
 })
+
+router.post('/columnMappingArticle4/article4Results', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
+// ============
+
+router.post('/columnMappingTree/upload-method', (req, res) => {
+    if(req.body.check.uploadMethod == 'file') {
+      res.redirect('/columnMappingTree/upload')
+    } else {
+      res.redirect('/columnMappingTree/url')
+    }
+})
+
+router.post('/columnMappingTree/upload', (req, res) => {
+    res.redirect('/columnMappingTree/columns')
+})
+
+router.post('/columnMappingTree/url', (req, res) => {
+    res.redirect('/columnMappingTree/columns')
+})
+
+router.post('/columnMappingTree/geometry', (req, res) => {
+    res.redirect('/columnMappingTree/start-date')
+})
+
+router.post('/columnMappingTree/start-date', (req, res) => {
+    res.redirect('/columnMappingTree/end-date')
+})
+
+router.post('/columnMappingTree/end-date', (req, res) => {
+    res.redirect('/columnMappingTree/submit')
+})
+
+router.post('/columnMappingTree/results', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
+// ============
 
 router.post('/taskLists/conservation-area-results', (req, res) => {
     if(req.body.check.dataLooksUpToDate == 'yes'){
@@ -64,5 +104,7 @@ router.post('/taskLists/conservation-area-results', (req, res) => {
 router.post('/taskLists/let-us-know-if-your-data-is-up-to-date', (req, res) => {
     res.redirect('/taskLists/taskChecklist')
 })
+
+
 
 // Add your routes here

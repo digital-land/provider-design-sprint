@@ -15,7 +15,7 @@
       <form novalidate method="post">
 
         {{ govukRadios({
-          name: "check[uploadMethod]",
+          name: "check[publishYourDataFileStatus]",
           fieldset: {
             legend: {
               text: pageName,
@@ -27,11 +27,11 @@
           items: [
             {
               value: "file",
-              text: "File upload"
+              text: "Yes"
             },
             {
               value: "url",
-              text: "URL"
+              text: "Not yet"
             }
           ]
         }) }}
