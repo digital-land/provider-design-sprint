@@ -9,16 +9,16 @@
     {{ govukBreadcrumbs({
       items: [
         {
-        text: "Home",
-        href: "#"
+          text: "Home",
+          href: "/overview/start"
         },
         {
           text: "Organisations",
-          href: "#"
+          href: "/overview/organisations"
         },
         {
           text: "Borechester",
-          href: "#"
+          href: "/overview/lpa-overview"
         }
       ]
     }) }}
@@ -26,19 +26,87 @@
     <h1 class="govuk-heading-xl">
       {{ pageName }}
     </h1>
+  </div>
+</div>
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
     <img src="/public/images/dataset-details-map.png" alt="Map of Borechester Article 4 direction areas"
       style="width:100%">
+  </div>
+</div>
 
-    Number of provisions expected
-    Number of provisions supplied
-    Number of fields expected
-    Number of fields supplied
-    Endpoint URL
-    Source documentation URL
-    Licence
-    Endpoint last accessed
-    Endpoint last updated
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Number of records supplied"
+          },
+          value: {
+            text: "10/10"
+          }
+        },
+        {
+          key: {
+            text: "Number of fields supplied"
+          },
+          value: {
+            html: "5/11"
+          }
+        },
+        {
+          key: {
+            text: "Number of fields matched"
+          },
+          value: {
+            text: "2/11"
+          }
+        },
+        {
+          key: {
+            text: "Endpoint URL"
+          },
+          value: {
+            html: '<code><a href="#">https://maps.borechester.gov.uk/arcgis/rest/services/PLANNING/A4D_CSB/MapServer/0/query?outFields=*&where=1%3D1&f=geojson</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Source documentation URL"
+          },
+          value: {
+            html: '<code><a href="#">https://www.borechester.gov.uk/planning/data/article-4-directions</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Licence"
+          },
+          value: {
+            text: "Open Government Licence"
+          }
+        },
+        {
+          key: {
+            text: "Endpoint last accessed"
+          },
+          value: {
+            text: "15 May 2024"
+          }
+        },
+        {
+          key: {
+            text: "Endpoint last updated"
+          },
+          value: {
+            text: "4 November 2023"
+          }
+        }
+      ]
+    }) }}
 
   </div>
 </div>

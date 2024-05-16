@@ -61,3 +61,8 @@
     background-color: govuk-tint(govuk-colour("red"), 75%);
   }
 }
+
+code,
+code * {
+  font-family: monospace;
+}
