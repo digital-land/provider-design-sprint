@@ -7,22 +7,15 @@
             title: {
                 text: "View your data"
             },
-            href: "https://publish.development.digital-land.info/results/fjisodngfodsnf",
-            status: {
-                text: "Completed"
-            }
+            href: "/taskLists/conservation-area-results",
+            status: data.check.checkConservationAreaStatus | toStatusIndicator
         },
         {
             title: {
                 text: "Let us know if your data is up to date"
             },
-            href: "/guidance/let-us-know-if-your-data-is-up-to-date",
-            status: {
-                tag: {
-                text: "Incomplete",
-                classes: "govuk-tag--blue"
-                }
-            }
+            href: "/taskLists/let-us-know-if-your-data-is-up-to-date",
+            status: data.check.letUsKnowIfYourDataIsUpToDateStatus | toStatusIndicator
         }
     ]
     }) }}

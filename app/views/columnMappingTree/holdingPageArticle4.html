@@ -1,0 +1,40 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% extends "layouts/main.html" %}
+
+{% set pageName = serviceName %}
+
+{% block content %}
+
+
+{% set content %}
+
+  Validating your data
+
+  
+  {{ govukButton({
+    text: "Check status",
+    href: "./results"
+  }) }}
+  
+
+{% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check your data
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{content | govukMarkdown(headingsStartWith="l") | safe}}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      
+    </div>
+  </div>
+{% endblock %}

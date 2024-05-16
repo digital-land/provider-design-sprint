@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+{% set organisation = "Borechester local planning authority" %}
+
+{% set markdown %}
+  # how to create your data file
+
+  these are some placeholder instructions for how you can create your data file
+
+  ---------------------
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div>
+      {{markdown | govukMarkdown(headingsStartWith="l") | safe}}
+    </div>
+
+    
+    <form method="post">
+
+      {{ govukRadios({
+        name: "check[createYourDataFileStatus]",
+        fieldset: {
+          legend: {
+            text: 'Have you finished publishing your data on your website?',
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "complete",
+            text: "yes"
+          },
+          {
+            value: "started",
+            text: "not yet"
+          }
+        ]
+      }) }}
+
+
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

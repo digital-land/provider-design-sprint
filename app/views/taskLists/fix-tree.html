@@ -1,41 +1,28 @@
 <div class="task-div">
-    <h2 class="govuk-heading-m">20 errors in your tree dataset need fixing</h2>
+    <h2 class="govuk-heading-m">10 errors in your tree dataset need fixing</h2>
     {{ govukTaskList({
     idPrefix: "provide-article-4-direction-areas",
     items: [
         {
             title: {
-                text: "Get your data"
+                text: "Check your data"
             },
-            href: "/guidance/tree/create-data-file",
-            status: {
-                tag: {
-                    text: "Incomplete",
-                    classes: "govuk-tag--blue"
-                }
-            }
+            href: "/taskLists/tpz-error-results",
+            status: data.check.checkYourTreeDataStatus | toStatusIndicator
         },
         {
             title: {
-                text: "Check your data file"
+                text: "Fix your data file"
             },
-            href: "https://publish.development.digital-land.info",
-            status: {
-                tag: {
-                    text: "Incomplete",
-                    classes: "govuk-tag--blue"
-                }
-            }
+            href: "/columnMappingTree/start",
+            status: data.check.fixYourTreeStatus | toStatusIndicator
         },
         {
             title: {
-                text: "Submit endpoint"
+                text: "Submit your endpoint"
             },
-            href: "endpoint-submission",
-            status: {
-                text: "Cannot start yet",
-                classes: "govuk-task-list__status--cannot-start-yet"
-            }
+            href: "https://publish.planning-data.dev/submit-endpoint/start",
+            status: data.check.submitYourTreeEndpoint | toStatusIndicator
         }
     ]
     }) }}
