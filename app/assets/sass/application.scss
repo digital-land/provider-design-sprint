@@ -10,56 +10,16 @@
   padding: 10px;
 }
 
-.dataset-overview-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
+.dataset-summary-grid {
   display: flex;
   flex-wrap: wrap;
-  column-gap: govuk-spacing(2);
+  column-gap: govuk-spacing(3);
   row-gap: govuk-spacing(6);
   align-items: stretch;
 }
 
-.dataset-overview-list-item {
-  width: calc(25% - govuk-spacing(2));
-
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.dataset-overview-list-item h2 {
-  min-height: 2.5em;
-}
-
-.dataset-overview-list-item .status {
-  flex-grow: 2;
-  padding: govuk-spacing(1) govuk-spacing(2);
-
-  color: govuk-shade(govuk-colour("dark-grey"), 50%);
-  background-color: govuk-tint(govuk-colour("dark-grey"), 85%);
-
-  &.status--good {
-    color: govuk-shade(govuk-colour("green"), 20%);
-    background-color: govuk-tint(govuk-colour("green"), 80%);
-  }
-
-  &.status--not-supplied {
-    color: govuk-shade(govuk-colour("dark-grey"), 50%);
-    background-color: govuk-tint(govuk-colour("dark-grey"), 85%);
-  }
-
-  &.status--issues {
-    color: govuk-shade(govuk-colour("yellow"), 65%);
-    background-color: govuk-tint(govuk-colour("yellow"), 75%);
-  }
-
-  &.status--errors {
-    color: govuk-shade(govuk-colour("red"), 80%);
-    background-color: govuk-tint(govuk-colour("red"), 75%);
-  }
+.dataset-summary-grid .govuk-summary-card {
+  width: calc((100% / 3) - govuk-spacing(3));
 }
 
 code,
