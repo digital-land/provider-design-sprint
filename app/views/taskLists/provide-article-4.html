@@ -9,7 +9,12 @@
                 text: "Read the data guidance"
             },
             href: "./article4DataGuidance",
-            status: data.check.article4GuidanceStatus | toStatusIndicator
+            status: {
+                tag: {
+                    text: "Optional",
+                    classes: "govuk-tag--grey"
+                }
+            }
         },
         {
             title: {
