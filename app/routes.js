@@ -57,4 +57,12 @@ router.post('/taskLists/tpz-error-results', (req, res) => {
     res.redirect('/taskLists/taskChecklist')
 })
 
+router.post('/taskLists/conservation-area-results', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
+router.post('/taskLists/let-us-know-if-your-data-is-up-to-date', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
 // Add your routes here
