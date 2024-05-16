@@ -53,4 +53,8 @@ router.post('/taskLists/publishYourDataFile', (req, res) => {
     res.redirect('/taskLists/taskChecklist')
 })
 
+router.post('/taskLists/tpz-error-results', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
 // Add your routes here

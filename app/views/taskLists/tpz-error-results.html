@@ -485,9 +485,14 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
 
-            <a href="/taskLists/taskChecklist" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
-              Continue
-            </a>
+            <form method="post" novalidate>
+
+              <input type="hidden" name="check[checkYourTreeDataStatus]" value="complete">
+
+              <button class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+            </form>
 
           </div>
         </div>
