@@ -7,10 +7,14 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 router.post('/columnMappingArticle4/upload-method', (req, res) => {
-    if(req.body.check.uploadMethod == 'file') {
-      res.redirect('/columnMappingArticle4/upload')
-    } else {
-      res.redirect('/columnMappingArticle4/url')
+    try{
+        if(req.body.check.uploadMethod == 'file') {
+          res.redirect('/columnMappingArticle4/upload')
+        } else {
+          res.redirect('/columnMappingArticle4/url')
+        }
+    } catch(e){
+        res.redirect('/columnMappingArticle4/url')
     }
 })
 
@@ -41,10 +45,14 @@ router.post('/columnMappingArticle4/article4Results', (req, res) => {
 // ============
 
 router.post('/columnMappingTree/upload-method', (req, res) => {
-    if(req.body.check.uploadMethod == 'file') {
-      res.redirect('/columnMappingTree/upload')
-    } else {
-      res.redirect('/columnMappingTree/url')
+    try{
+        if(req.body.check.uploadMethod == 'file') {
+          res.redirect('/columnMappingTree/upload')
+        } else {
+          res.redirect('/columnMappingTree/url')
+        }
+    }catch(e){
+        res.redirect('/columnMappingTree/url')
     }
 })
 
