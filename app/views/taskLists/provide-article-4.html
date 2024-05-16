@@ -36,13 +36,8 @@
             title: {
                 text: "Submit your endpoint"
             },
-            href: "https://publish.planning-data.dev/submit-endpoint/start",
-            status: {
-                tag: {
-                text: "Incomplete",
-                classes: "govuk-tag--blue"
-                }
-            }
+            href: "/submit-endpoint-article4/start",
+            status: data.check.submitEndpointArticle4Status | toStatusIndicator
         }
     ]
     }) }}

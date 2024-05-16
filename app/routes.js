@@ -105,6 +105,17 @@ router.post('/taskLists/let-us-know-if-your-data-is-up-to-date', (req, res) => {
     res.redirect('/taskLists/taskChecklist')
 })
 
+// =====================
+
+router.post('/submit-endpoint-article4/confirmation', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
+
+// =====================
+
+router.post('/submit-endpoint-tree/confirmation', (req, res) => {
+    res.redirect('/taskLists/taskChecklist')
+})
 
 
 // Add your routes here
