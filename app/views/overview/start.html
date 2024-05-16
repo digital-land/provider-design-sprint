@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }}
+    </h1>
+
+
+    Before you start
+
+
+    <p>Use this service to submit or update your:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>article 4 direction area data</li>
+      <li>conservation area data</li>
+      <li>listed building outline data</li>
+      <li>tree preservation zone data</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Before you start
+    </h2>
+
+    <p>Your data must follow the <a href="#">data specification</a>.</p>
+
+    <p>Your data needs to be provided as either:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>a CSV, GeoJSON, GML or GeoPackage file</li>
+      <li>a URL</li>
+    </ul>
+
+    {{ govukButton({
+            text: "Start now",
+            href: "/overview/organisations",
+            isStartButton: true
+          }) }}
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+  </div>
+</div>
+
+{% endblock %}
