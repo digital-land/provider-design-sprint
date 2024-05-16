@@ -19,6 +19,13 @@ const toStatusIndicator = (status) => {
         return {
             text: 'complete'
         }
+    }else if(status == 'started'){
+        return {
+            tag: {
+                text: "started",
+                classes: "govuk-tag--green"
+            }
+        }
     }else if(status == 'incomplete'){
         return {
             tag: {
