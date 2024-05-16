@@ -284,7 +284,7 @@ router.use("/submit-endpoint/*", (req, res, next) => {
   next();
 });
 
-router.get("/submit-endpoint-article4/lpa-details", (req, res) => {
+router.get("*/lpa-details", (req, res) => {
   const lpaDataUrl =
     "https://www.planning.data.gov.uk/entity.json?dataset=local-authority&limit=400";
 
@@ -311,10 +311,11 @@ router.get("/submit-endpoint-article4/lpa-details", (req, res) => {
   });
 });
 
-router.get("/submit-endpoint-article4/choose-dataset", (req, res) => {
+router.get("*/choose-dataset", (req, res) => {
   let options = [
     { text: "Article 4 direction dataset" },
     { text: "Conservation area dataset" },
+    { text: "Tree dataset" },
   ];
 
   options = options.map((option) => {
