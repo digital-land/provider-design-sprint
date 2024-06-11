@@ -22,6 +22,19 @@
   width: calc((100% / 3) - govuk-spacing(3));
 }
 
+.dataset-summary-grid .govuk-summary-card__title-wrapper {
+  align-items: flex-start;
+}
+
+.planning-data-actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  column-gap: govuk-spacing(2);
+}
+
 code,
 code * {
   font-family: monospace;
