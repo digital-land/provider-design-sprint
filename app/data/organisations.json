@@ -105,6 +105,11 @@
     "dataset": "local-authority"
   },
   {
+    "organisation": "local-authority:BOR",
+    "name": "Borchester District Council",
+    "dataset": "local-authority"
+  },
+  {
     "organisation": "local-authority:KIN",
     "name": "Borough Council of King's Lynn and West Norfolk",
     "dataset": "local-authority"
