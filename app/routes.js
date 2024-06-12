@@ -359,3 +359,10 @@ router.get("/overview/organisations", (req, res) => {
 
   res.render("/overview/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
+
+router.get("/overview/lpa-overview/:orgId", (req, res) => {
+  const organisations = require("../app/data/organisations.json");
+  const org = organisations.find((x) => x.organisation == req.params.orgId);
+
+  res.render("/overview/lpa-overview-list", { organisation: org });
+});
