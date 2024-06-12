@@ -3,127 +3,127 @@
 // https://prototype-kit.service.gov.uk/docs/create-routes
 //
 
-const govukPrototypeKit = require('govuk-prototype-kit')
-const router = govukPrototypeKit.requests.setupRouter()
+const govukPrototypeKit = require("govuk-prototype-kit");
+const router = govukPrototypeKit.requests.setupRouter();
 
-router.post('/columnMappingArticle4/upload-method', (req, res) => {
-    try{
-        if(req.body.check.uploadMethod == 'file') {
-          res.redirect('/columnMappingArticle4/upload')
-        } else {
-          res.redirect('/columnMappingArticle4/url')
-        }
-    } catch(e){
-        res.redirect('/columnMappingArticle4/url')
+router.post("/columnMappingArticle4/upload-method", (req, res) => {
+  try {
+    if (req.body.check.uploadMethod == "file") {
+      res.redirect("/columnMappingArticle4/upload");
+    } else {
+      res.redirect("/columnMappingArticle4/url");
     }
-})
+  } catch (e) {
+    res.redirect("/columnMappingArticle4/url");
+  }
+});
 
-router.post('/columnMappingArticle4/upload', (req, res) => {
-    res.redirect('/columnMappingArticle4/columns')
-})
+router.post("/columnMappingArticle4/upload", (req, res) => {
+  res.redirect("/columnMappingArticle4/columns");
+});
 
-router.post('/columnMappingArticle4/url', (req, res) => {
-    res.redirect('/columnMappingArticle4/columns')
-})
+router.post("/columnMappingArticle4/url", (req, res) => {
+  res.redirect("/columnMappingArticle4/columns");
+});
 
-router.post('/columnMappingArticle4/geometry', (req, res) => {
-    res.redirect('/columnMappingArticle4/start-date')
-})
+router.post("/columnMappingArticle4/geometry", (req, res) => {
+  res.redirect("/columnMappingArticle4/start-date");
+});
 
-router.post('/columnMappingArticle4/start-date', (req, res) => {
-    res.redirect('/columnMappingArticle4/end-date')
-})
+router.post("/columnMappingArticle4/start-date", (req, res) => {
+  res.redirect("/columnMappingArticle4/end-date");
+});
 
-router.post('/columnMappingArticle4/end-date', (req, res) => {
-    res.redirect('/columnMappingArticle4/submit')
-})
+router.post("/columnMappingArticle4/end-date", (req, res) => {
+  res.redirect("/columnMappingArticle4/submit");
+});
 
-router.post('/columnMappingArticle4/article4Results', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/columnMappingArticle4/article4Results", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
 // ============
 
-router.post('/columnMappingTree/upload-method', (req, res) => {
-    try{
-        if(req.body.check.uploadMethod == 'file') {
-          res.redirect('/columnMappingTree/upload')
-        } else {
-          res.redirect('/columnMappingTree/url')
-        }
-    }catch(e){
-        res.redirect('/columnMappingTree/url')
+router.post("/columnMappingTree/upload-method", (req, res) => {
+  try {
+    if (req.body.check.uploadMethod == "file") {
+      res.redirect("/columnMappingTree/upload");
+    } else {
+      res.redirect("/columnMappingTree/url");
     }
-})
+  } catch (e) {
+    res.redirect("/columnMappingTree/url");
+  }
+});
 
-router.post('/columnMappingTree/upload', (req, res) => {
-    res.redirect('/columnMappingTree/columns')
-})
+router.post("/columnMappingTree/upload", (req, res) => {
+  res.redirect("/columnMappingTree/columns");
+});
 
-router.post('/columnMappingTree/url', (req, res) => {
-    res.redirect('/columnMappingTree/columns')
-})
+router.post("/columnMappingTree/url", (req, res) => {
+  res.redirect("/columnMappingTree/columns");
+});
 
-router.post('/columnMappingTree/geometry', (req, res) => {
-    res.redirect('/columnMappingTree/start-date')
-})
+router.post("/columnMappingTree/geometry", (req, res) => {
+  res.redirect("/columnMappingTree/start-date");
+});
 
-router.post('/columnMappingTree/start-date', (req, res) => {
-    res.redirect('/columnMappingTree/end-date')
-})
+router.post("/columnMappingTree/start-date", (req, res) => {
+  res.redirect("/columnMappingTree/end-date");
+});
 
-router.post('/columnMappingTree/end-date', (req, res) => {
-    res.redirect('/columnMappingTree/submit')
-})
+router.post("/columnMappingTree/end-date", (req, res) => {
+  res.redirect("/columnMappingTree/submit");
+});
 
-router.post('/columnMappingTree/results', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/columnMappingTree/results", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
 // ============
 
-router.post('/taskLists/conservation-area-results', (req, res) => {
-    if(req.body.check.dataLooksUpToDate == 'yes'){
-        req.body.check.progress.provideArticle4.read = true
-    }
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/conservation-area-results", (req, res) => {
+  if (req.body.check.dataLooksUpToDate == "yes") {
+    req.body.check.progress.provideArticle4.read = true;
+  }
+  res.redirect("/taskLists/taskChecklist");
+});
 
-router.post('/taskLists/article4DataGuidance', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/article4DataGuidance", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
-router.post('/taskLists/createYourDataFile', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/createYourDataFile", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
-router.post('/taskLists/publishYourDataFile', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/publishYourDataFile", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
-router.post('/taskLists/tpz-error-results', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/tpz-error-results", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
-router.post('/taskLists/conservation-area-results', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/conservation-area-results", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
-router.post('/taskLists/let-us-know-if-your-data-is-up-to-date', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
-
-// =====================
-
-router.post('/submit-endpoint-article4/confirmation', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/taskLists/let-us-know-if-your-data-is-up-to-date", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
 // =====================
 
-router.post('/submit-endpoint-tree/confirmation', (req, res) => {
-    res.redirect('/taskLists/taskChecklist')
-})
+router.post("/submit-endpoint-article4/confirmation", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
+
+// =====================
+
+router.post("/submit-endpoint-tree/confirmation", (req, res) => {
+  res.redirect("/taskLists/taskChecklist");
+});
 
 // ======================
 
@@ -336,6 +336,26 @@ router.get("*/choose-dataset", (req, res) => {
   });
 });
 
+router.get("/overview/organisations", (req, res) => {
+  const organisations = require("../app/data/organisations.json");
+  let currLetter = "";
+  let alphabetisedOrgs = {};
 
+  for (const org in organisations) {
+    if (Object.hasOwnProperty.call(organisations, org)) {
+      const thisOrg = organisations[org];
+      let firstLetter = thisOrg.name[0];
 
-// Add your routes here
+      if (firstLetter != currLetter) {
+        currLetter = firstLetter;
+        alphabetisedOrgs[currLetter] = [];
+      }
+
+      alphabetisedOrgs[currLetter].push(thisOrg);
+    }
+  }
+
+  console.log(JSON.stringify(alphabetisedOrgs, null, "  "));
+
+  res.render("/overview/organisations", { alphabetisedOrgs: alphabetisedOrgs });
+});
