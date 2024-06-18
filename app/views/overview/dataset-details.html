@@ -1,11 +1,9 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Borechester District Council conservation area details" %}
+{% block beforeContent %}
 
-{% block content %}
+{{ super() }}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
     {{ govukBreadcrumbs({
       items: [
         {
@@ -17,12 +15,18 @@
           href: "/overview/organisations"
         },
         {
-          text: "Borechester District Council",
-          href: "/overview/lpa-overview"
+        text: organisation.name,
+        href: "/overview/"+organisation.organisation
         }
       ]
     }) }}
 
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       {{ pageName }}
     </h1>

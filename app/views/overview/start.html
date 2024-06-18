@@ -11,24 +11,14 @@
 
 {% block beforeContent %}
 
-    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
-    {{ govukPhaseBanner({
+{{ govukPhaseBanner({
         tag: {
         text: "Prototype"
     },
         html: 'This prototype is from a <a class="govuk-link" href="https://digital-land.github.io/blog-post/jamming-together/">rapid design sprint</a> and unfinished. You should expect it to break or not work.'
     }) }}
-
-{{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      }
-    ]
-  }) }}
-
 {% endblock %}
 
 {% block content %}

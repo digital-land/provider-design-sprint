@@ -2,11 +2,10 @@
 
 {% set pageName = "Find your organisation" %}
 
-{% block content %}
+{% block beforeContent %}
 
+{{ super() }}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
     {{ govukBreadcrumbs({
           items: [
             {
@@ -16,6 +15,11 @@
           ]
     }) }}
 
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ pageName }}</h1>
   </div>
 </div>
