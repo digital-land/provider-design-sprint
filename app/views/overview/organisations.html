@@ -6,14 +6,14 @@
 
 {{ super() }}
 
-    {{ govukBreadcrumbs({
-          items: [
-            {
-              text: "Home",
-              href: "/overview/start"
-            }
-          ]
-    }) }}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/overview/start"
+    }
+  ]
+}) }}
 
 {% endblock %}
 
@@ -49,7 +49,7 @@
         <ul class="govuk-list govuk-!-margin-bottom-0">
           {% for org in orgs %}
           <li class="govuk-!-margin-bottom-1 js-filter-item">
-            <a href="/overview/lpa-overview/{{ org.organisation }}" class="govuk-link">{{ org.name }}</a>
+            <a href="/overview/{{ org.organisation }}" class="govuk-link">{{ org.name }}</a>
           </li>
           {% endfor %}
         </ul>

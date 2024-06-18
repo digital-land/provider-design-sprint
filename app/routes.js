@@ -355,14 +355,53 @@ router.get("/overview/organisations", (req, res) => {
     }
   }
 
-  console.log(JSON.stringify(alphabetisedOrgs, null, "  "));
-
   res.render("/overview/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
 
-router.get("/overview/lpa-overview/:orgId", (req, res) => {
+router.get("/overview/start", (req, res) => {
+  res.render("/overview/start");
+});
+
+router.get("/overview/:orgId", (req, res) => {
   const organisations = require("../app/data/organisations.json");
   const org = organisations.find((x) => x.organisation == req.params.orgId);
 
   res.render("/overview/lpa-overview-list", { organisation: org });
+});
+
+router.get("/overview/:orgId/dataset/:datasetId", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  switch (req.params.datasetId) {
+    case "article-4-direction":
+      locals.dataset = "Article 4 direction";
+      break;
+    case "article-4-direction-area":
+      locals.dataset = "Article 4 direction area";
+      break;
+    case "conservation-area":
+      locals.dataset = "Conservation area";
+      break;
+    case "conservation-area-direction":
+      locals.dataset = "Conservation area direction";
+      break;
+    case "listed-building-outline":
+      locals.dataset = "Listed building outline";
+      break;
+    case "tree":
+      locals.dataset = "Tree";
+      break;
+    case "tree-preservation-order":
+      locals.dataset = "Tree preservation order";
+      break;
+    case "tree-preservation-zone":
+      locals.dataset = "Tree preservation zone";
+      break;
+  }
+
+  res.render("/overview/dataset-details", locals);
 });

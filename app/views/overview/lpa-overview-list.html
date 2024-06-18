@@ -5,18 +5,18 @@
 {% block beforeContent %}
 {{ super() }}
 
-    {{ govukBreadcrumbs({
-      items: [
-      {
-        text: "Home",
-        href: "/overview/start"
-      },
-      {
-        text: "Organisations",
-        href: "/overview/organisations"
-      }
-      ]
-    }) }}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/overview/start"
+    },
+    {
+      text: "Organisations",
+      href: "/overview/organisations"
+    }
+  ]
+}) }}
 
 {% endblock %}
 
@@ -33,7 +33,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/article-4-direction">
               Article 4 direction
             </a>
           </h2>
@@ -59,7 +60,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/article-4-direction-area">
               Article 4 direction area
             </a>
           </h2>
@@ -77,7 +79,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="#">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/conservation-area">
               Conservation area
             </a>
           </h2>
@@ -106,7 +109,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/conservation-area-direction">
               Conservation area direction
             </a>
           </h2>
@@ -133,7 +137,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/listed-building-outline">
               Listed building outline
             </a>
           </h2>
@@ -160,7 +165,7 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link" href="/overview/{{ organisation.organisation }}/dataset/tree">
               Tree
             </a>
           </h2>
@@ -190,7 +195,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/tree-preservation-order">
               Tree preservation order
             </a>
           </h2>
@@ -219,7 +225,8 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            <a class="govuk-link govuk-task-list__link" href="/overview/dataset-details">
+            <a class="govuk-link govuk-task-list__link"
+              href="/overview/{{ organisation.organisation }}/dataset/tree-preservation-zone">
               Tree preservation zone
             </a>
           </h2>
