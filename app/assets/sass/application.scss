@@ -26,6 +26,30 @@
   align-items: flex-start;
 }
 
+.dataset-status-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 govuk-spacing(6) 0;
+
+  display: flex;
+  column-gap: govuk-spacing(3);
+}
+
+.dataset-status-list--item {
+  background-color: $govuk-brand-colour;
+  color: govuk-colour("white");
+
+  padding: govuk-spacing(2) govuk-spacing(3);
+  width: calc((100% / 3) - govuk-spacing(3));
+
+  @include govuk-font($size: 24, $weight: bold);
+}
+
+.big-number {
+  @include govuk-font($size: 80, $weight: bold);
+  display: block;
+}
+
 .planning-data-actions {
   list-style: none;
   margin: 0;
