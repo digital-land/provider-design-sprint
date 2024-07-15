@@ -1,0 +1,145 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName %}{{organisation.name}} — {{dataset}} — Task list{% endset %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Home",
+    href: "/overview/start"
+  },
+  {
+    text: "Organisations",
+    href: "/overview/organisations"
+  },
+  {
+    text: organisation.name,
+    href: "/overview/"+organisation.organisation
+  }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  {% include "includes/_dataset-page-header" %}
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">
+      {{ organisation.name }}’s task list
+    </h2>
+
+    {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+    {{ govukTaskList({
+      idPrefix: "dataset-tasklist",
+      items: [
+      {
+        title: {
+          text: "Reference column missing"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "Geometry column missing"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "Name column missing"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "4 start dates are invalid dates"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "2 entry dates are in the future"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "1 documentation URL is an invalid URL"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      },
+      {
+        title: {
+          text: "44 documentation URLs are missing"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "Issue",
+            classes: "govuk-tag--yellow"
+          }
+        }
+      }
+      
+      ]
+    }) }}
+
+    <h3 class="govuk-heading-m">
+      How to improve {{ organisation.name }}’s data
+    </h3>
+
+    <ol class="govuk-list govuk-list--number">
+      <li>Fix the errors indicated</li>
+      <li>Use the check service to make sure the data meets the standard</li>
+      <li>Publish the updated data on the data URL</li>
+    </ol>
+  </div>
+</div>
+
+
+{% endblock %}

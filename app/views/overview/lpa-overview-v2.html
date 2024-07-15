@@ -64,7 +64,7 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            {% set dataset_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}{% endset %}
+            {% set dataset_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/tasklist{% endset %}
             {% if dataset.endpoint == null %}
             {% set dataset_url %}{{ dataset_url }}/get-started{% endset %}
             {% endif %}
