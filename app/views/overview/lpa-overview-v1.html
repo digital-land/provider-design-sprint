@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = organisation.name + " overview" %}
+
+{% block beforeContent %}
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/overview/start"
+    },
+    {
+      text: "Organisations",
+      href: "/overview/organisations"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="dataset-status">
+      <div class="dataset-status--item">
+        <span class="big-number">
+          {{ datasetsSubmitted }} / {{ datasetCount }}
+        </span>
+        datasets submitted
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">Datasets</h2>
+    <ul class="govuk-task-list">
+
+      {% for dataset in datasets %}
+      <li class="govuk-task-list__item govuk-task-list__item--with-link">
+        <div class="govuk-task-list__name-and-hint">
+          <h2 class="govuk-heading-m">
+            {% if dataset.endpoint == null %}
+            {% set dataset_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/get-started{% endset %}
+            <a class="govuk-link govuk-task-list__link" href="{{ dataset_url }}">
+              {{ dataset.dataset_name }}
+            </a>
+            {% else %}
+            {{ dataset.dataset_name }}
+            {% endif %}
+          </h2>
+        </div>
+        <div class="govuk-task-list__status">
+          {% if dataset.endpoint != null %}
+          {{govukTag({
+            text: "Submitted",
+            classes: "govuk-tag--green"
+          })}}
+          {% else %}
+          {{govukTag({
+            text: "Not submitted",
+            classes: "govuk-tag--grey"
+          })}}
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

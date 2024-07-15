@@ -363,10 +363,68 @@ router.get("/overview/start", (req, res) => {
 });
 
 router.get("/overview/:orgId", (req, res) => {
+  let locals = {};
   const organisations = require("../app/data/organisations.json");
-  const org = organisations.find((x) => x.organisation == req.params.orgId);
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
 
-  res.render("/overview/lpa-overview-list", { organisation: org });
+  res.render("/overview/lpa-overview-list", locals);
+});
+
+router.get("/overview/:orgId/v1", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `SELECT
+            p.organisation,
+            o.name,
+            p.dataset,
+            d.name AS dataset_name,
+            rle.endpoint
+          FROM
+            provision p
+            INNER JOIN organisation o ON o.organisation = p.organisation
+            LEFT JOIN reporting_latest_endpoints rle ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+            AND rle.pipeline = p.dataset
+            INNER JOIN dataset d ON d.dataset = p.dataset
+          Where
+            p.organisation = :p0
+          ORDER BY
+            p.organisation,
+            o.name`,
+    p0: req.params.orgId,
+    _shape: "objects",
+  };
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let lpaData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      lpaData = JSON.parse(body);
+      locals.datasets = lpaData.rows;
+
+      locals.datasetCount = locals.datasets.length;
+      locals.datasetsSubmitted = locals.datasets.filter(
+        (row) => row.endpoint != null
+      ).length;
+
+      console.log(locals);
+
+      res.render("/overview/lpa-overview-v1", locals);
+    }
+  });
 });
 
 router.get("/overview/:orgId/dataset/:datasetId", (req, res) => {
