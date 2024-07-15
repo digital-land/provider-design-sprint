@@ -405,3 +405,58 @@ router.get("/overview/:orgId/dataset/:datasetId", (req, res) => {
 
   res.render("/overview/dataset-details", locals);
 });
+
+router.get("/overview/:orgId/dataset/:datasetId/get-started", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  switch (req.params.datasetId) {
+    case "article-4-direction":
+      locals.dataset = "Article 4 direction";
+      break;
+    case "article-4-direction-area":
+      locals.dataset = "Article 4 direction area";
+      break;
+    case "brownfield-land":
+      locals.dataset = "Brownfield land";
+      break;
+    case "brownfield-site":
+      locals.dataset = "Brownfield site";
+      break;
+    case "conservation-area":
+      locals.dataset = "Conservation area";
+      break;
+    case "conservation-area-document":
+      locals.dataset = "Conservation area document";
+      break;
+    case "development-plan":
+      locals.dataset = "Development plan";
+      break;
+    case "development-plan-document":
+      locals.dataset = "Development plan document";
+      break;
+    case "development-plan-geography":
+      locals.dataset = "Development plan geography";
+      break;
+    case "development-plan-timetable":
+      locals.dataset = "Development plan timetable";
+      break;
+    case "listed-building-outline":
+      locals.dataset = "Listed building outline";
+      break;
+    case "tree":
+      locals.dataset = "Tree";
+      break;
+    case "tree-preservation-order":
+      locals.dataset = "Tree preservation order";
+      break;
+    case "tree-preservation-zone":
+      locals.dataset = "Tree preservation zone";
+      break;
+  }
+
+  res.render("/overview/get-started.html", locals);
+});
