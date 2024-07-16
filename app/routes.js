@@ -634,3 +634,69 @@ router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
     }
   });
 });
+
+router.get("/overview/:orgId/dataset/:datasetId/http-error", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  const datasets = require("../app/data/datasets.json");
+
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `
+SELECT
+  p.organisation,
+  o.name,
+  d.name as dataset_name,
+  rle.pipeline,
+  rle.endpoint,
+  rle.endpoint_url,
+  rle.status as http_status,
+  rle.latest_log_entry_date,
+  rle.days_since_200,
+  CASE
+    WHEN l.status = 200
+    THEN l.entry_date
+  END AS latest_200_date
+FROM
+  provision p
+  LEFT JOIN organisation o ON o.organisation = p.organisation
+  LEFT JOIN reporting_latest_endpoints rle ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+  AND rle.pipeline = p.dataset
+  INNER JOIN dataset d ON d.dataset = p.dataset
+  INNER JOIN log l ON l.endpoint = rle.endpoint
+WHERE
+  p.organisation = :p0
+  AND p.dataset = :p1
+GROUP BY
+  p.organisation
+`,
+    p0: req.params.orgId,
+    p1: req.params.datasetId,
+    _shape: "objects"
+  }
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let errorData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      errorData = JSON.parse(body);
+      locals.errorData = errorData.rows[0];
+
+      console.log(locals);
+
+      res.render("/overview/http-error", locals);
+    }
+  });
+});

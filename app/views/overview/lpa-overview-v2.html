@@ -67,6 +67,8 @@
             {% set dataset_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}{% endset %}
             {% if dataset.endpoint == null %}
             {% set dataset_url %}{{ dataset_url }}/get-started{% endset %}
+            {% elseif dataset.http_status != 200 %}
+            {% set dataset_url %}{{ dataset_url }}/http-error{% endset %}
             {% else %}
             {% set dataset_url %}{{ dataset_url }}/tasklist{% endset %}
             {% endif %}
