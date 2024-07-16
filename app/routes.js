@@ -582,6 +582,15 @@ router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
               i.message,
               it.responsibility,
               it.severity,
+              CASE
+                WHEN COUNT(
+                  CASE
+                    WHEN it.severity == 'error' THEN 1
+                    ELSE null
+                  END
+                ) > 0 THEN 'Issue'
+                ELSE 'No issues'
+              END AS status,
               COUNT(i.issue_type) as num_issues
           FROM
               provision p
@@ -599,7 +608,7 @@ router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
               issue_type it ON i.issue_type = it.issue_type
           WHERE
               p.organisation = :p0 AND p.dataset = :p1
-              AND it.severity != 'info'
+              AND it.severity == 'error'
           GROUP BY i.issue_type
           ORDER BY it.severity`,
     p0: req.params.orgId,

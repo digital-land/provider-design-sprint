@@ -36,6 +36,13 @@
       {{ organisation.name }}’s task list
     </h2>
 
+    {% if tasks.length == 0 %}
+    <p>There are no issues with {{ organisation.name }}’s {{ dataset }} dataset.</p>
+
+    <p>View the dataset on the Planning Data platform</p>
+
+    {% else %}
+
     {% set taskItems = [] %}
     {% for task in tasks %}
 
@@ -187,19 +194,13 @@
     {% endset %}
     {% endif %}
 
-
-
-    {% if task.severity == "error" %}
-    {% set tagStatus = "Error" %}
+    {% if task.status == "Error" %}
     {% set tagClass = "govuk-tag--red" %}
-    {% elseif task.severity == "warning" %}
-    {% set tagStatus = "Warning" %}
+    {% elseif task.status == "Issue" %}
     {% set tagClass = "govuk-tag--orange" %}
-    {% elseif task.severity == "issue" %}
-    {% set tagStatus = "Issue" %}
+    {% elseif task.status == "Warning" %}
     {% set tagClass = "govuk-tag--yellow" %}
-    {% elseif task.severity == "info" %}
-    {% set tagStatus = "Info" %}
+    {% elseif task.status == "No issues" %}
     {% set tagClass = "govuk-tag--blue" %}
     {% endif %}
 
@@ -210,7 +211,7 @@
       href: "#",
       status: {
         tag: {
-          text: tagStatus,
+          text: task.status,
           classes: tagClass
         }
       }
@@ -232,9 +233,12 @@
 
     <ol class="govuk-list govuk-list--number">
       <li>Fix the errors indicated</li>
-      <li>Use the check service to make sure the data meets the standard</li>
+      <li>Use the <a href="https://check.development.digital-land.info/">check service</a> to make sure the data meets
+        the standard</li>
       <li>Publish the updated data on the data URL</li>
     </ol>
+
+    {% endif %}
   </div>
 </div>
 
