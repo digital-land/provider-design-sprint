@@ -438,60 +438,60 @@ router.get("/overview/:orgId/v2", (req, res) => {
 
   let queryObj = {
     sql: `SELECT
-    p.organisation,
-    o.name,
-    p.dataset,
-    d.name as dataset_name,
-    rle.pipeline,
-    rle.endpoint,
-    rle.resource,
-    rle.exception,
-    rle.status as http_status,
-    case 
-           when (rle.status != '200') then 'Error'
-           when (it.severity = 'error') then 'Issue'
-           when (it.severity = 'warning') then 'Warning'
-           else 'No issues'
-           end as status,
-    case
-            when (it.severity = 'info') then ''
-            else i.issue_type
-        end as issue_type,
-        case
-            when (it.severity = 'info') then ''
-            else it.severity
-        end as severity,
-        it.responsibility,
-        COUNT(
-            case
-            when it.severity != 'info' then 1
-            else null
-            end
-        ) as issue_count
-FROM
-    provision p
-LEFT JOIN
-    organisation o ON o.organisation = p.organisation
-LEFT JOIN
-    reporting_latest_endpoints rle
-    ON REPLACE(rle.organisation, '-eng', '') = p.organisation
-    AND rle.pipeline = p.dataset
-LEFT JOIN
-    issue i ON rle.resource = i.resource AND rle.pipeline = i.dataset
-LEFT JOIN
-    issue_type it ON i.issue_type = it.issue_type AND it.severity != 'info'
-INNER JOIN dataset d ON d.dataset = p.dataset
-WHERE
-    p.organisation = :p0
-GROUP BY
-    p.organisation,
-    p.dataset,
-    o.name,
-    rle.pipeline,
-    rle.endpoint
-ORDER BY
-    p.organisation,
-    o.name;`,
+      p.organisation,
+      o.name,
+      p.dataset,
+      d.name as dataset_name,
+      rle.pipeline,
+      rle.endpoint,
+      rle.resource,
+      rle.exception,
+      rle.status as http_status,
+      CASE 
+        WHEN (rle.status != '200') THEN 'Error'
+        WHEN (it.severity = 'error') THEN 'Issue'
+        WHEN (it.severity = 'warning') THEN 'Warning'
+        ELSE 'No issues'
+      END AS status,
+      CASE
+        WHEN (it.severity = 'info') THEN ''
+        ELSE i.issue_type
+      END AS issue_type,
+      CASE
+        WHEN (it.severity = 'info') THEN ''
+        ELSE it.severity
+      END AS severity,
+      it.responsibility,
+      COUNT(
+        CASE
+        WHEN it.severity != 'info' THEN 1
+        ELSE null
+        END
+      ) AS issue_count
+      FROM
+        provision p
+      LEFT JOIN
+        organisation o ON o.organisation = p.organisation
+      LEFT JOIN
+        reporting_latest_endpoints rle
+        ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+        AND rle.pipeline = p.dataset
+      LEFT JOIN
+        issue i ON rle.resource = i.resource AND rle.pipeline = i.dataset
+      LEFT JOIN
+        issue_type it ON i.issue_type = it.issue_type AND it.severity != 'info'
+      INNER JOIN dataset d ON d.dataset = p.dataset
+      WHERE
+        p.organisation = :p0
+      GROUP BY
+        p.organisation,
+        p.dataset,
+        o.name,
+        rle.pipeline,
+        rle.endpoint
+      ORDER BY
+        p.organisation,
+        o.name;`,
     p0: req.params.orgId,
     _shape: "objects",
   };
