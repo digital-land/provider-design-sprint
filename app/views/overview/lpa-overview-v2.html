@@ -38,7 +38,7 @@
         <span class="big-number">
           {{ datasetsSubmitted }} / {{ datasetCount }}
         </span>
-        {{ datasetsSubmitted | plural("dataset", showNumber=false) }} submitted
+        {{ datasetsCount | plural("dataset", showNumber=false) }} submitted
       </div>
 
       <div class="dataset-status--item">
@@ -64,9 +64,11 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
-            {% set dataset_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/tasklist{% endset %}
+            {% set dataset_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}{% endset %}
             {% if dataset.endpoint == null %}
             {% set dataset_url %}{{ dataset_url }}/get-started{% endset %}
+            {% else %}
+            {% set dataset_url %}{{ dataset_url }}/tasklist{% endset %}
             {% endif %}
             <a class="govuk-link govuk-task-list__link" href="{{ dataset_url }}">
               {{ dataset.dataset_name }}
@@ -75,8 +77,9 @@
           <div class="govuk-task-list__hint">
             {% if dataset.endpoint == null %}
             <p>Data URL not submitted</p>
-            {% elseif dataset.status == 'Warning' or dataset.status == 'Issue' %}
-            <p>There are {{ dataset.issue_count | plural("issue") }} in this dataset</p>
+            {% elseif dataset.status == 'Issue' %}
+            <p>There {{ dataset.issue_count | plural("is", showNumber=false) }}
+              {{ dataset.issue_count | plural("issue") }} in this dataset</p>
             {% elseif dataset.status == 'Error' %}
             <p>There was a {{ dataset.http_status }} error accessing the data URL</p>
             {% else %}
@@ -86,22 +89,20 @@
         </div>
         <div class="govuk-task-list__status">
           {% if dataset.endpoint != null %}
-          {% if dataset.status == "No issues" %}
-          {{govukTag({
-                text: "No issues",
-                classes: "govuk-tag--green"
-              })}}
-          {% elseif dataset.status == "Warning" or dataset.status == "Issue" %}
-          {{govukTag({
-                text: "Issues",
-                classes: "govuk-tag--yellow"
-              })}}
-          {% elseif dataset.status == "Error" %}
-          {{govukTag({
-                text: "Error",
-                classes: "govuk-tag--red"
-              })}}
+          {% if dataset.status == "Error" %}
+          {% set tagClass = "govuk-tag--red" %}
+          {% elseif dataset.status == "Issue" %}
+          {% set tagClass = "govuk-tag--yellow" %}
+          {% elseif dataset.status == "Warning" %}
+          {% set tagClass = "govuk-tag--yellow" %}
+          {% elseif dataset.status == "No issues" %}
+          {% set tagClass = "govuk-tag--green" %}
           {% endif %}
+
+          {{govukTag({
+              text: dataset.status,
+              classes: tagClass
+            })}}
           {% else %}
           {{govukTag({
             text: "Not submitted",
