@@ -563,5 +563,64 @@ router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
 
   locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
 
-  res.render("/overview/tasklist.html", locals);
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `SELECT
+              p.organisation,
+              o.name,
+              p.dataset,
+              d.name as dataset_name,
+              rle.endpoint,
+              rle.resource,
+              rle.exception,
+              i.field,
+              i.issue_type,
+              i.line_number,
+              i.value,
+              i.message,
+              it.responsibility,
+              it.severity,
+              COUNT(i.issue_type) as num_issues
+          FROM
+              provision p
+          LEFT JOIN
+              organisation o ON o.organisation = p.organisation
+          LEFT JOIN
+              dataset d ON d.dataset = p.dataset
+          LEFT JOIN
+              reporting_latest_endpoints rle
+              ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+              AND rle.pipeline = p.dataset
+          LEFT JOIN
+              issue i ON rle.resource = i.resource AND rle.pipeline = i.dataset
+          LEFT JOIN
+              issue_type it ON i.issue_type = it.issue_type
+          WHERE
+              p.organisation = :p0 AND p.dataset = :p1
+              AND it.severity != 'info'
+          GROUP BY i.issue_type
+          ORDER BY it.severity`,
+    p0: req.params.orgId,
+    p1: req.params.datasetId,
+    _shape: "objects",
+  };
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let taskData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      taskData = JSON.parse(body);
+      locals.tasks = taskData.rows;
+
+      console.log(locals);
+
+      res.render("/overview/tasklist", locals);
+    }
+  });
 });
