@@ -40,6 +40,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    <h2 class="govuk-heading-l">How to prepare and submit your {{ dataset }} data</h2>
+
     <div data-module="appstepnav" id="step-by-step-navigation" class="app-step-nav js-hidden app-step-nav--large"
       data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps"
       data-hide-all-text="Hide all steps">
@@ -94,7 +96,8 @@
             <ol class="app-step-nav__list " data-length="1">
               <li class="app-step-nav__list-item js-list-item ">
                 <p class="app-step-nav__paragraph">
-                  The <a href="https://publish.planning-data.dev/start">check service</a> can help you understand if
+                  The <a href="https://check.development.digital-land.info/">check service</a> can help you understand
+                  if
                   your data is ready to submit or if you need to change anything before you publish it on your website.
                 </p>
 
@@ -110,11 +113,12 @@
 
                 <p class="app-step-nav__paragraph">Alternatively you can provide us with a URL.</p>
 
-                {{ govukButton({
-                  text: "Check your data",
-                  href: "https://publish.planning-data.dev/start"
-                }) }}
-
+                <ol class="app-step-nav__list " data-length="1">
+                  <li class="app-step-nav__list-item js-list-item ">
+                    <a data-position="2.1" class="app-step-nav__link js-link"
+                      href="https://check.development.digital-land.info/">Check your data</a>
+                  </li>
+                </ol>
               </li>
             </ol>
           </div>
@@ -175,17 +179,20 @@
 
           <div class="app-step-nav__panel js-panel" id="step-panel-submit-your-data-4">
             <p class="app-step-nav__paragraph">Use the <a
-                href="https://publish.planning-data.dev/submit-endpoint/start">submit data service</a> to submit your
+                href="https://check.development.digital-land.info/submit">submit data service</a> to submit your
               data URL, your documentation URL
               and that the data is provided under the Open Government Licence.</p>
 
             <p class="app-step-nav__paragraph">We’ll process your submission and add your dataset to the planning data
               platform.</p>
 
-            {{ govukButton({
-                text: "Submit your data",
-                href: "https://publish.planning-data.dev/submit-endpoint/start"
-              }) }}
+            <ol class="app-step-nav__list " data-length="1">
+              <li class="app-step-nav__list-item js-list-item ">
+                <a data-position="4.1" class="app-step-nav__link js-link"
+                  href="https://check.development.digital-land.info/submit">Submit
+                  your data</a>
+              </li>
+            </ol>
           </div>
 
         </li>
