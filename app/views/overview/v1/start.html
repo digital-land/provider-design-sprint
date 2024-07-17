@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{{ govukPhaseBanner({
+        tag: {
+        text: "Prototype"
+    },
+        html: 'This prototype is from a <a class="govuk-link" href="https://digital-land.github.io/blog-post/jamming-together/">rapid design sprint</a> and unfinished. You should expect it to break or not work.'
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }}
+    </h1>
+
+    <p>Use this service to submit or update your:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Article 4 direction data</li>
+      <li>conservation area data</li>
+      <li>listed building data</li>
+      <li>tree preservation order data</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">
+      Before you start
+    </h2>
+
+    <p>Your data must follow the <a href="#">data specification</a>.</p>
+
+    <p>You need to choose to provide your data in one of these file formats:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>CSV</li>
+      <li>GeoJSON</li>
+      <li>GML</li>
+      <li>GeoPackage</li>
+    </ul>
+
+    <p>Alternatively you can provide us with a URL.</p>
+
+    {{ govukButton({
+            text: "Start now",
+            href: "/overview/v1/organisations",
+            isStartButton: true
+          }) }}
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+  </div>
+</div>
+
+{% endblock %}

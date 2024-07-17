@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Find your organisation" %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "/overview/v1/start"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ pageName }}</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="govuk-!-margin-bottom-6">
+      <input class="govuk-input" type="text" id="filter-organisations-list" placeholder="For example, Lambeth">
+    </form>
+  </div>
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% for letter, orgs in alphabetisedOrgs %}
+    <div class="govuk-grid-row js-filter-item">
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-xl">{{ letter }}</h2>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <ul class="govuk-list govuk-!-margin-bottom-0">
+          {% for org in orgs %}
+          <li class="govuk-!-margin-bottom-1 js-filter-item">
+            <a href="/overview/v1/{{ org.organisation }}" class="govuk-link">{{ org.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="govuk-grid-column-full">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block bodyEnd %}
+<script>
+  let filterItems = document.querySelectorAll('.js-filter-item')
+  function liveSearch() {
+    let search_query = document.getElementById("filter-organisations-list").value;
+    //Use innerText if all contents are visible
+    //Use textContent for including hidden elements
+    for (var i = 0; i < filterItems.length; i++) {
+      if (filterItems[i].textContent.toLowerCase()
+        .includes(search_query.toLowerCase())) {
+        filterItems[i].classList.remove("govuk-visually-hidden");
+      } else {
+        filterItems[i].classList.add("govuk-visually-hidden");
+      }
+    }
+  }
+  //A little delay
+  let typingTimer;
+  let typeInterval = 500;
+  let searchInput = document.getElementById('filter-organisations-list');
+  searchInput.addEventListener('keyup', () => {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(liveSearch, typeInterval);
+  });
+</script>
+{{ super() }}
+{% endblock bodyEnd %}

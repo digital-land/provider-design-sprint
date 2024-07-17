@@ -1,0 +1,246 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName %}{{organisation.name}} — {{dataset}} — Task list{% endset %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Home",
+    href: "/overview/v2/start"
+  },
+  {
+    text: "Organisations",
+    href: "/overview/v2/organisations"
+  },
+  {
+    text: organisation.name,
+    href: "/overview/v2/"+organisation.organisation
+  }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  {% include "includes/_dataset-page-header" %}
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">
+      {{ organisation.name }}’s task list
+    </h2>
+
+    {% if tasks.length == 0 %}
+    <p>There are no issues with {{ organisation.name }}’s {{ dataset }} dataset.</p>
+
+    <p>View the dataset on the Planning Data platform</p>
+
+    {% else %}
+
+    {% set taskItems = [] %}
+    {% for task in tasks %}
+
+    {% set taskMessage %}{{ task.num_issues | plural("row") }}
+    {{ task.num_issues | plural("has", showNumber=false) }}{% endset %}
+
+    {% if task.issue_type == "future entry date" %}
+    {% set taskMessage %}{{ taskMessage }} entry dates in the future {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid coordinates" %}
+    {% set taskMessage %}{{ taskMessage }} invalid coordinates {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid date" %}
+    {% set taskMessage %}{{ taskMessage }} invalid dates {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid decimal" %}
+    {% set taskMessage %}{{ taskMessage }} invalid decimal numbers {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid flag" %}
+    {% set taskMessage %}{{ taskMessage }} fields that were not processed as valid yes or no values {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid geometry - not fixable" %}
+    {% set taskMessage %}{{ taskMessage }} had errors processing the geometry {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid integer" %}
+    {% set taskMessage %}{{ taskMessage }} invalid integers {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid organisation" %}
+    {% set taskMessage %}{{ taskMessage }} encountered errors retrieving a valid organisation {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid URI" %}
+    {% set taskMessage %}{{ taskMessage }} invalid URIs {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid WKT" %}
+    {% set taskMessage %}{{ taskMessage }} invalid WKT values {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "missing value" %}
+    {% set taskMessage %}{{ taskMessage }} missing values {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "OSGB out of bounds of custom boundary" %}
+    {% set taskMessage %}{{ taskMessage }} data outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "OSGB out of bounds of England" %}
+    {% set taskMessage %}{{ taskMessage }} data outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "too large" %}
+    {% set taskMessage %}{{ taskMessage }} values greater than the maximum allowed {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "too small" %}
+    {% set taskMessage %}{{ taskMessage }} values smaller than the minimum allowed {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "Unexpected geom type" %}
+    {% set taskMessage %}{{ taskMessage }} unexpected geometry {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "Unexpected geom type within GeometryCollection" %}
+    {% set taskMessage %}{{ taskMessage }} unexpected geometry {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "unknown entity - missing reference" %}
+    {% set taskMessage %}{{ taskMessage }} missing references and can't have entities assigned {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "WGS84 out of bounds" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial coordinates out of bounds {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "WGS84 out of bounds of custom boundary" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "WGS84 out of bounds of England" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "WGS84 out of bounds of England" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid geometry - fixed" %}
+    {% set taskMessage %}{{ taskMessage }} errors processing geometry that has been fixed {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "invalid type geojson" %}
+    {% set taskMessage %}{{ taskMessage }} errors processing WKT data {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "Mercator" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as Mercator coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "Mercator flipped" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as flipped Mercator coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "OSGB" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as OSGB coordinates {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "OSGB flipped" %}
+    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as flipped OSGB coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "WGS84 flipped" %}
+    {% set taskMessage %}{{ taskMessage }} latitude and longitude coordinates that have been flipped {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "combined-value" %}
+    {% set taskMessage %}{{ taskMessage }} field values constructed by combining data from multiple different
+    entries {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "default-field" %}
+    {% set taskMessage %}{{ taskMessage }} values taken from another field {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "default-value" %}
+    {% set taskMessage %}{{ taskMessage }} values derived from other data {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "patch" %}
+    {% set taskMessage %}{{ taskMessage }} values which have been patched {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "removed URI prefix" %}
+    {% set taskMessage %}{{ taskMessage }} URI values that have been converted into CURIE values {% endset %}
+    {% endif %}
+
+    {% if task.issue_type == "unknown entity" %}
+    {% set taskMessage %}{{ taskMessage }} entries that need entities assigning before they will appear in the data
+    {% endset %}
+    {% endif %}
+
+    {% if task.status == "Error" %}
+    {% set tagClass = "govuk-tag--red" %}
+    {% elseif task.status == "Issue" %}
+    {% set tagClass = "govuk-tag--orange" %}
+    {% elseif task.status == "Warning" %}
+    {% set tagClass = "govuk-tag--yellow" %}
+    {% elseif task.status == "No issues" %}
+    {% set tagClass = "govuk-tag--blue" %}
+    {% endif %}
+
+    {% set taskItem = {
+      title: {
+        text: taskMessage
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: task.status,
+          classes: tagClass
+        }
+      }
+    }
+    %}
+
+    {% set taskItems = (taskItems.push(taskItem), taskItems) %}
+
+    {% endfor %}
+
+    {{ govukTaskList({
+      idPrefix: "dataset-tasklist",
+      items: taskItems
+    }) }}
+
+    <h3 class="govuk-heading-m">
+      How to improve {{ organisation.name }}’s data
+    </h3>
+
+    <ol class="govuk-list govuk-list--number">
+      <li>Fix the errors indicated</li>
+      <li>Use the <a href="https://check.staging.digital-land.info/">check service</a> to make sure the data meets
+        the standard</li>
+      <li>Publish the updated data on the data URL</li>
+    </ol>
+
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

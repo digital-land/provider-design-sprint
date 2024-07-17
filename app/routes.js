@@ -336,6 +336,10 @@ router.get("*/choose-dataset", (req, res) => {
   });
 });
 
+router.get("/overview/start", (req, res) => {
+  res.render("/overview/start");
+});
+
 router.get("/overview/organisations", (req, res) => {
   const organisations = require("../app/data/organisations.json");
   let currLetter = "";
@@ -356,10 +360,6 @@ router.get("/overview/organisations", (req, res) => {
   }
 
   res.render("/overview/organisations", { alphabetisedOrgs: alphabetisedOrgs });
-});
-
-router.get("/overview/start", (req, res) => {
-  res.render("/overview/start");
 });
 
 router.get("/overview/:orgId", (req, res) => {
@@ -697,6 +697,392 @@ GROUP BY
       console.log(locals);
 
       res.render("/overview/http-error", locals);
+    }
+  });
+});
+
+// v1 routes for user research session July 24
+
+router.get("/overview/v1/start", (req, res) => {
+  res.render("/overview/v1/start");
+});
+
+router.get("/overview/v1/organisations", (req, res) => {
+  const organisations = require("../app/data/organisations.json");
+  let currLetter = "";
+  let alphabetisedOrgs = {};
+
+  for (const org in organisations) {
+    if (Object.hasOwnProperty.call(organisations, org)) {
+      const thisOrg = organisations[org];
+      let firstLetter = thisOrg.name[0];
+
+      if (firstLetter != currLetter) {
+        currLetter = firstLetter;
+        alphabetisedOrgs[currLetter] = [];
+      }
+
+      alphabetisedOrgs[currLetter].push(thisOrg);
+    }
+  }
+
+  res.render("/overview/v1/organisations", { alphabetisedOrgs: alphabetisedOrgs });
+});
+
+router.get("/overview/v1/:orgId", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `SELECT
+            p.organisation,
+            o.name,
+            p.dataset,
+            d.name AS dataset_name,
+            rle.endpoint
+          FROM
+            provision p
+            INNER JOIN organisation o ON o.organisation = p.organisation
+            LEFT JOIN reporting_latest_endpoints rle ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+            AND rle.pipeline = p.dataset
+            INNER JOIN dataset d ON d.dataset = p.dataset
+          Where
+            p.organisation = :p0
+          ORDER BY
+            p.organisation,
+            o.name`,
+    p0: req.params.orgId,
+    _shape: "objects",
+  };
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let lpaData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      lpaData = JSON.parse(body);
+      locals.datasets = lpaData.rows;
+
+      locals.datasetCount = locals.datasets.length;
+      locals.datasetsSubmitted = locals.datasets.filter(
+        (row) => row.endpoint != null
+      ).length;
+
+      console.log(locals);
+
+      res.render("/overview/v1/lpa-overview", locals);
+    }
+  });
+});
+
+router.get("/overview/v1/:orgId/dataset/:datasetId/get-started", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  const datasets = require("../app/data/datasets.json");
+
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+
+  res.render("/overview/v1/get-started.html", locals);
+});
+
+
+// v2 routes for user research session July 24
+
+router.get("/overview/v2/start", (req, res) => {
+  res.render("/overview/v2/start");
+});
+
+router.get("/overview/v2/organisations", (req, res) => {
+  const organisations = require("../app/data/organisations.json");
+  let currLetter = "";
+  let alphabetisedOrgs = {};
+
+  for (const org in organisations) {
+    if (Object.hasOwnProperty.call(organisations, org)) {
+      const thisOrg = organisations[org];
+      let firstLetter = thisOrg.name[0];
+
+      if (firstLetter != currLetter) {
+        currLetter = firstLetter;
+        alphabetisedOrgs[currLetter] = [];
+      }
+
+      alphabetisedOrgs[currLetter].push(thisOrg);
+    }
+  }
+
+  res.render("/overview/v2/organisations", { alphabetisedOrgs: alphabetisedOrgs });
+});
+
+router.get("/overview/v2/:orgId", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `
+SELECT
+  p.organisation,
+  o.name,
+  p.dataset,
+  d.name AS dataset_name,
+  rle.pipeline,
+  rle.endpoint,
+  rle.resource,
+  rle.exception,
+  rle.status AS http_status,
+  CASE
+    WHEN (rle.status != '200') THEN 'Error'
+    WHEN COUNT(
+      CASE
+        WHEN it.severity == 'error' THEN 1
+        ELSE null
+      END
+    ) > 0 THEN 'Issue'
+    ELSE 'No issues'
+  END AS status,
+  CASE
+    WHEN (it.severity = 'info') THEN ''
+    ELSE i.issue_type
+  END AS issue_type,
+  CASE
+    WHEN (it.severity = 'info') THEN ''
+    ELSE it.severity
+  END AS severity,
+  it.responsibility,
+  COUNT(
+    CASE
+      WHEN it.severity == 'error' THEN 1
+      ELSE null
+    END
+  ) AS issue_count
+FROM
+  provision p
+  LEFT JOIN organisation o ON o.organisation = p.organisation
+  LEFT JOIN reporting_latest_endpoints rle ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+  AND rle.pipeline = p.dataset
+  LEFT JOIN issue i ON rle.resource = i.resource
+  AND rle.pipeline = i.dataset
+  LEFT JOIN issue_type it ON i.issue_type = it.issue_type
+  INNER JOIN dataset d ON d.dataset = p.dataset
+WHERE
+  p.organisation = :p0
+GROUP BY
+  p.organisation,
+  p.dataset,
+  o.name,
+  rle.pipeline,
+  rle.endpoint
+ORDER BY
+  p.dataset
+    `,
+    p0: req.params.orgId,
+    _shape: "objects",
+  };
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let lpaData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      lpaData = JSON.parse(body);
+      locals.datasets = lpaData.rows;
+
+      locals.datasetCount = locals.datasets.length;
+      locals.datasetsSubmitted = locals.datasets.filter(
+        (row) => row.endpoint != null
+      ).length;
+      locals.datasetErrors = locals.datasets.filter(
+        (row) => row.status == "Error"
+      ).length;
+      locals.datasetIssues = locals.datasets.filter(
+        (row) => row.status == "Issue"
+      ).length;
+
+      console.log(locals);
+
+      res.render("/overview/v2/lpa-overview", locals);
+    }
+  });
+});
+
+router.get("/overview/v2/:orgId/dataset/:datasetId/get-started", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  const datasets = require("../app/data/datasets.json");
+
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+
+  res.render("/overview/v2/get-started.html", locals);
+});
+
+router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  const datasets = require("../app/data/datasets.json");
+
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `SELECT
+              p.organisation,
+              o.name,
+              p.dataset,
+              d.name as dataset_name,
+              rle.endpoint,
+              rle.resource,
+              rle.exception,
+              i.field,
+              i.issue_type,
+              i.line_number,
+              i.value,
+              i.message,
+              it.responsibility,
+              it.severity,
+              CASE
+                WHEN COUNT(
+                  CASE
+                    WHEN it.severity == 'error' THEN 1
+                    ELSE null
+                  END
+                ) > 0 THEN 'Issue'
+                ELSE 'No issues'
+              END AS status,
+              COUNT(i.issue_type) as num_issues
+          FROM
+              provision p
+          LEFT JOIN
+              organisation o ON o.organisation = p.organisation
+          LEFT JOIN
+              dataset d ON d.dataset = p.dataset
+          LEFT JOIN
+              reporting_latest_endpoints rle
+              ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+              AND rle.pipeline = p.dataset
+          LEFT JOIN
+              issue i ON rle.resource = i.resource AND rle.pipeline = i.dataset
+          LEFT JOIN
+              issue_type it ON i.issue_type = it.issue_type
+          WHERE
+              p.organisation = :p0 AND p.dataset = :p1
+              AND it.severity == 'error'
+          GROUP BY i.issue_type
+          ORDER BY it.severity`,
+    p0: req.params.orgId,
+    p1: req.params.datasetId,
+    _shape: "objects",
+  };
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let taskData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      taskData = JSON.parse(body);
+      locals.tasks = taskData.rows;
+
+      console.log(locals);
+
+      res.render("/overview/v2/tasklist", locals);
+    }
+  });
+});
+
+router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  const datasets = require("../app/data/datasets.json");
+
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `
+SELECT
+  p.organisation,
+  o.name,
+  d.name as dataset_name,
+  rle.pipeline,
+  rle.endpoint,
+  rle.endpoint_url,
+  rle.status as http_status,
+  rle.latest_log_entry_date,
+  rle.days_since_200,
+  CASE
+    WHEN l.status = 200
+    THEN l.entry_date
+  END AS latest_200_date
+FROM
+  provision p
+  LEFT JOIN organisation o ON o.organisation = p.organisation
+  LEFT JOIN reporting_latest_endpoints rle ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+  AND rle.pipeline = p.dataset
+  INNER JOIN dataset d ON d.dataset = p.dataset
+  INNER JOIN log l ON l.endpoint = rle.endpoint
+WHERE
+  p.organisation = :p0
+  AND p.dataset = :p1
+GROUP BY
+  p.organisation
+`,
+    p0: req.params.orgId,
+    p1: req.params.datasetId,
+    _shape: "objects"
+  }
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let errorData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      errorData = JSON.parse(body);
+      locals.errorData = errorData.rows[0];
+
+      console.log(locals);
+
+      res.render("/overview/v2/http-error", locals);
     }
   });
 });
