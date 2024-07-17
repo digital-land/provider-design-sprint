@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName %}{{organisation.name}} — {{dataset}} — Task list{% endset %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Home",
+    href: "/overview/start"
+  },
+  {
+    text: "Organisations",
+    href: "/overview/organisations"
+  },
+  {
+    text: organisation.name,
+    href: "/overview/"+organisation.organisation
+  },
+  {
+  text: dataset.name,
+  href: "/overview/"+organisation.organisation+"/dataset/"+dataset.dataset+"/tasklist"
+  }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  {% include "includes/_dataset-page-header" %}
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-column-two-thirds">
+    {% set errorItems = [] %}
+    {% for error in errorData %}
+    {% set errorMsg %}<code>{{ error.field }}</code> field is {{ error.issue_type }} on line
+    {{ error.line_number }}{% endset %}
+    {% set errorItem = {
+          html: errorMsg,
+          href: "#"
+        }
+      %}
+    {% set errorItems = (errorItems.push(errorItem), errorItems) %}
+    {% endfor %}
+
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorItems
+    }) }}
+
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukButton({
+      text: "Upload a new version",
+      href: "/upload-method"
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

@@ -575,6 +575,7 @@ router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
               rle.endpoint,
               rle.resource,
               rle.exception,
+              i.rowid,
               i.field,
               i.issue_type,
               i.line_number,
