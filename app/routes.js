@@ -1038,6 +1038,72 @@ GROUP BY
   });
 });
 
+router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", (req, res) => {
+  let locals = {};
+  const organisations = require("../app/data/organisations.json");
+  const datasets = require("../app/data/datasets.json");
+
+  locals.organisation = organisations.find(
+    (x) => x.organisation == req.params.orgId
+  );
+
+  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId);
+
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `
+      select
+        i.rowid,
+        i.end_date,
+        i.entry_date,
+        i.entry_number,
+        i.field,
+        i.issue_type,
+        i.line_number,
+        i.dataset,
+        i.resource,
+        i.start_date,
+        i.value,
+        i.message,
+        it.severity
+      from
+        issue i
+      LEFT JOIN issue_type it ON i.issue_type = it.issue_type
+      where
+        i.resource = :p0
+        AND i.issue_type = :p1
+        AND it.severity = "error"
+      order by
+        i.rowid
+      `,
+    p0: req.params.resourceId,
+    p1: req.params.issueType,
+    _shape: "objects"
+  }
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let errorData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      errorData = JSON.parse(body);
+      locals.errorData = errorData.rows;
+
+      console.log(locals);
+
+      res.render("/overview/error", locals);
+    }
+  });
+});
+
+
+
 router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
