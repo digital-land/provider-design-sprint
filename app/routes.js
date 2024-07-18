@@ -858,7 +858,7 @@ router.get("/overview/v2/organisations", (req, res) => {
   res.render("/overview/v2/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
 
-router.get("/overview/v2/:orgId", async (req, res) => {
+router.get("/overview/v2/:orgId", (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -948,7 +948,7 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/get-started", (req, res) => {
   res.render("/overview/v2/get-started.html", locals);
 });
 
-router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", async (req, res) => {
+router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -1009,10 +1009,12 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", async (req, res) =
   res.render("/overview/v2/tasklist", locals);
 });
 
-router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", async (req, res) => {
+router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
   let queryObj = {
     sql: `
@@ -1059,7 +1061,9 @@ router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", a
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  const issueQuery = {
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
     sql: `
       select
         i.rowid,
@@ -1087,239 +1091,31 @@ router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", a
       `,
     p0: req.params.resourceId,
     p1: req.params.issueType,
-    _shape: 'objects'
+    _shape: "objects"
   }
 
-  const issuesResponse = await queryDatasette(issueQuery);
-  const entriesArray = [];
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
 
-  issuesResponse.rows.forEach(row => {
-    if (!entriesArray.includes(row.entry_number)) entriesArray.push(row.entry_number);
+  let errorData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      return JSON.parse(body);
+    }
   });
-});
-
-router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
-  const locals = {};
-  locals.organisation = getOrg(req.params.orgId);
-  locals.dataset = getDataset(req.params.datasetId);
-
-  const issueQuery = {
-    sql: `
-      select
-        i.rowid,
-        i.end_date,
-        i.entry_date,
-        i.entry_number,
-        i.field,
-        i.issue_type,
-        i.line_number,
-        i.dataset,
-        i.resource,
-        i.start_date,
-        i.value,
-        i.message,
-        it.severity
-      from
-        issue i
-      LEFT JOIN issue_type it ON i.issue_type = it.issue_type
-      where
-        i.resource = :p0
-        AND i.issue_type = :p1
-        AND it.severity = "error"
-      order by
-        i.rowid
-      `,
-    p0: req.params.resourceId,
-    p1: req.params.issueType,
-    _shape: 'objects'
-  }
-
-  const issuesResponse = await queryDatasette(issueQuery);
-  const entriesArray = [];
-
-  issuesResponse.rows.forEach(row => {
-    if (!entriesArray.includes(row.entry_number)) entriesArray.push(row.entry_number);
-  });
-
-  let pageNum = Number(req.query.page)
-  if (req.query.page == undefined) pageNum = 1;
-
-  let entryId = entriesArray[pageNum - 1]
-
-   const entityQuery = {
-    sql: `
-select
-  fr.rowid,
-  fr.end_date,
-  fr.fact,
-  fr.entry_date,
-  fr.entry_number,
-  fr.resource,
-  fr.start_date,
-  ft.entity,
-  ft.field,
-  ft.entry_date,
-  ft.start_date,
-  ft.value
-from
-  fact_resource fr
-left join
-  fact ft on fr.fact = ft.fact
-where
-  fr.resource = :p0
-order by
-  fr.rowid
-    `,
-    p0: req.params.resourceId,
-    _shape: 'objects'
-  }
-
-  const entriesResponse = await queryDatasette(entityQuery, database=req.params.datasetId);
-
-  const issueSummaryByEntry = []
-
-  issuesResponse.rows.forEach(issue => {
-    let i = issueSummaryByEntry.findIndex(
-      (entry) => entry.entry_number == issue.entry_number
-    )
-
-    if (i == -1) {
-      const entry = {
-        entry_number: issue.entry_number,
-        fields: []
-      }
-
-      issueSummaryByEntry.push(entry)
-      i = issueSummaryByEntry.length -1
-    }
-
-    issueSummaryByEntry[i].fields.push(issue.field)
-    issueSummaryByEntry[i].issue_type = issue.issue_type
-  });
-
-  const fieldsByEntry = []
-
-  issuesResponse.rows.forEach(row => {
-    let i = fieldsByEntry.findIndex(
-      (entry) => entry.entry_number == row.entry_number
-    )
-
-    if (i == -1) {
-      const entryItem = {
-        entry_number: row.entry_number,
-        fields: []
-      }
-
-      fieldsByEntry.push(entryItem)
-      i = fieldsByEntry.length -1
-    }
-
-    fieldsByEntry[i].fields.push({
-      field: row.field,
-      value: row.value,
-      issue_type: row.issue_type,
-      message: row.message
-    })
-  })
-
-  fieldsByEntry.forEach(entry => {
-    entriesResponse.rows.forEach(row => {
-      if (entry.entry_number == row.entry_number) {
-        entry.fields.push({
-          field: row.field,
-          value: row.value
-        })
-      }
-    })
-
-    entry.fields.sort((a, b) => a.field.localeCompare(b.field))
-  })
-
-  let numEntries = issueSummaryByEntry.length;
-
-  const paginationObj = {}
-  if (pageNum > 1) {
-    paginationObj.prevObj = {
-      href: `${req.path}?page=${pageNum - 1}`
-    }
-  }
-
-  if (pageNum < numEntries) {
-    paginationObj.nextObj = {
-      href: `${req.path}?page=${pageNum + 1}`
-    }
-  }
-
-  paginationObj.items = []
-  let prevSkip = false;
-  let nextSkip = false;
-  for (let i=1; i<=numEntries; i++) {
-
-    if (i == 1
-      || (i >= pageNum-2 && i <= pageNum+2)
-      || i == numEntries) {
-      let item = {
-        number: i,
-        href: `${req.path}?page=${i}`
-      }
-
-      if (i == pageNum) item.current = true;
-      paginationObj.items.push(item)
-    }
-    
-    if (i > 1 && (i <= pageNum-2) && !prevSkip) {
-      let item = {
-        ellipsis: true
-      }
-
-      paginationObj.items.push(item)
-      prevSkip = true
-    }
-    
-    if (i < numEntries && (i >= pageNum+2) && !nextSkip) {
-      let item = {
-        ellipsis: true
-      }
-
-      paginationObj.items.push(item)
-      nextSkip = true
-    }
-  }
-
-  locals.issues = issuesResponse.rows;
-  locals.entries = entriesResponse.rows;
-  locals.issue_summary_by_entry = issueSummaryByEntry;
-  locals.fields_by_entry = fieldsByEntry;
-  locals.entry_id = entryId;
-  locals.num_entries = issueSummaryByEntry.length;
-  locals.page_url = req.path;
-  locals.page_num = pageNum;
-  locals.pagination_obj = paginationObj;
-  
-  res.render(`/overview/${req.params.version}/error`, locals);
-});
-
-async function queryDatasette(queryObj, database='digital-land', format='json') {
-  const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
-
-  const response = await fetch(apiUrl).catch(e => console.error(e));
-
-  if (response.status != 200) {
-    console.error(response)
-  } else {
-    const json = await response.json();
-    return json
-  }
 }
 
-function getOrg(orgId) {
+const getOrg = (orgId) => {
   const organisations = require("../app/data/organisations.json");
   return organisations.find(
     (x) => x.organisation == orgId
   );
 }
 
-function getDataset(datasetId) {
+const getDataset = (datasetId) => {
   const datasets = require("../app/data/datasets.json");
   return datasets.find((x) => x.dataset == datasetId);
 }
