@@ -373,11 +373,8 @@ router.get("/overview/:orgId", (req, res) => {
 });
 
 router.get("/overview/:orgId/v1", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -428,11 +425,8 @@ router.get("/overview/:orgId/v1", (req, res) => {
 });
 
 router.get("/overview/:orgId/v2", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -528,41 +522,25 @@ ORDER BY
 });
 
 router.get("/overview/:orgId/dataset/:datasetId", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId);
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/overview/dataset-details", locals);
 });
 
 router.get("/overview/:orgId/dataset/:datasetId/get-started", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId);
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/overview/get-started.html", locals);
 });
 
 router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId);
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -637,15 +615,9 @@ router.get("/overview/:orgId/dataset/:datasetId/tasklist", (req, res) => {
 });
 
 router.get("/overview/:orgId/dataset/:datasetId/http-error", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId);
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -731,11 +703,8 @@ router.get("/overview/v1/organisations", (req, res) => {
 });
 
 router.get("/overview/v1/:orgId", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -786,14 +755,9 @@ router.get("/overview/v1/:orgId", (req, res) => {
 });
 
 router.get("/overview/v1/:orgId/dataset/:datasetId/get-started", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/overview/v1/get-started.html", locals);
 });
@@ -828,11 +792,8 @@ router.get("/overview/v2/organisations", (req, res) => {
 });
 
 router.get("/overview/v2/:orgId", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -941,15 +902,9 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/get-started", (req, res) => {
 });
 
 router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -1023,15 +978,9 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
 });
 
 router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -1087,3 +1036,67 @@ GROUP BY
     }
   });
 });
+
+router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+
+  let queryObj = {
+    sql: `
+      select
+        i.rowid,
+        i.end_date,
+        i.entry_date,
+        i.entry_number,
+        i.field,
+        i.issue_type,
+        i.line_number,
+        i.dataset,
+        i.resource,
+        i.start_date,
+        i.value,
+        i.message,
+        it.severity
+      from
+        issue i
+      LEFT JOIN issue_type it ON i.issue_type = it.issue_type
+      where
+        i.resource = :p0
+        AND i.issue_type = :p1
+        AND it.severity = "error"
+      order by
+        i.rowid
+      `,
+    p0: req.params.resourceId,
+    p1: req.params.issueType,
+    _shape: "objects"
+  }
+
+  let queryString = new URLSearchParams(queryObj).toString();
+  let endpoint = `${apiURL}?${queryString}`;
+
+  let errorData = {};
+
+  request(endpoint, (error, response, body) => {
+    if (error) {
+      return console.log(error);
+    } else if (response.statusCode == 200) {
+      return JSON.parse(body);
+    }
+  });
+})
+
+const getOrg = (orgId) => {
+  const organisations = require("../app/data/organisations.json");
+  return organisations.find(
+    (x) => x.organisation == orgId
+  );
+}
+
+const getDataset = (datasetId) => {
+  const datasets = require("../app/data/datasets.json");
+  return datasets.find((x) => x.dataset == datasetId);
+}
