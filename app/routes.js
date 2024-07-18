@@ -1038,17 +1038,10 @@ GROUP BY
   });
 });
 
-router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId);
-
+router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
 
   let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
@@ -1092,17 +1085,10 @@ router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", (
     if (error) {
       return console.log(error);
     } else if (response.statusCode == 200) {
-      errorData = JSON.parse(body);
-      locals.errorData = errorData.rows;
-
-      console.log(locals);
-
-      res.render("/overview/error", locals);
+      return JSON.parse(body);
     }
   });
 });
-
-
 
 router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
   const locals = {};
