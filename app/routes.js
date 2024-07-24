@@ -1043,9 +1043,7 @@ router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", a
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
-
-  let queryObj = {
+  const issueQuery = {
     sql: `
       select
         i.rowid,
@@ -1073,20 +1071,14 @@ router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", a
       `,
     p0: req.params.resourceId,
     p1: req.params.issueType,
-    _shape: "objects"
+    _shape: 'objects'
   }
 
-  let queryString = new URLSearchParams(queryObj).toString();
-  let endpoint = `${apiURL}?${queryString}`;
+  const issuesResponse = await queryDatasette(issueQuery);
+  const entriesArray = [];
 
-  let errorData = {};
-
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      return JSON.parse(body);
-    }
+  issuesResponse.rows.forEach(row => {
+    if (!entriesArray.includes(row.entry_number)) entriesArray.push(row.entry_number);
   });
 });
 
