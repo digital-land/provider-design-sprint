@@ -1139,28 +1139,6 @@ order by
 
   const fieldsByEntry = []
 
-  entriesResponse.rows.forEach(row => {
-    let i = fieldsByEntry.findIndex(
-      (entry) => entry.entry_number == row.entry_number
-    )
-
-    if (i == -1) {
-      const entryItem = {
-        entry_number: row.entry_number,
-        fields: []
-      }
-
-      fieldsByEntry.push(entryItem)
-      i = fieldsByEntry.length -1
-    }
-
-
-    fieldsByEntry[i].fields.push({
-      field: row.field,
-      value: row.value
-    })
-  })
-
   issuesResponse.rows.forEach(row => {
     let i = fieldsByEntry.findIndex(
       (entry) => entry.entry_number == row.entry_number
@@ -1187,6 +1165,15 @@ order by
   })
 
   fieldsByEntry.forEach(entry => {
+    entriesResponse.rows.forEach(row => {
+      if (entry.entry_number == row.entry_number) {
+        entry.fields.push({
+          field: row.field,
+          value: row.value
+        })
+      }
+    })
+
     entry.fields.sort((a, b) => a.field.localeCompare(b.field))
   })
 
