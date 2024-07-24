@@ -1081,11 +1081,8 @@ router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", a
     if (!entriesArray.includes(row.entry_number)) entriesArray.push(row.entry_number);
   });
 
-  let pageNum = req.query.page
-
-  if (pageNum == undefined) {
-    pageNum = 1
-  }
+  let pageNum = Number(req.query.page)
+  if (req.query.page == undefined) pageNum = 1;
 
   let entryId = entriesArray[pageNum - 1]
 
@@ -1186,18 +1183,69 @@ order by
   })
 
   fieldsByEntry.forEach(entry => {
-    entry.fields.sort((a, b) => {
-      console.log(a.field, b.field)
-      return a.field.localeCompare(b.field)
-    })
+    entry.fields.sort((a, b) => a.field.localeCompare(b.field))
   })
+
+  let numEntries = issueSummaryByEntry.length;
+
+  const paginationObj = {}
+  if (pageNum > 1) {
+    paginationObj.prevObj = {
+      href: `${req.path}?page=${pageNum - 1}`
+    }
+  }
+
+  if (pageNum < numEntries) {
+    paginationObj.nextObj = {
+      href: `${req.path}?page=${pageNum + 1}`
+    }
+  }
+
+  paginationObj.items = []
+  let prevSkip = false;
+  let nextSkip = false;
+  for (let i=1; i<=numEntries; i++) {
+
+    if (i == 1
+      || (i >= pageNum-2 && i <= pageNum+2)
+      || i == numEntries) {
+      let item = {
+        number: i,
+        href: `${req.path}?page=${i}`
+      }
+
+      if (i == pageNum) item.current = true;
+      paginationObj.items.push(item)
+    }
+    
+    if (i > 1 && (i <= pageNum-2) && !prevSkip) {
+      let item = {
+        ellipsis: true
+      }
+
+      paginationObj.items.push(item)
+      prevSkip = true
+    }
+    
+    if (i < numEntries && (i >= pageNum+2) && !nextSkip) {
+      let item = {
+        ellipsis: true
+      }
+
+      paginationObj.items.push(item)
+      nextSkip = true
+    }
+  }
 
   locals.issues = issuesResponse.rows;
   locals.entries = entriesResponse.rows;
   locals.issue_summary_by_entry = issueSummaryByEntry;
   locals.fields_by_entry = fieldsByEntry;
   locals.entry_id = entryId;
-  locals.num_entries = entriesResponse.rows.length;
+  locals.num_entries = issueSummaryByEntry.length;
+  locals.page_url = req.path;
+  locals.page_num = pageNum;
+  locals.pagination_obj = paginationObj;
   
   res.render("/overview/error", locals);
 });

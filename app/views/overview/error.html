@@ -35,7 +35,7 @@
 
 
 <div class="govuk-grid-row">
-  <div class="govuk-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
     {% set issue_items = [] %}
     {% for issue in issue_summary_by_entry %}
     {% set error_msg %} {{issue.fields.length | plural("fields") }}
@@ -44,7 +44,7 @@
     {{ issue.entry_number }}{% endset %}
     {% set issue_item = {
           html: error_msg,
-          href: "#"
+          href: page_url + "?page="+(loop.index)
         }
       %}
     {% set issue_items = (issue_items.push(issue_item), issue_items) %}
@@ -204,7 +204,7 @@
     }) }}
 
     {% set field_items = [] %}
-    {% for field in fields_by_entry[0].fields %}
+    {% for field in fields_by_entry[page_num-1].fields %}
     {% if field['issue_type'] is defined %}
     {% set field_classes = "dl-summary-card-list__row--error" %}
     {% set field_value %}
@@ -231,23 +231,34 @@
     {{ govukSummaryList({
       card: {
         title: {
-          text: "Entry " + fields_by_entry[0].entry_number
+        text: "Entry " + fields_by_entry[page_num - 1].entry_number
         }
       },
       rows: field_items
     }) }}
+
+    {% if num_entries > 1 %}
+    {{ govukPagination({
+      previous: pagination_obj.prevObj,
+      next: pagination_obj.nextObj,
+      items: pagination_obj.items
+    }) }}
+    {% endif %}
   </div>
 </div>
 
-
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {{ govukButton({
-      text: "Upload a new version",
-      href: "/upload-method"
-    }) }}
+    <h3 class="govuk-heading-m">
+      How to improve {{ organisation.name }}’s data
+    </h3>
 
+    <ol class="govuk-list govuk-list--number">
+      <li>Fix the errors indicated</li>
+      <li>Use the <a href="https://check.staging.digital-land.info/">check service</a> to make sure the data meets
+        the standard</li>
+      <li>Publish the updated data on the data URL</li>
+    </ol>
   </div>
 </div>
 {% endblock %}
