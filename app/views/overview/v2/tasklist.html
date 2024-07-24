@@ -48,7 +48,7 @@
     {% set taskItems = [] %}
     {% for task in tasks %}
 
-    {% set taskMessage %}{{ task.num_issues | plural("row") }}
+    {% set taskMessage %}{{ task.num_issues | plural("fields") }}
     {{ task.num_issues | plural("has", showNumber=false) }}{% endset %}
 
     {% if task.issue_type == "future entry date" %}
@@ -206,11 +206,13 @@
     {% set tagClass = "govuk-tag--blue" %}
     {% endif %}
 
+    {% set task_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/error/{{ task.resource }}/{{ task.issue_type | urlencode }}{% endset %}
+
     {% set taskItem = {
       title: {
         text: taskMessage
       },
-      href: "#",
+      href: task_url,
       status: {
         tag: {
           text: task.status,

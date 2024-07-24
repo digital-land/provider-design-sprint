@@ -58,7 +58,16 @@
   column-gap: govuk-spacing(2);
 }
 
+.dl-summary-card-list__row--error {
+  border-left: govuk-spacing(1) solid $govuk-error-colour;
+
+  .govuk-summary-list__key {
+    padding-left: govuk-spacing(3);
+  }
+}
+
 code,
 code * {
   font-family: monospace;
 }
+
