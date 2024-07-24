@@ -36,24 +36,206 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-column-two-thirds">
-    {% set errorItems = [] %}
-    {% for error in errorData %}
-    {% set errorMsg %}<code>{{ error.field }}</code> field is {{ error.issue_type }} on line
-    {{ error.line_number }}{% endset %}
-    {% set errorItem = {
-          html: errorMsg,
+    {% set issue_items = [] %}
+    {% for issue in issue_summary_by_entry %}
+    {% set error_msg %} {{issue.fields.length | plural("fields") }}
+    {{ issue.fields.length | plural("is", showNumber=false) }}
+    {{ issue.fields.length | plural(issue.issue_type, showNumber=false) }} in entry
+    {{ issue.entry_number }}{% endset %}
+    {% set issue_item = {
+          html: error_msg,
           href: "#"
         }
       %}
-    {% set errorItems = (errorItems.push(errorItem), errorItems) %}
+    {% set issue_items = (issue_items.push(issue_item), issue_items) %}
     {% endfor %}
 
+    {% set error_heading %}{{ issue_summary_by_entry.length | plural("entry") }}
+    {{ issue_summary_by_entry.length | plural("has", showNumber=false) }}{% endset %}
+
+    {% if issues[0].issue_type == "future entry date" %}
+    {% set error_heading %}{{ error_heading }} entry dates in the future {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid coordinates" %}
+    {% set error_heading %}{{ error_heading }} invalid coordinates {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid date" %}
+    {% set error_heading %}{{ error_heading }} invalid dates {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid decimal" %}
+    {% set error_heading %}{{ error_heading }} invalid decimal numbers {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid flag" %}
+    {% set error_heading %}{{ error_heading }} fields that were not processed as valid yes or no values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid geometry - not fixable" %}
+    {% set error_heading %}{{ error_heading }} had errors processing the geometry {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid integer" %}
+    {% set error_heading %}{{ error_heading }} invalid integers {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid organisation" %}
+    {% set error_heading %}{{ error_heading }} encountered errors retrieving a valid organisation {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid URI" %}
+    {% set error_heading %}{{ error_heading }} invalid URIs {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid WKT" %}
+    {% set error_heading %}{{ error_heading }} invalid WKT values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "missing value" %}
+    {% set error_heading %}{{ error_heading }} missing values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB out of bounds of custom boundary" %}
+    {% set error_heading %}{{ error_heading }} data outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB out of bounds of England" %}
+    {% set error_heading %}{{ error_heading }} data outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "too large" %}
+    {% set error_heading %}{{ error_heading }} values greater than the maximum allowed {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "too small" %}
+    {% set error_heading %}{{ error_heading }} values smaller than the minimum allowed {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Unexpected geom type" %}
+    {% set error_heading %}{{ error_heading }} unexpected geometry {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Unexpected geom type within GeometryCollection" %}
+    {% set error_heading %}{{ error_heading }} unexpected geometry {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "unknown entity - missing reference" %}
+    {% set error_heading %}{{ error_heading }} missing references and can't have entities assigned {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates out of bounds {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds of custom boundary" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds of England" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds of England" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid geometry - fixed" %}
+    {% set error_heading %}{{ error_heading }} errors processing geometry that has been fixed {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid type geojson" %}
+    {% set error_heading %}{{ error_heading }} errors processing WKT data {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Mercator" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as Mercator coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Mercator flipped" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as flipped Mercator coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as OSGB coordinates {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB flipped" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as flipped OSGB coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 flipped" %}
+    {% set error_heading %}{{ error_heading }} latitude and longitude coordinates that have been flipped {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "combined-value" %}
+    {% set error_heading %}{{ error_heading }} field values constructed by combining data from multiple different
+    entries {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "default-field" %}
+    {% set error_heading %}{{ error_heading }} values taken from another field {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "default-value" %}
+    {% set error_heading %}{{ error_heading }} values derived from other data {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "patch" %}
+    {% set error_heading %}{{ error_heading }} values which have been patched {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "removed URI prefix" %}
+    {% set error_heading %}{{ error_heading }} URI values that have been converted into CURIE values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "unknown entity" %}
+    {% set error_heading %}{{ error_heading }} entries that need entities assigning before they will appear in the data
+    {% endset %}
+    {% endif %}
+
     {{ govukErrorSummary({
-      titleText: "There is a problem",
-      errorList: errorItems
+      titleText: error_heading,
+      errorList: issue_items
     }) }}
 
-    </ul>
+    {% set field_items = [] %}
+    {% for field in fields_by_entry[0].fields %}
+    {% if field['issue_type'] is defined %}
+    {% set field_classes = "dl-summary-card-list__row--error" %}
+    {% set field_value %}
+    {{ field.value}}
+    <p class="govuk-error-message">{{ field.message }}</p>
+    {% endset %}
+    {% else %}
+    {% set field_classes = "" %}
+    {% set field_value = field.value %}
+    {% endif %}
+    {% set field_item = {
+          key: {
+            text: field.field
+          },
+          value: {
+            html: field_value
+          },
+          classes: field_classes
+        }
+      %}
+    {% set field_items = (field_items.push(field_item), field_items) %}
+    {% endfor %}
+
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: "Entry " + fields_by_entry[0].entry_number
+        }
+      },
+      rows: field_items
+    }) }}
   </div>
 </div>
 
