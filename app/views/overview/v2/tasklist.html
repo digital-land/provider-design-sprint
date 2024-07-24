@@ -204,7 +204,7 @@
     {% set tagClass = "govuk-tag--blue" %}
     {% endif %}
 
-    {% set task_url %}/overview/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/error/{{ task.resource }}/{{ task.issue_type | urlencode }}{% endset %}
+    {% set task_url %}/overview/v2/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/error/{{ task.resource }}/{{ task.issue_type | urlencode }}{% endset %}
 
     {% set taskItem = {
       title: {

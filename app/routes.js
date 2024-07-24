@@ -1038,7 +1038,7 @@ GROUP BY
   });
 });
 
-router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
+router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -1107,12 +1107,10 @@ left join
   fact ft on fr.fact = ft.fact
 where
   fr.resource = :p0
-  and fr.entry_number = :p1
 order by
   fr.rowid
     `,
     p0: req.params.resourceId,
-    p1: entryId,
     _shape: 'objects'
   }
 
@@ -1131,7 +1129,8 @@ order by
         fields: []
       }
 
-      i = issueSummaryByEntry.push(entry) - 1
+      issueSummaryByEntry.push(entry)
+      i = issueSummaryByEntry.length -1
     }
 
     issueSummaryByEntry[i].fields.push(issue.field)
@@ -1151,8 +1150,10 @@ order by
         fields: []
       }
 
-      i = fieldsByEntry.push(entryItem) - 1
+      fieldsByEntry.push(entryItem)
+      i = fieldsByEntry.length -1
     }
+
 
     fieldsByEntry[i].fields.push({
       field: row.field,
@@ -1165,13 +1166,16 @@ order by
       (entry) => entry.entry_number == row.entry_number
     )
 
+    console.log("issues index: " + i)
+
     if (i == -1) {
       const entryItem = {
         entry_number: row.entry_number,
         fields: []
       }
 
-      i = fieldsByEntry.push(entryItem) - 1
+      fieldsByEntry.push(entryItem)
+      i = fieldsByEntry.length -1
     }
 
     fieldsByEntry[i].fields.push({
@@ -1247,7 +1251,7 @@ order by
   locals.page_num = pageNum;
   locals.pagination_obj = paginationObj;
   
-  res.render("/overview/error", locals);
+  res.render(`/overview/${req.params.version}/error`, locals);
 });
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
