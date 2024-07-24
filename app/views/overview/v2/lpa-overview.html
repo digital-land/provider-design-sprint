@@ -43,12 +43,12 @@
 
       <div class="dataset-status--item">
         <span class="big-number">{{ datasetErrors }}</span>
-        {{ datasetErrors | plural("dataset", showNumber=false) }} with errors
+        {{ datasetErrors | plural("data URL", showNumber=false) }} with errors
       </div>
 
       <div class="dataset-status--item">
         <span class="big-number">{{ datasetIssues }}</span>
-        {{ datasetIssues | plural("dataset", showNumber=false) }} with issues
+        {{ datasetIssues | plural("dataset", showNumber=false) }} need fixing
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@
           <div class="govuk-task-list__hint">
             {% if dataset.endpoint == null %}
             <p>Data URL not submitted</p>
-            {% elseif dataset.status == 'Issue' %}
+            {% elseif dataset.status == 'Needs fixing' %}
             <p>There {{ dataset.issue_count | plural("is", showNumber=false) }}
               {{ dataset.issue_count | plural("issue") }} in this dataset</p>
             {% elseif dataset.status == 'Error' %}
@@ -93,11 +93,11 @@
           {% if dataset.endpoint != null %}
           {% if dataset.status == "Error" %}
           {% set tagClass = "govuk-tag--red" %}
-          {% elseif dataset.status == "Issue" %}
+          {% elseif dataset.status == "Needs fixing" %}
           {% set tagClass = "govuk-tag--yellow" %}
           {% elseif dataset.status == "Warning" %}
           {% set tagClass = "govuk-tag--yellow" %}
-          {% elseif dataset.status == "No issues" %}
+          {% elseif dataset.status == "Live" %}
           {% set tagClass = "govuk-tag--green" %}
           {% endif %}
 

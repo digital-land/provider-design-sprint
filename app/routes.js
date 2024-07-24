@@ -817,8 +817,8 @@ SELECT
         WHEN it.severity == 'error' THEN 1
         ELSE null
       END
-    ) > 0 THEN 'Issue'
-    ELSE 'No issues'
+    ) > 0 THEN 'Needs fixing'
+    ELSE 'Live'
   END AS status,
   CASE
     WHEN (it.severity = 'info') THEN ''
@@ -879,7 +879,7 @@ ORDER BY
         (row) => row.status == "Error"
       ).length;
       locals.datasetIssues = locals.datasets.filter(
-        (row) => row.status == "Issue"
+        (row) => row.status == "Needs fixing"
       ).length;
 
       console.log(locals);
@@ -931,8 +931,8 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
                     WHEN it.severity == 'error' THEN 1
                     ELSE null
                   END
-                ) > 0 THEN 'Issue'
-                ELSE 'No issues'
+                ) > 0 THEN 'Needs fixing'
+                ELSE 'Live'
               END AS status,
               COUNT(i.issue_type) as num_issues
           FROM

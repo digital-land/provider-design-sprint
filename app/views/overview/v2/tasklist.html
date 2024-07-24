@@ -198,11 +198,9 @@
 
     {% if task.status == "Error" %}
     {% set tagClass = "govuk-tag--red" %}
-    {% elseif task.status == "Issue" %}
-    {% set tagClass = "govuk-tag--orange" %}
-    {% elseif task.status == "Warning" %}
+    {% elseif task.status == "Needs fixing" %}
     {% set tagClass = "govuk-tag--yellow" %}
-    {% elseif task.status == "No issues" %}
+    {% elseif task.status == "Warning" %}
     {% set tagClass = "govuk-tag--blue" %}
     {% endif %}
 
