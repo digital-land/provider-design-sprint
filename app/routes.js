@@ -792,13 +792,11 @@ router.get("/overview/v2/organisations", (req, res) => {
   res.render("/overview/v2/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
 
-router.get("/overview/v2/:orgId", (req, res) => {
+router.get("/overview/v2/:orgId", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
-  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
-
-  let queryObj = {
+  const queryObj = {
     sql: `
 SELECT
   p.organisation,
@@ -859,57 +857,37 @@ ORDER BY
     _shape: "objects",
   };
 
-  let queryString = new URLSearchParams(queryObj).toString();
-  let endpoint = `${apiURL}?${queryString}`;
+  const lpaData = await queryDatasette(queryObj);
+  locals.datasets = lpaData.rows;
 
-  let lpaData = {};
+  locals.datasetCount = locals.datasets.length;
+  locals.datasetsSubmitted = locals.datasets.filter(
+    (row) => row.endpoint != null
+  ).length;
+  locals.datasetErrors = locals.datasets.filter(
+    (row) => row.status == "Error"
+  ).length;
+  locals.datasetIssues = locals.datasets.filter(
+    (row) => row.status == "Needs fixing"
+  ).length;
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      lpaData = JSON.parse(body);
-      locals.datasets = lpaData.rows;
-
-      locals.datasetCount = locals.datasets.length;
-      locals.datasetsSubmitted = locals.datasets.filter(
-        (row) => row.endpoint != null
-      ).length;
-      locals.datasetErrors = locals.datasets.filter(
-        (row) => row.status == "Error"
-      ).length;
-      locals.datasetIssues = locals.datasets.filter(
-        (row) => row.status == "Needs fixing"
-      ).length;
-
-      console.log(locals);
-
-      res.render("/overview/v2/lpa-overview", locals);
-    }
-  });
+  res.render("/overview/v2/lpa-overview", locals);
 });
 
 router.get("/overview/v2/:orgId/dataset/:datasetId/get-started", (req, res) => {
-  let locals = {};
-  const organisations = require("../app/data/organisations.json");
-  const datasets = require("../app/data/datasets.json");
-
-  locals.organisation = organisations.find(
-    (x) => x.organisation == req.params.orgId
-  );
-  locals.dataset = datasets.find((x) => x.dataset == req.params.datasetId).name;
-
-  res.render("/overview/v2/get-started.html", locals);
-});
-
-router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
+  res.render("/overview/v2/get-started.html", locals);
+});
 
-  let queryObj = {
+router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  const queryObj = {
     sql: `SELECT
               p.organisation,
               o.name,
@@ -959,31 +937,16 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", (req, res) => {
     _shape: "objects",
   };
 
-  let queryString = new URLSearchParams(queryObj).toString();
-  let endpoint = `${apiURL}?${queryString}`;
+  const taskData = await queryDatasette(queryObj);
+  locals.tasks = taskData.rows;
 
-  let taskData = {};
-
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      taskData = JSON.parse(body);
-      locals.tasks = taskData.rows;
-
-      console.log(locals);
-
-      res.render("/overview/v2/tasklist", locals);
-    }
-  });
+  res.render("/overview/v2/tasklist", locals);
 });
 
-router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", (req, res) => {
+router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
-
-  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
 
   let queryObj = {
     sql: `
@@ -1019,23 +982,10 @@ GROUP BY
     _shape: "objects"
   }
 
-  let queryString = new URLSearchParams(queryObj).toString();
-  let endpoint = `${apiURL}?${queryString}`;
+  const errorData = await queryDatasette(queryObj)
+  locals.errorData = errorData.rows[0];
 
-  let errorData = {};
-
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      errorData = JSON.parse(body);
-      locals.errorData = errorData.rows[0];
-
-      console.log(locals);
-
-      res.render("/overview/v2/http-error", locals);
-    }
-  });
+  res.render("/overview/v2/http-error", locals);
 });
 
 router.get("/overview/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
@@ -1187,8 +1137,6 @@ order by
     let i = fieldsByEntry.findIndex(
       (entry) => entry.entry_number == row.entry_number
     )
-
-    console.log("issues index: " + i)
 
     if (i == -1) {
       const entryItem = {
