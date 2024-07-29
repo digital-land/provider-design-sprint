@@ -1014,8 +1014,6 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/http-error", async (req, res)
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  let apiURL = "https://datasette.planning.data.gov.uk/digital-land.json";
-
   let queryObj = {
     sql: `
 SELECT
