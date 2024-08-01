@@ -196,6 +196,12 @@
     {% endset %}
     {% endif %}
 
+    {% if task.issue_type == "reference values are not unique" %}
+    {% set taskMessage %}{{ taskMessage }} entries with duplicate references
+    {% endset %}
+    {% endif %}
+
+
     {% if task.status == "Error" %}
     {% set tagClass = "govuk-tag--red" %}
     {% elseif task.status == "Needs fixing" %}
