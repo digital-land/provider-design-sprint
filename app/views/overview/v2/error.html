@@ -205,7 +205,7 @@
     }) }}
 
     {% set field_items = [] %}
-    {% for field in fields_by_entry[page_num-1].fields %}
+    {% for field in entry_item.fields %}
     {% if field['issue_type'] is defined %}
     {% set field_classes = "dl-summary-card-list__row--error" %}
     {% set field_value %}
@@ -232,7 +232,7 @@
     {{ govukSummaryList({
       card: {
         title: {
-        text: "Entry " + fields_by_entry[page_num - 1].entry_number
+        text: "Entry " + entry_item.entry_number
         }
       },
       rows: field_items

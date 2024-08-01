@@ -1154,53 +1154,30 @@ order by
     issueSummaryByEntry[i].issue_type = issue.issue_type
   });
 
-  const fieldsByEntry = []
+  const entryItem = {
+    entry_number: entryId,
+    fields: []
+  }
 
   entriesResponse.rows.forEach(row => {
-    let i = fieldsByEntry.findIndex(
-      (entry) => entry.entry_number == row.entry_number
-    )
-
-    if (i == -1) {
-      const entryItem = {
-        entry_number: row.entry_number,
-        fields: []
-      }
-
-      i = fieldsByEntry.push(entryItem) - 1
-    }
-
-    fieldsByEntry[i].fields.push({
+    entryItem.fields.push({
       field: row.field,
       value: row.value
     })
   })
 
   issuesResponse.rows.forEach(row => {
-    let i = fieldsByEntry.findIndex(
-      (entry) => entry.entry_number == row.entry_number
-    )
-
-    if (i == -1) {
-      const entryItem = {
-        entry_number: row.entry_number,
-        fields: []
-      }
-
-      i = fieldsByEntry.push(entryItem) - 1
+    if (row.entry_number == entryId) {
+      entryItem.fields.push({
+        field: row.field,
+        value: row.value,
+        issue_type: row.issue_type,
+        message: row.message
+      })
     }
-
-    fieldsByEntry[i].fields.push({
-      field: row.field,
-      value: row.value,
-      issue_type: row.issue_type,
-      message: row.message
-    })
   })
 
-  fieldsByEntry.forEach(entry => {
-    entry.fields.sort((a, b) => a.field.localeCompare(b.field))
-  })
+  entryItem.fields.sort((a, b) => a.field.localeCompare(b.field))
 
   let numEntries = issueSummaryByEntry.length;
 
@@ -1256,14 +1233,14 @@ order by
   locals.issues = issuesResponse.rows;
   locals.entries = entriesResponse.rows;
   locals.issue_summary_by_entry = issueSummaryByEntry;
-  locals.fields_by_entry = fieldsByEntry;
+  locals.entry_item = entryItem;
   locals.entry_id = entryId;
   locals.num_entries = issueSummaryByEntry.length;
   locals.page_url = req.path;
   locals.page_num = pageNum;
   locals.pagination_obj = paginationObj;
   
-  res.render("/overview/error", locals);
+  res.render("/overview/v2/error", locals);
 });
 
 router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType/table", async (req, res) => {
