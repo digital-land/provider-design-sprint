@@ -1266,6 +1266,232 @@ order by
   res.render("/overview/error", locals);
 });
 
+router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType/table", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  const fieldsQuery = {
+    sql: `
+select
+  rowid,
+  field,
+  dataset
+from
+  column_field
+group by
+  field
+order by
+  rowid
+    `,
+    _shape: 'objects'
+  }
+
+  const fieldsData = await queryDatasette(fieldsQuery, req.params.datasetId)
+  locals.expected_fields = fieldsData.rows
+
+  const issueQuery = {
+    sql: `
+      select
+        i.rowid,
+        i.end_date,
+        i.entry_date,
+        i.entry_number,
+        i.field,
+        i.issue_type,
+        i.line_number,
+        i.dataset,
+        i.resource,
+        i.start_date,
+        i.value,
+        i.message,
+        it.severity
+      from
+        issue i
+      LEFT JOIN issue_type it ON i.issue_type = it.issue_type
+      where
+        i.resource = :p0
+        AND i.issue_type = :p1
+        AND it.severity = "error"
+        AND i.entry_number <= 100
+      order by
+        i.rowid
+      `,
+    p0: req.params.resourceId,
+    p1: req.params.issueType,
+    _shape: 'objects'
+  }
+
+  const issuesResponse = await queryDatasette(issueQuery);
+  const entriesArray = [];
+
+  issuesResponse.rows.forEach(row => {
+    if (!entriesArray.includes(row.entry_number)) entriesArray.push(row.entry_number);
+  });
+
+  let pageNum = Number(req.query.page)
+  if (req.query.page == undefined) pageNum = 1;
+
+  let entryId = entriesArray[pageNum - 1]
+
+   const entityQuery = {
+    sql: `
+select
+  fr.rowid,
+  fr.end_date,
+  fr.fact,
+  fr.entry_date,
+  fr.entry_number,
+  fr.resource,
+  fr.start_date,
+  ft.entity,
+  ft.field,
+  ft.entry_date,
+  ft.start_date,
+  ft.value
+from
+  fact_resource fr
+left join
+  fact ft on fr.fact = ft.fact
+where
+  fr.resource = :p0
+  and fr.entry_number <= 100
+group by
+  fr.entry_number,
+  ft.field
+order by
+  fr.rowid
+    `,
+    p0: req.params.resourceId,
+    _shape: 'objects'
+  }
+
+  const entriesResponse = await queryDatasette(entityQuery, database=req.params.datasetId);
+  console.log(entriesResponse);
+
+  const issueSummaryByEntry = []
+
+  issuesResponse.rows.forEach(issue => {
+    let i = issueSummaryByEntry.findIndex(
+      (entry) => entry.entry_number == issue.entry_number
+    )
+
+    if (i == -1) {
+      const entry = {
+        entry_number: issue.entry_number,
+        fields: []
+      }
+
+      issueSummaryByEntry.push(entry)
+      i = issueSummaryByEntry.length -1
+    }
+
+    issueSummaryByEntry[i].fields.push(issue.field)
+    issueSummaryByEntry[i].issue_type = issue.issue_type
+  });
+
+  const fieldsByEntry = []
+
+  issuesResponse.rows.forEach(row => {
+    let i = fieldsByEntry.findIndex(
+      (entry) => entry.entry_number == row.entry_number
+    )
+
+    if (i == -1) {
+      const entryItem = {
+        entry_number: row.entry_number,
+        fields: []
+      }
+
+      fieldsByEntry.push(entryItem)
+      i = fieldsByEntry.length -1
+    }
+
+    fieldsByEntry[i].fields.push({
+      field: row.field,
+      value: row.value,
+      issue_type: row.issue_type,
+      message: row.message
+    })
+  })
+
+  fieldsByEntry.forEach(entry => {
+    entriesResponse.rows.forEach(row => {
+      if (entry.entry_number == row.entry_number) {
+        entry.fields.push({
+          field: row.field,
+          value: row.value
+        })
+      }
+    })
+
+    entry.fields.sort((a, b) => a.field.localeCompare(b.field))
+  })
+
+  let numEntries = issueSummaryByEntry.length;
+
+  const paginationObj = {}
+  if (pageNum > 1) {
+    paginationObj.prevObj = {
+      href: `${req.path}?page=${pageNum - 1}`
+    }
+  }
+
+  if (pageNum < numEntries) {
+    paginationObj.nextObj = {
+      href: `${req.path}?page=${pageNum + 1}`
+    }
+  }
+
+  paginationObj.items = []
+  let prevSkip = false;
+  let nextSkip = false;
+  for (let i=1; i<=numEntries; i++) {
+
+    if (i == 1
+      || (i >= pageNum-2 && i <= pageNum+2)
+      || i == numEntries) {
+      let item = {
+        number: i,
+        href: `${req.path}?page=${i}`
+      }
+
+      if (i == pageNum) item.current = true;
+      paginationObj.items.push(item)
+    }
+    
+    if (i > 1 && (i <= pageNum-2) && !prevSkip) {
+      let item = {
+        ellipsis: true
+      }
+
+      paginationObj.items.push(item)
+      prevSkip = true
+    }
+    
+    if (i < numEntries && (i >= pageNum+2) && !nextSkip) {
+      let item = {
+        ellipsis: true
+      }
+
+      paginationObj.items.push(item)
+      nextSkip = true
+    }
+  }
+
+  locals.issues = issuesResponse.rows;
+  locals.entries = entriesResponse.rows;
+  locals.issue_summary_by_entry = issueSummaryByEntry;
+  locals.fields_by_entry = fieldsByEntry;
+  locals.entry_id = entryId;
+  locals.num_entries = issueSummaryByEntry.length;
+  locals.page_url = req.path;
+  locals.page_num = pageNum;
+  locals.pagination_obj = paginationObj;
+  
+  res.render(`/overview/${req.params.version}/error-table`, locals);
+});
+
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
 

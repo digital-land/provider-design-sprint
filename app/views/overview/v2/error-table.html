@@ -1,0 +1,276 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName %}{{organisation.name}} — {{dataset.name}} — Issues{% endset %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Home",
+    href: "/overview/v2/start"
+  },
+  {
+    text: "Organisations",
+    href: "/overview/v2/organisations"
+  },
+  {
+    text: organisation.name,
+    href: "/overview/v2/"+organisation.organisation
+  },
+  {
+  text: dataset.name,
+  href: "/overview/v2/"+organisation.organisation+"/dataset/"+dataset.dataset+"/tasklist"
+  }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  {% include "includes/_dataset-page-header" %}
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% set issue_items = [] %}
+    {% for issue in issue_summary_by_entry %}
+    {% set error_msg %} {{issue.fields.length | plural("fields") }}
+    {{ issue.fields.length | plural("is", showNumber=false) }}
+    {{ issue.fields.length | plural(issue.issue_type, showNumber=false) }} in entry
+    {{ issue.entry_number }}{% endset %}
+    {% set issue_item = {
+          html: error_msg,
+          href: page_url + "?page="+(loop.index)
+        }
+      %}
+    {% set issue_items = (issue_items.push(issue_item), issue_items) %}
+    {% endfor %}
+
+    {% set error_heading %}{{ issue_summary_by_entry.length | plural("entry") }}
+    {{ issue_summary_by_entry.length | plural("has", showNumber=false) }}{% endset %}
+
+    {% if issues[0].issue_type == "future entry date" %}
+    {% set error_heading %}{{ error_heading }} entry dates in the future {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid coordinates" %}
+    {% set error_heading %}{{ error_heading }} invalid coordinates {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid date" %}
+    {% set error_heading %}{{ error_heading }} invalid dates {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid decimal" %}
+    {% set error_heading %}{{ error_heading }} invalid decimal numbers {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid flag" %}
+    {% set error_heading %}{{ error_heading }} fields that were not processed as valid yes or no values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid geometry - not fixable" %}
+    {% set error_heading %}{{ error_heading }} had errors processing the geometry {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid integer" %}
+    {% set error_heading %}{{ error_heading }} invalid integers {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid organisation" %}
+    {% set error_heading %}{{ error_heading }} encountered errors retrieving a valid organisation {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid URI" %}
+    {% set error_heading %}{{ error_heading }} invalid URIs {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid WKT" %}
+    {% set error_heading %}{{ error_heading }} invalid WKT values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "missing value" %}
+    {% set error_heading %}{{ error_heading }} missing values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB out of bounds of custom boundary" %}
+    {% set error_heading %}{{ error_heading }} data outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB out of bounds of England" %}
+    {% set error_heading %}{{ error_heading }} data outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "too large" %}
+    {% set error_heading %}{{ error_heading }} values greater than the maximum allowed {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "too small" %}
+    {% set error_heading %}{{ error_heading }} values smaller than the minimum allowed {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Unexpected geom type" %}
+    {% set error_heading %}{{ error_heading }} unexpected geometry {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Unexpected geom type within GeometryCollection" %}
+    {% set error_heading %}{{ error_heading }} unexpected geometry {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "unknown entity - missing reference" %}
+    {% set error_heading %}{{ error_heading }} missing references and can't have entities assigned {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates out of bounds {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds of custom boundary" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds of England" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 out of bounds of England" %}
+    {% set error_heading %}{{ error_heading }} geospatial coordinates outside of the bounds of England {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid geometry - fixed" %}
+    {% set error_heading %}{{ error_heading }} errors processing geometry that has been fixed {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "invalid type geojson" %}
+    {% set error_heading %}{{ error_heading }} errors processing WKT data {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Mercator" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as Mercator coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "Mercator flipped" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as flipped Mercator coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as OSGB coordinates {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "OSGB flipped" %}
+    {% set error_heading %}{{ error_heading }} geospatial data that has been processed as flipped OSGB coordinates
+    {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "WGS84 flipped" %}
+    {% set error_heading %}{{ error_heading }} latitude and longitude coordinates that have been flipped {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "combined-value" %}
+    {% set error_heading %}{{ error_heading }} field values constructed by combining data from multiple different
+    entries {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "default-field" %}
+    {% set error_heading %}{{ error_heading }} values taken from another field {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "default-value" %}
+    {% set error_heading %}{{ error_heading }} values derived from other data {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "patch" %}
+    {% set error_heading %}{{ error_heading }} values which have been patched {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "removed URI prefix" %}
+    {% set error_heading %}{{ error_heading }} URI values that have been converted into CURIE values {% endset %}
+    {% endif %}
+
+    {% if issues[0].issue_type == "unknown entity" %}
+    {% set error_heading %}{{ error_heading }} entries that need entities assigning before they will appear in the data
+    {% endset %}
+    {% endif %}
+
+    {{ govukErrorSummary({
+      titleText: error_heading,
+      errorList: issue_items
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="dl-scrollable">
+      <table class="govuk-table govuk-table--small-text-until-tablet dl-table dl-table--sticky">
+        <thead class="govuk-table__head dl-table__head">
+          <tr class="govuk-table__row">
+            <th scope="column" class="govuk-table__header dl-table__header">Entry #</th>
+            {% for field in expected_fields %}
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_{{field.rowid}}">
+              {{ field.field }}
+            </th>
+            {% endfor %}
+          </tr>
+        <tbody class="govuk-table__body">
+          {% for entry in fields_by_entry %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{ entry.entry_number }}</td>
+            {% for expected_field in expected_fields %}
+              {% set field_found = false %}
+              {% for field in entry.fields %}
+                {% if field.field == expected_field.field %}
+                  {% if field['issue_type'] is defined %}
+                    {% set field_classes = "dl-table__cell--error" %}
+                    {% set field_value %}
+                      {{ field.value | truncate }}
+                      <p class="govuk-error-message">{{ field.message }}</p>
+                    {% endset %}
+                  {% else %}
+                    {% set field_classes = "" %}
+                    {% set field_value = field.value | truncate %}
+                  {% endif %}
+
+                  <td class="govuk-table__cell {{field_classes}}">
+                    {{ field_value | safe }}
+                  </td>
+                  {% set field_found = true %}
+                {% endif %}
+              {% endfor %}
+              {% if field_found == false %}
+              <td class="govuk-table__cell">
+                &nbsp;
+              </td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+        </thead>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h3 class="govuk-heading-m">
+      How to improve {{ organisation.name }}’s data
+    </h3>
+
+    <ol class="govuk-list govuk-list--number">
+      <li>Fix the errors indicated</li>
+      <li>Use the <a href="https://check.staging.digital-land.info/">check service</a> to make sure the data meets
+        the standard</li>
+      <li>Publish the updated data on the data URL</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}
