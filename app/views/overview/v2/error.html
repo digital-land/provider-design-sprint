@@ -245,6 +245,7 @@
     }) }}
 
     {% set field_items = [] %}
+    {% set field_value = "" %}
     {% for field in entry_item.fields %}
     {% if field['issue_type'] is defined %}
     {% for mapping in mappings %}
