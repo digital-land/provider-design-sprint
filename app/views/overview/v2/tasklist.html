@@ -47,159 +47,37 @@
 
     {% set taskItems = [] %}
     {% for task in tasks %}
+    {% set taskMessage = "" %}
 
-    {% set taskMessage %}{{ task.num_issues | plural("fields") }}
-    {{ task.num_issues | plural("has", showNumber=false) }}{% endset %}
+    {% for mapping in mappings %}
 
-    {% if task.issue_type == "future entry date" %}
-    {% set taskMessage %}{{ taskMessage }} entry dates in the future {% endset %}
-    {% endif %}
+    {% if task.issue_type == mapping.issue_type %}
 
-    {% if task.issue_type == "invalid coordinates" %}
-    {% set taskMessage %}{{ taskMessage }} invalid coordinates {% endset %}
-    {% endif %}
+    {% if task.num_issues == num_rows %}
 
-    {% if task.issue_type == "invalid date" %}
-    {% set taskMessage %}{{ taskMessage }} invalid dates {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid decimal" %}
-    {% set taskMessage %}{{ taskMessage }} invalid decimal numbers {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid flag" %}
-    {% set taskMessage %}{{ taskMessage }} fields that were not processed as valid yes or no values {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid geometry - not fixable" %}
-    {% set taskMessage %}{{ taskMessage }} had errors processing the geometry {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid integer" %}
-    {% set taskMessage %}{{ taskMessage }} invalid integers {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid organisation" %}
-    {% set taskMessage %}{{ taskMessage }} encountered errors retrieving a valid organisation {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid URI" %}
-    {% set taskMessage %}{{ taskMessage }} invalid URIs {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid WKT" %}
-    {% set taskMessage %}{{ taskMessage }} invalid WKT values {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "missing value" %}
-    {% set taskMessage %}{{ taskMessage }} missing values {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "OSGB out of bounds of custom boundary" %}
-    {% set taskMessage %}{{ taskMessage }} data outside of the bounds of England {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "OSGB out of bounds of England" %}
-    {% set taskMessage %}{{ taskMessage }} data outside of the bounds of England {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "too large" %}
-    {% set taskMessage %}{{ taskMessage }} values greater than the maximum allowed {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "too small" %}
-    {% set taskMessage %}{{ taskMessage }} values smaller than the minimum allowed {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "Unexpected geom type" %}
-    {% set taskMessage %}{{ taskMessage }} unexpected geometry {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "Unexpected geom type within GeometryCollection" %}
-    {% set taskMessage %}{{ taskMessage }} unexpected geometry {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "unknown entity - missing reference" %}
-    {% set taskMessage %}{{ taskMessage }} missing references and can't have entities assigned {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "WGS84 out of bounds" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial coordinates out of bounds {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "WGS84 out of bounds of custom boundary" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial coordinates outside of the bounds of England {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "WGS84 out of bounds of England" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial coordinates outside of the bounds of England {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "WGS84 out of bounds of England" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial coordinates outside of the bounds of England {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid geometry - fixed" %}
-    {% set taskMessage %}{{ taskMessage }} errors processing geometry that has been fixed {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "invalid type geojson" %}
-    {% set taskMessage %}{{ taskMessage }} errors processing WKT data {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "Mercator" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as Mercator coordinates
+    {% set taskMessage %}
+    {{ task.field }} column {{ mapping.message }}
     {% endset %}
-    {% endif %}
 
-    {% if task.issue_type == "Mercator flipped" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as flipped Mercator coordinates
+    {% else %}
+
+    {% if task.num_issues > 1 %}
+
+    {% set taskMessage %}
+    {{ task.num_issues | plural("field") }} {{ mapping.message_plural }}
     {% endset %}
-    {% endif %}
 
-    {% if task.issue_type == "OSGB" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as OSGB coordinates {% endset %}
-    {% endif %}
+    {% else %}
 
-    {% if task.issue_type == "OSGB flipped" %}
-    {% set taskMessage %}{{ taskMessage }} geospatial data that has been processed as flipped OSGB coordinates
+    {% set taskMessage %}
+    {{ task.num_issues | plural("field") }} {{ mapping.message }}
     {% endset %}
+
+    {% endif %}
     {% endif %}
 
-    {% if task.issue_type == "WGS84 flipped" %}
-    {% set taskMessage %}{{ taskMessage }} latitude and longitude coordinates that have been flipped {% endset %}
     {% endif %}
-
-    {% if task.issue_type == "combined-value" %}
-    {% set taskMessage %}{{ taskMessage }} field values constructed by combining data from multiple different
-    entries {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "default-field" %}
-    {% set taskMessage %}{{ taskMessage }} values taken from another field {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "default-value" %}
-    {% set taskMessage %}{{ taskMessage }} values derived from other data {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "patch" %}
-    {% set taskMessage %}{{ taskMessage }} values which have been patched {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "removed URI prefix" %}
-    {% set taskMessage %}{{ taskMessage }} URI values that have been converted into CURIE values {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "unknown entity" %}
-    {% set taskMessage %}{{ taskMessage }} entries that need entities assigning before they will appear in the data
-    {% endset %}
-    {% endif %}
-
-    {% if task.issue_type == "reference values are not unique" %}
-    {% set taskMessage %}{{ taskMessage }} entries with duplicate references
-    {% endset %}
-    {% endif %}
+    {% endfor %}
 
 
     {% if task.status == "Error" %}
@@ -213,18 +91,18 @@
     {% set task_url %}/overview/v2/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/error/{{ task.resource }}/{{ task.issue_type | urlencode }}{% endset %}
 
     {% set taskItem = {
-      title: {
-        text: taskMessage
-      },
-      href: task_url,
-      status: {
-        tag: {
-          text: task.status,
-          classes: tagClass
+        title: {
+          text: taskMessage
+        },
+        href: task_url,
+        status: {
+          tag: {
+            text: task.status,
+            classes: tagClass
+          }
         }
       }
-    }
-    %}
+      %}
 
     {% set taskItems = (taskItems.push(taskItem), taskItems) %}
 

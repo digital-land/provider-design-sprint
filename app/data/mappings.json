@@ -1,0 +1,97 @@
+[
+  {
+    "issue_type": "invalid date",
+    "message": "must be in YYYY-MM-DD format",
+    "message_plural": "must be in YYYY-MM-DD format"
+  },
+  {
+    "issue_type": "invalid decimal",
+    "message": "must be a valid decimal number",
+    "message_plural": "must be valid decimal numbers"
+  },
+  {
+    "issue_type": "invalid integer",
+    "message": "must be a valid integer",
+    "message_plural": "must be valid integers"
+  },
+  {
+    "issue_type": "too small",
+    "message": "must be above the minimum number needed",
+    "message_plural": "must be above the minimum number needed"
+  },
+  {
+    "issue_type": "too large",
+    "message": "must be below the maximum number needed",
+    "message_plural": "must be below the maximum number needed"
+  },
+  {
+    "issue_type": "invalid flag",
+    "message": "must be YES or NO",
+    "message_plural": "must be YES or NO"
+  },
+  {
+    "issue_type": "invalid URI",
+    "message": "must be a valid URI",
+    "message_plural": "must be valid URIs"
+  },
+  {
+    "issue_type": "invalid WKT",
+    "message": "must be a valid WKT value",
+    "message_plural": "must be valid WKT values"
+  },
+  {
+    "issue_type": "future entry-date",
+    "message": "cannot be in the future",
+    "message_plural": "cannot be in the future"
+  },
+  {
+    "issue_type": "missing value",
+    "message": "is missing",
+    "message_plural": "are missing"
+  },
+  {
+    "issue_type": "reference values are not unique",
+    "message": "must be unique to this record",
+    "message_plural": "must be unique to this record"
+  },
+  {
+    "issue_type": "WGS84 out of bounds",
+    "message": "must be within the required geospatial bounds",
+    "message_plural": "must be within the required geospatial bounds"
+  },
+  {
+    "issue_type": "invalid geometry - not fixable",
+    "message": "must be valid geometry",
+    "message_plural": "must be valid geometry"
+  },
+  {
+    "issue_type": "Unexpected geom type",
+    "message": "must be a valid geom type",
+    "message_plural": "must be a valid geom type"
+  },
+  {
+    "issue_type": "Unexpected geom type within GeometryCollection",
+    "message": "must contain a valid polygon",
+    "message_plural": "must contain a valid polygon"
+  },
+  {
+    "issue_type": "WGS84 out of bounds of England",
+    "message": "must be within the bounds of England",
+    "message_plural": "must be within the bounds of England"
+  },
+  {
+    "issue_type": "WGS84 out of bounds of custom boundary",
+    "message": "must be within the required geospatial bounds",
+    "message_plural": "must be within the required geospatial bounds"
+  },
+  {
+    "issue_type": "OSGB out of bounds of England",
+    "message": "must be within the bounds of England",
+    "message_plural": "must be within the bounds of England"
+  },
+  {
+    "issue_type": "OSGB out of bounds of custom boundary",
+    "message": "must be within the required geospatial bounds",
+    "message_plural": "must be within the required geospatial bounds"
+  }
+]

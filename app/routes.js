@@ -952,52 +952,53 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", async (req, res) =
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
+  locals.mappings = require("../app/data/mappings.json")
 
   const queryObj = {
     sql: `SELECT
-              p.organisation,
-              o.name,
-              p.dataset,
-              d.name as dataset_name,
-              rle.endpoint,
-              rle.resource,
-              rle.exception,
-              i.field,
-              i.issue_type,
-              i.line_number,
-              i.value,
-              i.message,
-              it.responsibility,
-              it.severity,
-              CASE
-                WHEN COUNT(
-                  CASE
-                    WHEN it.severity == 'error' THEN 1
-                    ELSE null
-                  END
-                ) > 0 THEN 'Needs fixing'
-                ELSE 'Live'
-              END AS status,
-              COUNT(i.issue_type) as num_issues
-          FROM
-              provision p
-          LEFT JOIN
-              organisation o ON o.organisation = p.organisation
-          LEFT JOIN
-              dataset d ON d.dataset = p.dataset
-          LEFT JOIN
-              reporting_latest_endpoints rle
-              ON REPLACE(rle.organisation, '-eng', '') = p.organisation
-              AND rle.pipeline = p.dataset
-          LEFT JOIN
-              issue i ON rle.resource = i.resource AND rle.pipeline = i.dataset
-          LEFT JOIN
-              issue_type it ON i.issue_type = it.issue_type
-          WHERE
-              p.organisation = :p0 AND p.dataset = :p1
-              AND it.severity == 'error'
-          GROUP BY i.issue_type
-          ORDER BY it.severity`,
+    p.organisation,
+    o.name,
+    p.dataset,
+    d.name as dataset_name,
+    rle.endpoint,
+    rle.resource,
+    rle.exception,
+    i.field,
+    i.issue_type,
+    i.line_number,
+    i.value,
+    i.message,
+    it.responsibility,
+    it.severity,
+    CASE
+      WHEN COUNT(
+        CASE
+          WHEN it.severity == 'error' THEN 1
+          ELSE null
+        END
+      ) > 0 THEN 'Needs fixing'
+      ELSE 'Live'
+    END AS status,
+    COUNT(i.issue_type) as num_issues
+FROM
+    provision p
+LEFT JOIN
+    organisation o ON o.organisation = p.organisation
+LEFT JOIN
+    dataset d ON d.dataset = p.dataset
+LEFT JOIN
+    reporting_latest_endpoints rle
+    ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+    AND rle.pipeline = p.dataset
+LEFT JOIN
+    issue i ON rle.resource = i.resource AND rle.pipeline = i.dataset
+LEFT JOIN
+    issue_type it ON i.issue_type = it.issue_type
+WHERE
+    p.organisation = :p0 AND p.dataset = :p1
+    AND it.severity == 'error'
+GROUP BY i.issue_type
+ORDER BY it.severity`,
     p0: req.params.orgId,
     p1: req.params.datasetId,
     _shape: "objects",
@@ -1005,6 +1006,21 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/tasklist", async (req, res) =
 
   const taskData = await queryDatasette(queryObj);
   locals.tasks = taskData.rows;
+
+  const datasetQuery = {
+    sql: `
+select
+  count(distinct fr.entry_number)
+from
+  fact_resource fr
+where
+  fr.resource = :p0
+    `
+  }
+
+  datasetQuery.p0 = taskData.rows[0].resource
+  const numRows = await queryDatasette(datasetQuery, req.params.datasetId)
+  locals.num_rows = numRows.rows[0][0]
 
   res.render("/overview/v2/tasklist", locals);
 });
@@ -1058,6 +1074,7 @@ router.get("/overview/v2/:orgId/dataset/:datasetId/error/:resourceId/:issueType"
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
+  locals.mappings = require("../app/data/mappings.json")
 
   const issueQuery = {
     sql: `
@@ -1180,6 +1197,21 @@ order by
   entryItem.fields.sort((a, b) => a.field.localeCompare(b.field))
 
   let numEntries = issueSummaryByEntry.length;
+
+  const datasetQuery = {
+    sql: `
+select
+  count(distinct fr.entry_number)
+from
+  fact_resource fr
+where
+  fr.resource = :p0
+    `,
+    p0: req.params.resourceId,
+  }
+
+  const numRows = await queryDatasette(datasetQuery, req.params.datasetId)
+  locals.num_rows = numRows.rows[0][0]
 
   const paginationObj = {}
   if (pageNum > 1) {

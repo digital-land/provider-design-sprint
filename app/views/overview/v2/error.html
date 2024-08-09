@@ -38,11 +38,36 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {% set issue_items = [] %}
+    {% set error_msg ="" %}
+    {% if issue_summary_by_entry.length == num_rows %}
+    {% for mapping in mappings %}
+    {% if issues[0].issue_type == mapping.issue_type %}
+
+    {% set error_msg %}
+    {{ issues[0].field }} {{ mapping.message }} in
+    {{ issue_summary_by_entry.length | plural("record") }}
+    {% endset %}
+
+    {% set issue_item = {
+              html: error_msg,
+              href: page_url + "?page=1"
+            }
+          %}
+    {% set issue_items = (issue_items.push(issue_item), issue_items) %}
+    {% endif %}
+    {% endfor %}
+
+    {% else %}
     {% for issue in issue_summary_by_entry %}
+    {% for mapping in mappings %}
+    {% if issue.issue_type == mapping.issue_type %}
     {% set error_msg %} {{issue.fields.length | plural("fields") }}
-    {{ issue.fields.length | plural("is", showNumber=false) }}
-    {{ issue.fields.length | plural(issue.issue_type, showNumber=false) }} in entry
-    {{ issue.entry_number }}{% endset %}
+    {% if issue.fields.length > 1 %}{{ mapping.message_plural }}
+    {% else %}{{ mapping.message }}{% endif %}
+    in record {{ issue.entry_number }}{% endset %}
+    {% endif %}
+    {% endfor %}
+
     {% set issue_item = {
           html: error_msg,
           href: page_url + "?page="+(loop.index)
@@ -50,8 +75,17 @@
       %}
     {% set issue_items = (issue_items.push(issue_item), issue_items) %}
     {% endfor %}
+    {% endif %}
 
-    {% set error_heading %}{{ issue_summary_by_entry.length | plural("entry") }}
+    {% set error_heading = "" %}
+    {% if issue_summary_by_entry.length == num_rows %}
+    {% for mapping in mappings %}
+    {% if issue_summary_by_entry[0].issue_type == mapping.issue_type %}
+    {% set error_heading %}{{ issue_summary_by_entry[0].fields[0] }} column {{ mapping.message }}{% endset %}
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    {% set error_heading %}{{ issue_summary_by_entry.length | plural("record") }}
     {{ issue_summary_by_entry.length | plural("has", showNumber=false) }}{% endset %}
 
     {% if issues[0].issue_type == "future entry date" %}
@@ -199,6 +233,12 @@
     {% endset %}
     {% endif %}
 
+    {% if issues[0].issue_type == "reference values are not unique" %}
+    {% set error_heading %}{{ error_heading }} duplicate references {% endset %}
+    {% endif %}
+    {% endif %}
+
+
     {{ govukErrorSummary({
       titleText: error_heading,
       errorList: issue_items
@@ -207,11 +247,15 @@
     {% set field_items = [] %}
     {% for field in entry_item.fields %}
     {% if field['issue_type'] is defined %}
+    {% for mapping in mappings %}
+    {% if field.issue_type == mapping.issue_type %}
     {% set field_classes = "dl-summary-card-list__row--error" %}
     {% set field_value %}
     {{ field.value}}
-    <p class="govuk-error-message">{{ field.message }}</p>
+    <p class="govuk-error-message">{{ field.field }} {{ mapping.message }}</p>
     {% endset %}
+    {% endif %}
+    {% endfor %}
     {% else %}
     {% set field_classes = "" %}
     {% set field_value = field.value %}
@@ -232,7 +276,7 @@
     {{ govukSummaryList({
       card: {
         title: {
-        text: "Entry " + entry_item.entry_number
+        text: "Record " + entry_item.entry_number
         }
       },
       rows: field_items
