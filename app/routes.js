@@ -997,6 +997,7 @@ LEFT JOIN
 WHERE
     p.organisation = :p0 AND p.dataset = :p1
     AND it.severity == 'error'
+    AND it.issue_type != 'unknown entity - missing reference'
 GROUP BY i.issue_type
 ORDER BY it.severity`,
     p0: req.params.orgId,
