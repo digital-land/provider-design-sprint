@@ -1008,20 +1008,22 @@ ORDER BY it.severity`,
   const taskData = await queryDatasette(queryObj);
   locals.tasks = taskData.rows;
 
-  const datasetQuery = {
-    sql: `
-select
-  count(distinct fr.entry_number)
-from
-  fact_resource fr
-where
-  fr.resource = :p0
-    `
-  }
+  if (taskData.rows.length > 0) {
+    const datasetQuery = {
+      sql: `
+  select
+    count(distinct fr.entry_number)
+  from
+    fact_resource fr
+  where
+    fr.resource = :p0
+      `
+    }
 
-  datasetQuery.p0 = taskData.rows[0].resource
-  const numRows = await queryDatasette(datasetQuery, req.params.datasetId)
-  locals.num_rows = numRows.rows[0][0]
+    datasetQuery.p0 = taskData.rows[0].resource
+    const numRows = await queryDatasette(datasetQuery, req.params.datasetId)
+    locals.num_rows = numRows.rows[0][0]
+  }
 
   res.render("/overview/v2/tasklist", locals);
 });
