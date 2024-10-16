@@ -1,0 +1,169 @@
+{% extends "layouts/main.html" %}
+{% from "components/dataset-navigation.html" import datasetNavigation %}
+
+{% set pageName %}{{dataset.name}} details{% endset %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/overview/v2/start"
+      },
+      {
+        text: "Organisations",
+        href: "/overview/v2/organisations"
+      },
+      {
+        text: organisation.name,
+        href: "/overview/v2/"+organisation.organisation
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{organisation.name}}</span>
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ datasetNavigation({
+          active: "dataset-overview",
+          dataset: dataset,
+          organisation: organisation,
+          issue_count: tasks.length
+        }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m" id="subsection-title">
+      Dataset details
+    </h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Number of records supplied"
+          },
+          value: {
+            text: "10"
+          }
+        },
+        {
+          key: {
+            text: "Records with missing data"
+          },
+          value: {
+            html: "5/10"
+          }
+        },
+        {
+          key: {
+            text: "Number of fields matched"
+          },
+          value: {
+            text: "2/11"
+          }
+        },
+        {
+          key: {
+            text: "Endpoint URL"
+          },
+          value: {
+            html: '<code><a href="#">https://maps.borechester.gov.uk/arcgis/rest/services/PLANNING/A4D_CSB/MapServer/0/query?outFields=*&where=1%3D1&f=geojson</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Source documentation URL"
+          },
+          value: {
+            html: '<code><a href="#">https://www.borechester.gov.uk/planning/data/article-4-directions</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Licence"
+          },
+          value: {
+            text: "Open Government Licence"
+          }
+        },
+        {
+          key: {
+            text: "Endpoint last accessed"
+          },
+          value: {
+            text: "15 May 2024"
+          }
+        },
+        {
+          key: {
+            text: "Endpoint last updated"
+          },
+          value: {
+            text: "4 November 2023"
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m" id="subsection-title">
+      Dataset actions
+    </h2>
+    <nav role="navigation" aria-labelledby="subsection-title">
+      <ul class="govuk-list">
+        <li>
+          <a href="/check/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload">
+            Check dataset
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            {{ dataset.name }} guidance
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p>View your <a href="/taskLists/taskChecklist">task list</a> to fix and improve your datasets</p>
+
+  </div>
+</div>
+
+
+{% endblock %}

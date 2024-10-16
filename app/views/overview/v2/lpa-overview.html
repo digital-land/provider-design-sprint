@@ -2,6 +2,10 @@
 
 {% set pageName = organisation.name + " overview" %}
 
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
 {% block beforeContent %}
 {{ super() }}
 
@@ -65,13 +69,6 @@
         <div class="govuk-task-list__name-and-hint">
           <h2 class="govuk-heading-m">
             {% set dataset_url %}/overview/v2/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}{% endset %}
-            {% if dataset.endpoint == null %}
-            {% set dataset_url %}{{ dataset_url }}/get-started{% endset %}
-            {% elseif dataset.http_status != 200 %}
-            {% set dataset_url %}{{ dataset_url }}/http-error{% endset %}
-            {% else %}
-            {% set dataset_url %}{{ dataset_url }}/tasklist{% endset %}
-            {% endif %}
             <a class="govuk-link govuk-task-list__link" href="{{ dataset_url }}">
               {{ dataset.dataset_name }}
             </a>

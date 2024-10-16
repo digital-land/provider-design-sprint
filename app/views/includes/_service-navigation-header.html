@@ -1,0 +1,19 @@
+{{ govukHeader({
+  classes: "govuk-header--full-width-border"
+}) }}
+
+{{ govukServiceNavigation({
+  serviceName: serviceName,
+  serviceUrl: "/",
+  navigation: [
+    {
+      href: "/organisations",
+      text: "Dataset dashboard",
+      active: true
+    },
+    {
+      href: "/guidance",
+      text: "Guidance"
+    }
+  ]
+}) }}
