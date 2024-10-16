@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "You have 12 rows ready to publish" %}
+{% set pageName = "You can now publish your data" %}
 
 {% block beforeContent %}
 {{ govukBackLink({
@@ -13,7 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {{ govukPanel({
-          titleText: "You can now publish your data"
+          titleText: pageName
     }) }}
 
 
@@ -43,6 +43,9 @@
     </ul>
 
     <p>Details about what to do next are also available <a href="/guidance">in the guidance</a>.</p>
+
+    <p><a href="/overview/v2/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}">Return to {{ dataset.name }}
+        overview</a></p>
 
     <h3 class="govuk-heading-m">Give feedback</h3>
 
