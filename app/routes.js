@@ -1583,6 +1583,47 @@ order by
   res.render(`/overview/${req.params.version}/error-table`, locals);
 });
 
+router.get("/check/:orgId/:datasetId/choose-upload", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check/choose-upload", locals);
+})
+
+router.get("/check/:orgId/:datasetId/upload-data", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check/upload-data", locals);
+})
+
+router.get("/check/:orgId/:datasetId/checking-file", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check/checking-file", locals);
+})
+
+router.get("/check/:orgId/:datasetId/results", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check/results", locals);
+})
+
+router.get("/check/:orgId/:datasetId/confirmation", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check/confirmation", locals);
+})
+
+
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
 

@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "You have 12 rows ready to publish" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/check/"+ organisation.organisation +"/"+ dataset.dataset + "/results"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+          titleText: "You can now publish your data"
+    }) }}
+
+
+    <h2 class="govuk-heading-l">What to do next</h2>
+
+    <h3 class="govuk-heading-m">1: Publish your data to your website</h3>
+
+    <p>The page on your website must include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>a link to the data</li>
+      <li>a summary of what the data is about</li>
+      <li>a statement that the data is provided under the Open Government Licence</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">2: Send an email</h3>
+
+    <p>
+      Send an email to
+      <a href="mailto:digitalland@communities.gov.uk">digitalland@communities.gov.uk</a>.
+    </p>
+
+    <p>You must include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your full name</li>
+      <li>the name of your local planning authority (LPA)</li>
+      <li>a link to the webpage containing the data on your LPA website</li>
+    </ul>
+
+    <p>Details about what to do next are also available <a href="/guidance">in the guidance</a>.</p>
+
+    <h3 class="govuk-heading-m">Give feedback</h3>
+
+    <p><a href="#">Give feedback about this service</a> (takes 30 seconds).</p>
+
+  </div>
+
+
+</div>
+
+{% endblock %}

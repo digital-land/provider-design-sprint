@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Checking your data" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/check/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div id="js-checking">
+      <span class="govuk-caption-l">{{ dataset.name }}</span>
+      <h1 class="govuk-heading-l">
+        {{ pageName }}
+      </h1>
+
+      <p>Do not close this page</p>
+    </div>
+
+    <div id="js-checked" class="js-hidden">
+      <span class="govuk-caption-l">{{ dataset.name }}</span>
+      <h1 class="govuk-heading-l">
+        Data checked
+      </h1>
+
+      <p>You can continue</p>
+
+      <p>
+        <a href="results" class="govuk-button">Continue</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  let els = document.getElementsByClassName("js-hidden")
+  Array.from(els).forEach((el) => {
+    el.style.display = "none";
+  })
+
+  document.addEventListener("DOMContentLoaded", (event) => {
+    setTimeout(() => {
+      document.getElementById("js-checked").style.display = "block";
+      document.getElementById("js-checking").style.display = "none";
+    }, 2000)
+  })
+</script>
+{% endblock %}

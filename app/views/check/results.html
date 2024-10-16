@@ -1,0 +1,583 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "You have 12 rows ready to publish" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/check/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="dl-scrollable">
+      <table class="govuk-table govuk-table--small-text-until-tablet dl-table dl-table--sticky">
+        <thead class="govuk-table__head dl-table__head">
+          <tr class="govuk-table__row">
+            <th scope="column" class="govuk-table__header dl-table__header">Entry #</th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_1">
+              description
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_2">
+              document-url
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_3">
+              documentation-url
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_4">
+              end-date
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_5">
+              entry-date
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_6">
+              name
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_7">
+              notes
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_8">
+              reference
+            </th>
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_9">
+              start-date
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell ">
+              CA 3 LANSDOWNE GARDENS
+            </td>
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              LANSDOWNE GARDENS
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D1
+            </td>
+
+            <td class="govuk-table__cell ">
+              1975-12-05
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">2</td>
+
+            <td class="govuk-table__cell ">
+              CA 4 ALBERT SQUARE
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              ALBERT SQUARE
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D2
+            </td>
+
+            <td class="govuk-table__cell ">
+              1975-12-05
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">3</td>
+
+            <td class="govuk-table__cell ">
+              CA 5 STOCKWELL PARK
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              STOCKWELL PARK
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D3
+            </td>
+
+            <td class="govuk-table__cell ">
+              1975-12-05
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">4</td>
+
+            <td class="govuk-table__cell ">
+              CA 11 ST MARKS
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              ST MARKS
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D4
+            </td>
+
+            <td class="govuk-table__cell ">
+              1985-08-30
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">5</td>
+
+            <td class="govuk-table__cell ">
+              CA 19 PARK HALL ROAD
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              PARK HALL ROAD
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D5
+            </td>
+
+            <td class="govuk-table__cell ">
+              1985-02-26
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">6</td>
+
+            <td class="govuk-table__cell ">
+              CA 31 LEIGHAM COURT ESTATE
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              LEIGHAM COURT ESTATE
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D6
+            </td>
+
+            <td class="govuk-table__cell ">
+              1996-11-18
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">7</td>
+
+            <td class="govuk-table__cell ">
+              CA 48 HYDE FARM
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              HYDE FARM
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D7
+            </td>
+
+            <td class="govuk-table__cell ">
+              2002-11-22
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">8</td>
+
+            <td class="govuk-table__cell ">
+              CA62 STREATHAM LODGE ESTATE
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              STREATHAM LODGE ESTATE
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D8
+            </td>
+
+            <td class="govuk-table__cell ">
+              2010-07-23
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">9</td>
+
+            <td class="govuk-table__cell ">
+              CA 11 ST MARKS
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              ST MARKS/HANOVER GARDENS
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D9
+            </td>
+
+            <td class="govuk-table__cell ">
+              1975-01-31
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">10</td>
+
+            <td class="govuk-table__cell ">
+              Modified Article 4 direction withdrawing Class MA permitted development rights in the London Plan
+              Central
+              Activities Zone as it relates to Lambeth
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              Modified Direction 1 - CAZ
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D10
+            </td>
+
+            <td class="govuk-table__cell ">
+              2022-10-28
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">11</td>
+
+            <td class="govuk-table__cell ">
+              Modified Article 4 direction withdrawing Class MA permitted development rights in selected Key
+              Industrial
+              and Business Areas and the West Norwood Creative Business Cluster
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              Modified Direction 2 - KIBAs and WNCBC
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D11
+            </td>
+
+            <td class="govuk-table__cell ">
+              2022-10-28
+            </td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">12</td>
+
+            <td class="govuk-table__cell ">
+              Modified Article 4 direction withdrawing Class MA permitted development rights in selected town centre
+              locations
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-07-11
+            </td>
+
+            <td class="govuk-table__cell ">
+              Modified Direction 3 - Town Centres
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              A4D12
+            </td>
+
+            <td class="govuk-table__cell ">
+              2022-10-28
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Before you continue</h2>
+
+    <p>Make sure your data is correct.</p>
+
+    <p>If you see anything wrong with your data, you can check it again.</p>
+
+    <a href="/check/{{ organisation.organisation }}/{{ dataset.dataset }}/confirmation"
+      class="govuk-button">Continue</a>
+
+    <p><a href="/check/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload">Check your updated data</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
