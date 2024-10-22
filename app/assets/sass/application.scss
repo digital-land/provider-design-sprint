@@ -113,6 +113,11 @@
   max-width: 2000px;
 }
 
+.dl-phase-banner--footer {
+  border-top: 1px solid $govuk-border-colour;
+  border-bottom: none;
+}
+
 code,
 code * {
   font-family: monospace;

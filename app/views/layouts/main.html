@@ -5,15 +5,24 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
-{% block beforeContent %}
+{% block footer %}
 
-    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
-    {{ govukPhaseBanner({
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukPhaseBanner({
         tag: {
-        text: "Prototype"
-    },
-        html: 'This prototype is being tested with users in local planning authorities. It may change or stop working.'
-    }) }}
+          text: "Prototype"
+        },
+          html: 'This prototype is being tested with users in local planning authorities. It may change or stop working.',
+          classes: 'dl-phase-banner--footer'
+        }) }}
+    </div>
+  </div>
+</div>
+
+{{ super() }}
 
 {% endblock %}
