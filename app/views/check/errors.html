@@ -1,0 +1,256 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Your data has errors" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/check/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "start_date must be in YYYY-MM-DD format in entry 4",
+          href: "#"
+        },
+        {
+          text: "start_date must be in YYYY-MM-DD format in entry 35",
+          href: "#"
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="dl-scrollable">
+      <table class="govuk-table govuk-table--small-text-until-tablet dl-table dl-table--sticky">
+        <thead class="govuk-table__head dl-table__head">
+          <tr class="govuk-table__row">
+            <th scope="column" class="govuk-table__header dl-table__header">Entry #</th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_1">
+              description
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_2">
+              reference
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_3">
+              notes
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_4">
+              geometry
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_5">
+              name
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_13">
+              start-date
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_14">
+              article-4-direction
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_15">
+              end-date
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_16">
+              entry-date
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_64">
+              permitted-development-rights
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_559">
+              documentation-url
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_816">
+              ADDRESS1, ADDRESS2, ADDRESS3, POSTCODE
+            </th>
+
+            <th scope="column" class="govuk-table__header dl-table__header" id="expected-field-rowid_2372">
+              IGNORE
+            </th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">4</td>
+
+            <td class="govuk-table__cell ">
+              Article 4 Direction 1985
+            </td>
+
+            <td class="govuk-table__cell ">
+              72955
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              MULTIPOLYGON (((1.089384 51.276809,1.089079 51.276845,1.088735 51.276321,1.088448 51.276067,1.088718
+              51.275936,1.088951 51.276138,1.089230 51.276504,1.089252 51.276559,1.089384 51.276809)))
+            </td>
+
+            <td class="govuk-table__cell ">
+              ALBERT ROAD 1 TO 27 (ODD), 12 TO 15 EDWARD ROAD
+            </td>
+
+            <td class="govuk-table__cell dl-table__cell--error">
+
+              Reg 29.11.85. Effective 29 November 1985
+              <p class="govuk-error-message">start-date must be a real date</p>
+
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-02-03
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">35</td>
+
+            <td class="govuk-table__cell ">
+              Article 4 Direction 1985
+            </td>
+
+            <td class="govuk-table__cell ">
+              72986
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+              MULTIPOLYGON (((1.071149 51.282945,1.070612 51.282598,1.070854 51.282441,1.070822 51.282417,1.070813
+              51.282423,1.070692 51.282353,1.070934 51.282192,1.071635 51.282670,1.071149 51.282945)))
+            </td>
+
+            <td class="govuk-table__cell ">
+              CHURCH STREET (ST DUNSTAN'S) 9 -13, CROSS STREET 1,1a,2 TO 9, ORCHARD STREET 26 - 43
+            </td>
+
+            <td class="govuk-table__cell dl-table__cell--error">
+
+              reg 29.11.85. eff 29.11.85
+              <p class="govuk-error-message">start-date must be in YYYY-MM-DD format</p>
+
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell ">
+
+            </td>
+
+            <td class="govuk-table__cell ">
+              2024-02-03
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+            <td class="govuk-table__cell">
+              &nbsp;
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">How to improve {{ organisation.name }}’s data</h2>
+
+    <ol class="govuk-list govuk-list--number">
+      <li>Fix the errors indicated. You should use the <a href="#">data specifications</a> to help you do this.</li>
+      <li>Check your updated data to make sure it meets the specifications.</li>
+    </ol>
+
+    <p><a href="/check/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload" class="govuk-button">Check
+        your data</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

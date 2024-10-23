@@ -1615,6 +1615,14 @@ router.get("/check/:orgId/:datasetId/results", async (req, res) => {
   res.render("/check/results", locals);
 })
 
+router.get("/check/:orgId/:datasetId/errors", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check/errors", locals);
+})
+
 router.get("/check/:orgId/:datasetId/confirmation", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
