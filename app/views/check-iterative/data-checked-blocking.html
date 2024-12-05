@@ -1,0 +1,173 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName = "Check your planning data" %}
+{% set hideNav = true %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageName = "Your data has been checked" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/check/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Data that passed checks</h2>
+
+    {{ govukTaskList({
+      idPrefix: "passed-checks",
+      items: [
+        {
+          title: {
+            text: "Found 50 rows"
+          },
+          status: {
+            tag: {
+              text: "Passed",
+              classes: "govuk-tag--green"
+            }
+          }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Issues you must fix before submitting</h2>
+
+    <p>You cannot submit your data to the platform until you fix these issues.</p>
+
+    {{ govukTaskList({
+      idPrefix: "must-fix",
+      items: [
+        {
+          title: {
+            text: "Reference column missing"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Geometry column missing"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Issues you can fix after submitting</h2>
+
+    <p>You can submit your data with these issues but should fix them over time to improve the quality and usability of
+      the
+      data.</p>
+
+    {{ govukTaskList({
+      idPrefix: "fix-later",
+      items: [
+        {
+          title: {
+            text: "4 rows have start-date fields that must be in YYYY-MM-DD format"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            text: "2 rows have entry-date fields that must be in the past"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            text: "documentation-url must be a valid URL"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            text: "44 rows are missing document-url"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p>Fix the issues, then upload a new version of your data to check if it is ready to submit.</p>
+
+    <p>
+      <a href="#" class="govuk-button">Upload a new version</a>
+    </p>
+  </div>
+</div>
+
+
+{% endblock %}

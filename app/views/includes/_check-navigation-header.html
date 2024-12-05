@@ -2,8 +2,10 @@
   classes: "govuk-header--full-width-border"
 }) }}
 
-{% if hideNav != true %}
-{% set navItems = [
+{{ govukServiceNavigation({
+  serviceName: serviceName,
+  serviceUrl: "/",
+  navigation: [
     {
       href: "/overview/v2/organisations",
       text: "Find your organisation",
@@ -13,13 +15,5 @@
       href: "/guidance",
       text: "Guidance"
     }
-  ] %}
-{% else %}
-{% set navItems = [] %}
-{% endif %}
-
-{{ govukServiceNavigation({
-  serviceName: serviceName,
-  serviceUrl: "/",
-  navigation: navItems
+  ]
 }) }}

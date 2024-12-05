@@ -1631,6 +1631,14 @@ router.get("/check/:orgId/:datasetId/confirmation", async (req, res) => {
   res.render("/check/confirmation", locals);
 })
 
+router.get("/iterative-check", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.ordIg);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative/data-checked-blocking", locals);
+})
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
