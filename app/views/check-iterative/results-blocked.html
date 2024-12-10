@@ -12,7 +12,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "/check/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+  href: version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
 }) }}
 {% endblock %}
 
@@ -163,9 +163,10 @@
   <div class="govuk-grid-column-two-thirds">
     <p>Fix the issues, then upload a new version of your data to check if it is ready to submit.</p>
 
-    <p>
-      <a href="#" class="govuk-button">Upload a new version</a>
-    </p>
+    <div class="govuk-button-group">
+      <a href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload"
+        class="govuk-button">Upload a new version</a>
+    </div>
   </div>
 </div>
 

@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Your "+dataset.name+" dataset is ready to publish" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+          titleText: pageName
+    }) }}
+
+
+    <h2 class="govuk-heading-l">What to do next</h2>
+
+    <h3 class="govuk-heading-m">1: Publish your data to your website</h3>
+
+    <p>The page on your website must include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>a link to the data</li>
+      <li>a summary of what the data is about</li>
+      <li>a statement that the data is provided under the Open Government Licence</li>
+    </ul>
+
+    <p>Read the guidance for more information on <a href="https://www.planning.data.gov.uk/guidance/">how to publish
+        your data on your website</a>.</p>
+
+    <h3 class="govuk-heading-m">2: Submit your data to the planning data platform</h3>
+
+    <p>
+      Send an email to
+      <a href="mailto:digitalland@communities.gov.uk">digitalland@communities.gov.uk</a>.
+    </p>
+
+    <p>Once your data is published on your website, you can submit your data to the platform.</p>
+
+    <div class="govuk-button-group">
+      <a href="#" class="govuk-button">Continue</a>
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock %}
