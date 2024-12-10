@@ -1631,9 +1631,41 @@ router.get("/check/:orgId/:datasetId/confirmation", async (req, res) => {
   res.render("/check/confirmation", locals);
 })
 
+/**********************************************************
+ * Iterative Check research routes — 2024-12-09           *
+***********************************************************/
+
 router.get("/iterative-check", async (req, res) => {
   const locals = {};
-  locals.organisation = getOrg(req.params.ordIg);
+  locals.version_path = "/iterative-check";
+
+  res.render("/common/landing", locals);
+})
+
+router.get("/iterative-check/organisations", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check";
+
+  locals.organisations = require("../app/data/organisations.json");
+  locals.alphabetisedOrgs = {};
+  let currLetter = "";
+
+  for (const org in locals.organisations) {
+    if (Object.hasOwnProperty.call(locals.organisations, org)) {
+      const thisOrg = locals.organisations[org];
+      let firstLetter = thisOrg.name[0];
+
+      if (firstLetter != currLetter) {
+        currLetter = firstLetter;
+        locals.alphabetisedOrgs[currLetter] = [];
+      }
+
+      locals.alphabetisedOrgs[currLetter].push(thisOrg);
+    }
+  }
+
+  res.render("/common/organisations", locals);
+})
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/data-checked-blocking", locals);
