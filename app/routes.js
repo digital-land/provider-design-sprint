@@ -5,7 +5,7 @@
 
 const govukPrototypeKit = require("govuk-prototype-kit");
 const router = govukPrototypeKit.requests.setupRouter();
-
+const fs = require("fs");
 
 router.post("/columnMappingArticle4/upload-method", (req, res) => {
   try {
@@ -1672,8 +1672,13 @@ router.get("/iterative-check/organisations/:orgId", async (req, res) => {
   locals.version_path = "/iterative-check";
   locals.organisation = getOrg(req.params.orgId);
   
-  const orgPath = req.params.orgId.replace(/:/, "_");
-  locals.datasets = require(`../app/data/${orgPath}/datasets.json`);
+  const orgSlug = req.params.orgId.replace(/:/, "_");
+  const orgPath = `../app/data/${orgSlug}/datasets.json`;
+  if (fs.existsSync(orgPath)) {
+    locals.datasets = require(orgPath);
+  } else {
+    locals.datasets = require('../app/data/default/datasets.json');
+  }
 
   locals.datasetCount = locals.datasets.length;
   locals.datasetsSubmitted = locals.datasets.filter(
