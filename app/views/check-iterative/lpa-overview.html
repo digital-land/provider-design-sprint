@@ -1,0 +1,184 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = organisation.name + " overview" %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% macro datasetItem(dataset) %}
+<li class="govuk-task-list__item govuk-task-list__item--with-link" data-dataset="{{ dataset.dataset }}">
+  <div class="govuk-task-list__name-and-hint">
+    <h3 class="govuk-heading-m">
+      {% if dataset.status == 'not-submitted' %}
+      <a class="govuk-link govuk-task-list__link"
+        href="{{version_path}}/organisations/{{ organisation.organisation }}/{{dataset.dataset}}/get-started">
+        {{dataset.name}}
+      </a>
+      {% else %}
+      <a class="govuk-link govuk-task-list__link"
+        href="{{version_path}}/organisations/{{ organisation.organisation }}/{{dataset.dataset}}/overview">
+        {{dataset.name}}
+      </a>
+      {% endif %}
+    </h3>
+    <div class="govuk-task-list__hint">
+      {% if dataset.notice %}
+      <p>You must review your brownfield land register by 31 December 2024 and update it
+        as soon as a new site is identified or an existing one changes status.</p>
+      {% elif dataset.status == 'not-submitted' %}
+      <p>Endpoint URL not submitted</p>
+      {% elif dataset.status == 'error' %}
+      <p>{{dataset.error}}</p>
+      {% elif dataset.status == 'needs-fixing' %}
+      <p>There {{ "is" | pluralise(dataset.issue_count) }} {{ dataset.issue_count }}
+        {{ "issue" | pluralise(dataset.issue_count) }} in this dataset</p>
+      {% else %}
+      <p>Data URL submitted</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="govuk-task-list__status">
+    {% if dataset.status == "error" %}
+    {% set tagStatus = "Error" %}
+    {% set tagClass = "govuk-tag--red" %}
+    {% elseif dataset.status == "needs-fixing" %}
+    {% set tagStatus = "Needs fixing" %}
+    {% set tagClass = "govuk-tag--yellow" %}
+    {% elseif dataset.status == "warning" %}
+    {% set tagStatus = "Warning" %}
+    {% set tagClass = "govuk-tag--yellow" %}
+    {% elseif dataset.status == "live" %}
+    {% set tagStatus = "Live" %}
+    {% set tagClass = "govuk-tag--green" %}
+    {% elseif dataset.status == "not-submitted" %}
+    {% set tagStatus = "Not submitted" %}
+    {% set tagClass = "govuk-tag--grey" %}
+    {% endif %}
+
+    {{govukTag({
+    text: tagStatus,
+    classes: tagClass
+    })}}
+  </div>
+</li>
+{% endmacro %}
+
+{% block beforeContent %}
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: version_path+"/start"
+},
+{
+text: "Organisations",
+href: version_path+"/organisations"
+}
+]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+
+        <p class="govuk-notification-banner__heading">
+
+          You must review your brownfield land register by 31 December 2024
+
+        </p>
+        <p class="govuk-body govuk-notification-banner__body">
+
+          Update your register as soon as a new brownfield land site is identified or an existing one changes status, to
+          increase trust in the data.
+
+        </p>
+        <p class="govuk-body govuk-notification-banner__cta">
+          <a class="govuk-notification-banner__link"
+            href="{{version_path}}/organisations/local-authority:EHE/brownfield-land/get-started">Follow the steps and
+            check your data
+            meets
+            the specifications before you provide it.</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="dataset-status">
+      <div class="dataset-status--item">
+        <span class="big-number">
+          {{ datasetsSubmitted }}/{{ datasetCount }}
+        </span>
+        {{ datasetsCount | plural("dataset", showNumber=false) }} submitted
+      </div>
+
+      <div class="dataset-status--item">
+        <span class="big-number">{{ datasetErrors }}</span>
+        {{ datasetErrors | plural("data URL", showNumber=false) }} with errors
+      </div>
+
+      <div class="dataset-status--item">
+        <span class="big-number">{{ datasetIssues }}</span>
+        {{ datasetIssues | plural("dataset", showNumber=false) }} need fixing
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if statutoryDatasets.length > 0 %}
+    <div>
+      <h2 class="govuk-heading-m">Datasets {{ organisation.name }} must provide</h2>
+      <ul class="govuk-task-list govuk-!-margin-bottom-8" data-reason="statutory">
+        {% for dataset in statutoryDatasets %}
+        {{ datasetItem(dataset) }}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if odpDatasets.length > 0 %}
+    <div>
+      <h2 class="govuk-heading-m">Datasets organisations in Open Digital Planning programme must provide</h2>
+      {% if organisation.project === 'open-digital-planning' %}
+      <p class="org-membership-info">{{ organisation.name}} is a member of the Open Digital Planning programme.</p>
+      {% else %}
+      <p class="org-membership-info">{{ organisation.name}} is not a member of the Open Digital Planning programme.</p>
+      {% endif %}
+      <ul class="govuk-task-list" data-reason="other">
+        {% for dataset in odpDatasets %}
+        {{ datasetItem(dataset) }}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+
+  </div>
+
+  {% endblock %}

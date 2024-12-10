@@ -1666,6 +1666,40 @@ router.get("/iterative-check/organisations", async (req, res) => {
 
   res.render("/common/organisations", locals);
 })
+
+router.get("/iterative-check/organisations/:orgId", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check";
+  locals.organisation = getOrg(req.params.orgId);
+  
+  const orgPath = req.params.orgId.replace(/:/, "_");
+  locals.datasets = require(`../app/data/${orgPath}/datasets.json`);
+
+  locals.datasetCount = locals.datasets.length;
+  locals.datasetsSubmitted = locals.datasets.filter(
+    (row) => row.status != "not-submitted"
+  ).length;
+  locals.datasetErrors = locals.datasets.filter(
+    (row) => row.status == "error"
+  ).length;
+  locals.datasetIssues = locals.datasets.filter(
+    (row) => row.issue_count > 0
+  ).length;
+
+  locals.statutoryDatasets = locals.datasets.filter(
+    (row) => row.provision == "statutory"
+  );
+
+  locals.odpDatasets = locals.datasets.filter(
+    (row) => row.provision == "odp"
+  );
+
+  res.render("/check-iterative/lpa-overview", locals);
+})
+
+router.get("/iterative-check/blocked", async (req, res) => {
+  const locals = {};
+  locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/data-checked-blocking", locals);
@@ -1695,4 +1729,8 @@ function getOrg(orgId) {
 function getDataset(datasetId) {
   const datasets = require("../app/data/datasets.json");
   return datasets.find((x) => x.dataset == datasetId);
+}
+
+function getDatasetsByOrg(orgId) {
+
 }
