@@ -5,9 +5,7 @@
 {% endblock %}
 
 {% block header %}
-{{ govukHeader({
-  classes: "govuk-header--full-width-border"
-}) }}
+{% include "includes/_service-navigation-header.html" %}
 {% endblock %}
 
 {% block main %}
