@@ -3,6 +3,8 @@
 {% set serviceName = "Check your planning data" %}
 {% set hideNav = true %}
 
+{% set path_slug = version_path+"/organisations/"+organisation.organisation+"/"+dataset.dataset %}
+
 {% block header %}
 {% include "includes/_service-navigation-header.html" %}
 {% endblock %}
@@ -12,7 +14,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+  href: path_slug + "/upload-data"
 }) }}
 {% endblock %}
 
@@ -105,7 +107,7 @@
           title: {
             text: "4 rows have start-date fields that must be in YYYY-MM-DD format"
           },
-          href: "#",
+          href: path_slug+"/issue-non-blocking",
           status: {
             tag: {
               text: "Needs fixing",
@@ -117,7 +119,7 @@
           title: {
             text: "2 rows have entry-date fields that must be in the past"
           },
-          href: "#",
+          href: path_slug+"/issue-non-blocking",
           status: {
             tag: {
               text: "Needs fixing",
@@ -129,7 +131,7 @@
           title: {
             text: "documentation-url must be a valid URL"
           },
-          href: "#",
+          href: path_slug+"/issue-non-blocking",
           status: {
             tag: {
               text: "Needs fixing",
@@ -141,7 +143,7 @@
           title: {
             text: "44 rows are missing document-url"
           },
-          href: "#",
+          href: path_slug+"/issue-non-blocking",
           status: {
             tag: {
               text: "Needs fixing",
@@ -161,10 +163,9 @@
       data.</p>
 
     <div class="govuk-button-group">
-      <a href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/check-data"
-        class="govuk-button">Continue</a>
+      <a href="{{path_slug}}/check-data" class="govuk-button">Continue</a>
 
-      <a href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload">Upload a
+      <a href="{{path_slug}}/choose-upload">Upload a
         new version</a>
     </div>
   </div>

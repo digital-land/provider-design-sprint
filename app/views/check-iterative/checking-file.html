@@ -38,14 +38,14 @@
       <p>You can continue</p>
 
       <p>
+        {% if data['data_fixed'] == "true" %}
+        <a href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/results-non-blocked"
+          class="govuk-button">Continue</a>
+        {% else %}
         <a href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/results"
           class="govuk-button">Continue</a>
+        {% endif %}
       </p>
-
-      <a style="color:white"
-        href="{{version_path}}/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/results-non-blocked">non
-        blocking issues</a>
-
     </div>
   </div>
 </div>
