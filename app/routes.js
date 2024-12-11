@@ -1769,6 +1769,15 @@ router.get("/iterative-check/organisations/:orgId/:datasetId/issue-blocking", as
   res.render("/check-iterative/issue-detail-blocking", locals);
 })
 
+router.get("/iterative-check/organisations/:orgId/:datasetId/issue-non-blocking", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative/issue-detail-non-blocking", locals);
+})
+
 router.get("/iterative-check/organisations/:orgId/:datasetId/check-data", async (req, res) => {
   const locals = {};
   locals.version_path = "/iterative-check";

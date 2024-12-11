@@ -121,6 +121,8 @@
 code,
 code * {
   font-family: monospace;
+  background-color: govuk-colour("light-grey");
+  padding: 2px govuk-spacing(1);
 }
 
 .app-masthead {
