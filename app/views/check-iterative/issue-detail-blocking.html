@@ -1,0 +1,3299 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName = "Check your planning data" %}
+{% set hideNav = true %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageName = "Your "+dataset.name+" dataset is ready to publish" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukErrorSummary({
+      titleText: "You cannot submit your data until you fix the issues",
+      descriptionText: "Reference column missing"
+    })}}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="app-scrollable-container dl-scrollable">
+      <table class="govuk-table dl-table">
+        <colgroup>
+
+          <col class="">
+
+          <col class="">
+
+          <col class="govuk-table__cell--numeric">
+
+          <col class="">
+
+          <col class="govuk-table__cell--numeric">
+
+          <col class="">
+
+          <col class="govuk-table__cell--numeric">
+
+          <col class="">
+
+        </colgroup>
+        <thead class="govuk-table__head dl-table__head">
+          <tr class="govuk-table__row">
+
+            <th scope="col" class="govuk-table__header dl-table__header">Name</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Notes</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Made date</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Reference</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Start date</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Document URL</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Confirmed date</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">Documentation URL</th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row app-wrap__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Forrest House, Bacup) Tree Preservation Order 1974
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-02-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap " rowspan="50">
+              <div class="govuk-inset-text app-inset-text---error">
+                <p class="app-inset-text__error">Reference column missing</p>
+              </div>
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-02-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-02-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Greenbank Park, Rawtenstall) Tree Preservation Order 1975
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-03-14
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-03-14
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-03-14
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Healey Dell, Whitworth No. 1) Tree Preservation Order 1975
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-16
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-16
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-16
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Bank Street, Rawtenstall) Tree Preservation Order 1975
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The felling of the 3 protected trees has been consented via a work to trees consent granted in 2003. No
+              replacement trees were required.
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-24
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-24
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-12-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Greenbank Park No.2, Rawtenstall) Tree Preservation Order 1976
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The felling of the 2 Sycamore trees T1 and T2 has been granted by a work to trees consent granted in 2002
+              subject to 2 replacement trees being planted such as silver birch, cherry or rowan.
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-08-13
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-08-13
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-08-13
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Staghills) Tree Preservation Order 1976
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-09-17
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-09-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-01-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Rook Hill Road, Bacup) Tree Preservation Order 1976
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-11-22
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-11-22
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-02-02
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Helmcroft, Haslingden) Tree Preservation Order 1977
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-01-21
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-01-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-03-30
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Sunnybank Mills, Haslingden) Tree Preservation Order 1976
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-12-17
+
+            </td>
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-12-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-03-30
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Higher Hill Museum and Top O'TH' Brow) Tree Preservation Order 1976
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-12-17
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-12-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-05-26
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Oakenshaw House, Whitworth) Tree Preservation Order
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-03-22
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-03-22
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-07-06
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Flaxmoss House, Helmshore, Haslingden) Tree Preservation Order 1977
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-07-15
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-07-15
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-11-02
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Higher Constable, No 1) Tree Preservation Order 1977
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-08-26
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-08-26
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-11-02
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Oak Mount) Tree Preservation Order 1977
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-12-20
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-12-20
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-12-20
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Healey Dell, Whitworth No. 2) Tree Preservation Order 1977
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-10-07
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1977-10-07
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1978-07-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Broading House, Loveclough) Tree Presevration Order 1978
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1978-10-11
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1978-10-11
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-01-03
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Hallfold No 1, Whitworth) Tree Preservation Order 1978
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1978-11-29
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1978-11-29
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-02-28
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Fearns, Stacksteads) Tree Preservation Order 1979
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-07-13
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-07-13
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-07-13
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (North View, Stoneyrord, Whitworth) Tree Preservation Order 1979
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-08-03
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-08-03
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-08-03
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Graver Weir) Tree Presevration Order 1979
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-04-26
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-04-26
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-08-01
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Ash Cliffe) Tree Preservation Order 1979
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-05-14
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-05-14
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-08-01
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Newchurch No 1) Tree Preservation Order 1979
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-11-02
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-11-02
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-02-27
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Land adjacent to Heightside, Market Street, Whitworth) Tree Preservation Order
+              1979
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-11-16
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1979-11-16
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-02-27
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Blackburn Road/ West View, Haslingden) Tree Preservation Order 1980
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-06-17
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-06-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-10-01
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (The Hollies, Hud Hey Road, Haslingden) Tree Preservation Order 1980
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-08-27
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-08-27
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-11-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Rising Bridge Mill, Hud Hey Road, Haslingden) Tree Preservation Order 1980
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-08-28
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-08-28
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-11-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Helmshore Road, Haslingden) Tree Preservation Order 1980
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-10-22
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1980-10-22
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-02-04
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Newchurch Road No 2) Tree Preservation Order 1981
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-02-04
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-02-04
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-02-04
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Tonacliffe Road No 1) Tree Preservation Order 1981
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-05-08
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-05-08
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-06-22
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Knowsley Crescent, Shawforth) Tree Preservation Order 1981
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              Permission granted to fell diseased Sycamore subject to replacement trees being planted
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-09-04
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-09-04
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1981-09-04
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Whitecroft Farm, Haslingden) Tree Preservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-01-29
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-01-29
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-04-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Stubbins Street, Stubbins) Tree Preservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-05-21
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-05-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-08-02
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Reeds Lane, Rawtenstall) Tree Preservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-05-21
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-05-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-08-02
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Torside Hall, Haslingden) Tree Preservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-07-26
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-07-26
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-09-13
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Great House Farm No 1) Tree Preservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-07-26
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-07-26
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-09-13
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Crooked Shore, Bacup) Tree Preservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-09-22
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-09-22
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-01-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale ("Highfield", Grane Road, Haslingden) Tree Treservation Order 1982
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-09-30
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-09-30
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1982-11-29
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Irwell Springs Mill) Tree Preservation Order 1983
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-03-04
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-03-04
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-10-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Conway Road, Higher Clough Fold) Tree Preservation Order 1983
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-06-21
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-06-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-06-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Roundhill Road, Haslingden) Tree Preservation Order 1983
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-08-19
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-08-19
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-01-16
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Sterling Stubbins, Ramsbottom) Tree Preservation Order 1983
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-08-29
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1983-08-29
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-02-27
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Acre Mill House, Stacksteads) Tree Preservation Order 1984
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-06-21
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-06-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-06-21
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Danesmoor, 45, Helmshore Road, Haslingden) Tree Preservation Order 1984
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-12-14
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-12-14
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1985-04-24
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Turfcote, Helmshore Road, Haslingden) Tree Preservation Order 1984
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-12-14
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-12-15
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1984-04-24
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Mickledoor, Haslingden Old Road, Rawtenstall) Tree Preservation Order 1986
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1986-12-17
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1986-12-18
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1995-04-12
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Croft Hey, Eden Street, Edenfield) Tree Preservation Order 1986
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1986-12-17
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1986-12-18
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1995-07-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Sunnyside, Rising Bridge Road) Tree Preservation Order 1988
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1988-04-12
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1988-04-12
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1988-04-12
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Bridge Mills, Market Street, Whitworth) Tree Preservation Order 1989
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-06-27
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-06-27
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-08-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Helmshore Road/ St Peters Avenue, Haslingden) Tree Preservation Order 1989
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-10-02
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-10-03
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1990-03-20
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Short Clough Lane, Crawshawbooth) Tree Preservation Order 1989
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-10-31
+
+            </td>
+
+
+
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1989-10-31
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1990-01-22
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+    <nav class="govuk-pagination" aria-label="Pagination">
+
+
+      <ul class="govuk-pagination__list">
+
+        <li class="govuk-pagination__item govuk-pagination__item--current">
+
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">
+            1
+          </a>
+
+        </li>
+
+        <li class="govuk-pagination__item">
+
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">
+            2
+          </a>
+
+        </li>
+
+        <li class="govuk-pagination__item">
+
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+            3
+          </a>
+
+        </li>
+
+        <li class="govuk-pagination__item">
+
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 4">
+            4
+          </a>
+
+        </li>
+
+      </ul>
+
+
+      <div class="govuk-pagination__next">
+        <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+
+          <span class="govuk-pagination__link-title">
+            Next<span class="govuk-visually-hidden"> page</span>
+          </span>
+
+
+          <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg"
+            height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+            <path
+              d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z">
+            </path>
+          </svg>
+
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+{% endblock %}

@@ -152,12 +152,12 @@ code * {
 }
 
 .app-scrollable-container {
-
   table {
     margin-bottom: 20px;
     th, td {
       white-space: nowrap;
     }
+    height: fit-content;
 
     td.app-wrap {
       // white-space: unset;
@@ -170,12 +170,14 @@ code * {
         text-overflow: ellipsis;
       }
     }
+
+    tr.app-wrap__row {
+      height: 100%;
+    }
   }
 
   max-height: 500px;
   @include govuk-responsive-margin(6, $direction: "bottom");
-  padding-left: 15px;
-  padding-right: 15px;
   overflow-x: auto;
   border: 1px solid rgb(169, 169, 169);
   background-image:
@@ -229,4 +231,37 @@ code * {
     background-color: #474D54;
   }
 
+}
+
+.app-inset-text---error {
+  border-left: 5px solid govuk-colour('red');
+  padding: govuk-spacing(1) govuk-spacing(2);
+  margin: 0;
+  height: 100%;
+
+  .app-inset-text__value {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .app-inset-text__error {
+    color: govuk-colour('red');
+    font-weight: bold;
+    white-space: normal;
+    min-width: fit-content;
+  }
+}
+
+.app-inset-text---warning {
+  border-left: 5px solid govuk-colour('blue');
+  padding: govuk-spacing(1) govuk-spacing(2);
+  margin: 0;
+
+  .app-inset-text__value {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .app-inset-text__warning {
+    color: govuk-colour('blue');
+    font-weight: bold;
+  }
 }
