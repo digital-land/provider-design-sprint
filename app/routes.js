@@ -1798,6 +1798,21 @@ router.get("/iterative-check/organisations/:orgId/:datasetId/confirmation", asyn
   res.render("/check-iterative/confirmation", locals);
 })
 
+/******************************************/
+/*  Multiple endpoints — 18 December 2024 */
+/******************************************/
+
+router.get("/multiple-endpoints/organisations/:orgId/:datasetId", (req, res) => {
+  const locals = {};
+  locals.version_path = "/multiple-endpoints";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  locals.endpoints = require("../app/data/endpoints.json");
+
+  res.render("/multiple-endpoints/dataset-details", locals);
+})
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
