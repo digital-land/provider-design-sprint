@@ -96,11 +96,21 @@
 
     <h2 class="govuk-heading-m">Active endpoints</h2>
 
+    <p>You have {{ endpoints.length }} endpoints we are currently checking for data.</p>
+
     {% for endpoint in endpoints %}
     {% if endpoint.licence == "ogl3" %}
     {% set licence = "Open Government Licence" %}
     {% else %}
     {% set licence = "Unknown" %}
+    {% endif %}
+
+    {% if endpoint.documentation_url == "" %}
+    {% set documentation_url %}<p>Documentation URL missing</p>{% endset %}
+    {% else %}
+    {% set documentation_url %}
+    <code><a href="{{ endpoint.documentation_url }}">{{ endpoint.documentation_url }}</a></code>
+    {% endset %}
     {% endif %}
 
     {{ govukSummaryList({
@@ -137,7 +147,7 @@
             text: "Documentation URL"
           },
           value: {
-            html: '<code><a href="'+endpoint.documentation_url+'">'+endpoint.documentation_url+'</a></code>'
+            html: documentation_url
           }
         },
         {
@@ -145,7 +155,7 @@
             text: "Date added"
           },
           value: {
-            text: endpoint.date_added | govukDateTime
+            text: endpoint.date_added | govukDate
           }
         },
         {
@@ -161,7 +171,7 @@
             text: "Endpoint last updated"
           },
           value: {
-            text: endpoint.last_updated | govukDateTime
+            text: endpoint.last_updated | govukDate
           }
         },
         {
