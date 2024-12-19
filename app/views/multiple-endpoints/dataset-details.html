@@ -90,33 +90,37 @@
           value: {
             text: "2/11"
           }
-        },
-        {
-          key: {
-            text: "Licence"
-          },
-          value: {
-            text: "Open Government Licence"
-          }
-        },
-        {
-        key: {
-        text: "Documentation URL"
-        },
-        value: {
-        html: '<code></code>'
-        }
         }
       ]
-     }) }}
+    }) }}
 
     <h2 class="govuk-heading-m">Active endpoints</h2>
 
     {% for endpoint in endpoints %}
+    {% if endpoint.licence == "ogl3" %}
+    {% set licence = "Open Government Licence" %}
+    {% else %}
+    {% set licence = "Unknown" %}
+    {% endif %}
+
     {{ govukSummaryList({
       card: {
         title: {
           text: "Endpoint "+(loop.length - loop.index0)
+        },
+        actions: {
+          items: [
+            {
+              href:"#",
+              text: "Edit",
+              visuallyHiddenText: " endpoint details"
+            },
+            {
+              href:"#",
+              text: "Retire",
+              visuallyHiddenText: " endpoint"
+            }
+          ]
         }
       },
       rows: [
@@ -125,7 +129,23 @@
             text: "Endpoint URL"
           },
           value: {
-            html: '<code><a href="#">'+endpoint.url+'</a></code>'
+            html: '<code><a href="'+endpoint.endpoint_url+'">'+endpoint.endpoint_url+'</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Documentation URL"
+          },
+          value: {
+            html: '<code><a href="'+endpoint.documentation_url+'">'+endpoint.documentation_url+'</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Date added"
+          },
+          value: {
+            text: endpoint.date_added | govukDateTime
           }
         },
         {
@@ -133,7 +153,7 @@
             text: "Endpoint last accessed"
           },
           value: {
-            text: endpoint.last_accessed
+            text: endpoint.last_accessed | govukDateTime
           }
         },
         {
@@ -141,7 +161,15 @@
             text: "Endpoint last updated"
           },
           value: {
-            text: endpoint.last_updated
+            text: endpoint.last_updated | govukDateTime
+          }
+        },
+        {
+          key: {
+            text: "Licence"
+          },
+          value: {
+            text: licence
           }
         }
       ]
