@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Endpoint details" %}
+{% set urlPath = version_path+"/organisations/"+ organisation.organisation +"/"+ dataset.dataset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Submit your planning data" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageHeader %}
+<span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+<h1 class="govuk-heading-l">
+  {{ pageName }}
+</h1>
+{% endset %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: urlPath + "/lpa-details"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ pageHeader | safe }}
+
+    <form class="form" action="{{ urlPath }}/check-answers" method="post">
+
+      {{ govukInput({
+        label: {
+          text: "Endpoint URL",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "dataset-url",
+        name: "datasetUrl",
+        classes: "govuk-!-width-three-quarters"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Source documentation URL",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        hint: {
+          text: "Publicly accessible page on your website with information about the data"
+        },
+        id: "documentation-url",
+        name: "documentationUrl",
+        classes: "govuk-!-width-three-quarters"
+      }) }}
+
+      {{ govukCheckboxes({
+        name: "licence",
+        fieldset: {
+          legend: {
+            text: "Dataset licence",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "true",
+            text: "I confirm this dataset is provided under the Open Government Licence"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

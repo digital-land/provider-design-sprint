@@ -1,0 +1,162 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check your answers before submitting your dataset" %}
+{% set urlPath = version_path+"/organisations/"+ organisation.organisation +"/"+ dataset.dataset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Submit your planning data" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageHeader %}
+<span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+<h1 class="govuk-heading-l">
+  {{ pageName }}
+</h1>
+{% endset %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: urlPath + "/endpoint-details"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {{ pageHeader | safe }}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Local planning authority"
+          },
+          value: {
+            text: organisation.name
+          }
+        },
+        {
+          key: {
+            text: "Dataset"
+          },
+          value: {
+          text: dataset.name
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Full name"
+        },
+        value: {
+          text: data['fullName']
+        },
+        actions: {
+          items: [
+          {
+            href: urlPath + "/lpa-details",
+            text: "Change",
+            visuallyHiddenText: "full name"
+          }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Email address"
+        },
+        value: {
+          text: data['emailAddress']
+        },
+        actions: {
+          items: [
+          {
+            href: urlPath + "/lpa-details",
+            text: "Change",
+            visuallyHiddenText: "email address"
+          }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Endpoint URL"
+        },
+        value: {
+          text: data['datasetUrl']
+        },
+        actions: {
+          items: [
+          {
+            href: urlPath + "/endpoint-details",
+            text: "Change",
+            visuallyHiddenText: "dataset URL"
+          }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Documentation URL"
+        },
+        value: {
+          text: data['documentationUrl']
+        },
+        actions: {
+          items: [
+          {
+            href: urlPath + "/endpoint-details",
+            text: "Change",
+            visuallyHiddenText: "documentation URL"
+          }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Dataset provided under Open Government Licence?"
+        },
+        value: {
+          text: "True" if data['licence'] == "true" else "False"
+        },
+        actions: {
+          items: [
+          {
+            href: urlPath + "/endpoint-details",
+            text: "Change",
+            visuallyHiddenText: "dataset"
+          }
+          ]
+        }
+      }
+      
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Submit your dataset
+    </h2>
+
+    <p>
+      If this looks correct you can submit your dataset.
+    </p>
+
+    <form action="{{ urlPath }}/confirmation" method="post" novalidate>
+
+      {{ govukButton({
+        text: "Submit dataset"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

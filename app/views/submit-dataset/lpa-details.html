@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "What are your contact details?" %}
+{% set urlPath = version_path+"/organisations/"+ organisation.organisation +"/"+ dataset.dataset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Submit your planning data" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageHeader %}
+<span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+<h1 class="govuk-heading-l">
+  {{ pageName }}
+</h1>
+{% endset %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back to "+ dataset.name +" overview",
+  href: urlPath
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ pageHeader | safe }}
+
+    <form class="form" action="{{ urlPath }}/endpoint-details" method="post">
+
+      {{ govukInput({
+        label: {
+          text: "Your full name",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "full-name",
+        name: "fullName",
+        classes: "govuk-!-width-three-quarters"
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Work email address",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "email-address",
+        name: "emailAddress",
+        classes: "govuk-!-width-three-quarters"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

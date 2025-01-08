@@ -1813,6 +1813,55 @@ router.get("/multiple-endpoints/organisations/:orgId/:datasetId", (req, res) => 
   res.render("/multiple-endpoints/dataset-details", locals);
 })
 
+/******************************************/
+/*  Integrated submit — 8 January 2024    */
+/******************************************/
+
+router.get("/submit-dataset/organisations/:orgId/:datasetId", (req, res) => {
+  const locals = {};
+  locals.version_path = "/submit-dataset";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/submit-dataset/get-started", locals);
+})
+
+router.get("/submit-dataset/organisations/:orgId/:datasetId/lpa-details", (req, res) => {
+  const locals = {};
+  locals.version_path = "/submit-dataset";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/submit-dataset/lpa-details", locals);
+})
+
+router.get("/submit-dataset/organisations/:orgId/:datasetId/endpoint-details", (req, res) => {
+  const locals = {};
+  locals.version_path = "/submit-dataset";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/submit-dataset/endpoint-details", locals);
+})
+
+router.get("/submit-dataset/organisations/:orgId/:datasetId/check-answers", (req, res) => {
+  const locals = {};
+  locals.version_path = "/submit-dataset";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/submit-dataset/check-answers", locals);
+})
+
+router.get("/submit-dataset/organisations/:orgId/:datasetId/confirmation", (req, res) => {
+  const locals = {};
+  locals.version_path = "/submit-dataset";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/submit-dataset/confirmation", locals);
+})
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
