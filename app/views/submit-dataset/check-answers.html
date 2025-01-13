@@ -105,7 +105,7 @@
       },
       {
         key: {
-          text: "Documentation URL"
+          text: "Webpage URL"
         },
         value: {
           text: data['documentationUrl']
@@ -125,7 +125,7 @@
           text: "Dataset provided under Open Government Licence?"
         },
         value: {
-          text: "True" if data['licence'] == "true" else "False"
+          text: "Yes" if data['licence'] == "true" else "No"
         },
         actions: {
           items: [
@@ -142,17 +142,19 @@
     }) }}
 
     <h2 class="govuk-heading-m">
-      Submit your dataset
+      Now submit your dataset
     </h2>
 
     <p>
-      If this looks correct you can submit your dataset.
+      By submitting this dataset you are confirming that, to the best of your knowledge, the details you are providing
+      are
+      correct.
     </p>
 
     <form action="{{ urlPath }}/confirmation" method="post" novalidate>
 
       {{ govukButton({
-        text: "Submit dataset"
+        text: "Accept and submit"
       }) }}
 
     </form>
