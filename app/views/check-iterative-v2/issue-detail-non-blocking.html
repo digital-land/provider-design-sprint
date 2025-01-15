@@ -1,0 +1,394 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName = "Check your planning data" %}
+{% set hideNav = true %}
+
+{% set path_slug = version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageName = "Your data has issues" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset + "/results"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukErrorSummary({
+      titleText: "You cannot submit your data until you fix the issues",
+      descriptionHtml: "4 rows have <strong>start-date</strong> fields that must be in YYYY-MM-DD format"
+    })}}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="app-scrollable-container dl-scrollable">
+      <table class="govuk-table dl-table">
+        <colgroup>
+
+          <col class="">
+
+          <col class="">
+
+          <col class="govuk-table__cell--numeric">
+
+          <col class="">
+
+          <col class="govuk-table__cell--numeric">
+
+          <col class="">
+
+          <col class="govuk-table__cell--numeric">
+
+          <col class="">
+
+        </colgroup>
+        <thead class="govuk-table__head dl-table__head">
+          <tr class="govuk-table__row">
+
+            <th scope="col" class="govuk-table__header dl-table__header">name</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">notes</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">made-date</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">reference</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">start-date</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">document-url</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">confirmed-date</th>
+
+            <th scope="col" class="govuk-table__header dl-table__header">documentation-url</th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Forrest House, Bacup) Tree Preservation Order 1974
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-02-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              T2-1
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+              <div class="govuk-inset-text app-inset-text---error">
+                <p class="app-inset-text__value">Registered 1975.02.05</p>
+                <p class="app-inset-text__error">start-date must be in YYYY-MM-DD format</p>
+              </div>
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-02-05
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Greenbank Park, Rawtenstall) Tree Preservation Order 1975
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-03-14
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              T2-2
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              <div class="govuk-inset-text app-inset-text---error">
+                <p class="app-inset-text__value">Registered 1975.03.14</p>
+                <p class="app-inset-text__error">start-date must be in YYYY-MM-DD format</p>
+              </div>
+
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-03-14
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Healey Dell, Whitworth No. 1) Tree Preservation Order 1975
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-16
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              T2-3
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+              <div class="govuk-inset-text app-inset-text---error">
+                <p class="app-inset-text__value">Registered 1975.07.16</p>
+                <p class="app-inset-text__error">start-date must be in YYYY-MM-DD format</p>
+              </div>
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-16
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The Borough of Rossendale (Bank Street, Rawtenstall) Tree Preservation Order 1975
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              The felling of the 3 protected trees has been consented via a work to trees consent granted in 2003. No
+              replacement trees were required.
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1975-07-24
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              T2-4
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+              <div class="govuk-inset-text app-inset-text---error">
+                <p class="app-inset-text__value">Registered 1975.07.24</p>
+                <p class="app-inset-text__error">start-date must be in YYYY-MM-DD format</p>
+              </div>
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/file/15788/brownfield-land-register
+
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              1976-12-17
+
+            </td>
+
+
+            <td class="govuk-table__cell app-wrap ">
+
+
+              https://www.rossendale.gov.uk/downloads/download/10897/brownfield_land_register
+
+
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">How to fix this issue</h2>
+
+    <p>4 rows have <strong>start-date</strong> in the wrong format.</p>
+
+    <p>The <a href="#">{{ dataset.name }} guidance</a> explains how to fix the issue:</p>
+
+    <div class="govuk-inset-text">
+      <h3 class="govuk-heading-m" id="start-date">start-date</h3>
+      <p>The date that the tree preservation order came into force, written in <code class="app-code">YYYY-MM-DD</code>
+        format.</p>
+      <p>Example: <code class="app-code">1984-03-28</code></p>
+    </div>
+
+    <p><a href="{{path_slug}}/results">Back to results</a></p>
+  </div>
+</div>
+
+{% endblock %}

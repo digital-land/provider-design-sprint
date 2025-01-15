@@ -1,0 +1,5137 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName = "Check your planning data" %}
+{% set hideNav = true %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageName = "Your data has been checked" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path + "/organisations/"+ organisation.organisation +"/"+ dataset.dataset + "/upload-data"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+{% set datasetMapHtml %}
+<img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+  class="govuk-!-margin-bottom-6">
+{% endset %}
+
+{% set datasetTableHtml %}
+<div class="app-scrollable-container dl-scrollable">
+  <table class="govuk-table dl-table">
+    <colgroup>
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="">
+
+      <col class="govuk-table__cell--numeric">
+
+      <col class="govuk-table__cell--numeric">
+
+      <col class="govuk-table__cell--numeric">
+
+    </colgroup>
+    <thead class="govuk-table__head dl-table__head">
+      <tr class="govuk-table__row">
+
+        <th scope="col" class="govuk-table__header dl-table__header">reference</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">name</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">article-4-direction</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">permitted-development-rights</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">uprns</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">address-texts</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">geometry</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">point</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">notes</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">organisation</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">entry-date</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">start-date</th>
+
+        <th scope="col" class="govuk-table__header dl-table__header">end-date</th>
+
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          73412
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          Canterbury and surrounding area. Dated 25.02.2015 effective 25.02.2016
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.114786 51.278431,1.117471 51.279956,1.119705 51.280639,1.122640 51.283192,1.124714
+          51.284689,1.127033 51.286089,1.128148 51.286666,1.128453 51.286411,1.129188 51.286143,1.130362
+          51.286000,1.130810 51.285200,1.131351 51.285771,1.131224 51.286022,1.131541 51.285923,1.133894
+          51.287299,1.134397 51.287308,1.135162 51.287490,1.135130 51.289650,1.136913 51.292122,1.137779
+          51.293785,1.137959 51.295895,1.138306 51.296245,1.140420 51.296728,1.140411 51.297511,1.139791
+          51.297510,1.139429 51.297537,1.139125 51.297730,1.138170 51.298453,1.137539 51.298672,1.136935
+          51.298756,1.132437 51.297505,1.130899 51.297051,1.129102 51.296469,1.127297 51.296315,1.126776
+          51.296554,1.126254 51.297333,1.126370 51.297442,1.125936 51.298080,1.125496 51.298212,1.125450
+          51.298164,1.124775 51.298466,1.124833 51.298614,1.124645 51.298751,1.125393 51.299992,1.125942
+          51.300527,1.126515 51.300934,1.126855 51.301052,1.129199 51.302015,1.132861 51.302695,1.131190
+          51.304488,1.138550 51.307709,1.142221 51.308915,1.143868 51.309427,1.144360 51.309757,1.150792
+          51.311346,1.150391 51.311889,1.150081 51.312056,1.149861 51.312270,1.150344 51.312458,1.149381
+          51.313704,1.149896 51.314039,1.149749 51.314231,1.149511 51.314653,1.149198 51.314775,1.148436
+          51.314776,1.148258 51.314794,1.147981 51.314969,1.147457 51.315439,1.147218 51.315707,1.146868
+          51.315987,1.146846 51.316190,1.147059 51.316509,1.147088 51.316770,1.147360 51.316997,1.148352
+          51.316950,1.148406 51.318533,1.148291 51.319480,1.146748 51.319307,1.146260 51.319058,1.145955
+          51.318986,1.145366 51.318975,1.144739 51.318878,1.144362 51.318848,1.143263 51.318891,1.142705
+          51.319026,1.142091 51.319085,1.141726 51.320193,1.141686 51.320512,1.141662 51.320825,1.140927
+          51.320960,1.139971 51.323794,1.141477 51.324222,1.140539 51.325784,1.140727 51.325785,1.140918
+          51.325914,1.141009 51.326146,1.141490 51.326301,1.141474 51.326368,1.140916 51.327134,1.140171
+          51.327233,1.140109 51.327377,1.139923 51.327483,1.139812 51.327425,1.139644 51.327477,1.139483
+          51.327615,1.139016 51.327836,1.138753 51.328218,1.138484 51.328353,1.138273 51.328392,1.138220
+          51.328554,1.137711 51.328782,1.137656 51.328911,1.137441 51.328910,1.137405 51.329083,1.135583
+          51.330482,1.135017 51.330610,1.132525 51.332498,1.132032 51.333164,1.131634 51.333130,1.131296
+          51.333742,1.128553 51.332695,1.128058 51.333191,1.125457 51.332575,1.125203 51.333073,1.124034
+          51.332890,1.120082 51.331661,1.119194 51.333394,1.118861 51.334724,1.109970 51.333043,1.103476
+          51.331900,1.101995 51.331605,1.100743 51.331451,1.095682 51.330780,1.089489 51.329976,1.087098
+          51.328439,1.086599 51.328023,1.086464 51.327758,1.086291 51.327266,1.086286 51.327025,1.086360
+          51.326701,1.086737 51.325612,1.086759 51.324834,1.086313 51.323920,1.085884 51.323268,1.086443
+          51.321724,1.085921 51.321758,1.085319 51.321868,1.085084 51.321874,1.084284 51.322083,1.083333
+          51.322416,1.082949 51.322594,1.082411 51.322943,1.081628 51.323313,1.081223 51.323424,1.080467
+          51.323564,1.079902 51.323527,1.078075 51.323634,1.077559 51.323762,1.077234 51.323864,1.076707
+          51.323979,1.076362 51.324095,1.075511 51.324171,1.075021 51.324204,1.074672 51.324119,1.074170
+          51.324132,1.074098 51.324014,1.073900 51.323954,1.073515 51.323935,1.073027 51.323775,1.072728
+          51.323603,1.072525 51.323693,1.072414 51.323629,1.072036 51.323585,1.071679 51.323527,1.071248
+          51.323478,1.071152 51.323320,1.070700 51.323341,1.070282 51.323108,1.070075 51.323110,1.069124
+          51.322843,1.068526 51.322499,1.068475 51.323289,1.068207 51.323631,1.067827 51.324165,1.067003
+          51.324945,1.065540 51.326153,1.064701 51.326490,1.061533 51.328507,1.060848 51.328954,1.059416
+          51.329597,1.058202 51.330236,1.057534 51.330455,1.056673 51.330455,1.055056 51.330855,1.053624
+          51.330725,1.053090 51.330591,1.052806 51.330624,1.052518 51.331156,1.051948 51.331607,1.051500
+          51.331940,1.051167 51.332096,1.051114 51.332259,1.051042 51.332307,1.050287 51.333231,1.050090
+          51.333506,1.048904 51.333148,1.048241 51.333004,1.043933 51.333089,1.043602 51.329874,1.043406
+          51.329092,1.042159 51.329237,1.041510 51.329186,1.039800 51.328848,1.037466 51.328301,1.037879
+          51.326941,1.037812 51.325931,1.037527 51.325421,1.037760 51.324605,1.037388 51.324596,1.037238
+          51.323454,1.037281 51.323131,1.037261 51.323004,1.037150 51.322979,1.036756 51.322990,1.035983
+          51.323235,1.035011 51.323192,1.034543 51.323182,1.032837 51.323429,1.030895 51.323389,1.029670
+          51.323308,1.029058 51.323279,1.027294 51.322766,1.026980 51.322881,1.026637 51.323049,1.026363
+          51.322937,1.026030 51.322752,1.024643 51.322201,1.024039 51.321744,1.023470 51.321287,1.023318
+          51.321156,1.023112 51.320756,1.022688 51.320424,1.022550 51.319849,1.022018 51.319390,1.020857
+          51.318655,1.020563 51.318219,1.019573 51.317699,1.019111 51.317620,1.018340 51.317117,1.017828
+          51.316260,1.017036 51.316165,1.015097 51.316757,1.015205 51.316215,1.014883 51.316223,1.015891
+          51.314083,1.016996 51.312885,1.014916 51.312354,1.014335 51.312256,1.014182 51.312103,1.012668
+          51.312007,1.011541 51.311788,1.010820 51.311591,1.009770 51.311047,1.009069 51.310750,1.008328
+          51.310616,1.007861 51.310346,1.006524 51.309691,1.006490 51.309174,1.006744 51.308673,1.007252
+          51.308210,1.007382 51.308004,1.007616 51.307728,1.008550 51.307210,1.009186 51.307058,1.009240
+          51.306787,1.009171 51.305732,1.009678 51.305247,1.010138 51.305145,1.010319 51.304919,1.010360
+          51.304712,1.010209 51.304041,1.011127 51.302713,1.004490 51.288444,1.004478 51.288265,1.003971
+          51.288188,1.004388 51.287435,1.005942 51.283774,1.006628 51.283967,1.007191 51.284080,1.008349
+          51.284387,1.013883 51.283997,1.014834 51.283226,1.014633 51.282314,1.014813 51.281604,1.015208
+          51.281242,1.015474 51.280930,1.015923 51.280661,1.016290 51.280332,1.016501 51.280174,1.016198
+          51.279372,1.015821 51.278549,1.015933 51.278074,1.016744 51.276771,1.016834 51.276499,1.017616
+          51.275772,1.017506 51.275386,1.019032 51.275565,1.021196 51.275757,1.021625 51.275746,1.028450
+          51.272106,1.029831 51.271845,1.029860 51.271192,1.030209 51.270894,1.031835 51.270152,1.032973
+          51.269470,1.034233 51.267908,1.033863 51.267198,1.033839 51.266839,1.033841 51.266321,1.033697
+          51.265763,1.033533 51.265452,1.035235 51.264081,1.035963 51.264784,1.036225 51.264955,1.037014
+          51.264957,1.039118 51.264790,1.037252 51.262589,1.036913 51.262351,1.036004 51.261609,1.035395
+          51.261063,1.035071 51.260509,1.034352 51.260126,1.034740 51.260015,1.035716 51.259413,1.038336
+          51.260746,1.040730 51.259350,1.041220 51.259109,1.041509 51.259108,1.041380 51.258770,1.041704
+          51.258661,1.042212 51.258457,1.043031 51.257828,1.043277 51.257755,1.043600 51.257284,1.045338
+          51.256396,1.045222 51.256109,1.045371 51.254731,1.045908 51.254717,1.048070 51.254346,1.056377
+          51.251520,1.058347 51.250434,1.065663 51.248246,1.066372 51.247972,1.067566 51.251093,1.067584
+          51.252981,1.067882 51.255416,1.067831 51.256686,1.068182 51.257829,1.068135 51.258568,1.068235
+          51.258992,1.068581 51.259883,1.068569 51.260112,1.068398 51.260360,1.067691 51.260892,1.067903
+          51.261665,1.068232 51.262588,1.068691 51.263381,1.068758 51.263587,1.068889 51.263945,1.069000
+          51.264550,1.069015 51.264720,1.069331 51.264658,1.072165 51.262555,1.077551 51.258112,1.079148
+          51.257086,1.080397 51.256408,1.081643 51.255866,1.083545 51.255232,1.084510 51.254959,1.085975
+          51.254658,1.087689 51.254399,1.089921 51.254232,1.091896 51.254231,1.093929 51.254408,1.095906
+          51.254709,1.099256 51.255125,1.102514 51.255434,1.105497 51.255557,1.109923 51.255479,1.112775
+          51.255309,1.113732 51.255237,1.115240 51.255110,1.115723 51.255712,1.117335 51.257289,1.118276
+          51.257013,1.120917 51.259887,1.121059 51.259923,1.121508 51.261226,1.121709 51.261536,1.121402
+          51.261769,1.122137 51.267327,1.121689 51.267586,1.123538 51.269224,1.124431 51.270414,1.124665
+          51.270703,1.125126 51.271193,1.126108 51.271958,1.127914 51.273200,1.128354 51.274030,1.128522
+          51.274603,1.128710 51.275013,1.129485 51.275723,1.129899 51.275994,1.130649 51.276329,1.131083
+          51.276586,1.131811 51.277257,1.132386 51.278321,1.119749 51.278451,1.114786 51.278431)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.076439 51.294709)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          Canterbury City Council Housing in Multiple Occupation (HMO) Article 4, Direction 1
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2016-02-25
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72952
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ABBOTS PLACE 1 to 6
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.081219 51.281976,1.080796 51.282201,1.080617 51.282111,1.080945 51.281933,1.080934
+          51.281923,1.081226 51.281816,1.081277 51.281891,1.081241 51.281910,1.081243 51.281964,1.081219
+          51.281976)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.080968 51.282013)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72953
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ABBOTS PLACE 16 to 19
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.081365 51.282244,1.081335 51.282253,1.081207 51.282143,1.081627 51.282012,1.081697
+          51.282142,1.081365 51.282244)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.081466 51.282136)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72954
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ADELAIDE PLACE 4,5,6, BARN (REAR OF 68 STOUR ST), HOSPITAL LANE 21 TO 30
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.076894 51.277438,1.076857 51.277461,1.076919 51.277500,1.076850 51.277543,1.076870
+          51.277556,1.076775 51.277614,1.076753 51.277603,1.076687 51.277640,1.076540 51.277543,1.076559
+          51.277532,1.076462 51.277469,1.076257 51.277586,1.076108 51.277506,1.076630 51.277221,1.076746
+          51.277294,1.076671 51.277342,1.076685 51.277350,1.076728 51.277325,1.076894 51.277438)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.076567 51.277445)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72955
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALBERT ROAD 1 TO 27 (ODD), 12 TO 15 EDWARD ROAD
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.089384 51.276809,1.089079 51.276845,1.088735 51.276321,1.088448 51.276067,1.088718
+          51.275936,1.088951 51.276138,1.089230 51.276504,1.089252 51.276559,1.089384 51.276809)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.088944 51.276396)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          Registered 29.11.1985
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72956
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALBERT ROAD 2 TO 12 ( EVEN), LOWER CHANTRY LANE, 1 TO 6 THE ALMHOUSES,
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.088539 51.276609,1.088518 51.276566,1.088499 51.276557,1.088208 51.276646,1.087908
+          51.276368,1.088047 51.276285,1.088355 51.276130,1.088613 51.276346,1.088646 51.276383,1.088762
+          51.276552,1.088539 51.276609)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.088333 51.276409)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72957
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALBION PLACE 1A, 2 TO 6, ARTILLERY GARDENS 22
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085854 51.281758,1.085669 51.281900,1.085372 51.281748,1.085429 51.281699,1.085348
+          51.281664,1.085458 51.281567,1.085854 51.281758)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085586 51.281736)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72958
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALBION PLACE 7 TO 14,
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085893 51.281721,1.085481 51.281525,1.085583 51.281439,1.085890 51.281546,1.085837
+          51.281610,1.085963 51.281660,1.085893 51.281721)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085724 51.281570)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72959
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALL SAINTS LANE 5,6,7,8
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.078759 51.280648,1.078707 51.280559,1.078646 51.280513,1.078923 51.280432,1.079036
+          51.280586,1.078759 51.280648)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.078848 51.280543)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72960
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALL SAINTS LANE 18 (FLATS 1 TO 5 INC.)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.078390 51.280529,1.078329 51.280500,1.078444 51.280423,1.078493 51.280455,1.078433
+          51.280491,1.078390 51.280529)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.078412 51.280476)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ALSO LISTED GRADE 2
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72961
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BEST LANE 14,15
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.079264 51.279992,1.079248 51.280000,1.079135 51.279946,1.079339 51.279815,1.079379
+          51.279824,1.079455 51.279873,1.079264 51.279992)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.079297 51.279907)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72962
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BEST LANE, 21 (THE THOMAS BECKET P.H)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.079609 51.280323,1.079795 51.280247,1.079809 51.280262,1.079846 51.280237,1.079893
+          51.280272,1.079847 51.280298,1.079897 51.280331,1.079835 51.280365,1.079793 51.280332,1.079670
+          51.280381,1.079609 51.280323)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.079763 51.280312)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72963
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BLACKFRIARS STREET 28,29,30, KING STREET 10 TO 15, MILL LANE 19,20
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.079935 51.281526,1.079922 51.281529,1.079851 51.281378,1.079863 51.281363,1.080058
+          51.281276,1.080211 51.281425,1.080413 51.281340,1.080258 51.281189,1.080394 51.281123,1.080472
+          51.281099,1.080726 51.281324,1.080726 51.281355,1.080498 51.281500,1.080451 51.281502,1.080449
+          51.281516,1.080410 51.281515,1.080406 51.281547,1.080304 51.281542,1.080308 51.281509,1.080270
+          51.281507,1.080276 51.281460,1.079935 51.281526)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.080327 51.281356)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72964
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BLACKFRIARS STREET/MILL LANE 23,24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.080054 51.282067,1.080187 51.282233,1.080096 51.282266,1.079917 51.282109,1.080054
+          51.282067)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.080058 51.282164)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72965
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BLACK GRIFFIN LANE 54 TO 63, ST PETER'S GROVE 51 TO 58
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.074376 51.279050,1.074687 51.278893,1.074781 51.278976,1.075001 51.278847,1.075263
+          51.279053,1.075042 51.279168,1.074826 51.278995,1.074813 51.279002,1.075027 51.279175,1.074713
+          51.279331,1.074376 51.279050)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.074812 51.279077)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72966
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BLACK GRIFFIN LANE 64 TO 101, 102 (THE CARPENTER'S ARMS P.H.) ST PETER'S GROVE 10 TO 50
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.074742 51.279357,1.075306 51.279071,1.076675 51.280153,1.076320 51.280344,1.076447
+          51.280456,1.076246 51.280500,1.076107 51.280390,1.076066 51.280418,1.075396 51.279894,1.074742
+          51.279357)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.075720 51.279775)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          Canterbury City Centre Cons. Area Art. 4 Dir. 1985. Reg 1985/11/29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72967
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ST PETER'S GROVE 59 TO 64
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.075068 51.278806,1.075184 51.278738,1.075301 51.278814,1.075459 51.278728,1.075657
+          51.278867,1.075510 51.278947,1.075500 51.278941,1.075442 51.278971,1.075434 51.278966,1.075325
+          51.279023,1.075047 51.278819,1.075068 51.278806)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.075353 51.278864)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72968
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ST PETER'S GROVE 65 TO 84
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.075366 51.279037,1.075674 51.278879,1.075782 51.278954,1.076073 51.279249,1.076189
+          51.279394,1.076241 51.279474,1.076029 51.279570,1.075349 51.279046,1.075366 51.279037)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.075812 51.279216)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72969
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          ST PETER'S GROVE 85 TO 91
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.076103 51.279625,1.076286 51.279534,1.076318 51.279574,1.076358 51.279558,1.076461
+          51.279643,1.076554 51.279607,1.076637 51.279708,1.076400 51.279856,1.076103 51.279625)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.076375 51.279687)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72970
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          THE BOROUGH, THE PENTECOSTAL CHURCH, COBDEN PLACE 9
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.082835 51.281931,1.082890 51.281978,1.082806 51.282011,1.082794 51.282046,1.082547
+          51.282149,1.082469 51.282076,1.082409 51.282099,1.082377 51.282063,1.082525 51.282012,1.082550
+          51.282040,1.082835 51.281931)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.082641 51.282043)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72971
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BROAD STREET 45
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085705 51.280868,1.085752 51.280805,1.086082 51.280894,1.086030 51.280952,1.085705
+          51.280868)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085891 51.280879)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72972
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BROAD STREET 58
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084596 51.281682,1.084648 51.281650,1.085102 51.281904,1.085019 51.281958,1.084692
+          51.281735,1.084596 51.281682)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.084864 51.281810)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72973
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BROAD STREET 89A
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084383 51.281685,1.084248 51.281603,1.084228 51.281614,1.084134 51.281552,1.084279
+          51.281458,1.084509 51.281604,1.084383 51.281685)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.084322 51.281572)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72974
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BROAD STREET, DIOCESANAND PAYNE SMITH SCHOOL, 90,91,92,93A
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084757 51.281429,1.084538 51.281288,1.084951 51.281017,1.084996 51.281059,1.085059
+          51.281018,1.085001 51.280981,1.085223 51.280802,1.085414 51.280375,1.085755 51.280446,1.085558
+          51.280841,1.085434 51.281009,1.085308 51.281117,1.085099 51.281252,1.084757 51.281429)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085219 51.280920)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72975
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BROAD STREET 93,94,95,95A,96,97,98
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085791 51.280323,1.085468 51.280262,1.085556 51.280054,1.085890 51.280097,1.085879
+          51.280152,1.085791 51.280323)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085682 51.280184)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          Reg: 29/11/1985
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72976
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BROAD STREET MAGISTRATES COURT, MONASTERY STREET 5 TO 21 (ODD), 25,27, LADY WOOTTON'S GREEN 2 TO 14
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085923 51.279116,1.085807 51.279100,1.085473 51.278643,1.085640 51.278592,1.085639
+          51.278536,1.085577 51.278448,1.085615 51.278436,1.085598 51.278408,1.085621 51.278401,1.085511
+          51.278244,1.085491 51.278248,1.085414 51.278066,1.085816 51.278012,1.085842 51.278088,1.085894
+          51.278086,1.085890 51.278102,1.085923 51.278166,1.085914 51.278186,1.085898 51.278192,1.085968
+          51.278302,1.086062 51.278280,1.086026 51.278194,1.086291 51.278132,1.086393 51.278298,1.086510
+          51.278526,1.086476 51.278623,1.086275 51.278678,1.086322 51.278739,1.086195 51.278771,1.086225
+          51.278808,1.086343 51.278767,1.086534 51.278763,1.086544 51.278927,1.086513 51.278966,1.085923
+          51.279116)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085988 51.278578)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72977
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BURGATE 5 TO 9, 10,10A,10B,11
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084601 51.278377,1.084107 51.278526,1.084150 51.278589,1.083930 51.278651,1.083724
+          51.278362,1.084498 51.278201,1.084601 51.278377)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.084148 51.278404)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72978
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MONASTERY STREET 13A
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.086008 51.278636,1.085920 51.278528,1.085837 51.278383,1.086011 51.278357,1.086099
+          51.278336,1.086145 51.278439,1.086123 51.278440,1.086215 51.278590,1.086008 51.278636)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.086030 51.278484)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72979
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          BURGATE LANE 3
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084251 51.278031,1.084198 51.277975,1.084188 51.277979,1.084132 51.277929,1.084200
+          51.277899,1.084319 51.277998,1.084251 51.278031)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.084226 51.277964)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72980
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CASTLE ROW 34,35,36, CASTLE STREET 27,27A
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.076290 51.276173,1.076170 51.276078,1.076188 51.276070,1.076050 51.275972,1.075980
+          51.276003,1.075810 51.276099,1.075707 51.276014,1.075997 51.275786,1.076179 51.275907,1.076143
+          51.275928,1.076376 51.276096,1.076290 51.276173)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.076028 51.275976)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72981
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          DANE JOHN 24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.076331 51.275471,1.076106 51.275304,1.076178 51.275276,1.076153 51.275256,1.076219
+          51.275225,1.076309 51.275283,1.076268 51.275304,1.076411 51.275439,1.076331 51.275471)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.076257 51.275347)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72982
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CASTLE ROW THE WHITE HART P.H., STORE ADJACENT TO NO 1, DANE JOHN MEWS 1 TO 6, DANE JOHN 1 TO 14 AND
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.077095 51.276317,1.076743 51.275974,1.076659 51.275881,1.076701 51.275825,1.077070
+          51.275694,1.077211 51.275583,1.077541 51.275750,1.077351 51.275899,1.077374 51.275955,1.077079
+          51.276125,1.077254 51.276239,1.077095 51.276317)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.077090 51.275908)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72983
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CASTLE STREET 38 (FLATS 1 TO 36 INC.), GAS STREET 1 TO 7
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.075449 51.276091,1.075212 51.275905,1.075223 51.275902,1.075099 51.275798,1.075104
+          51.275795,1.075094 51.275786,1.075074 51.275796,1.075102 51.275818,1.075034 51.275853,1.074981
+          51.275812,1.074312 51.276151,1.074345 51.276178,1.074255 51.276229,1.074125 51.276154,1.074273
+          51.276079,1.074283 51.276087,1.075112 51.275668,1.075561 51.276036,1.075449 51.276091)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.074912 51.275931)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72984
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CHURCH LANE (ST RADIGUND'S) 1
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.082750 51.282346,1.082722 51.282320,1.082755 51.282296,1.082719 51.282272,1.082758
+          51.282247,1.082815 51.282282,1.082818 51.282297,1.082750 51.282346)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.082767 51.282294)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72985
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CHURCH STREET (ST DUNSTAN'S) 1 TO 8
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.071700 51.283021,1.071647 51.283051,1.071654 51.283056,1.071432 51.283162,1.071415
+          51.283151,1.071386 51.283166,1.071184 51.283035,1.071533 51.282842,1.071741 51.282998,1.071700
+          51.283021)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.071467 51.283012)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72986
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CHURCH STREET (ST DUNSTAN'S) 9 -13, CROSS STREET 1,1a,2 TO 9, ORCHARD STREET 26 - 43
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.071149 51.282945,1.070612 51.282598,1.070854 51.282441,1.070822 51.282417,1.070813
+          51.282423,1.070692 51.282353,1.070934 51.282192,1.071635 51.282670,1.071149 51.282945)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.071092 51.282587)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72987
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CHURCH STREET 1, 1A
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.071746 51.282611,1.072097 51.282411,1.072211 51.282493,1.071861 51.282688,1.071746
+          51.282611)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.071980 51.282550)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72988
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CHURCH STREET (ST PAUL'S) 15A THE SCHOOL HOUSE
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085204 51.277829,1.085165 51.277736,1.085214 51.277725,1.085254 51.277727,1.085287
+          51.277809,1.085204 51.277829)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085226 51.277774)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72989
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          COSSINGTON ROAD 1,1A,1B
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085208 51.274343,1.085000 51.274216,1.085180 51.274075,1.085414 51.274220,1.085348
+          51.274268,1.085341 51.274257,1.085208 51.274343)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085202 51.274212)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72990
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          COSSINGTON ROAD 11 TO 33 (ODD)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085727 51.274001,1.085516 51.273862,1.086113 51.273489,1.086275 51.273585,1.086066
+          51.273681,1.086122 51.273725,1.085727 51.274001)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085886 51.273750)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72991
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          COSSINGTON ROAD 39
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.086255 51.273394,1.086389 51.273306,1.086561 51.273444,1.086445 51.273506,1.086255
+          51.273394)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.086410 51.273410)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72992
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          COSSINGTON ROAD 51 TO 61 (ODD)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.086536 51.272700,1.086798 51.272830,1.087003 51.272951,1.086754 51.273119,1.086665
+          51.273136,1.086668 51.273073,1.086614 51.273034,1.086610 51.273017,1.086318 51.272849,1.086536
+          51.272700)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.086663 51.272910)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72993
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          COSSINGTON ROAD 42 TO 50 (EVEN)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.086532 51.273085,1.086343 51.273213,1.086089 51.273065,1.086276 51.272938,1.086532
+          51.273085)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.086310 51.273075)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72994
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          CROSS STREET 19 TO 36
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.071159 51.283300,1.071088 51.283251,1.070709 51.283029,1.070689 51.283035,1.070495
+          51.282906,1.070707 51.282781,1.071272 51.283143,1.071329 51.283192,1.071159 51.283300)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.070914 51.283036)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72995
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          DOVER STREET 17,18
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084488 51.275682,1.084367 51.275746,1.084222 51.275641,1.084289 51.275593,1.084377
+          51.275651,1.084413 51.275630,1.084488 51.275682)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.084352 51.275670)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72996
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          DOVER STREET 56A,57 TO 60
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.083823 51.276287,1.083713 51.276197,1.083984 51.276073,1.084094 51.276163,1.083823
+          51.276287)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.083903 51.276180)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72997
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          DOVER STREET 55
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.084260 51.276102,1.084177 51.276084,1.084147 51.276056,1.084117 51.276068,1.084080
+          51.276034,1.084155 51.276002,1.084260 51.276102)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.084164 51.276051)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72998
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          DOVER STREET WINSLOW LODGE
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.085695 51.275327,1.085399 51.275184,1.085332 51.275088,1.085399 51.275080,1.085584
+          51.275169,1.085605 51.275153,1.085810 51.275253,1.085695 51.275327)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.085571 51.275205)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          72999
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          EDWARD ROAD 2 TO 11
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.088627 51.275876,1.087981 51.276194,1.087806 51.276056,1.088439 51.275729,1.088627
+          51.275876)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.088217 51.275962)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          Registered 30.09.1984
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          73000
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          THE FRIARS FRIENDS MEETING HOUSE, KING STREET 6
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          MULTIPOLYGON (((1.079267 51.280801,1.079339 51.280788,1.079512 51.280721,1.079564 51.280773,1.079571
+          51.280793,1.079541 51.280801,1.079561 51.280829,1.079616 51.280811,1.079710 51.280876,1.079741
+          51.280849,1.079751 51.280818,1.079932 51.280743,1.079950 51.280749,1.080071 51.280838,1.079961
+          51.280900,1.079841 51.280947,1.079867 51.280983,1.079805 51.280999,1.079378 51.281061,1.079292
+          51.280884,1.079292 51.280852,1.079267 51.280801)))
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+          POINT(1.079619 51.280893)
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          2024-10-24
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap govuk-table__cell--numeric">
+
+
+          1985-11-29
+
+        </td>
+
+
+        <td class="govuk-table__cell app-wrap ">
+
+
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ govukTabs({
+    items: [
+      {
+        label: "Map",
+        id: "dataset-map",
+        panel: {
+          html: datasetMapHtml
+        }
+      },
+      {
+        label: "Dataset table",
+        id: "dataset-table",
+        panel: {
+          html: datasetTableHtml
+        }
+      }
+    ]
+  }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Data that passed checks</h2>
+
+    {{ govukTaskList({
+      idPrefix: "passed-checks",
+      items: [
+        {
+          title: {
+            text: "Found 50 rows"
+          },
+          status: {
+            tag: {
+              text: "Passed",
+              classes: "govuk-tag--green"
+            }
+          }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Issues you must fix before submitting</h2>
+
+    <p>You cannot submit your data to the platform until you fix these issues.</p>
+
+    {{ govukTaskList({
+      idPrefix: "must-fix",
+      items: [
+        {
+          title: {
+            html: "<strong>reference</strong> column missing"
+          },
+          href: version_path +"/organisations/"+organisation.organisation+"/"+dataset.dataset+"/issue-blocking",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        },
+        {
+          title: {
+            html: "<strong>geometry</strong> column missing"
+          },
+          href: version_path +"/organisations/"+organisation.organisation+"/"+dataset.dataset+"/issue-blocking",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Issues you can fix after submitting</h2>
+
+    <p>You can submit your data with these issues but should fix them over time to improve the quality and usability of
+      the
+      data.</p>
+
+    {{ govukTaskList({
+      idPrefix: "fix-later",
+      items: [
+        {
+          title: {
+            html: "4 rows have <strong>start-date</strong> fields that must be in YYYY-MM-DD format"
+          },
+          href: version_path +"/organisations/"+organisation.organisation+"/"+dataset.dataset+"/issue-non-blocking",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            html: "2 rows have <strong>entry-date</strong> fields that must be in the past"
+          },
+          href: version_path +"/organisations/"+organisation.organisation+"/"+dataset.dataset+"/issue-non-blocking",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            html: "<strong>documentation-url</strong> must be a valid URL"
+          },
+          href: version_path +"/organisations/"+organisation.organisation+"/"+dataset.dataset+"/issue-non-blocking",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            html: "44 rows are missing <strong>document-url</strong>"
+          },
+          href: version_path +"/organisations/"+organisation.organisation+"/"+dataset.dataset+"/issue-non-blocking",
+          status: {
+            tag: {
+              text: "Needs fixing",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p>Fix the issues, then upload a new version of your data to check if it is ready to submit.</p>
+
+    <div class="govuk-button-group">
+      <a href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload?data_fixed=true"
+        class="govuk-button">Upload a new version</a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

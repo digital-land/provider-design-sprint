@@ -1862,6 +1862,56 @@ router.get("/submit-dataset/organisations/:orgId/:datasetId/confirmation", (req,
   res.render("/submit-dataset/confirmation", locals);
 })
 
+/**********************************************************
+ * Iterative Check v2 — 2025-01-14                        *
+***********************************************************/
+
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/results", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/results-blocked", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/results-non-blocked", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/results-non-blocked", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/issue-blocking", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/issue-detail-blocking", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/issue-non-blocking", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/issue-detail-non-blocking", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/confirmation", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/confirmation", locals);
+})
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
