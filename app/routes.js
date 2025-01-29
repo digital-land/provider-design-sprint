@@ -2025,6 +2025,24 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/issue-non-blocki
   res.render("/check-iterative-v2/issue-detail-non-blocking", locals);
 })
 
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/share-results", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/share-results", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/share-confirmation", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/share-confirmation", locals);
+})
+
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/confirmation", async (req, res) => {
   const locals = {};
   locals.version_path = "/iterative-check-v2";

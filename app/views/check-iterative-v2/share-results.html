@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Share these results" %}
+{% set path_slug = version_path+"/organisations/"+organisation.organisation+"/"+dataset.dataset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Check your planning data" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back to results",
+  href: path_slug +"/results"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+    <p>Copy and send this link to someone and they will be able to view the results.</p>
+
+    {% set share_url = "https://submit.planning.data.gov.uk"+path_slug+"/results" %}
+    <p><code><a href="{{share_url}}">{{share_url}}</a></code></p>
+
+    {{ govukButton({
+      text: "Copy link",
+      classes: "app-c-button--secondary-quiet"
+    }) }}
+
+    <form novalidate
+      action="{{version_path}}/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/share-confirmation"
+      method="post">
+
+      <h2 class="govuk-heading-m">Share the results by email</p>
+
+      {{ govukInput({
+        label: {
+          text: "Email address"
+        },
+        id: "share-email",
+        name: "share_email"
+      }) }}
+
+      {{ govukButton({
+        text: "Share results"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

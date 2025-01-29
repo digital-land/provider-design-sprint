@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Results shared" %}
+{% set path_slug = version_path+"/organisations/"+organisation.organisation+"/"+dataset.dataset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Check your planning data" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back to results",
+  href: path_slug +"/results"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+    <p>Your email was sent successfully.</p>
+
+    <p><a href="{{ path_slug }}/results">Return to results</a></p>
+
+    <p><a href="{{ path_slug }}/share-results">Share results again</a></p>
+
+    
+  </div>
+</div>
+
+{% endblock %}
