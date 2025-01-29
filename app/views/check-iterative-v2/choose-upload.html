@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "How do you want to provide your data?" %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Check your planning data" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% set pageHeader %}
+<span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+<h1 class="govuk-fieldset__heading">
+  {{ pageName }}
+</h1>
+{% endset %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back to "+ dataset.name +" overview",
+  href: version_path+"/organisations/"+ organisation.organisation +"/"+ dataset.dataset
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form novalidate
+      action="{{version_path}}/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/upload-data"
+      method="post">
+
+      {{ govukRadios({
+        idPrefix: "upload-method",
+        name: "upload_method",
+        fieldset: {
+          legend: {
+            html: pageHeader,
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            text: "File upload",
+            value: "file"
+          },
+          {
+            text: "URL",
+            value: "url"
+          }
+        ],
+        value: data.dataset
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

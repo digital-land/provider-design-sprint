@@ -1866,6 +1866,128 @@ router.get("/submit-dataset/organisations/:orgId/:datasetId/confirmation", (req,
  * Iterative Check v2 — 2025-01-14                        *
 ***********************************************************/
 
+router.get(["/iterative-check-v2", "/iterative-check-v2/start"], async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+
+  res.render("/common/landing", locals);
+})
+
+router.get("/iterative-check-v2/organisations", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+
+  locals.organisations = require("../app/data/organisations.json");
+  locals.alphabetisedOrgs = {};
+  let currLetter = "";
+
+  for (const org in locals.organisations) {
+    if (Object.hasOwnProperty.call(locals.organisations, org)) {
+      const thisOrg = locals.organisations[org];
+      let firstLetter = thisOrg.name[0];
+
+      if (firstLetter != currLetter) {
+        currLetter = firstLetter;
+        locals.alphabetisedOrgs[currLetter] = [];
+      }
+
+      locals.alphabetisedOrgs[currLetter].push(thisOrg);
+    }
+  }
+
+  res.render("/common/organisations", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  
+  const orgSlug = req.params.orgId.replace(/:/, "_");
+  const orgPath = path.join(__dirname, `../app/data/${orgSlug}/datasets.json`);
+
+  if (fs.existsSync(orgPath)) {
+    locals.datasets = require(orgPath);
+  } else {
+    locals.datasets = require('../app/data/default/datasets.json');
+  }
+
+  locals.datasetCount = locals.datasets.length;
+  locals.datasetsSubmitted = locals.datasets.filter(
+    (row) => row.status != "not-submitted"
+  ).length;
+  locals.datasetErrors = locals.datasets.filter(
+    (row) => row.status == "error"
+  ).length;
+  locals.datasetIssues = locals.datasets.filter(
+    (row) => row.issue_count > 0
+  ).length;
+
+  locals.statutoryDatasets = locals.datasets.filter(
+    (row) => row.provision == "statutory"
+  );
+
+  locals.odpDatasets = locals.datasets.filter(
+    (row) => row.provision == "odp"
+  );
+
+  res.render("/check-iterative-v2/lpa-overview", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId", (req, res) => {
+  res.redirect(`/iterative-check-v2/organisations/${req.params.orgId}/${req.params.datasetId}/get-started`);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/get-started", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/get-started", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/choose-upload", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/choose-upload", locals);
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/upload-data", async (req, res) => {
+  if (req.session.data['upload_method'] == "url") {
+    const url = `/iterative-check-v2/organisations/${req.params.orgId}/${req.params.datasetId}/endpoint-details`
+    res.redirect(url)
+  } else {
+    const locals = {};
+    locals.version_path = "/iterative-check-v2";
+    locals.organisation = getOrg(req.params.orgId);
+    locals.dataset = getDataset(req.params.datasetId);
+
+    res.render("/check-iterative-v2/upload-data", locals);
+  }
+})
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/endpoint-details", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/endpoint-details", locals);
+})
+
+
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/checking-file", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/check-iterative-v2/checking-file", locals);
+})
 
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/results", async (req, res) => {
   const locals = {};
