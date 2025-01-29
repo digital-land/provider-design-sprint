@@ -19,10 +19,9 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {{ govukPanel({
-          titleText: pageName
-    }) }}
-
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
 
     <h2 class="govuk-heading-l">What to do next</h2>
 
@@ -42,6 +41,15 @@
 
     <p>Once your data is published on your website, you can submit your data to the platform.</p>
 
+    <p>You'll need to provide your:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>full name</li>
+      <li>work email address</li>
+      <li>endpoint URL: the location of your data through an API or CSV file</li>
+      <li>webpage URL: publicly accessible page on your organisation's website with information about the data</li>
+    </ul>
+
     <div class="govuk-button-group">
       {{ govukButton({
         text: "Submit your dataset",
@@ -49,6 +57,8 @@
         isStartButton: true
       })}}
     </div>
+
+    <p><a href="#">Return to your dashboard</a></p>
   </div>
 
 
