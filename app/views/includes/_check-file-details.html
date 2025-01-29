@@ -1,0 +1,46 @@
+{% if data['upload_method'] == "url" %}
+{% set endpoint_html %}<code><a href="{{ data['endpoint_url'] }}">{{ data['endpoint_url'] }}</a></code>{% endset %}
+{% set rows = [
+  {
+    key: {
+      text: "Endpoint URL"
+    },
+    value: {
+      html: endpoint_html
+    }
+  },
+  {
+    key: {
+      text: "Date checked"
+    },
+    value: {
+      text: "now" | govukDateTime 
+    }
+  }
+  ]
+  %}
+  {% else %}
+  {% set rows = [
+    {
+      key: {
+        text: "File name"
+      },
+      value: {
+        html: "<code>Brighton Hove_Final_BLR_2018_Validated.csv</code>"
+      }
+    },
+    {
+      key: {
+        text: "Date checked"
+      },
+      value: {
+        text: "now" | govukDateTime
+      }
+    }
+    ]
+    %}
+    {% endif %}
+    
+    {{ govukSummaryList({
+      rows: rows
+    }) }}
