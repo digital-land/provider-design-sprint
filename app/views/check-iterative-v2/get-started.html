@@ -6,13 +6,6 @@
 {% include "includes/_service-navigation-header.html" %}
 {% endblock %}
 
-{% block pageScripts %}
-<script type="text/javascript">
-  var $element = document.querySelector('#step-by-step-navigation')
-  var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
-</script>
-{% endblock %}
-
 {% block beforeContent %}
 
 {{ super() }}
@@ -48,7 +41,7 @@
     {% set complete_step_snippet %}
     {{ govukButton ({
       text: "Mark this step as complete",
-      classes: "govuk-button--secondary"
+      classes: "govuk-button--secondary js-mark-completed"
     })}}
     {% endset %}
 
@@ -239,3 +232,4 @@
 </div>
 
 {% endblock %}
+
