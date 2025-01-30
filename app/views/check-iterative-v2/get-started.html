@@ -43,200 +43,197 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <h2 class="govuk-heading-l">How to prepare and submit your {{ dataset.name }} data</h2>
 
-    <div data-module="appstepnav" id="step-by-step-navigation" class="app-step-nav js-hidden app-step-nav--large"
-      data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps"
-      data-hide-all-text="Hide all steps">
-      <ol class="app-step-nav__steps">
-        <li class="app-step-nav__step js-step" id="prepare-your-data">
-          <div class="app-step-nav__header js-toggle-panel" data-position="1">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 1<span
-                      class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                  </span>
-                </span>
-              </span>
+    {% set complete_step_snippet %}
+    {{ govukButton ({
+      text: "Mark this step as complete",
+      classes: "govuk-button--secondary"
+    })}}
+    {% endset %}
 
-              <span class="js-step-title">
-                Prepare your data
-              </span>
-            </h2>
-          </div>
+    {% set step_1_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 1:
+      Prepare your data
+    </h3>
+    {% endset %}
 
-          <div class="app-step-nav__panel js-panel" id="step-panel-prepare-your-data-1">
-            <p class="app-step-nav__paragraph">Read the <a
-                href="https://www.planning.data.gov.uk/guidance/specifications/">specifications</a> to understand what
-              data is required. Start with
-              the fields you already have, you can update and
-              improve your data over time.</p>
-          </div>
+    {% set step_1_hint_html %}
+    <div>
+      <p><a href="https://www.planning.data.gov.uk/guidance/specifications/">Read the guidance to understand what
+        data is required</a>. Start with the fields you already have, you can update and
+        improve your data over time.</p>
 
-        </li>
-
-        <li class="app-step-nav__step js-step" id="check-data-specifications">
-          <div class="app-step-nav__header js-toggle-panel" data-position="2">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 2<span
-                      class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                  </span>
-                </span>
-              </span>
-
-              <span class="js-step-title">
-                Check your data meets the specifications
-              </span>
-            </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel" id="step-panel-check-data-specifications-2">
-            <ol class="app-step-nav__list " data-length="1">
-              <li class="app-step-nav__list-item js-list-item ">
-                <p class="app-step-nav__paragraph">
-                  The <a
-                    href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload">check
-                    service</a> can help you understand
-                  if
-                  your data is ready to submit or if you need to change anything before you publish it on your website.
-                </p>
-
-                <p class="app-step-nav__paragraph">You need to choose to provide your data in one of these file formats:
-                </p>
-
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>CSV</li>
-                  <li>GeoJSON</li>
-                  <li>GML</li>
-                  <li>GeoPackage</li>
-                </ul>
-
-                <p class="app-step-nav__paragraph">Alternatively you can provide us with a URL.</p>
-
-                <ol class="app-step-nav__list " data-length="1">
-                  <li class="app-step-nav__list-item js-list-item ">
-                    <a data-position="2.1" class="app-step-nav__link js-link"
-                      href="{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload">Check
-                      your
-                      data</a>
-                  </li>
-                </ol>
-              </li>
-            </ol>
-          </div>
-
-        </li>
-
-        <li class="app-step-nav__step js-step" id="publish-your-data">
-          <div class="app-step-nav__header js-toggle-panel" data-position="3">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 3<span
-                      class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                  </span>
-                </span>
-              </span>
-
-              <span class="js-step-title">
-                Publish your data
-              </span>
-            </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel" id="step-panel-publish-your-data-3">
-            <p class="app-step-nav__paragraph">Your data must be hosted on a URL the public can access (this is your
-              data URL). </p>
-
-            <p class="app-step-nav__paragraph">You must link to that URL from a webpage about the data (your
-              documentation URL).</p>
-
-            <p class="app-step-nav__paragraph">Your documentation URL needs to be on your official planning authority
-              website, usually ending in gov.uk.</p>
-
-            <p class="app-step-nav__paragraph">It should also include a statement that the data is provided under the
-              Open Government Licence.</p>
-          </div>
-
-        </li>
-
-        <li class="app-step-nav__step js-step" id="submit-your-data">
-          <div class="app-step-nav__header js-toggle-panel" data-position="4">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4<span
-                      class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                  </span>
-                </span>
-              </span>
-
-              <span class="js-step-title">
-                Submit your data
-              </span>
-            </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel" id="step-panel-submit-your-data-4">
-            <p class="app-step-nav__paragraph"><a href="{{version_path}}/submit">Submit your
-                data</a> to the planning data platform using this form. You will need to supply your endpoint URL and
-              your documentation URL.</p>
-
-            <p class="app-step-nav__paragraph">We’ll process your submission and add your dataset to the planning data
-              platform.</p>
-
-            <ol class="app-step-nav__list " data-length="1">
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="4.1" class="app-step-nav__link js-link" href="{{version_path}}/submit">Submit
-                  your data</a>
-              </li>
-            </ol>
-          </div>
-
-        </li>
-
-        <li class="app-step-nav__step js-step" id="update-your-data">
-          <div class="app-step-nav__header js-toggle-panel" data-position="5">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 5<span
-                      class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                  </span>
-                </span>
-              </span>
-
-              <span class="js-step-title">
-                Update your data
-              </span>
-            </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel" id="step-panel-update-your-data-5">
-            <p class="app-step-nav__paragraph">
-              Whenever the data changes, update it on your endpoint URL. We will collect data from your endpoint URL
-              every day.
-            </p>
-
-            <p class="app-step-nav__paragraph">
-              Your endpoint URL needs to remain the same, don’t change it when you make updates.
-            </p>
-
-          </div>
-
-        </li>
-
-      </ol>
+        {{ complete_step_snippet | safe }}
     </div>
+    {% endset %}
+
+    {% set step_2_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 2:
+      Check your data meets the specifications
+    </h3>
+    {% endset %}
+
+    {% set step_2_hint_html %}
+    <div>
+      <p>The check tool can help you understand if your data is ready to submit or if you need to change anything before you publish it on your website.</p>
+
+      <p>You need to choose to provide your data in one of these file formats:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>CSV</li>
+        <li>GeoJSON</li>
+        <li>GML</li>
+        <li>GeoPackage</li>
+      </ul>
+
+      <p>Alternatively you can provide us with a URL.</p>
+
+      {{ govukButton ({
+        text: "Check your data",
+        href: "{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload",
+        isStartButton: true
+      }) }}
+
+      <p>{{ complete_step_snippet | safe }}</p>
+    </div>
+    {% endset %}
+
+    {% set step_3_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 3:
+      Publish your data
+    </h3>
+    {% endset %}
+
+    {% set step_3_hint_html %}
+    <div>
+      <p>Your data must be hosted on a URL the public can access (this is your
+        endpoint URL). </p>
+
+      <p>You must link to that URL from a webpage about the data (your
+        webpage URL).</p>
+
+      <p>Your webpage URL needs to be on your official planning authority
+        website, usually ending in gov.uk.</p>
+
+      <p>It should also include a statement that the data is provided under the
+        Open Government Licence.</p>
+
+        {{ complete_step_snippet | safe }}
+    </div>
+    {% endset %}
+
+    {% set step_4_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4:
+      Submit your data
+    </h3>
+    {% endset %}
+
+    {% set step_4_hint_html %}
+    <div>
+      <p>Submit your data to the planning data platform using this form.
+        You will need to supply your endpoint URL and
+        your webpage URL.</p>
+
+      <p>We’ll process your submission and add your dataset to the planning data
+        platform.</p>
+
+      {{ govukButton ({
+        text: "Submit your data",
+        href: "{{version_path}}/submit",
+        isStartButton: true
+      })}}
+    </div>
+    {% endset %}
+
+    {% set step_5_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 5:
+      Update your data
+    </h3>
+    {% endset %}
+
+    {% set step_5_hint_html %}
+    <div>
+      <p>Whenever the data changes, update it on your endpoint URL.
+      We will collect data from your endpoint URL every day.</p>
+
+      <p>Your endpoint URL needs to remain the same, don’t change it when you make updates.</p>
+    </div>
+    {% endset %}
+
+    {{ govukTaskList({
+      items: [
+        {
+          title: {
+            html: step_1_title_html
+          },
+          hint: {
+            html: step_1_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_2_title_html
+          },
+          hint: {
+            html: step_2_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_3_title_html
+          },
+          hint: {
+            html: step_3_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_4_title_html
+          },
+          hint: {
+            html: step_4_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_5_title_html
+          },
+          hint: {
+            html: step_5_hint_html
+          }
+        }
+      ]
+    })}}
 
   </div>
 </div>
