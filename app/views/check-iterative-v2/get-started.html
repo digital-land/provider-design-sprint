@@ -69,6 +69,8 @@
     </h3>
     {% endset %}
 
+    {% set check_url %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload{% endset %}
+
     {% set step_2_hint_html %}
     <div>
       <p>The check tool can help you understand if your data is ready to submit or if you need to change anything before you publish it on your website.</p>
@@ -86,7 +88,7 @@
 
       {{ govukButton ({
         text: "Check your data",
-        href: "{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload",
+        href: check,
         isStartButton: true
       }) }}
 
