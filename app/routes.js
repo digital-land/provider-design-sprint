@@ -1937,13 +1937,44 @@ router.get("/iterative-check-v2/organisations/:orgId", async (req, res) => {
   res.render("/check-iterative-v2/lpa-overview", locals);
 })
 
-router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", (req, res) => {
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", async (req, res) => {
   const locals = {};
   locals.version_path = "/iterative-check-v2";
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  locals.endpoints = require("../app/data/endpoints.json");
+  const endpointQuery = {
+    sql: `
+      select
+          rhe.endpoint_url,
+          s.documentation_url,
+          rhe.licence,
+          rhe.status,
+          rhe.endpoint_entry_date as date_added,
+          rhe.latest_log_entry_date as last_accessed,
+          rhe.resource_start_date as last_updated
+        from
+          reporting_historic_endpoints rhe
+        join source s on s.endpoint = rhe.endpoint
+        where
+          rhe.pipeline = :p0
+          and rhe.organisation = :p1
+          and (rhe.endpoint_end_date == "" OR rhe.endpoint_end_date > date('now'))
+        order by
+          date_added DESC
+        limit
+          101
+    `,
+    p0: req.params.datasetId,
+    p1: req.params.orgId,
+    _shape: 'objects'
+  }
+
+  const endpointResponse = await queryDatasette(endpointQuery);
+  console.log(endpointResponse)
+
+  locals.endpoints = endpointResponse.rows
+  // locals.endpoints = require("../app/data/endpoints.json");
 
   res.render("/check-iterative-v2/dataset-details", locals);
 })
@@ -2050,7 +2081,7 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/share-confirmati
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  res.render("/check-iterative-v2/share-results", locals);
+  res.render("/check-iterative-v2/share-confirmation", locals);
 })
 
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/confirmation", async (req, res) => {
