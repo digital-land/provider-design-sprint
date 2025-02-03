@@ -1946,7 +1946,7 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", (req,
   locals.endpoints = require("../app/data/endpoints.json");
 
   res.render("/check-iterative-v2/dataset-details", locals);
-}
+})
 
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/get-started", async (req, res) => {
   const locals = {};
