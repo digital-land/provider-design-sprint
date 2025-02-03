@@ -53,12 +53,12 @@
     <div class="govuk-button-group">
       {{ govukButton({
         text: "Submit your dataset",
-        href: "#",
+        href: "/submit-dataset/organisations/"+organisation.organisation+"/"+dataset.dataset+"/lpa-details",
         isStartButton: true
       })}}
     </div>
 
-    <p><a href="#">Return to your dashboard</a></p>
+    <p><a href="{{version_path}}/organisations/{{organisation.organisation}}">Return to your dashboard</a></p>
   </div>
 
 
