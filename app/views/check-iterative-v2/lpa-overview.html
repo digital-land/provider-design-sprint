@@ -92,6 +92,7 @@ href: version_path+"/organisations"
       {{ pageName }}
     </h1>
 
+    {% if showBrownfieldNotice == 'true' %}
     <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title"
       data-module="govuk-notification-banner">
       <div class="govuk-notification-banner__header">
@@ -122,6 +123,7 @@ href: version_path+"/organisations"
 
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 

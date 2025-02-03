@@ -1924,19 +1924,29 @@ router.get("/iterative-check-v2/organisations/:orgId", async (req, res) => {
   ).length;
 
   locals.statutoryDatasets = locals.datasets.filter(
-    (row) => row.provision == "statutory"
+    (row) => row.provision_reason == "statutory"
   );
 
   locals.odpDatasets = locals.datasets.filter(
-    (row) => row.provision == "odp"
+    (row) => row.provision_reason == "expected"
   );
+
+  locals.showBrownfieldNotice = locals.datasets.
+    find(x => x.dataset === 'brownfield-land').notice
 
   res.render("/check-iterative-v2/lpa-overview", locals);
 })
 
-router.get("/iterative-check-v2/organisations/:orgId/:datasetId", (req, res) => {
-  res.redirect(`/iterative-check-v2/organisations/${req.params.orgId}/${req.params.datasetId}/get-started`);
-})
+router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", (req, res) => {
+  const locals = {};
+  locals.version_path = "/iterative-check-v2";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  locals.endpoints = require("../app/data/endpoints.json");
+
+  res.render("/check-iterative-v2/dataset-details", locals);
+}
 
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/get-started", async (req, res) => {
   const locals = {};
@@ -2040,7 +2050,7 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/share-confirmati
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  res.render("/check-iterative-v2/share-confirmation", locals);
+  res.render("/check-iterative-v2/share-results", locals);
 })
 
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/confirmation", async (req, res) => {
