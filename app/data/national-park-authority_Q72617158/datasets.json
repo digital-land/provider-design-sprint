@@ -4,7 +4,7 @@
     "dataset": "article-4-direction",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -13,7 +13,7 @@
     "dataset": "article-4-direction-area",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -22,7 +22,7 @@
     "dataset": "brownfield-land",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "statutory",
     "provision": null
   },
@@ -31,7 +31,7 @@
     "dataset": "conservation-area",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -40,7 +40,7 @@
     "dataset": "conservation-area-document",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -49,7 +49,7 @@
     "dataset": "listed-building-outline",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -58,7 +58,7 @@
     "dataset": "tree",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -67,7 +67,7 @@
     "dataset": "tree-preservation-order",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -76,7 +76,7 @@
     "dataset": "tree-preservation-zone",
     "status": "live",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   }
