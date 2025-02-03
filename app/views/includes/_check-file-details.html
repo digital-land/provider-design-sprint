@@ -20,13 +20,14 @@
   ]
   %}
   {% else %}
+  {% set filename_html %}<code>{{ organisation.name | replace(" ", "_") }}-{{ dataset.dataset }}-2025.csv</code>{% endset %}
   {% set rows = [
     {
       key: {
         text: "File name"
       },
       value: {
-        html: "<code>Brighton Hove_Final_BLR_2018_Validated.csv</code>"
+        html: filename_html
       }
     },
     {
