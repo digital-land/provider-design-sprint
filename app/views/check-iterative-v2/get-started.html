@@ -88,7 +88,7 @@
 
       {{ govukButton ({
         text: "Check your data",
-        href: check,
+        href: check_url,
         isStartButton: true
       }) }}
 
@@ -128,6 +128,8 @@
     </h3>
     {% endset %}
 
+    {% set submit_url %}/submit-dataset/organisations/{{organisation.organisation}}/{{dataset.dataset}}/lpa-details{% endset %}
+
     {% set step_4_hint_html %}
     <div>
       <p>Submit your data to the planning data platform using this form.
@@ -139,7 +141,7 @@
 
       {{ govukButton ({
         text: "Submit your data",
-        href: "{{version_path}}/submit",
+        href: submit_url,
         isStartButton: true
       })}}
     </div>
