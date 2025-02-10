@@ -1971,8 +1971,6 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", async
   }
 
   const endpointResponse = await queryDatasette(endpointQuery);
-  console.log(endpointResponse)
-
   locals.endpoints = endpointResponse.rows
   // locals.endpoints = require("../app/data/endpoints.json");
 
