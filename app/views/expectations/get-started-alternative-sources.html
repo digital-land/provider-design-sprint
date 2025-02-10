@@ -1,0 +1,252 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName %}{{organisation.name}} — {{dataset.name}} — Get started{% endset %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: version_path+"/start"
+    },
+    {
+      text: "Organisations",
+      href: version_path+"/organisations"
+    },
+    {
+      text: organisation.name,
+      href: version_path+"/organisations/"+organisation.organisation
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  {% include "includes/_dataset-page-header" %}
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">How to prepare and submit your {{ dataset.name }} data</h2>
+
+    {% set complete_step_snippet %}
+    {{ govukButton ({
+      text: "Mark this step as complete",
+      classes: "govuk-button--secondary js-mark-completed"
+    })}}
+    {% endset %}
+
+    {% set step_1_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 1:
+      Prepare your data
+    </h3>
+    {% endset %}
+
+    {% set review_url %}{{version_url}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/review-alternative-sources{%endset%}
+    {% set step_1_hint_html %}
+    <div>
+      <p>We have found 8 conservation areas in your boundary from other sources.</p>
+
+      <p>Review the records to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check if the data from alternative sources is correct</li>
+        <li>download the data to add it to your dataset</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Review alternative records",
+        href: review_url,
+        isStartButton: true
+      }) }}
+      
+
+      {{ complete_step_snippet | safe }}
+    </div>
+    {% endset %}
+
+    {% set step_2_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 2:
+      Check your data meets the specifications
+    </h3>
+    {% endset %}
+
+    {% set check_url %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}/choose-upload{% endset %}
+
+    {% set step_2_hint_html %}
+    <div>
+      <p>The check tool can help you understand if your data is ready to submit or if you need to change anything before you publish it on your website.</p>
+
+      <p>You need to choose to provide your data in one of these file formats:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>CSV</li>
+        <li>GeoJSON</li>
+        <li>GML</li>
+        <li>GeoPackage</li>
+      </ul>
+
+      <p>Alternatively you can provide us with a URL.</p>
+
+      {{ govukButton ({
+        text: "Check your data",
+        href: check_url,
+        isStartButton: true
+      }) }}
+
+      <p>{{ complete_step_snippet | safe }}</p>
+    </div>
+    {% endset %}
+
+    {% set step_3_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 3:
+      Publish your data
+    </h3>
+    {% endset %}
+
+    {% set step_3_hint_html %}
+    <div>
+      <p>Your data must be hosted on a URL the public can access (this is your
+        endpoint URL). </p>
+
+      <p>You must link to that URL from a webpage about the data (your
+        webpage URL).</p>
+
+      <p>Your webpage URL needs to be on your official planning authority
+        website, usually ending in gov.uk.</p>
+
+      <p>It should also include a statement that the data is provided under the
+        Open Government Licence.</p>
+
+        {{ complete_step_snippet | safe }}
+    </div>
+    {% endset %}
+
+    {% set step_4_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4:
+      Submit your data
+    </h3>
+    {% endset %}
+
+    {% set submit_url %}/submit-dataset/organisations/{{organisation.organisation}}/{{dataset.dataset}}/lpa-details{% endset %}
+
+    {% set step_4_hint_html %}
+    <div>
+      <p>Submit your data to the planning data platform using this form.
+        You will need to supply your endpoint URL and
+        your webpage URL.</p>
+
+      <p>We’ll process your submission and add your dataset to the planning data
+        platform.</p>
+
+      {{ govukButton ({
+        text: "Submit your data",
+        href: submit_url,
+        isStartButton: true
+      })}}
+    </div>
+    {% endset %}
+
+    {% set step_5_title_html %}
+    <h3 class="govuk-heading-m">
+      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 5:
+      Update your data
+    </h3>
+    {% endset %}
+
+    {% set step_5_hint_html %}
+    <div>
+      <p>Whenever the data changes, update it on your endpoint URL.
+      We will collect data from your endpoint URL every day.</p>
+
+      <p>Your endpoint URL needs to remain the same, don’t change it when you make updates.</p>
+    </div>
+    {% endset %}
+
+    {{ govukTaskList({
+      items: [
+        {
+          title: {
+            html: step_1_title_html
+          },
+          hint: {
+            html: step_1_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_2_title_html
+          },
+          hint: {
+            html: step_2_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_3_title_html
+          },
+          hint: {
+            html: step_3_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_4_title_html
+          },
+          hint: {
+            html: step_4_hint_html
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            html: step_5_title_html
+          },
+          hint: {
+            html: step_5_hint_html
+          }
+        }
+      ]
+    })}}
+
+  </div>
+</div>
+
+{% endblock %}
+

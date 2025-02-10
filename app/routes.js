@@ -2091,6 +2091,28 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/confirmation", a
   res.render("/check-iterative-v2/confirmation", locals);
 })
 
+/**********************************************************
+ * Expectations checks - 2025-02-10                       *
+***********************************************************/
+
+router.get("/expectations/organisations/:orgId/:datasetId/get-started", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/expectations/get-started", locals);
+})
+
+router.get("/expectations/organisations/:orgId/:datasetId/get-started-alternative-sources", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/expectations/get-started-alternative-sources", locals);
+})
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
