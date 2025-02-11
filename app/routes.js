@@ -2113,6 +2113,25 @@ router.get("/expectations/organisations/:orgId/:datasetId/get-started-alternativ
   res.render("/expectations/get-started-alternative-sources", locals);
 })
 
+router.get("/expectations/organisations/:orgId/:datasetId/review-alternative-sources", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/expectations/review-alternative-sources", locals);
+})
+
+router.get("/expectations/organisations/:orgId/:datasetId/review-record", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/expectations/review-record", locals);
+})
+
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);

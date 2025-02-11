@@ -1,0 +1,142 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Review alternative sources" %}
+{% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Review alternative sources" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: pageSlug+"/review-alternative-sources"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      Review record 1 of 8
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: "Record 1"
+        }
+      },
+      rows: [
+        {
+          key: {
+            text: "reference"
+          },
+          value: {
+            text: "CA01"
+          }
+        },
+        {
+          key: {
+            text: "name"
+          },
+          value: {
+            text: "Ambridge"
+          }
+        },
+        {
+          key: {
+            text: "organisation"
+          },
+          value: {
+            text: "Historic England"
+          }
+        },
+        {
+          key: {
+            text: "geometry"
+          },
+          value: {
+            html: "<code>MULTIPOLYGON (((1.188829 51.23478,1.188376 51.234909,1.188381 51.234917,1.187912 51.235022...</code>"
+          }
+        },
+        {
+          key: {
+            text: "entry-date"
+          },
+          value: {
+            text: "2025-01-23"
+          }
+        },
+        {
+          key: {
+            text: "start-date"
+          },
+          value: {
+            text: "1972-04-03"
+          }
+        },
+        {
+          key: {
+            text: "designation-date"
+          },
+          value: {
+            text: "1972-04-03"
+          }
+        },
+        {
+          key: {
+            text: "end-date"
+          },
+          value: {
+            text: ""
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukRadios({
+      name: "review_record",
+      fieldset: {
+        legend: {
+          text: "Is this record correct?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "true",
+          text: "Yes, add it to the data export"
+        },
+        {
+          value: "false",
+          text: "No, ignore this record"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      href: pageSlug+"/check-answers"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Review alternative sources" %}
+{% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Review alternative sources" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back to "+ dataset.name +" overview",
+  href: pageSlug+"/get-started-alternative-sources"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">
+      We have found conservation areas in your boundary from alternative sources
+    </h2>
+
+    <p>Review the records and let us know if they are correct or incorrect.</p>
+
+    <p>You will also receive a report which you can download and use to add the data to your dataset.</p>
+
+    {{ govukButton({
+      text: "Review records",
+      href: pageSlug+"/review-record",
+      isStartButton: true
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
