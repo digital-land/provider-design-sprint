@@ -127,6 +127,11 @@ code, code * {
   background-color: govuk-colour("light-grey");
 }
 
+pre {
+  background-color: govuk-colour("light-grey");
+  margin: 0
+}
+
 .app-masthead {
   @include govuk-responsive-padding(6, "top");
   @include govuk-responsive-padding(6, "bottom");
@@ -310,4 +315,9 @@ $app-hover-dark-background: #dddcdb;
   &::before {
     content: none;
   }
+}
+
+.dl-code-preview {
+  max-height: 20em;
+  overflow: scroll;
 }

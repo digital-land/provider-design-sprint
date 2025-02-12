@@ -2142,6 +2142,30 @@ router.get("/expectations/organisations/:orgId/:datasetId/review-record/:record_
   res.render("/expectations/review-record", locals);
 })
 
+router.get("/expectations/organisations/:orgId/:datasetId/download-report", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  locals.conservation_areas = require("../app/data/alternative-conservation-areas.json");
+  locals.conservation_area_count = locals.conservation_areas.length;
+
+  locals.selected_ids = [];
+  locals.selected_areas = [];
+  Object.entries(req.session.data).forEach(([key, value]) => {
+    if (key.includes('review_record') && value == 'true') {
+      const id = key.match(/\d+/)[0]
+      locals.selected_ids.push(id)
+      locals.selected_areas.push(locals.conservation_areas[id])
+    }
+  })
+
+  locals.download_geojson = JSON.stringify(locals.selected_areas, null, 2);
+  locals.download_csv = convertToCSV(locals.selected_areas);
+
+  res.render("/expectations/download-report", locals);
+})
 
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
@@ -2171,4 +2195,12 @@ function getDataset(datasetId) {
 
 function getDatasetsByOrg(orgId) {
 
+}
+
+function convertToCSV(arr) {
+  const array = [Object.keys(arr[0])].concat(arr)
+
+  return array.map(it => {
+    return Object.values(it).toString()
+  }).join('\n')
 }

@@ -1,0 +1,158 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName %}Download report{% endset %}
+{% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Review alternative sources" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+
+{% block beforeContent %}
+{% set back_link_url = pageSlug + "/review-record/" + (conservation_area_count|int - 1) %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: back_link_url
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+{% set datasetMapHtml %}
+<img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+  class="govuk-!-margin-bottom-6">
+{% endset %}
+
+{% set head_data = [] %}
+{% set row_data = [] %}
+
+{% set datasetTableHtml %}
+  {% for row in selected_areas %}
+    {% set cell_data = [] %}
+    {% if loop.first == true %}
+      {% set first_loop = true %}
+    {% else %}
+      {% set first_loop = false %}
+    {% endif %}
+
+    {% for row_key, row_value in row %}
+      {% if first_loop == true %}
+        {% set head_data = head_data.concat({
+          text: row_key,
+          classes: "dl-table__header"
+        }) %}
+      {% endif %}
+
+      {% if row_key == "geometry" %}
+        {% set row_value %}<code>{{ row_value|truncate(80) }}</code>{% endset %}
+      {% elseif row_key == "point" %}
+        {% set row_value %}<code>{{ row_value }}</code>{% endset %}
+      {% endif %}
+
+      {% if "url" in row_key %}
+        {% set row_value %}<a href="{{ row_value }}">{{ row_value|truncate(80) }}</a>{% endset %}
+      {% endif %}
+
+      {% set cell_data = cell_data.concat({ html: row_value }) %}
+    {% endfor %}
+
+    {% set row_data = (row_data.push(cell_data), row_data) %}
+  {% endfor %}
+
+  <div class="app-scrollable-container dl-scrollable">  
+    {{ govukTable ({
+      head: head_data,
+      rows: row_data,
+      classes: "govuk-table dl-table dl-table--sticky"
+    }) }}
+  </div>
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ govukTabs({
+    items: [
+      {
+        label: "Map",
+        id: "dataset-map",
+        panel: {
+          html: datasetMapHtml
+        }
+      },
+      {
+        label: "Dataset table",
+        id: "dataset-table",
+        panel: {
+          html: datasetTableHtml
+        }
+      },
+      {
+        label: "GeoJSON preview",
+        id: "data-preview-geojson",
+        panel: {
+          html: '<div class="dl-code-preview"><pre><code>'+download_geojson+'</code></pre></div>'
+        }
+      },
+      {
+        label: "CSV preview",
+        id: "data-preview-csv",
+        panel: {
+          html: '<div class="dl-code-preview"><pre><code>'+download_csv+'</code></pre></div>'
+        }
+      }
+    ]
+  }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">You have selected {{ selected_areas.length }} records to download</h2>
+    
+    <p>You can download this data as a CSV or GeoJSON file to import into your systems.</p>
+    
+    <p>Follow the guidance to <a href="{{ pageSlug }}/get-started-alternative-sources">publish your data on your website</a> and submit your data to the planning data platform.</p>
+
+    <form action="{{ pageSlug }}/download-data" method="post">
+      {{ govukRadios({
+        name: "download_format",
+        fieldset: {
+          legend: {
+            text: "Choose data format",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "geojson",
+            text: "GeoJSON"
+          },
+          {
+            value: "csv",
+            text: "CSV"
+          }
+        ]
+      })}}
+
+      {{ govukButton({
+        text: "Download data"
+      })}}
+
+      <p><a href="{{ pageSlug }}/get-started-alternative-sources">Return to dataset overview</a></p>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
