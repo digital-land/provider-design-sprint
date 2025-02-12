@@ -72,17 +72,17 @@
   th, td {
     padding: govuk-spacing(1) govuk-spacing(2);
   }
+
+  thead {
+    tr {
+      background-color: govuk-colour("light-grey");
+    }
+  }
 }
 
 .dl-table--sticky {
   text-align: left;
   position: relative;
-}
-
-.dl-table__head {
-  tr {
-    background-color: govuk-colour("light-grey");
-  }
 }
 
 .dl-table__header {
@@ -91,7 +91,7 @@
   background-color: govuk-colour("light-grey");
 }
 
-.dl-table--sticky .dl-table__head tr {
+.dl-table--sticky thead tr {
   position: sticky;
   top: 0;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);

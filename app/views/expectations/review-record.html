@@ -1,6 +1,8 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Review alternative sources" %}
+{% set record_number = conservation_area_index|int + 1 %}
+
+{% set pageName %}Review record {{ record_number }} of {{ conservation_area_count }}{% endset %}
 {% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
 
 {% block header %}
@@ -11,9 +13,14 @@
 
 
 {% block beforeContent %}
+{% set back_link_url = pageSlug + "/review-record/" + (conservation_area_index|int -1) %}
+{% if conservation_area_index == 0 %}
+  {% set back_link_url = pageSlug + "/review-alternative-sources" %}
+{% endif %}
+
 {{ govukBackLink({
   text: "Back",
-  href: pageSlug+"/review-alternative-sources"
+  href: back_link_url
 }) }}
 {% endblock %}
 
@@ -23,7 +30,7 @@
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
     <h1 class="govuk-heading-l">
-      Review record 1 of 8
+      {{ pageName }}
     </h1>
   </div>
 </div>
@@ -61,16 +68,42 @@
     {{ govukSummaryList({
       card: {
         title: {
-          text: "Record 1"
+          text: "Record " + record_number
         }
       },
       rows: row_data
     }) }}
 
-    {{ govukButton({
-      text: "Continue",
-      href: pageSlug+"/check-answers"
-    }) }}
+    {% set form_action_url = pageSlug + "/review-record/" + (conservation_area_index|int + 1) %}
+    {% if conservation_area_index >= conservation_area_count -1 %}
+      {% set form_action_url = pageSlug + "/download-report" %}
+    {% endif %}
+
+    <form class="form" action="{{ form_action_url }}" method="post">
+      {{ govukRadios({
+        name: "review_record_"+conservation_area_index,
+        fieldset: {
+          legend: {
+            text: "Is this record correct?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: true,
+            text: "Yes, add it to the data export"
+          },
+          {
+            value: false,
+            text: "No, ignore this record"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
   </div>
 </div>
 
