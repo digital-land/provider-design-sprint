@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName %}Download report{% endset %}
+{% set pageName %}Download data{% endset %}
 {% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
 
 {% block header %}
@@ -121,7 +121,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">You have selected {{ selected_areas.length }} records to download</h2>
     
-    <p>You can download this data as a CSV or GeoJSON file to import into your systems.</p>
+    <p>You can download this data as a CSV or GeoJSON file to add it to your dataset.</p>
     
     <p>Follow the guidance to <a href="{{ pageSlug }}/get-started-alternative-sources">publish your data on your website</a> and submit your data to the planning data platform.</p>
 
