@@ -2167,6 +2167,33 @@ router.get("/expectations/organisations/:orgId/:datasetId/download-report", asyn
   res.render("/expectations/download-report", locals);
 })
 
+router.get('/expectations/organisations/:orgId/:datasetId/download-file', async (req, res) => {
+  const conservation_areas = require("../app/data/alternative-conservation-areas.json");
+
+  const selected_ids = [];
+  const selected_areas = [];
+  Object.entries(req.session.data).forEach(([key, value]) => {
+    if (key.includes('review_record') && value == 'true') {
+      const id = key.match(/\d+/)[0]
+      selected_ids.push(id)
+      selected_areas.push(conservation_areas[id])
+    }
+  })
+  
+  let download_file = "";
+  let filename = "";
+  if (req.session.data['download_format'] == "csv") {
+    download_file = convertToCSV(selected_areas);  
+    filename = "conservations_areas.csv";
+  } else if (req.session.data['download_format'] == "geojson") {
+    download_file = JSON.stringify(selected_areas, null, 2);
+    filename = "conservation_areas.json";
+  }
+
+  res.set({"Content-Disposition":`attachment; filename="${filename}"`});
+  res.send(download_file);
+})
+
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
