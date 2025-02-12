@@ -2119,6 +2119,9 @@ router.get("/expectations/organisations/:orgId/:datasetId/review-alternative-sou
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
+  locals.conservation_areas = require("../app/data/alternative-conservation-areas.json");
+  locals.conservation_area_count = locals.conservation_areas.length;
+
   res.render("/expectations/review-alternative-sources", locals);
 })
 
@@ -2127,6 +2130,10 @@ router.get("/expectations/organisations/:orgId/:datasetId/review-record", async 
   locals.version_path = "/expectations";
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
+
+  locals.conservation_areas = require("../app/data/alternative-conservation-areas.json");
+  locals.conservation_area_count = locals.conservation_areas.length;
+
 
   res.render("/expectations/review-record", locals);
 })

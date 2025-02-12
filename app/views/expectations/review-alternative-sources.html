@@ -27,17 +27,83 @@
   </div>
 </div>
 
+{% set datasetMapHtml %}
+<img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+  class="govuk-!-margin-bottom-6">
+{% endset %}
+
+{% set head_data = [] %}
+{% set row_data = [] %}
+
+{% set datasetTableHtml %}
+  {% for row in conservation_areas %}
+    {% set cell_data = [] %}
+    {% if loop.first == true %}
+      {% set first_loop = true %}
+    {% else %}
+      {% set first_loop = false %}
+    {% endif %}
+
+    {% for row_key, row_value in row %}
+      {% if first_loop == true %}
+        {% set head_data = head_data.concat({
+          text: row_key,
+          classes: "dl-table__header"
+        }) %}
+      {% endif %}
+
+      {% if row_key == "geometry" %}
+        {% set row_value %}<code>{{ row_value|truncate(80) }}</code>{% endset %}
+      {% elseif row_key == "point" %}
+        {% set row_value %}<code>{{ row_value }}</code>{% endset %}
+      {% endif %}
+
+      {% if "url" in row_key %}
+        {% set row_value %}<a href="{{ row_value }}">{{ row_value|truncate(80) }}</a>{% endset %}
+      {% endif %}
+
+      {% set cell_data = cell_data.concat({ html: row_value }) %}
+    {% endfor %}
+
+    {% set row_data = (row_data.push(cell_data), row_data) %}
+  {% endfor %}
+
+  <div class="app-scrollable-container dl-scrollable">  
+    {{ govukTable ({
+      head: head_data,
+      rows: row_data,
+      classes: "govuk-table dl-table dl-table--sticky"
+    }) }}
+  </div>
+{% endset %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
-      class="govuk-!-margin-bottom-6">
+    {{ govukTabs({
+    items: [
+      {
+        label: "Map",
+        id: "dataset-map",
+        panel: {
+          html: datasetMapHtml
+        }
+      },
+      {
+        label: "Dataset table",
+        id: "dataset-table",
+        panel: {
+          html: datasetTableHtml
+        }
+      }
+    ]
+  }) }}
   </div>
 </div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">
-      We have found conservation areas in your boundary from alternative sources
+      We have found {{ conservation_area_count }} conservation areas in your boundary from alternative sources
     </h2>
 
     <p>Review the records and let us know if they are correct or incorrect.</p>

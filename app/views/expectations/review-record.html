@@ -38,98 +38,33 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {% set conservation_area = conservation_areas[conservation_area_index] %}
+
+    {% set row_data = [] %}
+    {% for row_key, row_value in conservation_area %}
+      {% if row_key == "geometry" %}
+        {% set row_value %}<code>{{ row_value|truncate(80) }}</code>{% endset %}
+      {% elseif row_key == "point" %}
+        {% set row_value %}<code>{{ row_value }}</code>{% endset %}
+      {% endif %}
+
+      {% if "url" in row_key %}
+        {% set row_value %}<a href="{{ row_value }}">{{ row_value|truncate(80) }}</a>{% endset %}
+      {% endif %}
+
+      {% set row_data = row_data.concat({
+        key: { text: row_key },
+        value: { html: row_value }
+      }) %}
+    {% endfor %}
+
     {{ govukSummaryList({
       card: {
         title: {
           text: "Record 1"
         }
       },
-      rows: [
-        {
-          key: {
-            text: "reference"
-          },
-          value: {
-            text: "CA01"
-          }
-        },
-        {
-          key: {
-            text: "name"
-          },
-          value: {
-            text: "Ambridge"
-          }
-        },
-        {
-          key: {
-            text: "organisation"
-          },
-          value: {
-            text: "Historic England"
-          }
-        },
-        {
-          key: {
-            text: "geometry"
-          },
-          value: {
-            html: "<code>MULTIPOLYGON (((1.188829 51.23478,1.188376 51.234909,1.188381 51.234917,1.187912 51.235022...</code>"
-          }
-        },
-        {
-          key: {
-            text: "entry-date"
-          },
-          value: {
-            text: "2025-01-23"
-          }
-        },
-        {
-          key: {
-            text: "start-date"
-          },
-          value: {
-            text: "1972-04-03"
-          }
-        },
-        {
-          key: {
-            text: "designation-date"
-          },
-          value: {
-            text: "1972-04-03"
-          }
-        },
-        {
-          key: {
-            text: "end-date"
-          },
-          value: {
-            text: ""
-          }
-        }
-      ]
-    }) }}
-
-    {{ govukRadios({
-      name: "review_record",
-      fieldset: {
-        legend: {
-          text: "Is this record correct?",
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          value: "true",
-          text: "Yes, add it to the data export"
-        },
-        {
-          value: "false",
-          text: "No, ignore this record"
-        }
-      ]
+      rows: row_data
     }) }}
 
     {{ govukButton({
