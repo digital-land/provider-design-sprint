@@ -80,6 +80,18 @@
   </div>
 {% endset %}
 
+{% set geoJsonHtml %}
+<div class="dl-code-preview">
+<pre><code>{{ download_geojson }}</code></pre>
+</div>
+{% endset %}
+
+{% set csvHtml %}
+<div class="dl-code-preview">
+<pre><code>{{ download_csv }}</code></pre>
+</div>
+{% endset %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     {{ govukTabs({
@@ -102,14 +114,14 @@
         label: "GeoJSON preview",
         id: "data-preview-geojson",
         panel: {
-          html: '<div class="dl-code-preview"><pre><code>'+download_geojson+'</code></pre></div>'
+          html: geoJsonHtml
         }
       },
       {
         label: "CSV preview",
         id: "data-preview-csv",
         panel: {
-          html: '<div class="dl-code-preview"><pre><code>'+download_csv+'</code></pre></div>'
+          html: csvHtml
         }
       }
     ]

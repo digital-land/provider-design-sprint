@@ -2125,6 +2125,21 @@ router.get("/expectations/organisations/:orgId/:datasetId/review-alternative-sou
   res.render("/expectations/review-alternative-sources", locals);
 })
 
+router.post("/expectations/organisations/:orgId/:datasetId/review-handler", (req, res) => {
+  const urlSlug = `/expectations/organisations/${req.params.orgId}/${req.params.datasetId}`;
+
+  if (req.session.data['review_actions'] == 'download') {
+    req.session.data['all_data'] = 'true';
+    res.redirect(`${urlSlug}/download-report`);
+  } else if (req.session.data['review_actions'] == 'review') {
+    res.redirect(`${urlSlug}/review-record`)
+  } else {
+    res.status('500').send({
+      message: 'Error'
+    })
+  }
+})
+
 router.get("/expectations/organisations/:orgId/:datasetId/review-record/:record_index?", async (req, res) => {
   const locals = {};
   locals.version_path = "/expectations";
@@ -2153,13 +2168,18 @@ router.get("/expectations/organisations/:orgId/:datasetId/download-report", asyn
 
   locals.selected_ids = [];
   locals.selected_areas = [];
-  Object.entries(req.session.data).forEach(([key, value]) => {
-    if (key.includes('review_record') && value == 'true') {
-      const id = key.match(/\d+/)[0]
-      locals.selected_ids.push(id)
-      locals.selected_areas.push(locals.conservation_areas[id])
-    }
-  })
+
+  if (req.session.data['all_data'] == 'true') {
+    locals.selected_areas = locals.conservation_areas
+  } else {
+    Object.entries(req.session.data).forEach(([key, value]) => {
+      if (key.includes('review_record') && value == 'true') {
+        const id = key.match(/\d+/)[0]
+        locals.selected_ids.push(id)
+        locals.selected_areas.push(locals.conservation_areas[id])
+      }
+    })
+  }
 
   locals.download_geojson = JSON.stringify(locals.selected_areas, null, 2);
   locals.download_csv = convertToCSV(locals.selected_areas);

@@ -106,15 +106,39 @@
       We have found {{ conservation_area_count }} conservation areas in your boundary from alternative sources
     </h2>
 
-    <p>Review the records and let us know if they are correct or incorrect.</p>
+    <p>You can:</p>
 
-    <p>You can download the data to add it to your dataset.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>download the whole dataset, or choose which records to include in the download</li>
+      <li>add the data to your dataset</li>
+      <li>edit the data before publishing it on your website</li>
+    </ul>
 
-    {{ govukButton({
-      text: "Review records",
-      href: pageSlug+"/review-record",
-      isStartButton: true
-    }) }}
+    <form action="{{ pageSlug }}/review-handler" method="post">
+      {{ govukRadios({
+        name: "review_actions",
+        fieldset: {
+          legend: {
+            text: "What would you like to do with the conservation area data?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            text: "Download whole dataset",
+            value: "download"
+          },
+          {
+            text: "Review individual records",
+            value: "review"
+          }
+        ]
+      })}}
+
+      {{ govukButton({
+        text: "Continue"
+      })}}
+    </form>
   </div>
 </div>
 
