@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set pageName = organisation.name + " overview" %}
+{% set pageSlug %}{{version_path}}/organisations/{{ organisation.organisation }}{% endset %}
 
 {% block header %}
 {% include "includes/_service-navigation-header.html" %}
@@ -12,12 +13,12 @@
     <h3 class="govuk-heading-m">
       {% if dataset.status == 'not-submitted' %}
       <a class="govuk-link govuk-task-list__link"
-        href="{{version_path}}/organisations/{{ organisation.organisation }}/{{dataset.dataset}}/get-started">
+        href="{{ pageSlug }}/{{dataset.dataset}}/get-started">
         {{dataset.name}}
       </a>
       {% else %}
       <a class="govuk-link govuk-task-list__link"
-        href="{{version_path}}/organisations/{{ organisation.organisation }}/{{dataset.dataset}}/overview">
+        href="{{ pageSlug }}/{{dataset.dataset}}/overview">
         {{dataset.name}}
       </a>
       {% endif %}
@@ -31,8 +32,8 @@
       {% elif dataset.status == 'error' %}
       <p>{{dataset.error}}</p>
       {% elif dataset.status == 'needs-fixing' %}
-      <p>There {{ "is" | pluralise(dataset.issue_count) }} {{ dataset.issue_count }}
-        {{ "issue" | pluralise(dataset.issue_count) }} in this dataset</p>
+      <p>There {{ "is" if dataset.issue_count == 1 else "are" }}
+        {{ dataset.issue_count | plural("issue") }} in this dataset</p>
       {% else %}
       <p>Data URL submitted</p>
       {% endif %}
@@ -73,12 +74,12 @@
     {
       text: "Home",
       href: version_path+"/start"
-},
-{
-text: "Organisations",
-href: version_path+"/organisations"
-}
-]
+    },
+    {
+      text: "Organisations",
+      href: version_path+"/organisations"
+    }
+  ]
 }) }}
 
 {% endblock %}
@@ -115,10 +116,8 @@ href: version_path+"/organisations"
         </p>
         <p class="govuk-body govuk-notification-banner__cta">
           <a class="govuk-notification-banner__link"
-            href="{{version_path}}/organisations/local-authority:EHE/brownfield-land/get-started">Follow the steps and
-            check your data
-            meets
-            the specifications before you provide it.</a>
+            href="{{ pageSlug }}/brownfield-land/get-started">Follow the steps and
+            check your data meets the specifications before you provide it.</a>
         </p>
 
       </div>
