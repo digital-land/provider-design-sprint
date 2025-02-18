@@ -2094,6 +2094,116 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/confirmation", a
 /**********************************************************
  * Expectations checks - 2025-02-10                       *
 ***********************************************************/
+router.get(["/expectations", "/expectations/start"], async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+
+  res.render("/common/landing", locals);
+})
+
+router.get("/expectations/organisations", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+
+  locals.organisations = require("../app/data/organisations.json");
+  locals.alphabetisedOrgs = {};
+  let currLetter = "";
+
+  for (const org in locals.organisations) {
+    if (Object.hasOwnProperty.call(locals.organisations, org)) {
+      const thisOrg = locals.organisations[org];
+      let firstLetter = thisOrg.name[0];
+
+      if (firstLetter != currLetter) {
+        currLetter = firstLetter;
+        locals.alphabetisedOrgs[currLetter] = [];
+      }
+
+      locals.alphabetisedOrgs[currLetter].push(thisOrg);
+    }
+  }
+
+  res.render("/common/organisations", locals);
+})
+
+router.get("/expectations/organisations/:orgId", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  
+  const orgSlug = req.params.orgId.replace(/:/, "_");
+  const orgPath = path.join(__dirname, `../app/data/${orgSlug}/datasets.json`);
+
+  if (fs.existsSync(orgPath)) {
+    locals.datasets = require(orgPath);
+  } else {
+    locals.datasets = require('../app/data/default/datasets.json');
+  }
+
+  locals.datasetCount = locals.datasets.length;
+  locals.datasetsSubmitted = locals.datasets.filter(
+    (row) => row.status != "not-submitted"
+  ).length;
+  locals.datasetErrors = locals.datasets.filter(
+    (row) => row.status == "error"
+  ).length;
+  locals.datasetIssues = locals.datasets.filter(
+    (row) => row.issue_count > 0
+  ).length;
+
+  locals.statutoryDatasets = locals.datasets.filter(
+    (row) => row.provision_reason == "statutory"
+  );
+
+  locals.odpDatasets = locals.datasets.filter(
+    (row) => row.provision_reason == "expected"
+  );
+
+  locals.showBrownfieldNotice = locals.datasets.
+    find(x => x.dataset === 'brownfield-land').notice
+
+  res.render("/common/lpa-overview", locals);
+})
+
+router.get("/expectations/organisations/:orgId/:datasetId/overview", async (req, res) => {
+  const locals = {};
+  locals.version_path = "/expectations";
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  const endpointQuery = {
+    sql: `
+      select
+          rhe.endpoint_url,
+          s.documentation_url,
+          rhe.licence,
+          rhe.status,
+          rhe.endpoint_entry_date as date_added,
+          rhe.latest_log_entry_date as last_accessed,
+          rhe.resource_start_date as last_updated
+        from
+          reporting_historic_endpoints rhe
+        join source s on s.endpoint = rhe.endpoint
+        where
+          rhe.pipeline = :p0
+          and rhe.organisation = :p1
+          and (rhe.endpoint_end_date == "" OR rhe.endpoint_end_date > date('now'))
+        order by
+          date_added DESC
+        limit
+          101
+    `,
+    p0: req.params.datasetId,
+    p1: req.params.orgId,
+    _shape: 'objects'
+  }
+
+  const endpointResponse = await queryDatasette(endpointQuery);
+  locals.endpoints = endpointResponse.rows
+  // locals.endpoints = require("../app/data/endpoints.json");
+
+  res.render("/check-iterative-v2/dataset-details", locals);
+})
 
 router.get("/expectations/organisations/:orgId/:datasetId/get-started", async (req, res) => {
   const locals = {};
@@ -2101,16 +2211,16 @@ router.get("/expectations/organisations/:orgId/:datasetId/get-started", async (r
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  res.render("/expectations/get-started", locals);
+  res.render("/expectations/get-started-alternative-sources", locals);
 })
 
-router.get("/expectations/organisations/:orgId/:datasetId/get-started-alternative-sources", async (req, res) => {
+router.get("/expectations/organisations/:orgId/:datasetId/get-started-no-alternative-sources", async (req, res) => {
   const locals = {};
   locals.version_path = "/expectations";
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  res.render("/expectations/get-started-alternative-sources", locals);
+  res.render("/expectations/get-started", locals);
 })
 
 router.get("/expectations/organisations/:orgId/:datasetId/review-alternative-sources", async (req, res) => {
