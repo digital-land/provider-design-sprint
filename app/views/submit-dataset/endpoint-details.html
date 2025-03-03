@@ -32,6 +32,15 @@
 
     <form class="form" action="{{ urlPath }}/check-answers" method="post">
 
+      {% set hintHtml %}
+      <p>The URL of the page on your website which contains:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>information about the dataset</li>
+        <li>the link to your data</li>
+      </ul>
+      {% endset %}
+
       {{ govukInput({
         label: {
           text: "Endpoint URL",
@@ -53,7 +62,7 @@
           isPageHeading: false
         },
         hint: {
-          text: "The URL of the page on your website where the API or CSV file is located"
+          html: hintHtml
         },
         id: "documentation-url",
         name: "documentationUrl",
@@ -72,7 +81,7 @@
         items: [
           {
             value: "true",
-            text: "I confirm this dataset is provided under the Open Government Licence"
+            text: "I confirm this dataset is provided under the Open Government Licence and that the statement is displayed on my website."
           }
         ]
       }) }}
