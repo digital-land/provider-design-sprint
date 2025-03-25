@@ -30,25 +30,29 @@
 
     {{ pageHeader | safe }}
 
+    <p>The endpoint URL is the URL of the data file or feed itself. This is where we will regularly collect the data from.</p>
+
+    <p>Endpoints typically fall into 1 of the following 2 categories:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>hosted file — these will usually be URLs which end in something like <code>.json</code> or <code>.csv</code></li>
+      <li>standards compliant web server — these will usually be identifiable by parts of the URL like MapServer or FeatureServer (types of APIs), or sections that look like query parameters, like <code>?service=WFS&version=1.0.0</code></li>
+    </ul>
+
+    <p>The webpage URL is the URL of the page on your website which contains:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>information about the dataset</li>
+      <li>the link to your data</li>
+    </ul>
+
     <form class="form" action="{{ urlPath }}/check-answers" method="post">
-
-      {% set hintHtml %}
-      <p>The URL of the page on your website which contains:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>information about the dataset</li>
-        <li>the link to your data</li>
-      </ul>
-      {% endset %}
 
       {{ govukInput({
         label: {
           text: "Endpoint URL",
           classes: "govuk-label--m",
           isPageHeading: false
-        },
-        hint: {
-          text: "The location of your data through an API or CSV file"
         },
         id: "dataset-url",
         name: "datasetUrl",
@@ -60,9 +64,6 @@
           text: "Webpage URL",
           classes: "govuk-label--m",
           isPageHeading: false
-        },
-        hint: {
-          html: hintHtml
         },
         id: "documentation-url",
         name: "documentationUrl",
