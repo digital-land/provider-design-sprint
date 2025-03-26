@@ -62,6 +62,14 @@ class="govuk-!-margin-bottom-6">
 </div>
 
 <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <aside class="dataset-actions-column">
+      <h3 class="govuk-heading-s">Dataset actions</h3>
+
+      <p><a href="{{path_slug}}/share-results">Share these results</a></p>
+    </aside>
+  </div>
+
   <div class="govuk-grid-column-two-thirds">
     {% include "includes/_check-file-details.html" %}
     
@@ -165,24 +173,12 @@ class="govuk-!-margin-bottom-6">
         }
         ]
       }) }}
-    </div>
     
-    <div class="govuk-grid-column-one-third">
-      <h3 class="govuk-heading-s">Dataset actions</h3>
+    <div class="govuk-button-group">
+      <a href="{{path_slug}}/confirmation" class="govuk-button">Continue</a>
       
-      <p><a href="{{path_slug}}/share-results">Share these results</a></p>
+      <a href="{{path_slug}}/choose-upload">Upload a new version</a>
     </div>
   </div>
-  
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-button-group">
-        <a href="{{path_slug}}/confirmation" class="govuk-button">Continue</a>
-        
-        <a href="{{path_slug}}/choose-upload">Upload a new version</a>
-      </div>
-    </div>
-  </div>
-  
-  
+   
   {% endblock %}

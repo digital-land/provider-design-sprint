@@ -275,6 +275,11 @@ pre {
   }
 }
 
+.dataset-actions-column {
+  padding-top: govuk-spacing(1);
+  border-top: 5px solid govuk-colour('blue')
+}
+
 $app-secondary-button-colour: #00823b;
 $app-secondary-button-hover-colour: darken($app-secondary-button-colour, 5%);
 $app-secondary-button-background-colour: govuk-colour("white");

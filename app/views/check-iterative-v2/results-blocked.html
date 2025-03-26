@@ -62,6 +62,14 @@
 </div>
 
 <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <aside class="dataset-actions-column">
+      <h3 class="govuk-heading-s">Dataset actions</h3>
+
+      <p><a href="{{path_slug}}/share-results">Share these results</a></p>
+    </aside>
+  </div>
+
   <div class="govuk-grid-column-two-thirds">
 
     {% include "includes/_check-file-details.html" %}
@@ -178,17 +186,7 @@
         }
       ]
     }) }}
-  </div>
 
-  <div class="govuk-grid-column-one-third">
-    <h3 class="govuk-heading-s">Dataset actions</h3>
-
-    <p><a href="{{path_slug}}/share-results">Share these results</a></p>
-  </div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
     <p>Fix the issues, then upload a new version of your data to check if it is ready to submit.</p>
 
     <div class="govuk-button-group">
