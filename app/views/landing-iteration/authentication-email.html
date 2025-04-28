@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Access your organisation’s planning data" %}
+
+{% block header %}
+{% include "includes/_service-navigation-header-v2.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+    <form novalidate
+      action="{{version_path}}/authentication-email-validation"
+      method="post">
+
+      {{ govukInput({
+        label: {
+          text: "Enter your work email address",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "authentication-email",
+        name: "authentication_email"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

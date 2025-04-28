@@ -1,0 +1,50 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Validate your email address" %}
+
+{% block header %}
+{% set hideNav = true %}
+{% include "includes/_service-navigation-header-v2.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path + "/authentication-email"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+    <p>Check your email account for the validation code</p>
+
+    <form novalidate
+      action="{{version_path}}/authentication-email-validation"
+      method="post">
+
+      {{ govukInput({
+        label: {
+          text: "Validation code",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        classes: "govuk-input--width-10",
+        id: "authentication-validation",
+        name: "authentication_validation"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

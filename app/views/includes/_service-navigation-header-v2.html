@@ -1,0 +1,29 @@
+{{ govukHeader({
+  classes: "govuk-header--full-width-border"
+}) }}
+
+{% if hideNav != true %}
+{% set navItems = [
+    {
+      href: version_path + "/authenitcation-email",
+      text: "Access your organisation",
+      active: true
+    },
+    {
+      href: version_path + "/organisations",
+      text: "View all organisations"
+    },
+    {
+      href: "/guidance",
+      text: "Guidance"
+    }
+  ] %}
+{% else %}
+{% set navItems = [] %}
+{% endif %}
+
+{{ govukServiceNavigation({
+  serviceName: serviceName,
+  serviceUrl: "/",
+  navigation: navItems
+}) }}
