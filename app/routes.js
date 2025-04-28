@@ -2324,6 +2324,25 @@ router.get('/expectations/organisations/:orgId/:datasetId/download-file', async 
   res.send(download_file);
 })
 
+/**********************************************************
+ * Landing page iterations - 2025-04-28                   *
+***********************************************************/
+
+router.get('/landing-iteration/v1', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Check and provide planning data";
+  locals.version_path = "/landing-iteration/v1";
+
+  res.render('/landing-iteration/landing-v1.html', locals);
+})
+
+router.get('/landing-iteration/v2', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Check and provide planning data";
+  locals.version_path = "/landing-iteration/v2";
+
+  res.render('/landing-iteration/landing-v2.html', locals);
+})
 
 async function queryDatasette(queryObj, database='digital-land', format='json') {
   const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);

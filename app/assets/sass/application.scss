@@ -147,7 +147,11 @@ pre {
 
 .app-masthead__description {
   @include govuk-font(24);
-  margin-bottom: 0;
+  // margin-bottom: 0;
+  color: govuk-colour("white");
+}
+
+.app-masthead__description a {
   color: govuk-colour("white");
 }
 
