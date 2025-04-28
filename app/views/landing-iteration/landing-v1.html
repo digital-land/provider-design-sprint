@@ -55,7 +55,11 @@
 
     <p class="govuk-body">You do not need to publish your data on your website before you check it. </p>
 
-    <a href="#" class="govuk-button govuk-buttton--start">Check your data</a>
+    {{ govukButton ({
+      text: "Check your data",
+      href: "#",
+      isStartButton: true
+    })}}
   </div>
 </div>
 
@@ -78,7 +82,11 @@
       <li>webpage URL: the URL of the page on your website which contains information about the dataset and the link to your data</li>
     </ul>
 
-    <a href="#" class="govuk-button govuk-buttton--start">Provide your data</a>
+    {{ govukButton ({
+      text: "Provide your data",
+      href: "#",
+      isStartButton: true
+    })}}
   </div>
 </div>
 
@@ -96,7 +104,11 @@
 
     <p class="govuk-body">For any live data, we’ll let you know what you can do to improve it.</p>
 
-    <a href="#" class="govuk-button govuk-buttton--start">View your data</a>
+    {{ govukButton ({
+      text: "View your data",
+      href: "#",
+      isStartButton: true
+    })}}
   </div>
 </div>
 
