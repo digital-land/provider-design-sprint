@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block header %}
+{% set hideNav = true %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set datasetItems = [] %}
+{% for dataset in datasets %}
+  {% set datasetItem = {
+    text: dataset.name,
+    value: dataset.dataset
+  } %}
+
+  {% set datasetItems = (datasetItems.push(datasetItem), datasetItems) %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{ version_path }}/check-upload-method" method="post">
+      {{ govukRadios({
+        name: "dataset",
+        fieldset: {
+          legend: {
+            text: "Choose your dataset",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: datasetItems
+    })}}
+
+      {{ govukButton({
+        text: "Continue"
+      })}}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
