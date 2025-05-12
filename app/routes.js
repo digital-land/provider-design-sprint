@@ -8,7 +8,7 @@ const router = govukPrototypeKit.requests.setupRouter();
 const fs = require("fs");
 const path = require("path");
 
-require('./routes/functions.js')
+const { queryDatasette, getOrg, getDataset, convertToCSV } = require('./routes/functions.js')
 
 router.post("/columnMappingArticle4/upload-method", (req, res) => {
   try {

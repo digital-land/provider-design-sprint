@@ -16,19 +16,15 @@ async function queryDatasette(queryObj, database='digital-land', format='json') 
 }
 
 function getOrg(orgId) {
-  const organisations = require("../app/data/organisations.json");
+  const organisations = require("../data/organisations.json");
   return organisations.find(
     (x) => x.organisation == orgId
   );
 }
 
 function getDataset(datasetId) {
-  const datasets = require("../app/data/datasets.json");
+  const datasets = require("../data/datasets.json");
   return datasets.find((x) => x.dataset == datasetId);
-}
-
-function getDatasetsByOrg(orgId) {
-
 }
 
 function convertToCSV(arr) {
@@ -38,3 +34,5 @@ function convertToCSV(arr) {
     return Object.values(it).toString()
   }).join('\n')
 }
+
+module.exports = { queryDatasette, getOrg, getDataset, convertToCSV };
