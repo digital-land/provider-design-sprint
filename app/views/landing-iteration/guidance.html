@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName="Planning and housing data in England" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">{{ serviceName }}</h3>
+
+    <ul class="govuk-list">
+      <li><a href="#"><strong>Guidance for data providers</strong></a></li>
+      <li><a href="#">Prepare data to the specifications</a></li>
+      <li><a href="#">Use our service to check your data</a></li>
+      <li><a href="#">Publish data on your website</a></li>
+      <li><a href="#">Keep your data up to date </a></li>
+    </ul>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l" id="about-the-check-and-provide-your-data-service">About the check and provide your data service</h1>
+    <p>Creating a national index of planning data means that developers, housing associations, policy colleagues, researchers and journalists can access the data they need simply and quickly.</p>
+    <p>It means less overhead for local planning authorities and organisations, reducing the time spent preparing for data requests and freedom of information requests.</p>
+    <p>We’re working with a number of local planning authorities (LPAs) and other organisations through the Open Digital Planning community to help them provide data to our Planning Data Platform.</p>
+    <p><a href="#">Go to the check and provide planning data service</a>.</p>
+    
+    <h2 class="govuk-heading-m" id="prepare-your-data">Prepare your data</h2>
+    <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can start to index it and provide it on the platform. Start with what you have and improve it over time.</p>
+    
+    <h3 class="govuk-heading-s" id="datasets-the-service-supports">Datasets the service supports</h3>
+    <p>Right now, the service supports:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="#">article 4 direction area dataset</a></li>
+      <li><a href="#">brownfield land dataset</a></li>
+      <li><a href="#">conservation area dataset</a></li>
+      <li><a href="#">listed building outline dataset</a></li>
+      <li><a href="#">tree preservation zone dataset</a></li>
+    </ul>
+
+    <h3 class="govuk-heading-s" id="datasets-were-developing">Datasets we’re developing</h3>
+    <p>We're currently testing and developing data standards for these planning considerations:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="#">design codes</a></li>
+      <li><a href="#">local plans</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-m" id="publish-data-on-your-website">Publish data on your website</h2>
+    <p>Before you provide your data, you must publish your data on your official planning authority website, usually ending in gov.uk. Your local planning authority will always be the source of truth about your data.</p>
+    <p>Your data must be on a URL the public can access. We collect the latest data from there every day. We call this the ‘webpage URL’.</p>
+    <p>You must link to your endpoint URL from your webpage URL.</p>
+    <p>The endpoint URL is the URL of the data file or feed itself.</p>
+    <p>Endpoints typically fall into 1 of the following 2 categories:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>a file hosted on your web server — these will usually be URLs which end in something like .json or .csv</li>
+      <li>a live feed of the data from an API — these are usually hosted by your GIS (Geographic Information System) software or open data platform</li>
+    </ul>
+    <p>Whenever your data changes, update it in the endpoint URL. Your endpoint URL must remain the same, do not change it when you make updates.</p>
+    
+    <h3 class="govuk-heading-s" id="create-your-webpage">Create your webpage</h3>
+    <p>The webpage must include, for each dataset:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>the link to the endpoint URL</li>
+      <li>a summary of what the data is about</li>
+      <li>a statement that the data is provided under the <a href="#">Open Government Licence</a></li>
+    </ul>
+    <p><a href="https://digital-land.github.io/documentation-url-examples/">The example webpage</a> can help visualise what we expect. This is dummy content and represents a fictional local planning authority.</p>
+    
+    <h2 class="govuk-heading-m" id="the-open-digital-planning-community">The Open Digital Planning community</h2>
+    <p>If you’re part of the Open Digital Planning community, we expect you to provide the datasets that the service currently supports. Read more about what’s expected of you.</p>
+    <p>If you’re a local planning authority who is interested in becoming a member, you can join the community.</p>
+    
+    <h2 class="govuk-heading-m" id="get-help">Get help</h2>
+    <p>If you need any help at any stage of the process, let us know by emailing <a href="">digitalland@communities.gov.uk</a> and a member of our team will be in touch.</p>
+    
+  </div>
+</div>
+
+{% endblock %}

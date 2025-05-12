@@ -128,6 +128,7 @@ router.get('/v2/:orgId/overview', async (req, res) => {
   };
 
   const orgSlug = req.params.orgId.replace(/:/, "_");
+
   const orgPath = path.join(__dirname, `../data/${orgSlug}/datasets.json`);
 
 
@@ -162,3 +163,8 @@ router.get('/v2/:orgId/overview', async (req, res) => {
 
   res.render('/landing-iteration/lpa-overview.html', locals)
 })
+
+router.get('/v1|v2/guidance', (req, res) => {
+  res.render('/landing-iteration/guidance.html')
+})
+
