@@ -8,6 +8,8 @@ const router = govukPrototypeKit.requests.setupRouter();
 const fs = require("fs");
 const path = require("path");
 
+require('./routes/functions.js')
+
 router.post("/columnMappingArticle4/upload-method", (req, res) => {
   try {
     if (req.body.check.uploadMethod == "file") {
@@ -2327,97 +2329,5 @@ router.get('/expectations/organisations/:orgId/:datasetId/download-file', async 
 /**********************************************************
  * Landing page iterations - 2025-04-28                   *
 ***********************************************************/
+require('./routes/landing-iteration.js')
 
-router.get('/landing-iteration/v1', (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v1";
-
-  res.render('/landing-iteration/landing-v1.html', locals);
-})
-
-router.get('/landing-iteration/v2', (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
-
-  res.render('/landing-iteration/landing-v2.html', locals);
-})
-
-router.get("/landing-iteration/v2/organisations", async (req, res) => {
-  const locals = {};
-  locals.version_path = "/landing-iteration/v2";
-
-  locals.organisations = require("../app/data/organisations.json");
-  locals.alphabetisedOrgs = {};
-  let currLetter = "";
-
-  for (const org in locals.organisations) {
-    if (Object.hasOwnProperty.call(locals.organisations, org)) {
-      const thisOrg = locals.organisations[org];
-      let firstLetter = thisOrg.name[0];
-
-      if (firstLetter != currLetter) {
-        currLetter = firstLetter;
-        locals.alphabetisedOrgs[currLetter] = [];
-      }
-
-      locals.alphabetisedOrgs[currLetter].push(thisOrg);
-    }
-  }
-
-  res.render("/common/organisations", locals);
-})
-
-router.get('/landing-iteration/v2/authentication-email', (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
-
-  res.render('/landing-iteration/authentication-email.html', locals)
-})
-
-router.get('/landing-iteration/v2/authentication-email-validation', (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
-
-  res.render('/landing-iteration/authentication-email-validation.html', locals)
-})
-
-async function queryDatasette(queryObj, database='digital-land', format='json') {
-  const apiUrl = `https://datasette.planning.data.gov.uk/${database}.${format}?` + new URLSearchParams(queryObj);
-
-  const response = await fetch(apiUrl).catch(e => console.error(e));
-
-  if (response.status != 200) {
-    console.error(response)
-  } else {
-    const json = await response.json();
-    return json
-  }
-}
-
-function getOrg(orgId) {
-  const organisations = require("../app/data/organisations.json");
-  return organisations.find(
-    (x) => x.organisation == orgId
-  );
-}
-
-function getDataset(datasetId) {
-  const datasets = require("../app/data/datasets.json");
-  return datasets.find((x) => x.dataset == datasetId);
-}
-
-function getDatasetsByOrg(orgId) {
-
-}
-
-function convertToCSV(arr) {
-  const array = [Object.keys(arr[0])].concat(arr)
-
-  return array.map(it => {
-    return Object.values(it).toString()
-  }).join('\n')
-}
