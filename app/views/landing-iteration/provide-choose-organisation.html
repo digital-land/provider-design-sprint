@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block header %}
+{% set hideNav = true %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: version_path
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set orgItems = [] %}
+{% for org in organisations %}
+  {% set orgItem = {
+    text: org.name,
+    value: org.organisation
+  } %}
+
+  {% set orgItems = (orgItems.push(orgItem), orgItems) %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">What are your contact details?</h1>
+
+    <form action="{{ version_path }}/provide-choose-dataset" method="post">
+      {{ xGovukAutocomplete({
+        id: "organisation",
+        name: "organisation",
+        allowEmpty: false,
+        label: {
+          classes: "govuk-label--m",
+          isPageHeading: false,
+          text: "Choose your organisation"
+        },
+        items: orgItems
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Your full name",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "full-name",
+        name: "fullName",
+        classes: "govuk-!-width-three-quarters"
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Work email address",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "email-address",
+        name: "emailAddress",
+        classes: "govuk-!-width-three-quarters"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      })}}
+
+      
+    </form>
+  </div>
+</div>
+
+{% endblock %}

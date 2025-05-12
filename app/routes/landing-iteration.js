@@ -46,6 +46,26 @@ router.get('/v1/check-upload-method', (req, res) => {
   res.render('/landing-iteration/check-upload-method.html', locals);
 })
 
+router.get('/v1/provide', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Provide your planning data";
+  locals.version_path = "/landing-iteration/v1";
+
+  locals.organisations = require('../data/organisations.json')
+
+  res.render('/landing-iteration/provide-choose-organisation.html', locals);
+})
+
+router.get('/v1/provide-choose-dataset', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Provide your planning data";
+  locals.version_path = "/landing-iteration/v1";
+
+  locals.datasets = require('../data/default/datasets.json')
+
+  res.render('/landing-iteration/provide-choose-dataset.html', locals);
+})
+
 router.get('/v2', (req, res) => {
   const locals = {};
   locals.serviceName = "Check and provide planning data";
@@ -108,9 +128,6 @@ router.get('/v2/:orgId/overview', async (req, res) => {
   };
 
   const orgSlug = req.params.orgId.replace(/:/, "_");
-  console.log("orgSlug: ", orgSlug)
-  console.log("__dirname: ", __dirname)
-
   const orgPath = path.join(__dirname, `../data/${orgSlug}/datasets.json`);
 
 
