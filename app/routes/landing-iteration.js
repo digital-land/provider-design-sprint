@@ -182,16 +182,18 @@ router.post('/v2/validate-email', (req, res) => {
   const organisations = require('../data/organisations.json')
 
   let chosenOrg = {};
-  const emailDomain = req.session.data.authentication_email.match(/^.+@(.+)$/)[1]
+  if (req.session.data.authentication_email != "") {
+    const emailDomain = req.session.data.authentication_email.match(/^.+@(.+)$/)[1]
 
-  organisations.some((org) => {
-    const authoritiveDomain = org.website.match(/^https?:\/\/(www\.)?([\w\.-]+)(:\d+)?(\/.*)?$/)[2]
+    organisations.some((org) => {
+      const authoritiveDomain = org.website.match(/^https?:\/\/(www\.)?([\w\.-]+)(:\d+)?(\/.*)?$/)[2]
 
-    if (emailDomain == authoritiveDomain) {
-      chosenOrg = org
-      return true
-    }
-  })
+      if (emailDomain == authoritiveDomain) {
+        chosenOrg = org
+        return true
+      }
+    })
+  }
 
   if (chosenOrg.organisation) {
     req.session.data.authenticated = true
