@@ -136,12 +136,12 @@
   </div>
 </div>
 
-{% if datasetsSubmitted == 0 %}
+{% if datasetsSubmitted < datasetCount %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l">Get started</h2>
 
-    <p>You have not yet provided any datasets.</p>
+    <p>You have provided {{ datasetsSubmitted }} out of {{ datasetCount | plural("dataset") }}.</p>
 
     <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can begin to index it and provide it on the platform. Start with what you have and improve it over time.</p>
 
@@ -167,7 +167,7 @@
         <span class="big-number">
           {{ datasetsSubmitted }}/{{ datasetCount }}
         </span>
-        {{ datasetsCount | plural("dataset", showNumber=false) }} provided
+        {{ datasetCount | plural("dataset", showNumber=false) }} provided
       </div>
 
       <div class="dataset-status--item">
@@ -177,7 +177,7 @@
 
       <div class="dataset-status--item">
         <span class="big-number">{{ datasetIssues }}</span>
-        {{ datasetIssues | plural("dataset", showNumber=false) }} need{{ "s" if datasetErrors == "1" }} fixing
+        {{ datasetIssues | plural("dataset", showNumber=false) }} need{{ "s" if datasetIssues == "1" }} fixing
       </div>
     </div>
   </div>
