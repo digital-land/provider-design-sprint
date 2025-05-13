@@ -6,6 +6,8 @@ const path = require("path");
 
 const version = '/landing-iteration'
 
+const { queryDatasette, getOrg, getDataset, convertToCSV } = require('./functions.js')
+
 /**********************************************************
  * Landing page iterations - 2025-04-28                   *
 ***********************************************************/
@@ -66,19 +68,12 @@ router.get('/v1/provide-choose-dataset', (req, res) => {
   res.render('/landing-iteration/provide-choose-dataset.html', locals);
 })
 
-router.get('/v2', (req, res) => {
+router.get(/\/:version_path(v1|v2)\/organisations/, (req, res) => {
   const locals = {};
   locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
-  res.render('/landing-iteration/landing-v2.html', locals);
-})
-
-router.get("/v2/organisations", async (req, res) => {
-  const locals = {};
-  locals.version_path = "/landing-iteration/v2";
-
-  locals.organisations = require("../app/data/organisations.json");
+  locals.organisations = require('../data/organisations.json')
   locals.alphabetisedOrgs = {};
   let currLetter = "";
 
@@ -95,42 +90,18 @@ router.get("/v2/organisations", async (req, res) => {
       locals.alphabetisedOrgs[currLetter].push(thisOrg);
     }
   }
-
-  res.render("/common/organisations", locals);
+  res.render('/common/organisations.html', locals);
 })
 
-router.get('/v2/authentication-email', (req, res) => {
+router.get('/:version_path/organisations/:orgId', async (req, res) => {
   const locals = {};
   locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
-  res.render('/landing-iteration/authentication-email.html', locals)
-})
-
-router.get('/v2/authentication-email-validation', (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
-
-  res.render('/landing-iteration/authentication-email-validation.html', locals)
-})
-
-router.get('/v2/:orgId/overview', async (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check and provide planning data";
-  locals.version_path = "/landing-iteration/v2";
-
-  locals.organisation = {
-    organisation: "local-authority:BDC",
-    name: "Borechester District Council",
-    dataset: "local-authority",
-    project: "odp"
-  };
+  locals.organisation = getOrg(req.params.orgId);
 
   const orgSlug = req.params.orgId.replace(/:/, "_");
-
   const orgPath = path.join(__dirname, `../data/${orgSlug}/datasets.json`);
-
 
   if (fs.existsSync(orgPath)) {
     locals.datasets = require(orgPath);
@@ -164,7 +135,32 @@ router.get('/v2/:orgId/overview', async (req, res) => {
   res.render('/landing-iteration/lpa-overview.html', locals)
 })
 
-router.get('/v1|v2/guidance', (req, res) => {
+
+router.get('/v2', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Check and provide planning data";
+  locals.version_path = "/landing-iteration/v2";
+
+  res.render('/landing-iteration/landing-v2.html', locals);
+})
+
+router.get('/v2/authentication-email', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Check and provide planning data";
+  locals.version_path = "/landing-iteration/v2";
+
+  res.render('/landing-iteration/authentication-email.html', locals)
+})
+
+router.get('/v2/authentication-email-validation', (req, res) => {
+  const locals = {};
+  locals.serviceName = "Check and provide planning data";
+  locals.version_path = "/landing-iteration/v2";
+
+  res.render('/landing-iteration/authentication-email-validation.html', locals)
+})
+
+router.get(/\/(v1|v2)\/guidance/, (req, res) => {
   res.render('/landing-iteration/guidance.html')
 })
 
