@@ -68,7 +68,7 @@ router.get('/v1/provide-choose-dataset', (req, res) => {
   res.render('/landing-iteration/provide-choose-dataset.html', locals);
 })
 
-router.get(/\/:version_path(v1|v2)\/organisations/, (req, res) => {
+router.get('/:version_path/organisations', (req, res) => {
   const locals = {};
   locals.serviceName = "Check and provide planning data";
   locals.version_path = `/landing-iteration/${req.params.version_path}`;
