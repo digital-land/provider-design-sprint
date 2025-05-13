@@ -2,9 +2,9 @@
   {
     "name": "Article 4 direction",
     "dataset": "article-4-direction",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -12,7 +12,7 @@
     "name": "Article 4 direction area",
     "dataset": "article-4-direction-area",
     "status": "live",
-    "issue_count": 0,
+    "issue_count": 10,
     "http_status": "200",
     "provision_reason": "expected",
     "provision": "odp"
@@ -20,9 +20,9 @@
   {
     "name": "Brownfield land",
     "dataset": "brownfield-land",
-    "status": "live",
-    "issue_count": 36,
-    "http_status": "200",
+    "status": "not-submitted",
+    "issue_count": 0,
+    "http_status": null,
     "provision_reason": "statutory",
     "provision": null
   },
@@ -38,9 +38,9 @@
   {
     "name": "Conservation area document",
     "dataset": "conservation-area-document",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -48,7 +48,7 @@
     "name": "Listed building outline",
     "dataset": "listed-building-outline",
     "status": "live",
-    "issue_count": 0,
+    "issue_count": 1684,
     "http_status": "200",
     "provision_reason": "expected",
     "provision": "odp"
@@ -65,9 +65,9 @@
   {
     "name": "Tree preservation order",
     "dataset": "tree-preservation-order",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },

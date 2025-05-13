@@ -2,18 +2,18 @@
   {
     "name": "Article 4 direction",
     "dataset": "article-4-direction",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
   {
     "name": "Article 4 direction area",
     "dataset": "article-4-direction-area",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
@@ -21,7 +21,7 @@
     "name": "Brownfield land",
     "dataset": "brownfield-land",
     "status": "live",
-    "issue_count": 36,
+    "issue_count": 100,
     "http_status": "200",
     "provision_reason": "statutory",
     "provision": null
@@ -29,54 +29,54 @@
   {
     "name": "Conservation area",
     "dataset": "conservation-area",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
   {
     "name": "Conservation area document",
     "dataset": "conservation-area-document",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
   {
     "name": "Listed building outline",
     "dataset": "listed-building-outline",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
   {
     "name": "Tree",
     "dataset": "tree",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
   {
     "name": "Tree preservation order",
     "dataset": "tree-preservation-order",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   },
   {
     "name": "Tree preservation zone",
     "dataset": "tree-preservation-zone",
-    "status": "live",
+    "status": "not-submitted",
     "issue_count": 0,
-    "http_status": "200",
+    "http_status": null,
     "provision_reason": "expected",
     "provision": "odp"
   }
