@@ -3,19 +3,28 @@
 }) }}
 
 {% if hideNav != true %}
+
+{% if data.authenticated %}
+  {% set org_url %}{{ version_path }}/organisations/{{data.authenticatedOrg.organisation}}{% endset %}
+{% else %}
+  {% set org_url = version_path + "/authentication-email" %}
+{% endif %}
+
 {% set navItems = [
     {
-      href: version_path + "/authenitcation-email",
-      text: "Access your organisation",
-      active: true
+      href: org_url,
+      text: "Your organisation",
+      active: active_section['your_organisation']
     },
     {
       href: version_path + "/organisations",
-      text: "View all organisations"
+      text: "View all organisations",
+      active: active_section['all_organisations']
     },
     {
-      href: "/guidance",
-      text: "Guidance"
+      href: version_path + "/guidance",
+      text: "Guidance",
+      active: active_section['guidance']
     }
   ] %}
 {% else %}

@@ -3,6 +3,7 @@
 {% set pageName = "Access your organisation’s planning data" %}
 
 {% block header %}
+{% set active_section = { your_organisation: true } %}
 {% include "includes/_service-navigation-header-v2.html" %}
 {% endblock %}
 
@@ -33,8 +34,11 @@
           isPageHeading: false
         },
         id: "authentication-email",
-        name: "authentication_email"
-      }) }}
+        name: "authentication_email",
+        hint: {
+          text: "To verify it’s you, we’ll email you a 6-digit security code."
+        }
+    }) }}
 
       {{ govukButton({
         text: "Continue"

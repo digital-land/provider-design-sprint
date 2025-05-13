@@ -170,6 +170,38 @@ router.get('/v2/authentication-email-validation', (req, res) => {
   res.render('/landing-iteration/authentication-email-validation.html', locals)
 })
 
+router.post('/v2/validate-email', (req, res) => {
+  const organisations = require('../data/organisations.json')
+
+  let chosenOrg = {};
+  const emailDomain = req.session.data.authentication_email.match(/^.+@(.+)$/)[1]
+
+  organisations.some((org) => {
+    const authoritiveDomain = org.website.match(/^https?:\/\/(www\.)?([\w\.-]+)(:\d+)?(\/.*)?$/)[2]
+
+    if (emailDomain == authoritiveDomain) {
+      chosenOrg = org
+      return true
+    }
+  })
+
+  if (chosenOrg.organisation) {
+    req.session.data.authenticated = true
+    req.session.data.authenticatedOrg = chosenOrg
+
+    res.redirect(`${version}/v2/organisations/${chosenOrg.organisation}`)
+  } else {
+    res.redirect(`${version}/v2/authentication-failed`)
+  }
+})
+
+router.get('/v2/authentication-failed', (req, res) => {
+  const locals = {}
+  locals.version_path = '/landing-iteration/v2';
+
+  res.render('/landing-iteration/authentication-failed', locals)
+})
+
 router.get(/\/(v1|v2)\/guidance/, (req, res) => {
   res.render('/landing-iteration/guidance.html')
 })

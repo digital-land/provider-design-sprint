@@ -1,9 +1,9 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Validate your email address" %}
+{% set pageName = "Enter your 6-digit security code" %}
 
 {% block header %}
-{% set hideNav = true %}
+{% set active_section = { your_organisation: true } %}
 {% include "includes/_service-navigation-header-v2.html" %}
 {% endblock %}
 
@@ -23,15 +23,18 @@
       {{ pageName }}
     </h1>
 
-    <p>Check your email account for the validation code</p>
+    <p>We’ve sent an email to {{ data.authentication_email }}.</p> 
+
+    <p>The code will expire 15 minutes after you receive it.</p>
+
 
     <form novalidate
-      action="{{version_path}}/authentication-email-validation"
+      action="{{version_path}}/validate-email"
       method="post">
 
       {{ govukInput({
         label: {
-          text: "Validation code",
+          text: "Security code",
           classes: "govuk-label--m",
           isPageHeading: false
         },
@@ -44,6 +47,8 @@
         text: "Continue"
       }) }}
     </form>
+
+    <p><a href="#">Not received an email or code expired?</a></p>
   </div>
 </div>
 
