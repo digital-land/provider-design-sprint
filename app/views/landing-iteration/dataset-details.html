@@ -4,8 +4,20 @@
 {% set pageName %}{{dataset.name}} details{% endset %}
 
 {% block header %}
-{% include "includes/_service-navigation-header.html" %}
+  {% if "v2" in version_path %}
+    {% if navigationOrganisationActive %}
+      {% set active_section = { your_organisation: true } %}
+    {% else %}
+      {% set active_section = { all_organisations: true } %}
+    {% endif %}
+    {% include "includes/_service-navigation-header-v2.html" %}
+  {% else %}
+    {% include "includes/_service-navigation-header.html" %}
+  {% endif %}
 {% endblock %}
+
+{% set checkUrl %}/iterative-check/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload{% endset %}
+{% set provideUrl %}/submit-dataset/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/lpa-details{% endset %}
 
 {% block beforeContent %}
 
@@ -15,15 +27,15 @@
     items: [
       {
         text: "Home",
-        href: "/overview/v2/start"
+        href: version_path
       },
       {
         text: "Organisations",
-        href: "/overview/v2/organisations"
+        href: version_path + "/organisations"
       },
       {
         text: organisation.name,
-        href: "/overview/v2/"+organisation.organisation
+        href: version_path + "/organisations/" + organisation.organisation
       }
     ]
   }) }}
@@ -67,8 +79,13 @@
     <nav role="navigation" aria-labelledby="subsection-title">
       <ul class="govuk-list">
         <li>
-          <a href="/check/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload">
+          <a href="{{ checkUrl }}">
             Check dataset
+          </a>
+        </li>
+        <li>
+          <a href="{{ provideUrl }}">
+            Provide dataset
           </a>
         </li>
         <li>
@@ -90,13 +107,13 @@
     {{ govukButton({
       text: "Check dataset",
       isStartButton: true,
-      href: version_path + "/check"
+      href: checkUrl
     })}}
 
     {{ govukButton({
       text: "Provide dataset",
       isStartButton: true,
-      href: version_path + "/provide"
+      href: provideUrl
     })}}
   
     <h2 class="govuk-heading-m" id="subsection-title">

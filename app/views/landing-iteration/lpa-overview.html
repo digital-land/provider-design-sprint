@@ -5,7 +5,11 @@
 
 {% block header %}
   {% if "v2" in version_path %}
-    {% set active_section = { your_organisation: true } %}
+    {% if navigationOrganisationActive %}
+      {% set active_section = { your_organisation: true } %}
+    {% else %}
+      {% set active_section = { all_organisations: true } %}
+    {% endif %}
     {% include "includes/_service-navigation-header-v2.html" %}
   {% else %}
     {% include "includes/_service-navigation-header.html" %}

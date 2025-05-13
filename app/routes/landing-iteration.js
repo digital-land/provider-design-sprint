@@ -100,6 +100,11 @@ router.get('/:version_path/organisations/:orgId', async (req, res) => {
 
   locals.organisation = getOrg(req.params.orgId);
 
+  if (req.session.data.authenticated = true
+      && req.session.data.authenticatedOrg.organisation == locals.organisation.organisation) {
+        locals.navigationOrganisationActive = true
+      }
+
   const orgSlug = req.params.orgId.replace(/:/, "_");
   const orgPath = path.join(__dirname, `../data/${orgSlug}/datasets.json`);
 
@@ -141,7 +146,10 @@ router.get("/:version_path/organisations/:orgId/:datasetId/overview", (req, res)
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
-  locals.endpoints = require("../data/endpoints.json");
+  if (req.session.data.authenticated = true
+      && req.session.data.authenticatedOrg.organisation == locals.organisation.organisation) {
+        locals.navigationOrganisationActive = true
+      }
 
   res.render("/landing-iteration/dataset-details", locals);
 })
