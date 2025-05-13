@@ -48,20 +48,20 @@
 
   <div class="govuk-task-list__status">
     {% if dataset.status == "error" %}
-    {% set tagStatus = "Error" %}
-    {% set tagClass = "govuk-tag--red" %}
+      {% set tagStatus = "Error" %}
+      {% set tagClass = "govuk-tag--red" %}
     {% elseif dataset.status == "needs-fixing" %}
-    {% set tagStatus = "Needs fixing" %}
-    {% set tagClass = "govuk-tag--yellow" %}
+      {% set tagStatus = "Incomplete data" %}
+      {% set tagClass = "govuk-tag--red" %}
     {% elseif dataset.status == "warning" %}
-    {% set tagStatus = "Warning" %}
-    {% set tagClass = "govuk-tag--yellow" %}
+      {% set tagStatus = "Usable data" %}
+      {% set tagClass = "govuk-tag--yellow" %}
     {% elseif dataset.status == "live" %}
-    {% set tagStatus = "Live" %}
-    {% set tagClass = "govuk-tag--green" %}
+      {% set tagStatus = "Trustworthy data" %}
+      {% set tagClass = "govuk-tag--green" %}
     {% elseif dataset.status == "not-submitted" %}
-    {% set tagStatus = "Not provided" %}
-    {% set tagClass = "govuk-tag--grey" %}
+      {% set tagStatus = "Not provided" %}
+      {% set tagClass = "govuk-tag--grey" %}
     {% endif %}
 
     {{govukTag({
@@ -132,6 +132,7 @@
   </div>
 </div>
 
+{% if datasetsSubmitted == 0 %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l">Get started</h2>
@@ -142,15 +143,18 @@
 
     {{ govukButton({
       text: "Check dataset",
-      isStartButton: true
+      isStartButton: true,
+      href: version_path + "/check"
     })}}
 
     {{ govukButton({
       text: "Provide dataset",
-      isStartButton: true
+      isStartButton: true,
+      href: version_path + "/provide"
     })}}
   </div>
 </div>
+{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
