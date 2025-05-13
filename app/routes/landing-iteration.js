@@ -135,6 +135,16 @@ router.get('/:version_path/organisations/:orgId', async (req, res) => {
   res.render('/landing-iteration/lpa-overview.html', locals)
 })
 
+router.get("/:version_path/organisations/:orgId/:datasetId/overview", (req, res) => {
+  const locals = {};
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
+  locals.organisation = getOrg(req.params.orgId);
+  locals.dataset = getDataset(req.params.datasetId);
+
+  locals.endpoints = require("../data/endpoints.json");
+
+  res.render("/landing-iteration/dataset-details", locals);
+})
 
 router.get('/v2', (req, res) => {
   const locals = {};

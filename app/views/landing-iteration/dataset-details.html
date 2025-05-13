@@ -1,0 +1,134 @@
+{% extends "layouts/main.html" %}
+{% from "components/dataset-navigation.html" import datasetNavigation %}
+
+{% set pageName %}{{dataset.name}} details{% endset %}
+
+{% block header %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/overview/v2/start"
+      },
+      {
+        text: "Organisations",
+        href: "/overview/v2/organisations"
+      },
+      {
+        text: organisation.name,
+        href: "/overview/v2/"+organisation.organisation
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{organisation.name}}</span>
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ datasetNavigation({
+          active: "dataset-overview",
+          dataset: dataset,
+          organisation: organisation,
+          issue_count: tasks.length
+        }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+      class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m dataset-actions-column" id="subsection-title">
+      Dataset actions
+    </h2>
+    <nav role="navigation" aria-labelledby="subsection-title">
+      <ul class="govuk-list">
+        <li>
+          <a href="/check/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload">
+            Check dataset
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            {{ dataset.name }} guidance
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Get started</h2>
+
+    <p>You have not yet provided any datasets.</p>
+
+    <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can begin to index it and provide it on the platform. Start with what you have and improve it over time.</p>
+
+    {{ govukButton({
+      text: "Check dataset",
+      isStartButton: true,
+      href: version_path + "/check"
+    })}}
+
+    {{ govukButton({
+      text: "Provide dataset",
+      isStartButton: true,
+      href: version_path + "/provide"
+    })}}
+  
+    <h2 class="govuk-heading-m" id="subsection-title">
+      Dataset details
+    </h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Number of records"
+          },
+          value: {
+            text: "0"
+          }
+        },
+        {
+          key: {
+            text: "Licence"
+          },
+          value: {
+            text: "No licence"
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Active endpoints</h2>
+
+    <p>You don’t have any active endpoints that we are checking for data.</p>
+  </div>
+</div>
+
+
+{% endblock %}
