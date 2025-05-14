@@ -20,48 +20,52 @@ router.get('/v1', (req, res) => {
   res.render('/landing-iteration/landing-v1.html', locals);
 })
 
-router.get('/v1/check', (req, res) => {
-  const locals = {};
-  locals.serviceName = "Check your planning data";
-  locals.version_path = "/landing-iteration/v1";
+router.get('/:version_path/check', (req, res) => {
+  if (req.params.version_path == "v2") {
+    res.redirect(`${version}/${req.params.version_path}/check-choose-dataset`)
+  } else {
+    const locals = {};
+    locals.serviceName = "Check your planning data";
+    locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
-  locals.organisations = require('../data/organisations.json')
+    locals.organisations = require('../data/organisations.json')
 
-  res.render('/landing-iteration/check-choose-organisation.html', locals);
+    res.render('/landing-iteration/check-choose-organisation.html', locals);
+  }
 })
 
-router.get('/v1/check-choose-dataset', (req, res) => {
+router.get('/:version_path/check-choose-dataset', (req, res) => {
   const locals = {};
   locals.serviceName = "Check your planning data";
-  locals.version_path = "/landing-iteration/v1";
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
   locals.datasets = require('../data/default/datasets.json')
 
   res.render('/landing-iteration/check-choose-dataset.html', locals);
 })
 
-router.get('/v1/check-upload-method', (req, res) => {
+router.get('/:version_path/check-upload-method', (req, res) => {
   const locals = {};
   locals.serviceName = "Check your planning data";
-  locals.version_path = "/landing-iteration/v1";
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
   res.render('/landing-iteration/check-upload-method.html', locals);
 })
 
-router.get('/v1/provide', (req, res) => {
+router.get('/:version_path/provide', (req, res) => {
   const locals = {};
   locals.serviceName = "Provide your planning data";
-  locals.version_path = "/landing-iteration/v1";
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
   locals.organisations = require('../data/organisations.json')
 
   res.render('/landing-iteration/provide-choose-organisation.html', locals);
 })
 
-router.get('/v1/provide-choose-dataset', (req, res) => {
+router.get('/:version_path/provide-choose-dataset', (req, res) => {
   const locals = {};
   locals.serviceName = "Provide your planning data";
-  locals.version_path = "/landing-iteration/v1";
+  locals.version_path = `/landing-iteration/${req.params.version_path}`;
 
   locals.datasets = require('../data/default/datasets.json')
 
