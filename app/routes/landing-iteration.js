@@ -221,4 +221,3 @@ router.get('/v2/authentication-failed', (req, res) => {
 router.get(/\/(v1|v2)\/guidance/, (req, res) => {
   res.render('/landing-iteration/guidance.html')
 })
-

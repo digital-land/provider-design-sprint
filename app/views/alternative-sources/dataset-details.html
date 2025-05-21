@@ -1,0 +1,259 @@
+{% extends "layouts/main.html" %}
+{% from "components/dataset-navigation.html" import datasetNavigation %}
+
+{% set pageName %}{{dataset.name}} details{% endset %}
+
+{% block header %}
+{% if "v2" in version_path %}
+{% if navigationOrganisationActive %}
+{% set active_section = { your_organisation: true } %}
+{% else %}
+{% set active_section = { all_organisations: true } %}
+{% endif %}
+{% include "includes/_service-navigation-header-v2.html" %}
+{% else %}
+{% include "includes/_service-navigation-header.html" %}
+{% endif %}
+{% endblock %}
+
+{% set checkUrl %}/iterative-check/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload{% endset %}
+{% set provideUrl %}/submit-dataset/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/lpa-details{% endset %}
+
+{% block beforeContent %}
+
+{{ super() }}
+
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Home",
+    href: version_path
+  },
+  {
+    text: "Organisations",
+    href: version_path + "/organisations"
+  },
+  {
+    text: organisation.name,
+    href: version_path + "/organisations/" + organisation.organisation
+  }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{organisation.name}}</span>
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ datasetNavigation({
+      active: "dataset-overview",
+      dataset: dataset,
+      organisation: organisation,
+      issue_count: tasks.length
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
+    class="govuk-!-margin-bottom-6">
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m dataset-actions-column" id="subsection-title">
+      Dataset actions
+    </h2>
+    <nav role="navigation" aria-labelledby="subsection-title">
+      <ul class="govuk-list">
+        <li>
+          <a href="{{ checkUrl }}">
+            Check dataset
+          </a>
+        </li>
+        <li>
+          <a href="{{ provideUrl }}">
+            Provide dataset
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            {{ dataset.name }} guidance
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Get started</h2>
+    
+    <p>You have not provided this dataset yet.</p>
+    
+    <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can begin to index it and provide it on the platform. Start with what you have and improve it over time.</p>
+
+    <p>
+      {{ govukButton({
+        text: "Check dataset",
+        isStartButton: true,
+        href: checkUrl
+      })}}
+      
+      {{ govukButton({
+        text: "Provide dataset",
+        isStartButton: true,
+        href: provideUrl
+      })}}
+    </p>
+
+    <p>There are {{ dataset.name }} records in your LPA from other sources. You can review and download these records to add to your dataset.</p>
+    
+    <p>
+      {{ govukButton({
+        text: "Review alternative sources",
+        isStartButton: true,
+        href: "#"
+      })}}
+    </p>
+    
+    
+    <h2 class="govuk-heading-m" id="subsection-title">
+      Dataset details
+    </h2>
+    
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Authoritive records provided by LPA"
+        },
+        value: {
+          text: "0"
+        }
+      },
+      {
+        key: {
+          text: "Records from alternative sources"
+        },
+        value: {
+          text: "20"
+        }
+      },
+      {
+        key: {
+          text: "Licence"
+        },
+        value: {
+          text: "No licence"
+        }
+      }
+      ]
+    }) }}
+    
+    <h2 class="govuk-heading-m">Active endpoints</h2>
+    
+    <p>You have {{ endpoints.length | plural("endpoint") }} we are currently checking for data.</p>
+    
+    {% for endpoint in endpoints %}
+      {% if endpoint.licence and endpoint.licence == "ogl3" %}
+        {% set licence = "Open Government Licence" %}
+      {% else %}
+        {% set licence = "Unknown" %}
+      {% endif %}
+    
+      {% if endpoint.documentation_url is not defined or endpoint.documentation_url == "" %}
+        {% set documentation_url %}<p>Documentation URL missing</p>{% endset %}
+      {% else %}
+        {% set documentation_url %}
+          <code><a href="{{ endpoint.documentation_url }}">{{ endpoint.documentation_url }}</a></code>
+        {% endset %}
+      {% endif %}
+    
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Endpoint "+(loop.length - loop.index0)
+          },
+          actions: {
+            items: [
+            {
+              href:"#",
+              text: "Edit",
+              visuallyHiddenText: " endpoint details"
+            },
+            {
+              href:"#",
+              text: "Retire",
+              visuallyHiddenText: " endpoint"
+            }
+            ]
+          }
+        },
+        rows: [
+        {
+          key: {
+            text: "Endpoint URL"
+          },
+          value: {
+            html: '<code><a href="'+endpoint.endpoint_url+'">'+endpoint.endpoint_url+'</a></code>'
+          }
+        },
+        {
+          key: {
+            text: "Documentation URL"
+          },
+          value: {
+            html: documentation_url
+          }
+        },
+        {
+          key: {
+            text: "Date added"
+          },
+          value: {
+            text: endpoint.date_added | govukDate
+          }
+        },
+        {
+          key: {
+            text: "Endpoint last accessed"
+          },
+          value: {
+            text: endpoint.last_accessed | govukDateTime
+          }
+        },
+        {
+          key: {
+            text: "Endpoint last updated"
+          },
+          value: {
+            text: endpoint.last_updated | govukDate
+          }
+        },
+        {
+          key: {
+            text: "Licence"
+          },
+          value: {
+            text: licence
+          }
+        }
+        ]
+      }) }}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
