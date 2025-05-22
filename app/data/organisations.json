@@ -5,7 +5,8 @@
     "dataset": "local-authority",
     "website": "https://www.adur-worthing.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000223"
+    "statistical_geography": "E07000223",
+    "entity": 26
   },
   {
     "organisation": "local-authority:AMB",
@@ -13,7 +14,8 @@
     "dataset": "local-authority",
     "website": "https://www.ambervalley.gov.uk",
     "project": null,
-    "statistical_geography": "E07000032"
+    "statistical_geography": "E07000032",
+    "entity": 28
   },
   {
     "organisation": "local-authority:ARU",
@@ -21,7 +23,8 @@
     "dataset": "local-authority",
     "website": "https://www.arun.gov.uk",
     "project": null,
-    "statistical_geography": "E07000224"
+    "statistical_geography": "E07000224",
+    "entity": 29
   },
   {
     "organisation": "local-authority:ASH",
@@ -29,7 +32,8 @@
     "dataset": "local-authority",
     "website": "https://www.ashfield.gov.uk",
     "project": null,
-    "statistical_geography": "E07000170"
+    "statistical_geography": "E07000170",
+    "entity": 31
   },
   {
     "organisation": "local-authority:ASF",
@@ -37,7 +41,8 @@
     "dataset": "local-authority",
     "website": "https://www.ashford.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000105"
+    "statistical_geography": "E07000105",
+    "entity": 30
   },
   {
     "organisation": "local-authority:BAB",
@@ -45,7 +50,8 @@
     "dataset": "local-authority",
     "website": "https://www.babergh.gov.uk",
     "project": null,
-    "statistical_geography": "E07000200"
+    "statistical_geography": "E07000200",
+    "entity": 33
   },
   {
     "organisation": "local-authority:BNS",
@@ -53,7 +59,8 @@
     "dataset": "local-authority",
     "website": "https://www.barnsley.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000016"
+    "statistical_geography": "E08000016",
+    "entity": 50
   },
   {
     "organisation": "local-authority:BAI",
@@ -61,7 +68,8 @@
     "dataset": "local-authority",
     "website": "https://www.basildon.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000066"
+    "statistical_geography": "E07000066",
+    "entity": 35
   },
   {
     "organisation": "local-authority:BAN",
@@ -69,7 +77,8 @@
     "dataset": "local-authority",
     "website": "https://www.basingstoke.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000084"
+    "statistical_geography": "E07000084",
+    "entity": 36
   },
   {
     "organisation": "local-authority:BAE",
@@ -77,7 +86,8 @@
     "dataset": "local-authority",
     "website": "https://www.bassetlaw.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000171"
+    "statistical_geography": "E07000171",
+    "entity": 34
   },
   {
     "organisation": "local-authority:BAS",
@@ -85,7 +95,8 @@
     "dataset": "local-authority",
     "website": "https://www.bathnes.gov.uk",
     "project": null,
-    "statistical_geography": "E06000022"
+    "statistical_geography": "E06000022",
+    "entity": 38
   },
   {
     "organisation": "local-authority:BDF",
@@ -93,7 +104,8 @@
     "dataset": "local-authority",
     "website": "https://www.bedford.gov.uk",
     "project": null,
-    "statistical_geography": "E06000055"
+    "statistical_geography": "E06000055",
+    "entity": 40
   },
   {
     "organisation": "local-authority:BIR",
@@ -101,7 +113,8 @@
     "dataset": "local-authority",
     "website": "https://www.birmingham.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000025"
+    "statistical_geography": "E08000025",
+    "entity": 44
   },
   {
     "organisation": "local-authority:BLA",
@@ -109,7 +122,8 @@
     "dataset": "local-authority",
     "website": "https://www.blaby.gov.uk",
     "project": null,
-    "statistical_geography": "E07000129"
+    "statistical_geography": "E07000129",
+    "entity": 46
   },
   {
     "organisation": "local-authority:BBD",
@@ -117,7 +131,8 @@
     "dataset": "local-authority",
     "website": "https://www.blackburn.gov.uk",
     "project": null,
-    "statistical_geography": "E06000008"
+    "statistical_geography": "E06000008",
+    "entity": 39
   },
   {
     "organisation": "local-authority:BPL",
@@ -125,7 +140,8 @@
     "dataset": "local-authority",
     "website": "https://www.blackpool.gov.uk",
     "project": null,
-    "statistical_geography": "E06000009"
+    "statistical_geography": "E06000009",
+    "entity": 55
   },
   {
     "organisation": "local-authority:BOS",
@@ -133,7 +149,8 @@
     "dataset": "local-authority",
     "website": "https://www.bolsover.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000033"
+    "statistical_geography": "E07000033",
+    "entity": 52
   },
   {
     "organisation": "local-authority:BOL",
@@ -141,7 +158,8 @@
     "dataset": "local-authority",
     "website": "https://www.bolton.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000001"
+    "statistical_geography": "E08000001",
+    "entity": 51
   },
   {
     "organisation": "local-authority:KIN",
@@ -149,7 +167,8 @@
     "dataset": "local-authority",
     "website": "https://www.west-norfolk.gov.uk",
     "project": null,
-    "statistical_geography": "E07000146"
+    "statistical_geography": "E07000146",
+    "entity": 186
   },
   {
     "organisation": "local-authority:BOT",
@@ -157,7 +176,8 @@
     "dataset": "local-authority",
     "website": "https://www.boston.gov.uk",
     "project": null,
-    "statistical_geography": "E07000136"
+    "statistical_geography": "E07000136",
+    "entity": 53
   },
   {
     "organisation": "local-authority:BPC",
@@ -165,7 +185,8 @@
     "dataset": "local-authority",
     "website": "https://www.bcpcouncil.gov.uk",
     "project": null,
-    "statistical_geography": "E06000058"
+    "statistical_geography": "E06000058",
+    "entity": 54
   },
   {
     "organisation": "local-authority:BRC",
@@ -173,7 +194,8 @@
     "dataset": "local-authority",
     "website": "https://www.bracknell-forest.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000036"
+    "statistical_geography": "E06000036",
+    "entity": 57
   },
   {
     "organisation": "local-authority:BRA",
@@ -181,7 +203,8 @@
     "dataset": "local-authority",
     "website": "https://www.braintree.gov.uk",
     "project": null,
-    "statistical_geography": "E07000067"
+    "statistical_geography": "E07000067",
+    "entity": 56
   },
   {
     "organisation": "local-authority:BRE",
@@ -189,7 +212,8 @@
     "dataset": "local-authority",
     "website": "https://www.breckland.gov.uk",
     "project": null,
-    "statistical_geography": "E07000143"
+    "statistical_geography": "E07000143",
+    "entity": 59
   },
   {
     "organisation": "local-authority:BRW",
@@ -197,7 +221,8 @@
     "dataset": "local-authority",
     "website": "https://www.brentwood.gov.uk",
     "project": null,
-    "statistical_geography": "E07000068"
+    "statistical_geography": "E07000068",
+    "entity": 63
   },
   {
     "organisation": "local-authority:BNH",
@@ -205,7 +230,8 @@
     "dataset": "local-authority",
     "website": "https://www.brighton-hove.gov.uk",
     "project": null,
-    "statistical_geography": "E06000043"
+    "statistical_geography": "E06000043",
+    "entity": 49
   },
   {
     "organisation": "local-authority:BST",
@@ -213,7 +239,8 @@
     "dataset": "local-authority",
     "website": "https://www.bristol.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000023"
+    "statistical_geography": "E06000023",
+    "entity": 66
   },
   {
     "organisation": "local-authority:BRO",
@@ -221,7 +248,8 @@
     "dataset": "local-authority",
     "website": "https://www.broadland.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000144"
+    "statistical_geography": "E07000144",
+    "entity": 61
   },
   {
     "organisation": "national-park-authority:Q4972284",
@@ -229,7 +257,8 @@
     "dataset": "national-park-authority",
     "website": "http://www.broads-authority.gov.uk/broads-authority",
     "project": null,
-    "statistical_geography": "E26000007"
+    "statistical_geography": "E26000007",
+    "entity": 399
   },
   {
     "organisation": "local-authority:BRM",
@@ -237,7 +266,8 @@
     "dataset": "local-authority",
     "website": "https://www.bromsgrove.gov.uk",
     "project": null,
-    "statistical_geography": "E07000234"
+    "statistical_geography": "E07000234",
+    "entity": 60
   },
   {
     "organisation": "local-authority:BRX",
@@ -245,7 +275,8 @@
     "dataset": "local-authority",
     "website": "https://www.broxbourne.gov.uk",
     "project": null,
-    "statistical_geography": "E07000095"
+    "statistical_geography": "E07000095",
+    "entity": 64
   },
   {
     "organisation": "local-authority:BRT",
@@ -253,7 +284,8 @@
     "dataset": "local-authority",
     "website": "https://www.broxtowe.gov.uk",
     "project": null,
-    "statistical_geography": "E07000172"
+    "statistical_geography": "E07000172",
+    "entity": 62
   },
   {
     "organisation": "local-authority:BUC",
@@ -261,7 +293,8 @@
     "dataset": "local-authority",
     "website": "https://www.buckinghamshire.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000060"
+    "statistical_geography": "E06000060",
+    "entity": 67
   },
   {
     "organisation": "local-authority:BUN",
@@ -269,7 +302,8 @@
     "dataset": "local-authority",
     "website": "https://www.burnley.gov.uk",
     "project": null,
-    "statistical_geography": "E07000117"
+    "statistical_geography": "E07000117",
+    "entity": 68
   },
   {
     "organisation": "local-authority:BUR",
@@ -277,7 +311,8 @@
     "dataset": "local-authority",
     "website": "https://www.bury.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000002"
+    "statistical_geography": "E08000002",
+    "entity": 69
   },
   {
     "organisation": "local-authority:CLD",
@@ -285,7 +320,8 @@
     "dataset": "local-authority",
     "website": "https://www.calderdale.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000033"
+    "statistical_geography": "E08000033",
+    "entity": 88
   },
   {
     "organisation": "local-authority:CAB",
@@ -293,7 +329,8 @@
     "dataset": "local-authority",
     "website": "https://www.cambridge.gov.uk",
     "project": null,
-    "statistical_geography": "E07000008"
+    "statistical_geography": "E07000008",
+    "entity": 70
   },
   {
     "organisation": "local-authority:CAN",
@@ -301,7 +338,8 @@
     "dataset": "local-authority",
     "website": "https://www.cannockchasedc.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000192"
+    "statistical_geography": "E07000192",
+    "entity": 72
   },
   {
     "organisation": "local-authority:CAT",
@@ -309,7 +347,8 @@
     "dataset": "local-authority",
     "website": "https://www.canterbury.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000106"
+    "statistical_geography": "E07000106",
+    "entity": 75
   },
   {
     "organisation": "local-authority:CAS",
@@ -317,7 +356,8 @@
     "dataset": "local-authority",
     "website": "https://www.castlepoint.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000069"
+    "statistical_geography": "E07000069",
+    "entity": 74
   },
   {
     "organisation": "local-authority:CBF",
@@ -325,7 +365,8 @@
     "dataset": "local-authority",
     "website": "https://www.centralbedfordshire.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000056"
+    "statistical_geography": "E06000056",
+    "entity": 76
   },
   {
     "organisation": "local-authority:CHA",
@@ -333,7 +374,8 @@
     "dataset": "local-authority",
     "website": "https://www.charnwood.gov.uk",
     "project": null,
-    "statistical_geography": "E07000130"
+    "statistical_geography": "E07000130",
+    "entity": 77
   },
   {
     "organisation": "local-authority:CHL",
@@ -341,7 +383,8 @@
     "dataset": "local-authority",
     "website": "https://www.chelmsford.gov.uk",
     "project": null,
-    "statistical_geography": "E07000070"
+    "statistical_geography": "E07000070",
+    "entity": 81
   },
   {
     "organisation": "local-authority:CHT",
@@ -349,7 +392,8 @@
     "dataset": "local-authority",
     "website": "https://www.cheltenham.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000078"
+    "statistical_geography": "E07000078",
+    "entity": 86
   },
   {
     "organisation": "local-authority:CHR",
@@ -357,7 +401,8 @@
     "dataset": "local-authority",
     "website": "https://www.cherwell-dc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000177"
+    "statistical_geography": "E07000177",
+    "entity": 84
   },
   {
     "organisation": "local-authority:CHE",
@@ -365,7 +410,8 @@
     "dataset": "local-authority",
     "website": "https://www.cheshireeast.gov.uk",
     "project": null,
-    "statistical_geography": "E06000049"
+    "statistical_geography": "E06000049",
+    "entity": 79
   },
   {
     "organisation": "local-authority:CHW",
@@ -373,7 +419,8 @@
     "dataset": "local-authority",
     "website": "https://www.cheshirewestandchester.gov.uk",
     "project": null,
-    "statistical_geography": "E06000050"
+    "statistical_geography": "E06000050",
+    "entity": 87
   },
   {
     "organisation": "local-authority:CHS",
@@ -381,7 +428,8 @@
     "dataset": "local-authority",
     "website": "https://www.chesterfield.gov.uk",
     "project": null,
-    "statistical_geography": "E07000034"
+    "statistical_geography": "E07000034",
+    "entity": 85
   },
   {
     "organisation": "local-authority:CHI",
@@ -389,7 +437,8 @@
     "dataset": "local-authority",
     "website": "https://www.chichester.gov.uk",
     "project": null,
-    "statistical_geography": "E07000225"
+    "statistical_geography": "E07000225",
+    "entity": 80
   },
   {
     "organisation": "local-authority:CHO",
@@ -397,7 +446,8 @@
     "dataset": "local-authority",
     "website": "https://www.chorley.gov.uk",
     "project": null,
-    "statistical_geography": "E07000118"
+    "statistical_geography": "E07000118",
+    "entity": 83
   },
   {
     "organisation": "local-authority:BRD",
@@ -405,7 +455,8 @@
     "dataset": "local-authority",
     "website": "https://www.bradford.gov.uk",
     "project": null,
-    "statistical_geography": "E08000032"
+    "statistical_geography": "E08000032",
+    "entity": 58
   },
   {
     "organisation": "local-authority:LIC",
@@ -413,7 +464,8 @@
     "dataset": "local-authority",
     "website": "https://www.lincoln.gov.uk",
     "project": null,
-    "statistical_geography": "E07000138"
+    "statistical_geography": "E07000138",
+    "entity": 199
   },
   {
     "organisation": "local-authority:LND",
@@ -421,7 +473,8 @@
     "dataset": "local-authority",
     "website": "https://www.cityoflondon.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000001"
+    "statistical_geography": "E09000001",
+    "entity": 203
   },
   {
     "organisation": "local-authority:WSM",
@@ -429,7 +482,8 @@
     "dataset": "local-authority",
     "website": "https://www.westminster.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000033"
+    "statistical_geography": "E09000033",
+    "entity": 387
   },
   {
     "organisation": "local-authority:WLV",
@@ -437,7 +491,8 @@
     "dataset": "local-authority",
     "website": "https://www.wolverhampton.gov.uk",
     "project": null,
-    "statistical_geography": "E08000031"
+    "statistical_geography": "E08000031",
+    "entity": 374
   },
   {
     "organisation": "local-authority:YOR",
@@ -445,7 +500,8 @@
     "dataset": "local-authority",
     "website": "https://www.york.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000014"
+    "statistical_geography": "E06000014",
+    "entity": 395
   },
   {
     "organisation": "local-authority:COL",
@@ -453,7 +509,8 @@
     "dataset": "local-authority",
     "website": "https://www.colchester.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000071"
+    "statistical_geography": "E07000071",
+    "entity": 91
   },
   {
     "organisation": "local-authority:CON",
@@ -461,7 +518,8 @@
     "dataset": "local-authority",
     "website": "https://www.cornwall.gov.uk",
     "project": null,
-    "statistical_geography": "E06000052"
+    "statistical_geography": "E06000052",
+    "entity": 92
   },
   {
     "organisation": "local-authority:COT",
@@ -469,7 +527,8 @@
     "dataset": "local-authority",
     "website": "https://www.cotswold.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000079"
+    "statistical_geography": "E07000079",
+    "entity": 95
   },
   {
     "organisation": "local-authority:IOS",
@@ -477,7 +536,8 @@
     "dataset": "local-authority",
     "website": "https://www.scilly.gov.uk",
     "project": null,
-    "statistical_geography": "E06000053"
+    "statistical_geography": "E06000053",
+    "entity": 178
   },
   {
     "organisation": "local-authority:COV",
@@ -485,7 +545,8 @@
     "dataset": "local-authority",
     "website": "https://www.coventry.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000026"
+    "statistical_geography": "E08000026",
+    "entity": 96
   },
   {
     "organisation": "local-authority:CRW",
@@ -493,7 +554,8 @@
     "dataset": "local-authority",
     "website": "https://www.crawley.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000226"
+    "statistical_geography": "E07000226",
+    "entity": 99
   },
   {
     "organisation": "local-authority:CUA",
@@ -501,7 +563,8 @@
     "dataset": "local-authority",
     "website": "https://www.cumberland.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000063"
+    "statistical_geography": "E06000063",
+    "entity": 10000
   },
   {
     "organisation": "local-authority:DAC",
@@ -509,7 +572,8 @@
     "dataset": "local-authority",
     "website": "https://www.dacorum.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000096"
+    "statistical_geography": "E07000096",
+    "entity": 101
   },
   {
     "organisation": "local-authority:DAL",
@@ -517,7 +581,8 @@
     "dataset": "local-authority",
     "website": "https://www.darlington.gov.uk",
     "project": null,
-    "statistical_geography": "E06000005"
+    "statistical_geography": "E06000005",
+    "entity": 102
   },
   {
     "organisation": "local-authority:DAR",
@@ -525,7 +590,8 @@
     "dataset": "local-authority",
     "website": "https://www.dartford.gov.uk",
     "project": null,
-    "statistical_geography": "E07000107"
+    "statistical_geography": "E07000107",
+    "entity": 103
   },
   {
     "organisation": "national-park-authority:Q5225646",
@@ -533,7 +599,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.dartmoor.gov.uk",
     "project": null,
-    "statistical_geography": "E26000001"
+    "statistical_geography": "E26000001",
+    "entity": 400
   },
   {
     "organisation": "local-authority:DER",
@@ -541,7 +608,8 @@
     "dataset": "local-authority",
     "website": "https://www.derby.gov.uk",
     "project": null,
-    "statistical_geography": "E06000015"
+    "statistical_geography": "E06000015",
+    "entity": 107
   },
   {
     "organisation": "local-authority:DEB",
@@ -549,7 +617,8 @@
     "dataset": "local-authority",
     "website": "https://www.derbyshiredales.gov.uk",
     "project": null,
-    "statistical_geography": "E07000035"
+    "statistical_geography": "E07000035",
+    "entity": 106
   },
   {
     "organisation": "local-authority:DNC",
@@ -557,7 +626,8 @@
     "dataset": "local-authority",
     "website": "https://www.doncaster.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000017"
+    "statistical_geography": "E08000017",
+    "entity": 109
   },
   {
     "organisation": "local-authority:DST",
@@ -565,7 +635,8 @@
     "dataset": "local-authority",
     "website": "https://www.dorsetcouncil.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000059"
+    "statistical_geography": "E06000059",
+    "entity": 112
   },
   {
     "organisation": "local-authority:DOV",
@@ -573,7 +644,8 @@
     "dataset": "local-authority",
     "website": "https://www.dover.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000108"
+    "statistical_geography": "E07000108",
+    "entity": 111
   },
   {
     "organisation": "local-authority:DUD",
@@ -581,7 +653,8 @@
     "dataset": "local-authority",
     "website": "https://www.dudley.gov.uk",
     "project": null,
-    "statistical_geography": "E08000027"
+    "statistical_geography": "E08000027",
+    "entity": 113
   },
   {
     "organisation": "local-authority:DUR",
@@ -589,7 +662,8 @@
     "dataset": "local-authority",
     "website": "https://www.durham.gov.uk",
     "project": null,
-    "statistical_geography": "E06000047"
+    "statistical_geography": "E06000047",
+    "entity": 114
   },
   {
     "organisation": "local-authority:ECA",
@@ -597,7 +671,8 @@
     "dataset": "local-authority",
     "website": "https://www.eastcambs.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000009"
+    "statistical_geography": "E07000009",
+    "entity": 118
   },
   {
     "organisation": "local-authority:EDE",
@@ -605,7 +680,8 @@
     "dataset": "local-authority",
     "website": "https://eastdevon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000040"
+    "statistical_geography": "E07000040",
+    "entity": 119
   },
   {
     "organisation": "local-authority:EHA",
@@ -613,7 +689,8 @@
     "dataset": "local-authority",
     "website": "https://www.easthants.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000085"
+    "statistical_geography": "E07000085",
+    "entity": 122
   },
   {
     "organisation": "local-authority:EHE",
@@ -621,7 +698,8 @@
     "dataset": "local-authority",
     "website": "https://www.eastherts.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000242"
+    "statistical_geography": "E07000242",
+    "entity": 123
   },
   {
     "organisation": "local-authority:ELI",
@@ -629,7 +707,8 @@
     "dataset": "local-authority",
     "website": "https://www.e-lindsey.gov.uk",
     "project": null,
-    "statistical_geography": "E07000137"
+    "statistical_geography": "E07000137",
+    "entity": 124
   },
   {
     "organisation": "local-authority:ERY",
@@ -637,7 +716,8 @@
     "dataset": "local-authority",
     "website": "https://www.eastriding.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000011"
+    "statistical_geography": "E06000011",
+    "entity": 131
   },
   {
     "organisation": "local-authority:EST",
@@ -645,7 +725,8 @@
     "dataset": "local-authority",
     "website": "https://www.eaststaffsbc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000193"
+    "statistical_geography": "E07000193",
+    "entity": 134
   },
   {
     "organisation": "local-authority:ESK",
@@ -653,7 +734,8 @@
     "dataset": "local-authority",
     "website": "https://www.eastsuffolk.gov.uk",
     "project": null,
-    "statistical_geography": "E07000244"
+    "statistical_geography": "E07000244",
+    "entity": 132
   },
   {
     "organisation": "local-authority:EAS",
@@ -661,7 +743,8 @@
     "dataset": "local-authority",
     "website": "https://www.eastbourne.gov.uk",
     "project": null,
-    "statistical_geography": "E07000061"
+    "statistical_geography": "E07000061",
+    "entity": 116
   },
   {
     "organisation": "local-authority:EAT",
@@ -669,7 +752,8 @@
     "dataset": "local-authority",
     "website": "https://www.eastleigh.gov.uk",
     "project": null,
-    "statistical_geography": "E07000086"
+    "statistical_geography": "E07000086",
+    "entity": 117
   },
   {
     "organisation": "development-corporation:Q72463795",
@@ -677,7 +761,8 @@
     "dataset": "development-corporation",
     "website": "https://ebbsfleetdc.org.uk",
     "project": null,
-    "statistical_geography": "E51000003"
+    "statistical_geography": "E51000003",
+    "entity": 6
   },
   {
     "organisation": "local-authority:ELM",
@@ -685,7 +770,8 @@
     "dataset": "local-authority",
     "website": "https://www.elmbridge.gov.uk",
     "project": null,
-    "statistical_geography": "E07000207"
+    "statistical_geography": "E07000207",
+    "entity": 125
   },
   {
     "organisation": "local-authority:EPP",
@@ -693,7 +779,8 @@
     "dataset": "local-authority",
     "website": "https://www.eppingforestdc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000072"
+    "statistical_geography": "E07000072",
+    "entity": 128
   },
   {
     "organisation": "local-authority:EPS",
@@ -701,7 +788,8 @@
     "dataset": "local-authority",
     "website": "https://www.epsom-ewell.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000208"
+    "statistical_geography": "E07000208",
+    "entity": 129
   },
   {
     "organisation": "local-authority:ERE",
@@ -709,7 +797,8 @@
     "dataset": "local-authority",
     "website": "https://www.erewash.gov.uk",
     "project": null,
-    "statistical_geography": "E07000036"
+    "statistical_geography": "E07000036",
+    "entity": 130
   },
   {
     "organisation": "local-authority:EXE",
@@ -717,7 +806,8 @@
     "dataset": "local-authority",
     "website": "https://www.exeter.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000041"
+    "statistical_geography": "E07000041",
+    "entity": 136
   },
   {
     "organisation": "national-park-authority:Q72617784",
@@ -725,7 +815,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.exmoor-nationalpark.gov.uk",
     "project": null,
-    "statistical_geography": "E26000002"
+    "statistical_geography": "E26000002",
+    "entity": 403
   },
   {
     "organisation": "local-authority:FAR",
@@ -733,7 +824,8 @@
     "dataset": "local-authority",
     "website": "https://www.fareham.gov.uk",
     "project": null,
-    "statistical_geography": "E07000087"
+    "statistical_geography": "E07000087",
+    "entity": 137
   },
   {
     "organisation": "local-authority:FEN",
@@ -741,7 +833,8 @@
     "dataset": "local-authority",
     "website": "https://www.fenland.gov.uk",
     "project": null,
-    "statistical_geography": "E07000010"
+    "statistical_geography": "E07000010",
+    "entity": 138
   },
   {
     "organisation": "local-authority:SHE",
@@ -749,7 +842,8 @@
     "dataset": "local-authority",
     "website": "https://www.folkestone-hythe.gov.uk",
     "project": null,
-    "statistical_geography": "E07000112"
+    "statistical_geography": "E07000112",
+    "entity": 293
   },
   {
     "organisation": "local-authority:FOE",
@@ -757,7 +851,8 @@
     "dataset": "local-authority",
     "website": "https://www.fdean.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000080"
+    "statistical_geography": "E07000080",
+    "entity": 139
   },
   {
     "organisation": "local-authority:FYL",
@@ -765,7 +860,8 @@
     "dataset": "local-authority",
     "website": "https://www.fylde.gov.uk",
     "project": null,
-    "statistical_geography": "E07000119"
+    "statistical_geography": "E07000119",
+    "entity": 141
   },
   {
     "organisation": "local-authority:GAT",
@@ -773,7 +869,8 @@
     "dataset": "local-authority",
     "website": "https://www.gateshead.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000037"
+    "statistical_geography": "E08000037",
+    "entity": 142
   },
   {
     "organisation": "local-authority:GED",
@@ -781,7 +878,8 @@
     "dataset": "local-authority",
     "website": "https://www.gedling.gov.uk",
     "project": null,
-    "statistical_geography": "E07000173"
+    "statistical_geography": "E07000173",
+    "entity": 143
   },
   {
     "organisation": "local-authority:GLO",
@@ -789,7 +887,8 @@
     "dataset": "local-authority",
     "website": "https://www.gloucester.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000081"
+    "statistical_geography": "E07000081",
+    "entity": 145
   },
   {
     "organisation": "local-authority:GOS",
@@ -797,7 +896,8 @@
     "dataset": "local-authority",
     "website": "https://www.gosport.gov.uk",
     "project": null,
-    "statistical_geography": "E07000088"
+    "statistical_geography": "E07000088",
+    "entity": 148
   },
   {
     "organisation": "local-authority:GRA",
@@ -805,7 +905,8 @@
     "dataset": "local-authority",
     "website": "https://www.gravesham.gov.uk",
     "project": null,
-    "statistical_geography": "E07000109"
+    "statistical_geography": "E07000109",
+    "entity": 149
   },
   {
     "organisation": "local-authority:GRY",
@@ -813,7 +914,8 @@
     "dataset": "local-authority",
     "website": "https://www.great-yarmouth.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000145"
+    "statistical_geography": "E07000145",
+    "entity": 152
   },
   {
     "organisation": "local-authority:GRT",
@@ -821,7 +923,8 @@
     "dataset": "local-authority",
     "website": "https://www.guildford.gov.uk",
     "project": null,
-    "statistical_geography": "E07000209"
+    "statistical_geography": "E07000209",
+    "entity": 151
   },
   {
     "organisation": "local-authority:HAL",
@@ -829,7 +932,8 @@
     "dataset": "local-authority",
     "website": "https://www.halton.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000006"
+    "statistical_geography": "E06000006",
+    "entity": 156
   },
   {
     "organisation": "local-authority:HAO",
@@ -837,7 +941,8 @@
     "dataset": "local-authority",
     "website": "https://www.harborough.gov.uk",
     "project": null,
-    "statistical_geography": "E07000131"
+    "statistical_geography": "E07000131",
+    "entity": 158
   },
   {
     "organisation": "local-authority:HAR",
@@ -845,7 +950,8 @@
     "dataset": "local-authority",
     "website": "https://www.harlow.gov.uk",
     "project": null,
-    "statistical_geography": "E07000073"
+    "statistical_geography": "E07000073",
+    "entity": 159
   },
   {
     "organisation": "local-authority:HAT",
@@ -853,7 +959,8 @@
     "dataset": "local-authority",
     "website": "https://www.hart.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000089"
+    "statistical_geography": "E07000089",
+    "entity": 161
   },
   {
     "organisation": "local-authority:HPL",
@@ -861,7 +968,8 @@
     "dataset": "local-authority",
     "website": "https://www.hartlepool.gov.uk",
     "project": null,
-    "statistical_geography": "E06000001"
+    "statistical_geography": "E06000001",
+    "entity": 172
   },
   {
     "organisation": "development-corporation:Q124604981",
@@ -869,7 +977,8 @@
     "dataset": "development-corporation",
     "website": "https://teesvalley-ca.gov.uk/about/hartlepool-development-corporation/",
     "project": null,
-    "statistical_geography": "E51000007"
+    "statistical_geography": "E51000007",
+    "entity": 4700002
   },
   {
     "organisation": "local-authority:HAS",
@@ -877,7 +986,8 @@
     "dataset": "local-authority",
     "website": "https://www.hastings.gov.uk",
     "project": null,
-    "statistical_geography": "E07000062"
+    "statistical_geography": "E07000062",
+    "entity": 160
   },
   {
     "organisation": "local-authority:HAA",
@@ -885,7 +995,8 @@
     "dataset": "local-authority",
     "website": "https://www.havant.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000090"
+    "statistical_geography": "E07000090",
+    "entity": 153
   },
   {
     "organisation": "local-authority:HEF",
@@ -893,7 +1004,8 @@
     "dataset": "local-authority",
     "website": "https://www.herefordshire.gov.uk",
     "project": null,
-    "statistical_geography": "E06000019"
+    "statistical_geography": "E06000019",
+    "entity": 164
   },
   {
     "organisation": "local-authority:HER",
@@ -901,7 +1013,8 @@
     "dataset": "local-authority",
     "website": "https://www.hertsmere.gov.uk",
     "project": null,
-    "statistical_geography": "E07000098"
+    "statistical_geography": "E07000098",
+    "entity": 165
   },
   {
     "organisation": "local-authority:HIG",
@@ -909,7 +1022,8 @@
     "dataset": "local-authority",
     "website": "https://www.highpeak.gov.uk",
     "project": null,
-    "statistical_geography": "E07000037"
+    "statistical_geography": "E07000037",
+    "entity": 166
   },
   {
     "organisation": "local-authority:HIN",
@@ -917,7 +1031,8 @@
     "dataset": "local-authority",
     "website": "https://www.hinckley-bosworth.gov.uk",
     "project": null,
-    "statistical_geography": "E07000132"
+    "statistical_geography": "E07000132",
+    "entity": 168
   },
   {
     "organisation": "local-authority:HOR",
@@ -925,7 +1040,8 @@
     "dataset": "local-authority",
     "website": "https://www.horsham.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000227"
+    "statistical_geography": "E07000227",
+    "entity": 171
   },
   {
     "organisation": "local-authority:KHL",
@@ -933,7 +1049,8 @@
     "dataset": "local-authority",
     "website": "https://www.hullcc.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000010"
+    "statistical_geography": "E06000010",
+    "entity": 185
   },
   {
     "organisation": "local-authority:HUN",
@@ -941,7 +1058,8 @@
     "dataset": "local-authority",
     "website": "https://www.huntingdonshire.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000011"
+    "statistical_geography": "E07000011",
+    "entity": 176
   },
   {
     "organisation": "local-authority:HYN",
@@ -949,7 +1067,8 @@
     "dataset": "local-authority",
     "website": "https://www.hyndburnbc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000120"
+    "statistical_geography": "E07000120",
+    "entity": 177
   },
   {
     "organisation": "local-authority:IPS",
@@ -957,7 +1076,8 @@
     "dataset": "local-authority",
     "website": "https://www.ipswich.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000202"
+    "statistical_geography": "E07000202",
+    "entity": 180
   },
   {
     "organisation": "local-authority:IOW",
@@ -965,7 +1085,8 @@
     "dataset": "local-authority",
     "website": "https://www.iow.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000046"
+    "statistical_geography": "E06000046",
+    "entity": 179
   },
   {
     "organisation": "local-authority:KIR",
@@ -973,7 +1094,8 @@
     "dataset": "local-authority",
     "website": "https://www.kirklees.gov.uk",
     "project": null,
-    "statistical_geography": "E08000034"
+    "statistical_geography": "E08000034",
+    "entity": 187
   },
   {
     "organisation": "local-authority:KWL",
@@ -981,7 +1103,8 @@
     "dataset": "local-authority",
     "website": "https://www.knowsley.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000011"
+    "statistical_geography": "E08000011",
+    "entity": 189
   },
   {
     "organisation": "national-park-authority:Q27159704",
@@ -989,7 +1112,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.lakedistrict.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E26000003"
+    "statistical_geography": "E26000003",
+    "entity": 397
   },
   {
     "organisation": "local-authority:LAC",
@@ -997,7 +1121,8 @@
     "dataset": "local-authority",
     "website": "https://www.lancaster.gov.uk",
     "project": null,
-    "statistical_geography": "E07000121"
+    "statistical_geography": "E07000121",
+    "entity": 190
   },
   {
     "organisation": "local-authority:LDS",
@@ -1005,7 +1130,8 @@
     "dataset": "local-authority",
     "website": "https://www.leeds.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000035"
+    "statistical_geography": "E08000035",
+    "entity": 195
   },
   {
     "organisation": "local-authority:LCE",
@@ -1013,7 +1139,8 @@
     "dataset": "local-authority",
     "website": "https://www.leicester.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000016"
+    "statistical_geography": "E06000016",
+    "entity": 193
   },
   {
     "organisation": "local-authority:LEE",
@@ -1021,7 +1148,8 @@
     "dataset": "local-authority",
     "website": "https://www.lewes-eastbourne.gov.uk",
     "project": null,
-    "statistical_geography": "E07000063"
+    "statistical_geography": "E07000063",
+    "entity": 197
   },
   {
     "organisation": "local-authority:LIF",
@@ -1029,7 +1157,8 @@
     "dataset": "local-authority",
     "website": "https://www.lichfielddc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000194"
+    "statistical_geography": "E07000194",
+    "entity": 200
   },
   {
     "organisation": "local-authority:LIV",
@@ -1037,7 +1166,8 @@
     "dataset": "local-authority",
     "website": "https://www.liverpool.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000012"
+    "statistical_geography": "E08000012",
+    "entity": 202
   },
   {
     "organisation": "local-authority:BDG",
@@ -1045,7 +1175,8 @@
     "dataset": "local-authority",
     "website": "https://www.lbbd.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000002"
+    "statistical_geography": "E09000002",
+    "entity": 41
   },
   {
     "organisation": "local-authority:BNE",
@@ -1053,7 +1184,8 @@
     "dataset": "local-authority",
     "website": "https://www.barnet.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000003"
+    "statistical_geography": "E09000003",
+    "entity": 48
   },
   {
     "organisation": "local-authority:BEX",
@@ -1061,7 +1193,8 @@
     "dataset": "local-authority",
     "website": "https://www.bexley.gov.uk",
     "project": null,
-    "statistical_geography": "E09000004"
+    "statistical_geography": "E09000004",
+    "entity": 43
   },
   {
     "organisation": "local-authority:BEN",
@@ -1069,7 +1202,8 @@
     "dataset": "local-authority",
     "website": "https://www.brent.gov.uk",
     "project": null,
-    "statistical_geography": "E09000005"
+    "statistical_geography": "E09000005",
+    "entity": 42
   },
   {
     "organisation": "local-authority:BRY",
@@ -1077,7 +1211,8 @@
     "dataset": "local-authority",
     "website": "https://www.bromley.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000006"
+    "statistical_geography": "E09000006",
+    "entity": 65
   },
   {
     "organisation": "local-authority:CMD",
@@ -1085,7 +1220,8 @@
     "dataset": "local-authority",
     "website": "https://www.camden.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000007"
+    "statistical_geography": "E09000007",
+    "entity": 90
   },
   {
     "organisation": "local-authority:CRY",
@@ -1093,7 +1229,8 @@
     "dataset": "local-authority",
     "website": "https://www.croydon.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000008"
+    "statistical_geography": "E09000008",
+    "entity": 100
   },
   {
     "organisation": "local-authority:EAL",
@@ -1101,7 +1238,8 @@
     "dataset": "local-authority",
     "website": "https://www.ealing.gov.uk",
     "project": null,
-    "statistical_geography": "E09000009"
+    "statistical_geography": "E09000009",
+    "entity": 115
   },
   {
     "organisation": "local-authority:ENF",
@@ -1109,7 +1247,8 @@
     "dataset": "local-authority",
     "website": "https://www.enfield.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000010"
+    "statistical_geography": "E09000010",
+    "entity": 126
   },
   {
     "organisation": "local-authority:HCK",
@@ -1117,7 +1256,8 @@
     "dataset": "local-authority",
     "website": "https://www.hackney.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000012"
+    "statistical_geography": "E09000012",
+    "entity": 163
   },
   {
     "organisation": "local-authority:HMF",
@@ -1125,7 +1265,8 @@
     "dataset": "local-authority",
     "website": "https://www.lbhf.gov.uk/",
     "project": null,
-    "statistical_geography": "E09000013"
+    "statistical_geography": "E09000013",
+    "entity": 169
   },
   {
     "organisation": "local-authority:HRY",
@@ -1133,7 +1274,8 @@
     "dataset": "local-authority",
     "website": "https://www.haringey.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000014"
+    "statistical_geography": "E09000014",
+    "entity": 175
   },
   {
     "organisation": "local-authority:HRW",
@@ -1141,7 +1283,8 @@
     "dataset": "local-authority",
     "website": "https://www.harrow.gov.uk",
     "project": null,
-    "statistical_geography": "E09000015"
+    "statistical_geography": "E09000015",
+    "entity": 174
   },
   {
     "organisation": "local-authority:HAV",
@@ -1149,7 +1292,8 @@
     "dataset": "local-authority",
     "website": "https://www.havering.gov.uk",
     "project": null,
-    "statistical_geography": "E09000016"
+    "statistical_geography": "E09000016",
+    "entity": 162
   },
   {
     "organisation": "local-authority:HIL",
@@ -1157,7 +1301,8 @@
     "dataset": "local-authority",
     "website": "https://www.hillingdon.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000017"
+    "statistical_geography": "E09000017",
+    "entity": 167
   },
   {
     "organisation": "local-authority:HNS",
@@ -1165,7 +1310,8 @@
     "dataset": "local-authority",
     "website": "https://www.hounslow.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000018"
+    "statistical_geography": "E09000018",
+    "entity": 170
   },
   {
     "organisation": "local-authority:ISL",
@@ -1173,7 +1319,8 @@
     "dataset": "local-authority",
     "website": "https://www.islington.gov.uk",
     "project": null,
-    "statistical_geography": "E09000019"
+    "statistical_geography": "E09000019",
+    "entity": 181
   },
   {
     "organisation": "local-authority:LBH",
@@ -1181,7 +1328,8 @@
     "dataset": "local-authority",
     "website": "https://www.lambeth.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000022"
+    "statistical_geography": "E09000022",
+    "entity": 192
   },
   {
     "organisation": "local-authority:LEW",
@@ -1189,7 +1337,8 @@
     "dataset": "local-authority",
     "website": "https://www.lewisham.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000023"
+    "statistical_geography": "E09000023",
+    "entity": 198
   },
   {
     "organisation": "local-authority:MRT",
@@ -1197,7 +1346,8 @@
     "dataset": "local-authority",
     "website": "https://www.merton.gov.uk",
     "project": null,
-    "statistical_geography": "E09000024"
+    "statistical_geography": "E09000024",
+    "entity": 217
   },
   {
     "organisation": "local-authority:NWM",
@@ -1205,7 +1355,8 @@
     "dataset": "local-authority",
     "website": "https://www.newham.gov.uk",
     "project": null,
-    "statistical_geography": "E09000025"
+    "statistical_geography": "E09000025",
+    "entity": 246
   },
   {
     "organisation": "local-authority:RDB",
@@ -1213,7 +1364,8 @@
     "dataset": "local-authority",
     "website": "https://www.redbridge.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000026"
+    "statistical_geography": "E09000026",
+    "entity": 261
   },
   {
     "organisation": "local-authority:RIC",
@@ -1221,7 +1373,8 @@
     "dataset": "local-authority",
     "website": "https://www.richmond.gov.uk",
     "project": null,
-    "statistical_geography": "E09000027"
+    "statistical_geography": "E09000027",
+    "entity": 266
   },
   {
     "organisation": "local-authority:SWK",
@@ -1229,7 +1382,8 @@
     "dataset": "local-authority",
     "website": "https://www.southwark.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000028"
+    "statistical_geography": "E09000028",
+    "entity": 329
   },
   {
     "organisation": "local-authority:STN",
@@ -1237,7 +1391,8 @@
     "dataset": "local-authority",
     "website": "https://www.sutton.gov.uk",
     "project": null,
-    "statistical_geography": "E09000029"
+    "statistical_geography": "E09000029",
+    "entity": 319
   },
   {
     "organisation": "local-authority:TWH",
@@ -1245,7 +1400,8 @@
     "dataset": "local-authority",
     "website": "https://www.towerhamlets.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000030"
+    "statistical_geography": "E09000030",
+    "entity": 350
   },
   {
     "organisation": "local-authority:WFT",
@@ -1253,7 +1409,8 @@
     "dataset": "local-authority",
     "website": "https://www.walthamforest.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000031"
+    "statistical_geography": "E09000031",
+    "entity": 366
   },
   {
     "organisation": "local-authority:WND",
@@ -1261,7 +1418,8 @@
     "dataset": "local-authority",
     "website": "https://www.wandsworth.gov.uk",
     "project": null,
-    "statistical_geography": "E09000032"
+    "statistical_geography": "E09000032",
+    "entity": 376
   },
   {
     "organisation": "development-corporation:Q6670544",
@@ -1269,7 +1427,8 @@
     "dataset": "development-corporation",
     "website": "https://www.queenelizabetholympicpark.co.uk/planning-authority/planning-policy",
     "project": null,
-    "statistical_geography": "E51000001"
+    "statistical_geography": "E51000001",
+    "entity": 3
   },
   {
     "organisation": "local-authority:LUT",
@@ -1277,7 +1436,8 @@
     "dataset": "local-authority",
     "website": "https://www.luton.gov.uk",
     "project": null,
-    "statistical_geography": "E06000032"
+    "statistical_geography": "E06000032",
+    "entity": 204
   },
   {
     "organisation": "local-authority:MAI",
@@ -1285,7 +1445,8 @@
     "dataset": "local-authority",
     "website": "https://www.maidstone.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000110"
+    "statistical_geography": "E07000110",
+    "entity": 205
   },
   {
     "organisation": "local-authority:MAL",
@@ -1293,7 +1454,8 @@
     "dataset": "local-authority",
     "website": "https://www.maldon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000074"
+    "statistical_geography": "E07000074",
+    "entity": 206
   },
   {
     "organisation": "local-authority:MAV",
@@ -1301,7 +1463,8 @@
     "dataset": "local-authority",
     "website": "https://www.malvernhills.gov.uk",
     "project": null,
-    "statistical_geography": "E07000235"
+    "statistical_geography": "E07000235",
+    "entity": 209
   },
   {
     "organisation": "local-authority:MAN",
@@ -1309,7 +1472,8 @@
     "dataset": "local-authority",
     "website": "https://www.manchester.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000003"
+    "statistical_geography": "E08000003",
+    "entity": 207
   },
   {
     "organisation": "local-authority:MAS",
@@ -1317,7 +1481,8 @@
     "dataset": "local-authority",
     "website": "https://www.mansfield.gov.uk",
     "project": null,
-    "statistical_geography": "E07000174"
+    "statistical_geography": "E07000174",
+    "entity": 208
   },
   {
     "organisation": "local-authority:MDW",
@@ -1325,7 +1490,8 @@
     "dataset": "local-authority",
     "website": "https://www.medway.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000035"
+    "statistical_geography": "E06000035",
+    "entity": 212
   },
   {
     "organisation": "local-authority:MEL",
@@ -1333,7 +1499,8 @@
     "dataset": "local-authority",
     "website": "https://www.melton.gov.uk",
     "project": null,
-    "statistical_geography": "E07000133"
+    "statistical_geography": "E07000133",
+    "entity": 213
   },
   {
     "organisation": "local-authority:MDE",
@@ -1341,7 +1508,8 @@
     "dataset": "local-authority",
     "website": "https://www.middevon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000042"
+    "statistical_geography": "E07000042",
+    "entity": 211
   },
   {
     "organisation": "local-authority:MSU",
@@ -1349,7 +1517,8 @@
     "dataset": "local-authority",
     "website": "https://www.midsuffolk.gov.uk",
     "project": null,
-    "statistical_geography": "E07000203"
+    "statistical_geography": "E07000203",
+    "entity": 219
   },
   {
     "organisation": "local-authority:MSS",
@@ -1357,7 +1526,8 @@
     "dataset": "local-authority",
     "website": "https://www.midsussex.gov.uk",
     "project": null,
-    "statistical_geography": "E07000228"
+    "statistical_geography": "E07000228",
+    "entity": 218
   },
   {
     "organisation": "local-authority:MDB",
@@ -1365,7 +1535,8 @@
     "dataset": "local-authority",
     "website": "https://www.middlesbrough.gov.uk",
     "project": null,
-    "statistical_geography": "E06000002"
+    "statistical_geography": "E06000002",
+    "entity": 210
   },
   {
     "organisation": "development-corporation:Q117149370",
@@ -1373,7 +1544,8 @@
     "dataset": "development-corporation",
     "website": "https://teesvalley-ca.gov.uk/about/middlesbrough-development-corporation/",
     "project": null,
-    "statistical_geography": "E51000006"
+    "statistical_geography": "E51000006",
+    "entity": 4700001
   },
   {
     "organisation": "local-authority:MIK",
@@ -1381,7 +1553,8 @@
     "dataset": "local-authority",
     "website": "https://www.milton-keynes.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000042"
+    "statistical_geography": "E06000042",
+    "entity": 215
   },
   {
     "organisation": "local-authority:MOL",
@@ -1389,7 +1562,8 @@
     "dataset": "local-authority",
     "website": "https://www.molevalley.gov.uk",
     "project": null,
-    "statistical_geography": "E07000210"
+    "statistical_geography": "E07000210",
+    "entity": 216
   },
   {
     "organisation": "local-authority:NEW",
@@ -1397,7 +1571,8 @@
     "dataset": "local-authority",
     "website": "https://www.newforestdc.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000091"
+    "statistical_geography": "E07000091",
+    "entity": 229
   },
   {
     "organisation": "national-park-authority:Q72617158",
@@ -1405,7 +1580,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.newforestnpa.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E26000009"
+    "statistical_geography": "E26000009",
+    "entity": 401
   },
   {
     "organisation": "local-authority:NEA",
@@ -1413,7 +1589,8 @@
     "dataset": "local-authority",
     "website": "https://www.newark-sherwooddc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000175"
+    "statistical_geography": "E07000175",
+    "entity": 223
   },
   {
     "organisation": "local-authority:NET",
@@ -1421,7 +1598,8 @@
     "dataset": "local-authority",
     "website": "https://www.newcastle.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000021"
+    "statistical_geography": "E08000021",
+    "entity": 228
   },
   {
     "organisation": "local-authority:NEC",
@@ -1429,7 +1607,8 @@
     "dataset": "local-authority",
     "website": "https://www.newcastle-staffs.gov.uk",
     "project": null,
-    "statistical_geography": "E07000195"
+    "statistical_geography": "E07000195",
+    "entity": 224
   },
   {
     "organisation": "local-authority:NDE",
@@ -1437,7 +1616,8 @@
     "dataset": "local-authority",
     "website": "https://www.northdevon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000043"
+    "statistical_geography": "E07000043",
+    "entity": 221
   },
   {
     "organisation": "local-authority:NED",
@@ -1445,7 +1625,8 @@
     "dataset": "local-authority",
     "website": "https://www.ne-derbyshire.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000038"
+    "statistical_geography": "E07000038",
+    "entity": 226
   },
   {
     "organisation": "local-authority:NEL",
@@ -1453,7 +1634,8 @@
     "dataset": "local-authority",
     "website": "https://www.nelincs.gov.uk",
     "project": null,
-    "statistical_geography": "E06000012"
+    "statistical_geography": "E06000012",
+    "entity": 227
   },
   {
     "organisation": "local-authority:NHE",
@@ -1461,7 +1643,8 @@
     "dataset": "local-authority",
     "website": "https://www.north-herts.gov.uk",
     "project": null,
-    "statistical_geography": "E07000099"
+    "statistical_geography": "E07000099",
+    "entity": 232
   },
   {
     "organisation": "local-authority:NKE",
@@ -1469,7 +1652,8 @@
     "dataset": "local-authority",
     "website": "https://www.n-kesteven.gov.uk",
     "project": null,
-    "statistical_geography": "E07000139"
+    "statistical_geography": "E07000139",
+    "entity": 233
   },
   {
     "organisation": "local-authority:NLN",
@@ -1477,7 +1661,8 @@
     "dataset": "local-authority",
     "website": "https://www.northlincs.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000013"
+    "statistical_geography": "E06000013",
+    "entity": 234
   },
   {
     "organisation": "local-authority:NNO",
@@ -1485,7 +1670,8 @@
     "dataset": "local-authority",
     "website": "https://www.northnorfolk.org/",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000147"
+    "statistical_geography": "E07000147",
+    "entity": 235
   },
   {
     "organisation": "local-authority:NNUA",
@@ -1493,7 +1679,8 @@
     "dataset": "local-authority",
     "website": "https://www.northnorthants.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000061"
+    "statistical_geography": "E06000061",
+    "entity": 501908
   },
   {
     "organisation": "local-authority:NSM",
@@ -1501,7 +1688,8 @@
     "dataset": "local-authority",
     "website": "https://www.n-somerset.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000024"
+    "statistical_geography": "E06000024",
+    "entity": 238
   },
   {
     "organisation": "local-authority:NTY",
@@ -1509,7 +1697,8 @@
     "dataset": "local-authority",
     "website": "https://www.northtyneside.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000022"
+    "statistical_geography": "E08000022",
+    "entity": 242
   },
   {
     "organisation": "local-authority:NWA",
@@ -1517,7 +1706,8 @@
     "dataset": "local-authority",
     "website": "https://www.northwarks.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000218"
+    "statistical_geography": "E07000218",
+    "entity": 244
   },
   {
     "organisation": "local-authority:NWL",
@@ -1525,7 +1715,8 @@
     "dataset": "local-authority",
     "website": "https://www.nwleics.gov.uk",
     "project": null,
-    "statistical_geography": "E07000134"
+    "statistical_geography": "E07000134",
+    "entity": 245
   },
   {
     "organisation": "national-park-authority:Q72617669",
@@ -1533,7 +1724,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.northyorkmoors.org.uk",
     "project": null,
-    "statistical_geography": "E26000005"
+    "statistical_geography": "E26000005",
+    "entity": 402
   },
   {
     "organisation": "local-authority:NYUA",
@@ -1541,7 +1733,8 @@
     "dataset": "local-authority",
     "website": "https://www.northyorks.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000065"
+    "statistical_geography": "E06000065",
+    "entity": 10004
   },
   {
     "organisation": "local-authority:NBL",
@@ -1549,7 +1742,8 @@
     "dataset": "local-authority",
     "website": "https://www.northumberland.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000057"
+    "statistical_geography": "E06000057",
+    "entity": 220
   },
   {
     "organisation": "national-park-authority:Q72617890",
@@ -1557,7 +1751,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.northumberlandnationalpark.org.uk",
     "project": null,
-    "statistical_geography": "E26000004"
+    "statistical_geography": "E26000004",
+    "entity": 404
   },
   {
     "organisation": "local-authority:NOW",
@@ -1565,7 +1760,8 @@
     "dataset": "local-authority",
     "website": "https://www.norwich.gov.uk",
     "project": null,
-    "statistical_geography": "E07000148"
+    "statistical_geography": "E07000148",
+    "entity": 237
   },
   {
     "organisation": "local-authority:NGM",
@@ -1573,7 +1769,8 @@
     "dataset": "local-authority",
     "website": "https://www.nottinghamcity.gov.uk",
     "project": null,
-    "statistical_geography": "E06000018"
+    "statistical_geography": "E06000018",
+    "entity": 231
   },
   {
     "organisation": "local-authority:NUN",
@@ -1581,7 +1778,8 @@
     "dataset": "local-authority",
     "website": "https://www.nuneatonandbedworth.gov.uk",
     "project": null,
-    "statistical_geography": "E07000219"
+    "statistical_geography": "E07000219",
+    "entity": 243
   },
   {
     "organisation": "local-authority:OAD",
@@ -1589,7 +1787,8 @@
     "dataset": "local-authority",
     "website": "https://oadby-wigston.gov.uk",
     "project": null,
-    "statistical_geography": "E07000135"
+    "statistical_geography": "E07000135",
+    "entity": 248
   },
   {
     "organisation": "development-corporation:Q20648596",
@@ -1597,7 +1796,8 @@
     "dataset": "development-corporation",
     "website": "https://www.london.gov.uk/about-us/organisations-we-work/old-oak-and-park-royal-development-corporation-opdc",
     "project": null,
-    "statistical_geography": "E51000002"
+    "statistical_geography": "E51000002",
+    "entity": 1
   },
   {
     "organisation": "local-authority:OLD",
@@ -1605,7 +1805,8 @@
     "dataset": "local-authority",
     "website": "https://www.oldham.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000004"
+    "statistical_geography": "E08000004",
+    "entity": 249
   },
   {
     "organisation": "local-authority:OXO",
@@ -1613,7 +1814,8 @@
     "dataset": "local-authority",
     "website": "https://www.oxford.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000178"
+    "statistical_geography": "E07000178",
+    "entity": 251
   },
   {
     "organisation": "national-park-authority:Q72617988",
@@ -1621,7 +1823,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.peakdistrict.gov.uk",
     "project": null,
-    "statistical_geography": "E26000006"
+    "statistical_geography": "E26000006",
+    "entity": 405
   },
   {
     "organisation": "local-authority:PEN",
@@ -1629,7 +1832,8 @@
     "dataset": "local-authority",
     "website": "https://www.pendle.gov.uk",
     "project": null,
-    "statistical_geography": "E07000122"
+    "statistical_geography": "E07000122",
+    "entity": 252
   },
   {
     "organisation": "local-authority:PTE",
@@ -1637,7 +1841,8 @@
     "dataset": "local-authority",
     "website": "https://www.peterborough.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000031"
+    "statistical_geography": "E06000031",
+    "entity": 257
   },
   {
     "organisation": "local-authority:PLY",
@@ -1645,7 +1850,8 @@
     "dataset": "local-authority",
     "website": "https://www.plymouth.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000026"
+    "statistical_geography": "E06000026",
+    "entity": 253
   },
   {
     "organisation": "local-authority:POR",
@@ -1653,7 +1859,8 @@
     "dataset": "local-authority",
     "website": "https://www.portsmouth.gov.uk",
     "project": null,
-    "statistical_geography": "E06000044"
+    "statistical_geography": "E06000044",
+    "entity": 255
   },
   {
     "organisation": "local-authority:PRE",
@@ -1661,7 +1868,8 @@
     "dataset": "local-authority",
     "website": "https://www.preston.gov.uk",
     "project": null,
-    "statistical_geography": "E07000123"
+    "statistical_geography": "E07000123",
+    "entity": 256
   },
   {
     "organisation": "local-authority:RDG",
@@ -1669,7 +1877,8 @@
     "dataset": "local-authority",
     "website": "http://www.reading.gov.uk",
     "project": null,
-    "statistical_geography": "E06000038"
+    "statistical_geography": "E06000038",
+    "entity": 262
   },
   {
     "organisation": "local-authority:RCC",
@@ -1677,7 +1886,8 @@
     "dataset": "local-authority",
     "website": "https://www.redcar-cleveland.gov.uk",
     "project": null,
-    "statistical_geography": "E06000003"
+    "statistical_geography": "E06000003",
+    "entity": 259
   },
   {
     "organisation": "local-authority:RED",
@@ -1685,7 +1895,8 @@
     "dataset": "local-authority",
     "website": "https://www.redditchbc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000236"
+    "statistical_geography": "E07000236",
+    "entity": 263
   },
   {
     "organisation": "local-authority:REI",
@@ -1693,7 +1904,8 @@
     "dataset": "local-authority",
     "website": "https://www.reigate-banstead.gov.uk",
     "project": null,
-    "statistical_geography": "E07000211"
+    "statistical_geography": "E07000211",
+    "entity": 264
   },
   {
     "organisation": "local-authority:RIB",
@@ -1701,7 +1913,8 @@
     "dataset": "local-authority",
     "website": "https://www.ribblevalley.gov.uk",
     "project": null,
-    "statistical_geography": "E07000124"
+    "statistical_geography": "E07000124",
+    "entity": 265
   },
   {
     "organisation": "local-authority:RCH",
@@ -1709,7 +1922,8 @@
     "dataset": "local-authority",
     "website": "https://www.rochdale.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000005"
+    "statistical_geography": "E08000005",
+    "entity": 260
   },
   {
     "organisation": "local-authority:ROC",
@@ -1717,7 +1931,8 @@
     "dataset": "local-authority",
     "website": "https://www.rochford.gov.uk",
     "project": null,
-    "statistical_geography": "E07000075"
+    "statistical_geography": "E07000075",
+    "entity": 268
   },
   {
     "organisation": "local-authority:ROS",
@@ -1725,7 +1940,8 @@
     "dataset": "local-authority",
     "website": "https://www.rossendale.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000125"
+    "statistical_geography": "E07000125",
+    "entity": 270
   },
   {
     "organisation": "local-authority:ROH",
@@ -1733,7 +1949,8 @@
     "dataset": "local-authority",
     "website": "https://www.rother.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000064"
+    "statistical_geography": "E07000064",
+    "entity": 269
   },
   {
     "organisation": "local-authority:ROT",
@@ -1741,7 +1958,8 @@
     "dataset": "local-authority",
     "website": "https://www.rotherham.gov.uk",
     "project": null,
-    "statistical_geography": "E08000018"
+    "statistical_geography": "E08000018",
+    "entity": 271
   },
   {
     "organisation": "local-authority:GRE",
@@ -1749,7 +1967,8 @@
     "dataset": "local-authority",
     "website": "https://www.royalgreenwich.gov.uk",
     "project": null,
-    "statistical_geography": "E09000011"
+    "statistical_geography": "E09000011",
+    "entity": 150
   },
   {
     "organisation": "local-authority:KEC",
@@ -1757,7 +1976,8 @@
     "dataset": "local-authority",
     "website": "https://www.rbkc.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000020"
+    "statistical_geography": "E09000020",
+    "entity": 182
   },
   {
     "organisation": "local-authority:KTT",
@@ -1765,7 +1985,8 @@
     "dataset": "local-authority",
     "website": "https://www.kingston.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E09000021"
+    "statistical_geography": "E09000021",
+    "entity": 188
   },
   {
     "organisation": "local-authority:WNM",
@@ -1773,7 +1994,8 @@
     "dataset": "local-authority",
     "website": "https://www.rbwm.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000040"
+    "statistical_geography": "E06000040",
+    "entity": 377
   },
   {
     "organisation": "local-authority:RUG",
@@ -1781,7 +2003,8 @@
     "dataset": "local-authority",
     "website": "https://www.rugby.gov.uk",
     "project": null,
-    "statistical_geography": "E07000220"
+    "statistical_geography": "E07000220",
+    "entity": 272
   },
   {
     "organisation": "local-authority:RUN",
@@ -1789,7 +2012,8 @@
     "dataset": "local-authority",
     "website": "https://www.runnymede.gov.uk",
     "project": null,
-    "statistical_geography": "E07000212"
+    "statistical_geography": "E07000212",
+    "entity": 274
   },
   {
     "organisation": "local-authority:RUS",
@@ -1797,7 +2021,8 @@
     "dataset": "local-authority",
     "website": "https://www.rushcliffe.gov.uk",
     "project": null,
-    "statistical_geography": "E07000176"
+    "statistical_geography": "E07000176",
+    "entity": 275
   },
   {
     "organisation": "local-authority:RUH",
@@ -1805,7 +2030,8 @@
     "dataset": "local-authority",
     "website": "https://www.rushmoor.gov.uk",
     "project": null,
-    "statistical_geography": "E07000092"
+    "statistical_geography": "E07000092",
+    "entity": 273
   },
   {
     "organisation": "local-authority:RUT",
@@ -1813,7 +2039,8 @@
     "dataset": "local-authority",
     "website": "https://www.rutland.gov.uk",
     "project": null,
-    "statistical_geography": "E06000017"
+    "statistical_geography": "E06000017",
+    "entity": 276
   },
   {
     "organisation": "local-authority:SLF",
@@ -1821,7 +2048,8 @@
     "dataset": "local-authority",
     "website": "https://www.salford.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000006"
+    "statistical_geography": "E08000006",
+    "entity": 301
   },
   {
     "organisation": "local-authority:SAW",
@@ -1829,7 +2057,8 @@
     "dataset": "local-authority",
     "website": "https://www.sandwell.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000028"
+    "statistical_geography": "E08000028",
+    "entity": 279
   },
   {
     "organisation": "local-authority:SFT",
@@ -1837,7 +2066,8 @@
     "dataset": "local-authority",
     "website": "https://www.sefton.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000014"
+    "statistical_geography": "E08000014",
+    "entity": 290
   },
   {
     "organisation": "local-authority:SEV",
@@ -1845,7 +2075,8 @@
     "dataset": "local-authority",
     "website": "https://www.sevenoaks.gov.uk",
     "project": null,
-    "statistical_geography": "E07000111"
+    "statistical_geography": "E07000111",
+    "entity": 288
   },
   {
     "organisation": "local-authority:SHF",
@@ -1853,7 +2084,8 @@
     "dataset": "local-authority",
     "website": "https://www.sheffield.gov.uk",
     "project": null,
-    "statistical_geography": "E08000019"
+    "statistical_geography": "E08000019",
+    "entity": 294
   },
   {
     "organisation": "local-authority:SHR",
@@ -1861,7 +2093,8 @@
     "dataset": "local-authority",
     "website": "https://www.shropshire.gov.uk",
     "project": null,
-    "statistical_geography": "E06000051"
+    "statistical_geography": "E06000051",
+    "entity": 297
   },
   {
     "organisation": "local-authority:SLG",
@@ -1869,7 +2102,8 @@
     "dataset": "local-authority",
     "website": "https://www.slough.gov.uk",
     "project": null,
-    "statistical_geography": "E06000039"
+    "statistical_geography": "E06000039",
+    "entity": 302
   },
   {
     "organisation": "local-authority:SOL",
@@ -1877,7 +2111,8 @@
     "dataset": "local-authority",
     "website": "https://www.solihull.gov.uk",
     "project": null,
-    "statistical_geography": "E08000029"
+    "statistical_geography": "E08000029",
+    "entity": 306
   },
   {
     "organisation": "local-authority:SUA",
@@ -1885,7 +2120,8 @@
     "dataset": "local-authority",
     "website": "https://www.somerset.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000066"
+    "statistical_geography": "E06000066",
+    "entity": 10003
   },
   {
     "organisation": "local-authority:SCA",
@@ -1893,7 +2129,8 @@
     "dataset": "local-authority",
     "website": "https://www.scambs.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000012"
+    "statistical_geography": "E07000012",
+    "entity": 281
   },
   {
     "organisation": "local-authority:SDE",
@@ -1901,7 +2138,8 @@
     "dataset": "local-authority",
     "website": "https://www.southderbyshire.gov.uk/",
     "project": null,
-    "statistical_geography": "E07000039"
+    "statistical_geography": "E07000039",
+    "entity": 284
   },
   {
     "organisation": "national-park-authority:Q20198711",
@@ -1909,7 +2147,8 @@
     "dataset": "national-park-authority",
     "website": "https://www.southdowns.gov.uk",
     "project": null,
-    "statistical_geography": "E26000010"
+    "statistical_geography": "E26000010",
+    "entity": 396
   },
   {
     "organisation": "local-authority:SGC",
@@ -1917,7 +2156,8 @@
     "dataset": "local-authority",
     "website": "https://www.southglos.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000025"
+    "statistical_geography": "E06000025",
+    "entity": 291
   },
   {
     "organisation": "local-authority:SHA",
@@ -1925,7 +2165,8 @@
     "dataset": "local-authority",
     "website": "https://www.southhams.gov.uk/",
     "project": null,
-    "statistical_geography": "E07000044"
+    "statistical_geography": "E07000044",
+    "entity": 292
   },
   {
     "organisation": "local-authority:SHO",
@@ -1933,7 +2174,8 @@
     "dataset": "local-authority",
     "website": "https://www.sholland.gov.uk",
     "project": null,
-    "statistical_geography": "E07000140"
+    "statistical_geography": "E07000140",
+    "entity": 296
   },
   {
     "organisation": "local-authority:SKE",
@@ -1941,7 +2183,8 @@
     "dataset": "local-authority",
     "website": "https://www.southkesteven.gov.uk",
     "project": null,
-    "statistical_geography": "E07000141"
+    "statistical_geography": "E07000141",
+    "entity": 298
   },
   {
     "organisation": "local-authority:SNO",
@@ -1949,7 +2192,8 @@
     "dataset": "local-authority",
     "website": "https://www.south-norfolk.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000149"
+    "statistical_geography": "E07000149",
+    "entity": 304
   },
   {
     "organisation": "local-authority:SOX",
@@ -1957,7 +2201,8 @@
     "dataset": "local-authority",
     "website": "https://www.southoxon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000179"
+    "statistical_geography": "E07000179",
+    "entity": 309
   },
   {
     "organisation": "local-authority:SRI",
@@ -1965,7 +2210,8 @@
     "dataset": "local-authority",
     "website": "https://www.southribble.gov.uk",
     "project": null,
-    "statistical_geography": "E07000126"
+    "statistical_geography": "E07000126",
+    "entity": 311
   },
   {
     "organisation": "local-authority:SST",
@@ -1973,7 +2219,8 @@
     "dataset": "local-authority",
     "website": "https://www.sstaffs.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000196"
+    "statistical_geography": "E07000196",
+    "entity": 314
   },
   {
     "organisation": "local-authority:STY",
@@ -1981,7 +2228,8 @@
     "dataset": "local-authority",
     "website": "https://www.southtyneside.info",
     "project": null,
-    "statistical_geography": "E08000023"
+    "statistical_geography": "E08000023",
+    "entity": 325
   },
   {
     "organisation": "local-authority:STH",
@@ -1989,7 +2237,8 @@
     "dataset": "local-authority",
     "website": "https://www.southampton.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000045"
+    "statistical_geography": "E06000045",
+    "entity": 318
   },
   {
     "organisation": "local-authority:SOS",
@@ -1997,7 +2246,8 @@
     "dataset": "local-authority",
     "website": "https://www.southend.gov.uk",
     "project": null,
-    "statistical_geography": "E06000033"
+    "statistical_geography": "E06000033",
+    "entity": 308
   },
   {
     "organisation": "local-authority:SPE",
@@ -2005,7 +2255,8 @@
     "dataset": "local-authority",
     "website": "https://www.spelthorne.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000213"
+    "statistical_geography": "E07000213",
+    "entity": 310
   },
   {
     "organisation": "local-authority:SAL",
@@ -2013,7 +2264,8 @@
     "dataset": "local-authority",
     "website": "https://www.stalbans.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000240"
+    "statistical_geography": "E07000240",
+    "entity": 278
   },
   {
     "organisation": "local-authority:SHN",
@@ -2021,7 +2273,8 @@
     "dataset": "local-authority",
     "website": "https://www.sthelens.gov.uk",
     "project": null,
-    "statistical_geography": "E08000013"
+    "statistical_geography": "E08000013",
+    "entity": 295
   },
   {
     "organisation": "local-authority:STA",
@@ -2029,7 +2282,8 @@
     "dataset": "local-authority",
     "website": "https://www.staffordbc.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000197"
+    "statistical_geography": "E07000197",
+    "entity": 315
   },
   {
     "organisation": "local-authority:STF",
@@ -2037,7 +2291,8 @@
     "dataset": "local-authority",
     "website": "https://www.staffsmoorlands.gov.uk",
     "project": null,
-    "statistical_geography": "E07000198"
+    "statistical_geography": "E07000198",
+    "entity": 317
   },
   {
     "organisation": "local-authority:STV",
@@ -2045,7 +2300,8 @@
     "dataset": "local-authority",
     "website": "https://www.stevenage.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000243"
+    "statistical_geography": "E07000243",
+    "entity": 324
   },
   {
     "organisation": "local-authority:SKP",
@@ -2053,7 +2309,8 @@
     "dataset": "local-authority",
     "website": "https://www.stockport.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000007"
+    "statistical_geography": "E08000007",
+    "entity": 299
   },
   {
     "organisation": "local-authority:STT",
@@ -2061,7 +2318,8 @@
     "dataset": "local-authority",
     "website": "https://www.stockton.gov.uk",
     "project": null,
-    "statistical_geography": "E06000004"
+    "statistical_geography": "E06000004",
+    "entity": 323
   },
   {
     "organisation": "local-authority:STE",
@@ -2069,7 +2327,8 @@
     "dataset": "local-authority",
     "website": "https://www.stoke.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000021"
+    "statistical_geography": "E06000021",
+    "entity": 316
   },
   {
     "organisation": "local-authority:STR",
@@ -2077,7 +2336,8 @@
     "dataset": "local-authority",
     "website": "https://www.stratford.gov.uk",
     "project": null,
-    "statistical_geography": "E07000221"
+    "statistical_geography": "E07000221",
+    "entity": 321
   },
   {
     "organisation": "local-authority:STO",
@@ -2085,7 +2345,8 @@
     "dataset": "local-authority",
     "website": "https://www.stroud.gov.uk",
     "project": null,
-    "statistical_geography": "E07000082"
+    "statistical_geography": "E07000082",
+    "entity": 320
   },
   {
     "organisation": "local-authority:SND",
@@ -2093,7 +2354,8 @@
     "dataset": "local-authority",
     "website": "https://www.sunderland.gov.uk",
     "project": null,
-    "statistical_geography": "E08000024"
+    "statistical_geography": "E08000024",
+    "entity": 303
   },
   {
     "organisation": "local-authority:SUR",
@@ -2101,7 +2363,8 @@
     "dataset": "local-authority",
     "website": "https://www.surreyheath.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000214"
+    "statistical_geography": "E07000214",
+    "entity": 327
   },
   {
     "organisation": "local-authority:SWL",
@@ -2109,7 +2372,8 @@
     "dataset": "local-authority",
     "website": "https://www.swale.gov.uk",
     "project": null,
-    "statistical_geography": "E07000113"
+    "statistical_geography": "E07000113",
+    "entity": 330
   },
   {
     "organisation": "local-authority:SWD",
@@ -2117,7 +2381,8 @@
     "dataset": "local-authority",
     "website": "https://www.swindon.gov.uk",
     "project": null,
-    "statistical_geography": "E06000030"
+    "statistical_geography": "E06000030",
+    "entity": 328
   },
   {
     "organisation": "local-authority:TAM",
@@ -2125,7 +2390,8 @@
     "dataset": "local-authority",
     "website": "https://www.tameside.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000008"
+    "statistical_geography": "E08000008",
+    "entity": 332
   },
   {
     "organisation": "local-authority:TAW",
@@ -2133,7 +2399,8 @@
     "dataset": "local-authority",
     "website": "https://www.tamworth.gov.uk",
     "project": null,
-    "statistical_geography": "E07000199"
+    "statistical_geography": "E07000199",
+    "entity": 335
   },
   {
     "organisation": "local-authority:TAN",
@@ -2141,7 +2408,8 @@
     "dataset": "local-authority",
     "website": "https://www.tandridge.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000215"
+    "statistical_geography": "E07000215",
+    "entity": 333
   },
   {
     "organisation": "local-authority:TEI",
@@ -2149,7 +2417,8 @@
     "dataset": "local-authority",
     "website": "https://www.teignbridge.gov.uk",
     "project": null,
-    "statistical_geography": "E07000045"
+    "statistical_geography": "E07000045",
+    "entity": 336
   },
   {
     "organisation": "local-authority:TFW",
@@ -2157,7 +2426,8 @@
     "dataset": "local-authority",
     "website": "https://www.telford.gov.uk",
     "project": null,
-    "statistical_geography": "E06000020"
+    "statistical_geography": "E06000020",
+    "entity": 340
   },
   {
     "organisation": "local-authority:TEN",
@@ -2165,7 +2435,8 @@
     "dataset": "local-authority",
     "website": "https://www.tendringdc.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000076"
+    "statistical_geography": "E07000076",
+    "entity": 337
   },
   {
     "organisation": "local-authority:TES",
@@ -2173,7 +2444,8 @@
     "dataset": "local-authority",
     "website": "https://www.testvalley.gov.uk",
     "project": null,
-    "statistical_geography": "E07000093"
+    "statistical_geography": "E07000093",
+    "entity": 338
   },
   {
     "organisation": "local-authority:TEW",
@@ -2181,7 +2453,8 @@
     "dataset": "local-authority",
     "website": "https://tewkesbury.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000083"
+    "statistical_geography": "E07000083",
+    "entity": 339
   },
   {
     "organisation": "local-authority:THA",
@@ -2189,7 +2462,8 @@
     "dataset": "local-authority",
     "website": "https://thanet.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000114"
+    "statistical_geography": "E07000114",
+    "entity": 341
   },
   {
     "organisation": "local-authority:THE",
@@ -2197,7 +2471,8 @@
     "dataset": "local-authority",
     "website": "https://www.threerivers.gov.uk",
     "project": null,
-    "statistical_geography": "E07000102"
+    "statistical_geography": "E07000102",
+    "entity": 342
   },
   {
     "organisation": "local-authority:THR",
@@ -2205,7 +2480,8 @@
     "dataset": "local-authority",
     "website": "https://www.thurrock.gov.uk",
     "project": null,
-    "statistical_geography": "E06000034"
+    "statistical_geography": "E06000034",
+    "entity": 343
   },
   {
     "organisation": "local-authority:TON",
@@ -2213,7 +2489,8 @@
     "dataset": "local-authority",
     "website": "https://www.tmbc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000115"
+    "statistical_geography": "E07000115",
+    "entity": 345
   },
   {
     "organisation": "local-authority:TOB",
@@ -2221,7 +2498,8 @@
     "dataset": "local-authority",
     "website": "https://www.torbay.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000027"
+    "statistical_geography": "E06000027",
+    "entity": 344
   },
   {
     "organisation": "local-authority:TOR",
@@ -2229,7 +2507,8 @@
     "dataset": "local-authority",
     "website": "https://www.torridge.gov.uk",
     "project": null,
-    "statistical_geography": "E07000046"
+    "statistical_geography": "E07000046",
+    "entity": 346
   },
   {
     "organisation": "local-authority:TRF",
@@ -2237,7 +2516,8 @@
     "dataset": "local-authority",
     "website": "https://www.trafford.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000009"
+    "statistical_geography": "E08000009",
+    "entity": 347
   },
   {
     "organisation": "local-authority:TUN",
@@ -2245,7 +2525,8 @@
     "dataset": "local-authority",
     "website": "https://www.tunbridgewells.gov.uk",
     "project": null,
-    "statistical_geography": "E07000116"
+    "statistical_geography": "E07000116",
+    "entity": 348
   },
   {
     "organisation": "local-authority:UTT",
@@ -2253,7 +2534,8 @@
     "dataset": "local-authority",
     "website": "https://www.uttlesford.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000077"
+    "statistical_geography": "E07000077",
+    "entity": 351
   },
   {
     "organisation": "local-authority:VAL",
@@ -2261,7 +2543,8 @@
     "dataset": "local-authority",
     "website": "https://www.whitehorsedc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000180"
+    "statistical_geography": "E07000180",
+    "entity": 352
   },
   {
     "organisation": "local-authority:WKF",
@@ -2269,7 +2552,8 @@
     "dataset": "local-authority",
     "website": "https://www.wakefield.gov.uk",
     "project": null,
-    "statistical_geography": "E08000036"
+    "statistical_geography": "E08000036",
+    "entity": 370
   },
   {
     "organisation": "local-authority:WLL",
@@ -2277,7 +2561,8 @@
     "dataset": "local-authority",
     "website": "https://www.walsall.gov.uk",
     "project": null,
-    "statistical_geography": "E08000030"
+    "statistical_geography": "E08000030",
+    "entity": 373
   },
   {
     "organisation": "local-authority:WRT",
@@ -2285,7 +2570,8 @@
     "dataset": "local-authority",
     "website": "https://www.warrington.gov.uk",
     "project": null,
-    "statistical_geography": "E06000007"
+    "statistical_geography": "E06000007",
+    "entity": 385
   },
   {
     "organisation": "local-authority:WAW",
@@ -2293,7 +2579,8 @@
     "dataset": "local-authority",
     "website": "https://www.warwickdc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000222"
+    "statistical_geography": "E07000222",
+    "entity": 357
   },
   {
     "organisation": "local-authority:WAT",
@@ -2301,7 +2588,8 @@
     "dataset": "local-authority",
     "website": "https://www.watford.gov.uk",
     "project": null,
-    "statistical_geography": "E07000103"
+    "statistical_geography": "E07000103",
+    "entity": 355
   },
   {
     "organisation": "local-authority:WAE",
@@ -2309,7 +2597,8 @@
     "dataset": "local-authority",
     "website": "https://www.waverley.gov.uk/",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000216"
+    "statistical_geography": "E07000216",
+    "entity": 353
   },
   {
     "organisation": "local-authority:WEA",
@@ -2317,7 +2606,8 @@
     "dataset": "local-authority",
     "website": "https://www.wealden.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000065"
+    "statistical_geography": "E07000065",
+    "entity": 361
   },
   {
     "organisation": "local-authority:WEW",
@@ -2325,7 +2615,8 @@
     "dataset": "local-authority",
     "website": "https://www.welhat.gov.uk",
     "project": null,
-    "statistical_geography": "E07000241"
+    "statistical_geography": "E07000241",
+    "entity": 364
   },
   {
     "organisation": "local-authority:WBK",
@@ -2333,7 +2624,8 @@
     "dataset": "local-authority",
     "website": "https://www.westberks.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E06000037"
+    "statistical_geography": "E06000037",
+    "entity": 358
   },
   {
     "organisation": "local-authority:WDE",
@@ -2341,7 +2633,8 @@
     "dataset": "local-authority",
     "website": "https://www.westdevon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000047"
+    "statistical_geography": "E07000047",
+    "entity": 359
   },
   {
     "organisation": "local-authority:WLA",
@@ -2349,7 +2642,8 @@
     "dataset": "local-authority",
     "website": "https://www.westlancs.gov.uk",
     "project": null,
-    "statistical_geography": "E07000127"
+    "statistical_geography": "E07000127",
+    "entity": 371
   },
   {
     "organisation": "local-authority:WLI",
@@ -2357,7 +2651,8 @@
     "dataset": "local-authority",
     "website": "https://www.west-lindsey.gov.uk",
     "project": null,
-    "statistical_geography": "E07000142"
+    "statistical_geography": "E07000142",
+    "entity": 372
   },
   {
     "organisation": "local-authority:WNUA",
@@ -2365,7 +2660,8 @@
     "dataset": "local-authority",
     "website": "https://www.westnorthants.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000062"
+    "statistical_geography": "E06000062",
+    "entity": 501909
   },
   {
     "organisation": "local-authority:WOX",
@@ -2373,7 +2669,8 @@
     "dataset": "local-authority",
     "website": "https://www.westoxon.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000181"
+    "statistical_geography": "E07000181",
+    "entity": 383
   },
   {
     "organisation": "local-authority:WSK",
@@ -2381,7 +2678,8 @@
     "dataset": "local-authority",
     "website": "https://www.westsuffolk.gov.uk",
     "project": null,
-    "statistical_geography": "E07000245"
+    "statistical_geography": "E07000245",
+    "entity": 386
   },
   {
     "organisation": "local-authority:WFUA",
@@ -2389,7 +2687,8 @@
     "dataset": "local-authority",
     "website": "https://www.westmorlandandfurness.gov.uk/",
     "project": null,
-    "statistical_geography": "E06000064"
+    "statistical_geography": "E06000064",
+    "entity": 10001
   },
   {
     "organisation": "local-authority:WGN",
@@ -2397,7 +2696,8 @@
     "dataset": "local-authority",
     "website": "https://www.wigan.gov.uk",
     "project": null,
-    "statistical_geography": "E08000010"
+    "statistical_geography": "E08000010",
+    "entity": 367
   },
   {
     "organisation": "local-authority:WIL",
@@ -2405,7 +2705,8 @@
     "dataset": "local-authority",
     "website": "https://wiltshire.gov.uk",
     "project": null,
-    "statistical_geography": "E06000054"
+    "statistical_geography": "E06000054",
+    "entity": 368
   },
   {
     "organisation": "local-authority:WIN",
@@ -2413,7 +2714,8 @@
     "dataset": "local-authority",
     "website": "https://www.winchester.gov.uk",
     "project": null,
-    "statistical_geography": "E07000094"
+    "statistical_geography": "E07000094",
+    "entity": 369
   },
   {
     "organisation": "local-authority:WRL",
@@ -2421,7 +2723,8 @@
     "dataset": "local-authority",
     "website": "https://www.wirral.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E08000015"
+    "statistical_geography": "E08000015",
+    "entity": 384
   },
   {
     "organisation": "local-authority:WOI",
@@ -2429,7 +2732,8 @@
     "dataset": "local-authority",
     "website": "https://www.woking.gov.uk",
     "project": null,
-    "statistical_geography": "E07000217"
+    "statistical_geography": "E07000217",
+    "entity": 379
   },
   {
     "organisation": "local-authority:WOK",
@@ -2437,7 +2741,8 @@
     "dataset": "local-authority",
     "website": "https://www.wokingham.gov.uk",
     "project": null,
-    "statistical_geography": "E06000041"
+    "statistical_geography": "E06000041",
+    "entity": 380
   },
   {
     "organisation": "local-authority:WOC",
@@ -2445,7 +2750,8 @@
     "dataset": "local-authority",
     "website": "https://www.worcester.gov.uk",
     "project": null,
-    "statistical_geography": "E07000237"
+    "statistical_geography": "E07000237",
+    "entity": 378
   },
   {
     "organisation": "local-authority:WOT",
@@ -2453,7 +2759,8 @@
     "dataset": "local-authority",
     "website": "https://www.adur-worthing.gov.uk",
     "project": "open-digital-planning",
-    "statistical_geography": "E07000229"
+    "statistical_geography": "E07000229",
+    "entity": 382
   },
   {
     "organisation": "local-authority:WYC",
@@ -2461,7 +2768,8 @@
     "dataset": "local-authority",
     "website": "https://www.wychavon.gov.uk",
     "project": null,
-    "statistical_geography": "E07000238"
+    "statistical_geography": "E07000238",
+    "entity": 390
   },
   {
     "organisation": "local-authority:WYR",
@@ -2469,7 +2777,8 @@
     "dataset": "local-authority",
     "website": "https://www.wyre.gov.uk",
     "project": null,
-    "statistical_geography": "E07000128"
+    "statistical_geography": "E07000128",
+    "entity": 394
   },
   {
     "organisation": "local-authority:WYE",
@@ -2477,7 +2786,8 @@
     "dataset": "local-authority",
     "website": "https://www.wyreforestdc.gov.uk",
     "project": null,
-    "statistical_geography": "E07000239"
+    "statistical_geography": "E07000239",
+    "entity": 392
   },
   {
     "organisation": "national-park-authority:Q27178932",
@@ -2485,6 +2795,7 @@
     "dataset": "national-park-authority",
     "website": "https://www.yorkshiredales.org.uk",
     "project": null,
-    "statistical_geography": "E26000012"
+    "statistical_geography": "E26000012",
+    "entity": 398
   }
 ]

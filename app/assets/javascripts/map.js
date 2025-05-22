@@ -1,15 +1,66 @@
 import parse from 'wellknown'
 import maplibregl from 'maplibre-gl'
-import { capitalize, startCase } from 'lodash'
+import { capitalize, map, startCase } from 'lodash'
 
-const lineColor = '#000000'
-const fillColor = '#008'
-const fillOpacity = 0.4
-const boundaryLineColor = '#f00'
+const mapColours = {
+  orange: '#C44200',
+  purple: '#330165',
+  turquoise: '#007A7A',
+  pink: '#CD2380',
+  green: '#217E01',
+  dark_pink: '#6C003B',
+  light_blue: '#2A72B2',
+  dark_blue: '#001B4D'
+}
+
+const layerStyles = [
+  {
+    lineColor: mapColours.orange,
+    lineWidth: 2,
+    fillColor: mapColours.orange,
+    fillOpacity: 0.2,
+  },
+  {
+    lineColor: mapColours.purple,
+    lineWidth: 2,
+    fillColor: mapColours.purple,
+    fillOpacity: 0.2,
+  },
+  {
+    lineColor: mapColours.pink,
+    lineWidth: 2,
+    fillColor: mapColours.pink,
+    fillOpacity: 0.2,
+  },
+  {
+    lineColor: mapColours.green,
+    lineWidth: 2,
+    fillColor: mapColours.green,
+    fillOpacity: 0.2,
+  },
+  {
+    lineColor: mapColours.dark_pink,
+    lineWidth: 2,
+    fillColor: mapColours.dark_pink,
+    fillOpacity: 0.2,
+  },
+  {
+    lineColor: mapColours.dark_blue,
+    lineWidth: 2,
+    fillColor: mapColours.dark_blue,
+    fillOpacity: 0.2,
+  }
+]
+
+
+const boundaryLineColor = mapColours.turquoise
 const boundaryLineOpacity = 1
+const boundaryLineWidth = 4
+
 const pointOpacity = 0.8
 const pointRadius = 5
 const popupMaxListLength = 10
+
 const defaultOsMapStyle = '/public/static/map-layers/OS_VTS_3857_Light.json'
 const fallbackMapStyle = 'https://api.maptiler.com/maps/basic-v2/style.json?key=ncAXR9XEn7JgHBLguAUw'
 const OS_API_ACCESS_TOKEN = 'clwU00Qa5AYZOdAoXcl4XenBq4ZMTC6t'
@@ -69,9 +120,11 @@ export class Map {
 
       // Add layer data to map
       console.log('Adding data to map', this.opts.data)
-      this.addGeoJsonObjsToMap(this.opts.data)
-      // if (opts.wktFormat) this.addWktDataToMap(this.opts.data)
-      // else this.addGeoJsonObjsToMap(this.opts.data)
+
+      for (const i in this.opts.data) {
+        console.log('Adding data to map', this.opts.data[i])
+        this.addGeoJsonObjsToMap(this.opts.data[i].data, layerStyles[i % layerStyles.length], this.opts.data[i].dataset)
+      }
 
       // Move the map to the bounding box
       if (this.bbox && this.bbox.length === 2) {
@@ -219,9 +272,9 @@ export class Map {
     }
   }
 
-  async addGeoJsonObjsToMap (geoJsonObjs) {
-    geoJsonObjs.features.forEach(async (obj, index) => {
-      const name = `geometry-${index}`
+  addGeoJsonObjsToMap (geoJsonObjs, style, slug) {
+    geoJsonObjs.features.forEach((obj, index) => {
+      const name = `geometry-${slug}-${index}`
       this.map.addSource(name, {
         type: 'geojson',
         data: obj
@@ -233,8 +286,8 @@ export class Map {
         source: name,
         layout: {},
         paint: {
-          'fill-color': fillColor,
-          'fill-opacity': fillOpacity
+          'fill-color': style.fillColor,
+          'fill-opacity': style.fillOpacity
         }
       }, this.firstMapLayerId)
 
@@ -244,7 +297,7 @@ export class Map {
         source: name,
         paint: {
           'circle-radius': pointRadius,
-          'circle-color': pointColor,
+          'circle-color': style.fillColor,
           'circle-opacity': pointOpacity
         },
         filter: ['==', '$type', 'Point']
@@ -256,8 +309,8 @@ export class Map {
         source: name,
         layout: {},
         paint: {
-          'line-color': lineColor,
-          'line-width': 1
+          'line-color': style.lineColor,
+          'line-width': style.lineWidth
         }
       }, this.firstMapLayerId)
     })
@@ -280,7 +333,7 @@ export class Map {
       layout: {},
       paint: {
         'line-color': boundaryLineColor,
-        'line-width': 2,
+        'line-width': boundaryLineWidth,
         'line-opacity': boundaryLineOpacity
       }
     }, this.firstMapLayerId)
@@ -454,13 +507,13 @@ export const generateBoundingBox = (boundaryGeoJsonObj) => {
 }
 
 export const createMapFromServerContext = () => {
-  const { containerId, mapType, geoJsonObj, boundaryGeoJsonObj } = window.serverContext
+  const { containerId, mapType, data, boundaryGeoJsonObj } = window.serverContext
   const options = {
     containerId,
-    data: geoJsonObj,
+    data: data,
     boundaryGeoJsonObj,
     interactive: mapType !== 'static',
-    wktFormat: geoJsonObj === undefined
+    wktFormat: data === undefined
   }
 
   // If only boundaryGeoJsonObj is present, allow map to render

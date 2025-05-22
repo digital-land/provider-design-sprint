@@ -110,40 +110,48 @@
   </div>
   
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">Get started</h2>
-    
-    <p>You have not provided this dataset yet.</p>
-    
-    <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can begin to index it and provide it on the platform. Start with what you have and improve it over time.</p>
-
-    <p>
-      {{ govukButton({
-        text: "Check dataset",
-        isStartButton: true,
-        href: checkUrl
-      })}}
+    {% if lpaEntities.length == 0 %}
+      <h2 class="govuk-heading-l">Get started</h2>
       
-      {{ govukButton({
-        text: "Provide dataset",
-        isStartButton: true,
-        href: provideUrl
-      })}}
-    </p>
+      <p>You have not provided this dataset yet.</p>
+      
+      <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can begin to index it and provide it on the platform. Start with what you have and improve it over time.</p>
 
-    <p>There are {{ dataset.name }} records in your LPA from other sources. You can review and download these records to add to your dataset.</p>
-    
-    <p>
-      {{ govukButton({
-        text: "Review alternative sources",
-        isStartButton: true,
-        href: "#"
-      })}}
-    </p>
-    
-    
+      <p>
+        {{ govukButton({
+          text: "Check dataset",
+          isStartButton: true,
+          href: checkUrl
+        })}}
+        
+        {{ govukButton({
+          text: "Provide dataset",
+          isStartButton: true,
+          href: provideUrl
+        })}}
+      </p>
+    {% endif %}
+
+    {% if alternativeEntities.length > 0 %}
+      <h2 class="govuk-heading-l">Alternative sources</h2>
+      
+      <p>We have found {{ alternativeEntities.length }} records in your LPA from other sources. You can review and download these records to add to your dataset.</p>
+      
+      <p>
+        {{ govukButton({
+          text: "Review alternative sources",
+          isStartButton: true,
+          href: "#"
+        })}}
+      </p>
+    {% endif %}
+
     <h2 class="govuk-heading-m" id="subsection-title">
       Dataset details
     </h2>
+
+    {% set entitiesCountText %}{{ entitiesCount | plural("record") }}{% endset %}
+    {% set alternativeEntitiesCountText %}{{ alternativeEntitiesCount | plural("record") }}{% endset %}
     
     {{ govukSummaryList({
       rows: [
@@ -152,7 +160,7 @@
           text: "Authoritive records provided by LPA"
         },
         value: {
-          text: "0"
+          text: entitiesCountText
         }
       },
       {
@@ -160,7 +168,7 @@
           text: "Records from alternative sources"
         },
         value: {
-          text: "20"
+          text: alternativeEntitiesCountText
         }
       },
       {
@@ -274,10 +282,26 @@
   {{ super() }}
   {% if showMap %}
     <script>
+      const lpaEntities = JSON.parse(`{{ lpaEntities | json | safe }}`);
+      const alternativeEntities = JSON.parse(`{{ alternativeEntities | json | safe }}`);
+
+      const dataLayers = [
+        {
+          name: "{{ dataset.name }}",
+          dataset: "{{ dataset.dataset }}",
+          data: lpaEntities
+        },
+        {
+          name: "Alternative sources",
+          dataset: "alternative-sources",
+          data: alternativeEntities
+        }
+      ]
+
       window.serverContext = {
         containerId: 'map',
-        geoJsonObj: JSON.parse(`{{ geoJsonObject | json | safe }}`),
-        boundaryGeoJsonObj: JSON.parse(`{{ boundaryGeoJsonObject | json | safe }}`)
+        boundaryGeoJsonObj: JSON.parse(`{{ boundaryGeoJsonObject | json | safe }}`),
+        data: dataLayers,
       }
     </script>
     <script src="/public/javascripts/map.bundle.js" type="module"></script>
