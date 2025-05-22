@@ -11,4 +11,7 @@ usage-data-config.json
 .DS_Store
 .idea
 
+*.bundle.js
+secret.json
+
 package-lock.json

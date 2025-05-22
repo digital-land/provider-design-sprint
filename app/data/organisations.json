@@ -4,2176 +4,2487 @@
     "name": "Adur District Council",
     "dataset": "local-authority",
     "website": "https://www.adur-worthing.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000223"
   },
   {
     "organisation": "local-authority:AMB",
     "name": "Amber Valley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.ambervalley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000032"
   },
   {
     "organisation": "local-authority:ARU",
     "name": "Arun District Council",
     "dataset": "local-authority",
     "website": "https://www.arun.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000224"
   },
   {
     "organisation": "local-authority:ASH",
     "name": "Ashfield District Council",
     "dataset": "local-authority",
     "website": "https://www.ashfield.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000170"
   },
   {
     "organisation": "local-authority:ASF",
     "name": "Ashford Borough Council",
     "dataset": "local-authority",
     "website": "https://www.ashford.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000105"
   },
   {
     "organisation": "local-authority:BAB",
     "name": "Babergh District Council",
     "dataset": "local-authority",
     "website": "https://www.babergh.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000200"
   },
   {
     "organisation": "local-authority:BNS",
     "name": "Barnsley Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.barnsley.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000016"
   },
   {
     "organisation": "local-authority:BAI",
     "name": "Basildon Borough Council",
     "dataset": "local-authority",
     "website": "https://www.basildon.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000066"
   },
   {
     "organisation": "local-authority:BAN",
     "name": "Basingstoke and Deane Borough Council",
     "dataset": "local-authority",
     "website": "https://www.basingstoke.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000084"
   },
   {
     "organisation": "local-authority:BAE",
     "name": "Bassetlaw District Council",
     "dataset": "local-authority",
     "website": "https://www.bassetlaw.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000171"
   },
   {
     "organisation": "local-authority:BAS",
     "name": "Bath and North East Somerset Council",
     "dataset": "local-authority",
     "website": "https://www.bathnes.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000022"
   },
   {
     "organisation": "local-authority:BDF",
     "name": "Bedford Borough Council",
     "dataset": "local-authority",
     "website": "https://www.bedford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000055"
   },
   {
     "organisation": "local-authority:BIR",
     "name": "Birmingham City Council",
     "dataset": "local-authority",
     "website": "https://www.birmingham.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000025"
   },
   {
     "organisation": "local-authority:BLA",
     "name": "Blaby District Council",
     "dataset": "local-authority",
     "website": "https://www.blaby.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000129"
   },
   {
     "organisation": "local-authority:BBD",
     "name": "Blackburn with Darwen Borough Council",
     "dataset": "local-authority",
     "website": "https://www.blackburn.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000008"
   },
   {
     "organisation": "local-authority:BPL",
     "name": "Blackpool Borough Council",
     "dataset": "local-authority",
     "website": "https://www.blackpool.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000009"
   },
   {
     "organisation": "local-authority:BOS",
     "name": "Bolsover District Council",
     "dataset": "local-authority",
     "website": "https://www.bolsover.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000033"
   },
   {
     "organisation": "local-authority:BOL",
     "name": "Bolton Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.bolton.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000001"
   },
   {
     "organisation": "local-authority:KIN",
     "name": "Borough Council of King's Lynn and West Norfolk",
     "dataset": "local-authority",
     "website": "https://www.west-norfolk.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000146"
   },
   {
     "organisation": "local-authority:BOT",
     "name": "Boston Borough Council",
     "dataset": "local-authority",
     "website": "https://www.boston.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000136"
   },
   {
     "organisation": "local-authority:BPC",
     "name": "Bournemouth, Christchurch and Poole Council",
     "dataset": "local-authority",
     "website": "https://www.bcpcouncil.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000058"
   },
   {
     "organisation": "local-authority:BRC",
     "name": "Bracknell Forest Council",
     "dataset": "local-authority",
     "website": "https://www.bracknell-forest.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000036"
   },
   {
     "organisation": "local-authority:BRA",
     "name": "Braintree District Council",
     "dataset": "local-authority",
     "website": "https://www.braintree.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000067"
   },
   {
     "organisation": "local-authority:BRE",
     "name": "Breckland District Council",
     "dataset": "local-authority",
     "website": "https://www.breckland.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000143"
   },
   {
     "organisation": "local-authority:BRW",
     "name": "Brentwood Borough Council",
     "dataset": "local-authority",
     "website": "https://www.brentwood.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000068"
   },
   {
     "organisation": "local-authority:BNH",
     "name": "Brighton and Hove City Council",
     "dataset": "local-authority",
     "website": "https://www.brighton-hove.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000043"
   },
   {
     "organisation": "local-authority:BST",
     "name": "Bristol City Council",
     "dataset": "local-authority",
     "website": "https://www.bristol.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000023"
   },
   {
     "organisation": "local-authority:BRO",
     "name": "Broadland District Council",
     "dataset": "local-authority",
     "website": "https://www.broadland.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000144"
   },
   {
     "organisation": "national-park-authority:Q4972284",
     "name": "Broads Authority",
     "dataset": "national-park-authority",
     "website": "http://www.broads-authority.gov.uk/broads-authority",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000007"
   },
   {
     "organisation": "local-authority:BRM",
     "name": "Bromsgrove District Council",
     "dataset": "local-authority",
     "website": "https://www.bromsgrove.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000234"
   },
   {
     "organisation": "local-authority:BRX",
     "name": "Broxbourne Borough Council",
     "dataset": "local-authority",
     "website": "https://www.broxbourne.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000095"
   },
   {
     "organisation": "local-authority:BRT",
     "name": "Broxtowe Borough Council",
     "dataset": "local-authority",
     "website": "https://www.broxtowe.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000172"
   },
   {
     "organisation": "local-authority:BUC",
     "name": "Buckinghamshire Council",
     "dataset": "local-authority",
     "website": "https://www.buckinghamshire.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000060"
   },
   {
     "organisation": "local-authority:BUN",
     "name": "Burnley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.burnley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000117"
   },
   {
     "organisation": "local-authority:BUR",
     "name": "Bury Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.bury.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000002"
   },
   {
     "organisation": "local-authority:CLD",
     "name": "Calderdale Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.calderdale.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000033"
   },
   {
     "organisation": "local-authority:CAB",
     "name": "Cambridge City Council",
     "dataset": "local-authority",
     "website": "https://www.cambridge.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000008"
   },
   {
     "organisation": "local-authority:CAN",
     "name": "Cannock Chase District Council",
     "dataset": "local-authority",
     "website": "https://www.cannockchasedc.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000192"
   },
   {
     "organisation": "local-authority:CAT",
     "name": "Canterbury City Council",
     "dataset": "local-authority",
     "website": "https://www.canterbury.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000106"
   },
   {
     "organisation": "local-authority:CAS",
     "name": "Castle Point Borough Council",
     "dataset": "local-authority",
     "website": "https://www.castlepoint.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000069"
   },
   {
     "organisation": "local-authority:CBF",
     "name": "Central Bedfordshire Council",
     "dataset": "local-authority",
     "website": "https://www.centralbedfordshire.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000056"
   },
   {
     "organisation": "local-authority:CHA",
     "name": "Charnwood Borough Council",
     "dataset": "local-authority",
     "website": "https://www.charnwood.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000130"
   },
   {
     "organisation": "local-authority:CHL",
     "name": "Chelmsford City Council",
     "dataset": "local-authority",
     "website": "https://www.chelmsford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000070"
   },
   {
     "organisation": "local-authority:CHT",
     "name": "Cheltenham Borough Council",
     "dataset": "local-authority",
     "website": "https://www.cheltenham.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000078"
   },
   {
     "organisation": "local-authority:CHR",
     "name": "Cherwell District Council",
     "dataset": "local-authority",
     "website": "https://www.cherwell-dc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000177"
   },
   {
     "organisation": "local-authority:CHE",
     "name": "Cheshire East Council",
     "dataset": "local-authority",
     "website": "https://www.cheshireeast.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000049"
   },
   {
     "organisation": "local-authority:CHW",
     "name": "Cheshire West and Chester Council",
     "dataset": "local-authority",
     "website": "https://www.cheshirewestandchester.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000050"
   },
   {
     "organisation": "local-authority:CHS",
     "name": "Chesterfield Borough Council",
     "dataset": "local-authority",
     "website": "https://www.chesterfield.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000034"
   },
   {
     "organisation": "local-authority:CHI",
     "name": "Chichester District Council",
     "dataset": "local-authority",
     "website": "https://www.chichester.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000225"
   },
   {
     "organisation": "local-authority:CHO",
     "name": "Chorley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.chorley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000118"
   },
   {
     "organisation": "local-authority:BRD",
     "name": "City of Bradford Metropolitan District Council",
     "dataset": "local-authority",
     "website": "https://www.bradford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000032"
   },
   {
     "organisation": "local-authority:LIC",
     "name": "City of Lincoln Council",
     "dataset": "local-authority",
     "website": "https://www.lincoln.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000138"
   },
   {
     "organisation": "local-authority:LND",
     "name": "City of London Corporation",
     "dataset": "local-authority",
     "website": "https://www.cityoflondon.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000001"
   },
   {
     "organisation": "local-authority:WSM",
     "name": "City of Westminster",
     "dataset": "local-authority",
     "website": "https://www.westminster.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000033"
   },
   {
     "organisation": "local-authority:WLV",
     "name": "City of Wolverhampton Council",
     "dataset": "local-authority",
     "website": "https://www.wolverhampton.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000031"
   },
   {
     "organisation": "local-authority:YOR",
     "name": "City of York Council",
     "dataset": "local-authority",
     "website": "https://www.york.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000014"
   },
   {
     "organisation": "local-authority:COL",
     "name": "Colchester Borough Council",
     "dataset": "local-authority",
     "website": "https://www.colchester.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000071"
   },
   {
     "organisation": "local-authority:CON",
     "name": "Cornwall Council",
     "dataset": "local-authority",
     "website": "https://www.cornwall.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000052"
   },
   {
     "organisation": "local-authority:COT",
     "name": "Cotswold District Council",
     "dataset": "local-authority",
     "website": "https://www.cotswold.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000079"
   },
   {
     "organisation": "local-authority:IOS",
     "name": "Council of the Isles of Scilly",
     "dataset": "local-authority",
     "website": "https://www.scilly.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000053"
   },
   {
     "organisation": "local-authority:COV",
     "name": "Coventry City Council",
     "dataset": "local-authority",
     "website": "https://www.coventry.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000026"
   },
   {
     "organisation": "local-authority:CRW",
     "name": "Crawley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.crawley.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000226"
   },
   {
     "organisation": "local-authority:CUA",
     "name": "Cumberland Unitary Authority",
     "dataset": "local-authority",
     "website": "https://www.cumberland.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000063"
   },
   {
     "organisation": "local-authority:DAC",
     "name": "Dacorum Borough Council",
     "dataset": "local-authority",
     "website": "https://www.dacorum.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000096"
   },
   {
     "organisation": "local-authority:DAL",
     "name": "Darlington Borough Council",
     "dataset": "local-authority",
     "website": "https://www.darlington.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000005"
   },
   {
     "organisation": "local-authority:DAR",
     "name": "Dartford Borough Council",
     "dataset": "local-authority",
     "website": "https://www.dartford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000107"
   },
   {
     "organisation": "national-park-authority:Q5225646",
     "name": "Dartmoor National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.dartmoor.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000001"
   },
   {
     "organisation": "local-authority:DER",
     "name": "Derby City Council",
     "dataset": "local-authority",
     "website": "https://www.derby.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000015"
   },
   {
     "organisation": "local-authority:DEB",
     "name": "Derbyshire Dales District Council",
     "dataset": "local-authority",
     "website": "https://www.derbyshiredales.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000035"
   },
   {
     "organisation": "local-authority:DNC",
     "name": "Doncaster Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.doncaster.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000017"
   },
   {
     "organisation": "local-authority:DST",
     "name": "Dorset Council",
     "dataset": "local-authority",
     "website": "https://www.dorsetcouncil.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000059"
   },
   {
     "organisation": "local-authority:DOV",
     "name": "Dover District Council",
     "dataset": "local-authority",
     "website": "https://www.dover.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000108"
   },
   {
     "organisation": "local-authority:DUD",
     "name": "Dudley Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.dudley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000027"
   },
   {
     "organisation": "local-authority:DUR",
     "name": "Durham County Council",
     "dataset": "local-authority",
     "website": "https://www.durham.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000047"
   },
   {
     "organisation": "local-authority:ECA",
     "name": "East Cambridgeshire District Council",
     "dataset": "local-authority",
     "website": "https://www.eastcambs.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000009"
   },
   {
     "organisation": "local-authority:EDE",
     "name": "East Devon District Council",
     "dataset": "local-authority",
     "website": "https://eastdevon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000040"
   },
   {
     "organisation": "local-authority:EHA",
     "name": "East Hampshire District Council",
     "dataset": "local-authority",
     "website": "https://www.easthants.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000085"
   },
   {
     "organisation": "local-authority:EHE",
     "name": "East Hertfordshire District Council",
     "dataset": "local-authority",
     "website": "https://www.eastherts.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000242"
   },
   {
     "organisation": "local-authority:ELI",
     "name": "East Lindsey District Council",
     "dataset": "local-authority",
     "website": "https://www.e-lindsey.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000137"
   },
   {
     "organisation": "local-authority:ERY",
     "name": "East Riding of Yorkshire Council",
     "dataset": "local-authority",
     "website": "https://www.eastriding.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000011"
   },
   {
     "organisation": "local-authority:EST",
     "name": "East Staffordshire Borough Council",
     "dataset": "local-authority",
     "website": "https://www.eaststaffsbc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000193"
   },
   {
     "organisation": "local-authority:ESK",
     "name": "East Suffolk Council",
     "dataset": "local-authority",
     "website": "https://www.eastsuffolk.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000244"
   },
   {
     "organisation": "local-authority:EAS",
     "name": "Eastbourne Borough Council",
     "dataset": "local-authority",
     "website": "https://www.eastbourne.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000061"
   },
   {
     "organisation": "local-authority:EAT",
     "name": "Eastleigh Borough Council",
     "dataset": "local-authority",
     "website": "https://www.eastleigh.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000086"
   },
   {
     "organisation": "development-corporation:Q72463795",
     "name": "Ebbsfleet Development Corporation",
     "dataset": "development-corporation",
     "website": "https://ebbsfleetdc.org.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E51000003"
   },
   {
     "organisation": "local-authority:ELM",
     "name": "Elmbridge Borough Council",
     "dataset": "local-authority",
     "website": "https://www.elmbridge.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000207"
   },
   {
     "organisation": "local-authority:EPP",
     "name": "Epping Forest District Council",
     "dataset": "local-authority",
     "website": "https://www.eppingforestdc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000072"
   },
   {
     "organisation": "local-authority:EPS",
     "name": "Epsom and Ewell Borough Council",
     "dataset": "local-authority",
     "website": "https://www.epsom-ewell.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000208"
   },
   {
     "organisation": "local-authority:ERE",
     "name": "Erewash Borough Council",
     "dataset": "local-authority",
     "website": "https://www.erewash.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000036"
   },
   {
     "organisation": "local-authority:EXE",
     "name": "Exeter City Council",
     "dataset": "local-authority",
     "website": "https://www.exeter.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000041"
   },
   {
     "organisation": "national-park-authority:Q72617784",
     "name": "Exmoor National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.exmoor-nationalpark.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000002"
   },
   {
     "organisation": "local-authority:FAR",
     "name": "Fareham Borough Council",
     "dataset": "local-authority",
     "website": "https://www.fareham.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000087"
   },
   {
     "organisation": "local-authority:FEN",
     "name": "Fenland District Council",
     "dataset": "local-authority",
     "website": "https://www.fenland.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000010"
   },
   {
     "organisation": "local-authority:SHE",
     "name": "Folkestone and Hythe Council",
     "dataset": "local-authority",
     "website": "https://www.folkestone-hythe.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000112"
   },
   {
     "organisation": "local-authority:FOE",
     "name": "Forest of Dean District Council",
     "dataset": "local-authority",
     "website": "https://www.fdean.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000080"
   },
   {
     "organisation": "local-authority:FYL",
     "name": "Fylde Borough Council",
     "dataset": "local-authority",
     "website": "https://www.fylde.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000119"
   },
   {
     "organisation": "local-authority:GAT",
     "name": "Gateshead Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.gateshead.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000037"
   },
   {
     "organisation": "local-authority:GED",
     "name": "Gedling Borough Council",
     "dataset": "local-authority",
     "website": "https://www.gedling.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000173"
   },
   {
     "organisation": "local-authority:GLO",
     "name": "Gloucester City Council",
     "dataset": "local-authority",
     "website": "https://www.gloucester.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000081"
   },
   {
     "organisation": "local-authority:GOS",
     "name": "Gosport Borough Council",
     "dataset": "local-authority",
     "website": "https://www.gosport.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000088"
   },
   {
     "organisation": "local-authority:GRA",
     "name": "Gravesham Borough Council",
     "dataset": "local-authority",
     "website": "https://www.gravesham.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000109"
   },
   {
     "organisation": "local-authority:GRY",
     "name": "Great Yarmouth Borough Council",
     "dataset": "local-authority",
     "website": "https://www.great-yarmouth.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000145"
   },
   {
     "organisation": "local-authority:GRT",
     "name": "Guildford Borough Council",
     "dataset": "local-authority",
     "website": "https://www.guildford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000209"
   },
   {
     "organisation": "local-authority:HAL",
     "name": "Halton Borough Council",
     "dataset": "local-authority",
     "website": "https://www.halton.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000006"
   },
   {
     "organisation": "local-authority:HAO",
     "name": "Harborough District Council",
     "dataset": "local-authority",
     "website": "https://www.harborough.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000131"
   },
   {
     "organisation": "local-authority:HAR",
     "name": "Harlow District Council",
     "dataset": "local-authority",
     "website": "https://www.harlow.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000073"
   },
   {
     "organisation": "local-authority:HAT",
     "name": "Hart District Council",
     "dataset": "local-authority",
     "website": "https://www.hart.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000089"
   },
   {
     "organisation": "local-authority:HPL",
     "name": "Hartlepool Borough Council",
     "dataset": "local-authority",
     "website": "https://www.hartlepool.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000001"
   },
   {
     "organisation": "development-corporation:Q124604981",
     "name": "Hartlepool Development Corporation",
     "dataset": "development-corporation",
     "website": "https://teesvalley-ca.gov.uk/about/hartlepool-development-corporation/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E51000007"
   },
   {
     "organisation": "local-authority:HAS",
     "name": "Hastings Borough Council",
     "dataset": "local-authority",
     "website": "https://www.hastings.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000062"
   },
   {
     "organisation": "local-authority:HAA",
     "name": "Havant Borough Council",
     "dataset": "local-authority",
     "website": "https://www.havant.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000090"
   },
   {
     "organisation": "local-authority:HEF",
     "name": "Herefordshire Council",
     "dataset": "local-authority",
     "website": "https://www.herefordshire.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000019"
   },
   {
     "organisation": "local-authority:HER",
     "name": "Hertsmere Borough Council",
     "dataset": "local-authority",
     "website": "https://www.hertsmere.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000098"
   },
   {
     "organisation": "local-authority:HIG",
     "name": "High Peak Borough Council",
     "dataset": "local-authority",
     "website": "https://www.highpeak.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000037"
   },
   {
     "organisation": "local-authority:HIN",
     "name": "Hinckley and Bosworth Borough Council",
     "dataset": "local-authority",
     "website": "https://www.hinckley-bosworth.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000132"
   },
   {
     "organisation": "local-authority:HOR",
     "name": "Horsham District Council",
     "dataset": "local-authority",
     "website": "https://www.horsham.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000227"
   },
   {
     "organisation": "local-authority:KHL",
     "name": "Hull City Council",
     "dataset": "local-authority",
     "website": "https://www.hullcc.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000010"
   },
   {
     "organisation": "local-authority:HUN",
     "name": "Huntingdonshire District Council",
     "dataset": "local-authority",
     "website": "https://www.huntingdonshire.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000011"
   },
   {
     "organisation": "local-authority:HYN",
     "name": "Hyndburn Borough Council",
     "dataset": "local-authority",
     "website": "https://www.hyndburnbc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000120"
   },
   {
     "organisation": "local-authority:IPS",
     "name": "Ipswich Borough Council",
     "dataset": "local-authority",
     "website": "https://www.ipswich.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000202"
   },
   {
     "organisation": "local-authority:IOW",
     "name": "Isle of Wight Council",
     "dataset": "local-authority",
     "website": "https://www.iow.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000046"
   },
   {
     "organisation": "local-authority:KIR",
     "name": "Kirklees Council",
     "dataset": "local-authority",
     "website": "https://www.kirklees.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000034"
   },
   {
     "organisation": "local-authority:KWL",
     "name": "Knowsley Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.knowsley.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000011"
   },
   {
     "organisation": "national-park-authority:Q27159704",
     "name": "Lake District National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.lakedistrict.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E26000003"
   },
   {
     "organisation": "local-authority:LAC",
     "name": "Lancaster City Council",
     "dataset": "local-authority",
     "website": "https://www.lancaster.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000121"
   },
   {
     "organisation": "local-authority:LDS",
     "name": "Leeds City Council",
     "dataset": "local-authority",
     "website": "https://www.leeds.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000035"
   },
   {
     "organisation": "local-authority:LCE",
     "name": "Leicester City Council",
     "dataset": "local-authority",
     "website": "https://www.leicester.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000016"
   },
   {
     "organisation": "local-authority:LEE",
     "name": "Lewes District Council",
     "dataset": "local-authority",
     "website": "https://www.lewes-eastbourne.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000063"
   },
   {
     "organisation": "local-authority:LIF",
     "name": "Lichfield District Council",
     "dataset": "local-authority",
     "website": "https://www.lichfielddc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000194"
   },
   {
     "organisation": "local-authority:LIV",
     "name": "Liverpool City Council",
     "dataset": "local-authority",
     "website": "https://www.liverpool.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000012"
   },
   {
     "organisation": "local-authority:BDG",
     "name": "London Borough of Barking and Dagenham",
     "dataset": "local-authority",
     "website": "https://www.lbbd.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000002"
   },
   {
     "organisation": "local-authority:BNE",
     "name": "London Borough of Barnet",
     "dataset": "local-authority",
     "website": "https://www.barnet.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000003"
   },
   {
     "organisation": "local-authority:BEX",
     "name": "London Borough of Bexley",
     "dataset": "local-authority",
     "website": "https://www.bexley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000004"
   },
   {
     "organisation": "local-authority:BEN",
     "name": "London Borough of Brent",
     "dataset": "local-authority",
     "website": "https://www.brent.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000005"
   },
   {
     "organisation": "local-authority:BRY",
     "name": "London Borough of Bromley",
     "dataset": "local-authority",
     "website": "https://www.bromley.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000006"
   },
   {
     "organisation": "local-authority:CMD",
     "name": "London Borough of Camden",
     "dataset": "local-authority",
     "website": "https://www.camden.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000007"
   },
   {
     "organisation": "local-authority:CRY",
     "name": "London Borough of Croydon",
     "dataset": "local-authority",
     "website": "https://www.croydon.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000008"
   },
   {
     "organisation": "local-authority:EAL",
     "name": "London Borough of Ealing",
     "dataset": "local-authority",
     "website": "https://www.ealing.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000009"
   },
   {
     "organisation": "local-authority:ENF",
     "name": "London Borough of Enfield",
     "dataset": "local-authority",
     "website": "https://www.enfield.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000010"
   },
   {
     "organisation": "local-authority:HCK",
     "name": "London Borough of Hackney",
     "dataset": "local-authority",
     "website": "https://www.hackney.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000012"
   },
   {
     "organisation": "local-authority:HMF",
     "name": "London Borough of Hammersmith & Fulham",
     "dataset": "local-authority",
     "website": "https://www.lbhf.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000013"
   },
   {
     "organisation": "local-authority:HRY",
     "name": "London Borough of Haringey",
     "dataset": "local-authority",
     "website": "https://www.haringey.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000014"
   },
   {
     "organisation": "local-authority:HRW",
     "name": "London Borough of Harrow",
     "dataset": "local-authority",
     "website": "https://www.harrow.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000015"
   },
   {
     "organisation": "local-authority:HAV",
     "name": "London Borough of Havering",
     "dataset": "local-authority",
     "website": "https://www.havering.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000016"
   },
   {
     "organisation": "local-authority:HIL",
     "name": "London Borough of Hillingdon",
     "dataset": "local-authority",
     "website": "https://www.hillingdon.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000017"
   },
   {
     "organisation": "local-authority:HNS",
     "name": "London Borough of Hounslow",
     "dataset": "local-authority",
     "website": "https://www.hounslow.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000018"
   },
   {
     "organisation": "local-authority:ISL",
     "name": "London Borough of Islington",
     "dataset": "local-authority",
     "website": "https://www.islington.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000019"
   },
   {
     "organisation": "local-authority:LBH",
     "name": "London Borough of Lambeth",
     "dataset": "local-authority",
     "website": "https://www.lambeth.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000022"
   },
   {
     "organisation": "local-authority:LEW",
     "name": "London Borough of Lewisham",
     "dataset": "local-authority",
     "website": "https://www.lewisham.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000023"
   },
   {
     "organisation": "local-authority:MRT",
     "name": "London Borough of Merton",
     "dataset": "local-authority",
     "website": "https://www.merton.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000024"
   },
   {
     "organisation": "local-authority:NWM",
     "name": "London Borough of Newham",
     "dataset": "local-authority",
     "website": "https://www.newham.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000025"
   },
   {
     "organisation": "local-authority:RDB",
     "name": "London Borough of Redbridge",
     "dataset": "local-authority",
     "website": "https://www.redbridge.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000026"
   },
   {
     "organisation": "local-authority:RIC",
     "name": "London Borough of Richmond upon Thames",
     "dataset": "local-authority",
     "website": "https://www.richmond.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000027"
   },
   {
     "organisation": "local-authority:SWK",
     "name": "London Borough of Southwark",
     "dataset": "local-authority",
     "website": "https://www.southwark.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000028"
   },
   {
     "organisation": "local-authority:STN",
     "name": "London Borough of Sutton",
     "dataset": "local-authority",
     "website": "https://www.sutton.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000029"
   },
   {
     "organisation": "local-authority:TWH",
     "name": "London Borough of Tower Hamlets",
     "dataset": "local-authority",
     "website": "https://www.towerhamlets.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000030"
   },
   {
     "organisation": "local-authority:WFT",
     "name": "London Borough of Waltham Forest",
     "dataset": "local-authority",
     "website": "https://www.walthamforest.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000031"
   },
   {
     "organisation": "local-authority:WND",
     "name": "London Borough of Wandsworth",
     "dataset": "local-authority",
     "website": "https://www.wandsworth.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000032"
   },
   {
     "organisation": "development-corporation:Q6670544",
     "name": "London Legacy Development Corporation",
     "dataset": "development-corporation",
     "website": "https://www.queenelizabetholympicpark.co.uk/planning-authority/planning-policy",
-    "project": null
+    "project": null,
+    "statistical_geography": "E51000001"
   },
   {
     "organisation": "local-authority:LUT",
     "name": "Luton Borough Council",
     "dataset": "local-authority",
     "website": "https://www.luton.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000032"
   },
   {
     "organisation": "local-authority:MAI",
     "name": "Maidstone Borough Council",
     "dataset": "local-authority",
     "website": "https://www.maidstone.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000110"
   },
   {
     "organisation": "local-authority:MAL",
     "name": "Maldon District Council",
     "dataset": "local-authority",
     "website": "https://www.maldon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000074"
   },
   {
     "organisation": "local-authority:MAV",
     "name": "Malvern Hills District Council",
     "dataset": "local-authority",
     "website": "https://www.malvernhills.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000235"
   },
   {
     "organisation": "local-authority:MAN",
     "name": "Manchester City Council",
     "dataset": "local-authority",
     "website": "https://www.manchester.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000003"
   },
   {
     "organisation": "local-authority:MAS",
     "name": "Mansfield District Council",
     "dataset": "local-authority",
     "website": "https://www.mansfield.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000174"
   },
   {
     "organisation": "local-authority:MDW",
     "name": "Medway Council",
     "dataset": "local-authority",
     "website": "https://www.medway.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000035"
   },
   {
     "organisation": "local-authority:MEL",
     "name": "Melton Borough Council",
     "dataset": "local-authority",
     "website": "https://www.melton.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000133"
   },
   {
     "organisation": "local-authority:MDE",
     "name": "Mid Devon District Council",
     "dataset": "local-authority",
     "website": "https://www.middevon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000042"
   },
   {
     "organisation": "local-authority:MSU",
     "name": "Mid Suffolk District Council",
     "dataset": "local-authority",
     "website": "https://www.midsuffolk.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000203"
   },
   {
     "organisation": "local-authority:MSS",
     "name": "Mid Sussex District Council",
     "dataset": "local-authority",
     "website": "https://www.midsussex.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000228"
   },
   {
     "organisation": "local-authority:MDB",
     "name": "Middlesbrough Borough Council",
     "dataset": "local-authority",
     "website": "https://www.middlesbrough.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000002"
   },
   {
     "organisation": "development-corporation:Q117149370",
     "name": "Middlesbrough Development Corporation",
     "dataset": "development-corporation",
     "website": "https://teesvalley-ca.gov.uk/about/middlesbrough-development-corporation/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E51000006"
   },
   {
     "organisation": "local-authority:MIK",
     "name": "Milton Keynes City Council",
     "dataset": "local-authority",
     "website": "https://www.milton-keynes.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000042"
   },
   {
     "organisation": "local-authority:MOL",
     "name": "Mole Valley District Council",
     "dataset": "local-authority",
     "website": "https://www.molevalley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000210"
   },
   {
     "organisation": "local-authority:NEW",
     "name": "New Forest District Council",
     "dataset": "local-authority",
     "website": "https://www.newforestdc.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000091"
   },
   {
     "organisation": "national-park-authority:Q72617158",
     "name": "New Forest National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.newforestnpa.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E26000009"
   },
   {
     "organisation": "local-authority:NEA",
     "name": "Newark and Sherwood District Council",
     "dataset": "local-authority",
     "website": "https://www.newark-sherwooddc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000175"
   },
   {
     "organisation": "local-authority:NET",
     "name": "Newcastle City Council",
     "dataset": "local-authority",
     "website": "https://www.newcastle.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000021"
   },
   {
     "organisation": "local-authority:NEC",
     "name": "Newcastle-under-Lyme Borough Council",
     "dataset": "local-authority",
     "website": "https://www.newcastle-staffs.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000195"
   },
   {
     "organisation": "local-authority:NDE",
     "name": "North Devon District Council",
     "dataset": "local-authority",
     "website": "https://www.northdevon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000043"
   },
   {
     "organisation": "local-authority:NED",
     "name": "North East Derbyshire District Council",
     "dataset": "local-authority",
     "website": "https://www.ne-derbyshire.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000038"
   },
   {
     "organisation": "local-authority:NEL",
     "name": "North East Lincolnshire Council",
     "dataset": "local-authority",
     "website": "https://www.nelincs.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000012"
   },
   {
     "organisation": "local-authority:NHE",
     "name": "North Hertfordshire District Council",
     "dataset": "local-authority",
     "website": "https://www.north-herts.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000099"
   },
   {
     "organisation": "local-authority:NKE",
     "name": "North Kesteven District Council",
     "dataset": "local-authority",
     "website": "https://www.n-kesteven.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000139"
   },
   {
     "organisation": "local-authority:NLN",
     "name": "North Lincolnshire Council",
     "dataset": "local-authority",
     "website": "https://www.northlincs.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000013"
   },
   {
     "organisation": "local-authority:NNO",
     "name": "North Norfolk District Council",
     "dataset": "local-authority",
     "website": "https://www.northnorfolk.org/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000147"
   },
   {
     "organisation": "local-authority:NNUA",
     "name": "North Northamptonshire Council",
     "dataset": "local-authority",
     "website": "https://www.northnorthants.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000061"
   },
   {
     "organisation": "local-authority:NSM",
     "name": "North Somerset Council",
     "dataset": "local-authority",
     "website": "https://www.n-somerset.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000024"
   },
   {
     "organisation": "local-authority:NTY",
     "name": "North Tyneside Council",
     "dataset": "local-authority",
     "website": "https://www.northtyneside.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000022"
   },
   {
     "organisation": "local-authority:NWA",
     "name": "North Warwickshire Borough Council",
     "dataset": "local-authority",
     "website": "https://www.northwarks.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000218"
   },
   {
     "organisation": "local-authority:NWL",
     "name": "North West Leicestershire District Council",
     "dataset": "local-authority",
     "website": "https://www.nwleics.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000134"
   },
   {
     "organisation": "national-park-authority:Q72617669",
     "name": "North York Moors National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.northyorkmoors.org.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000005"
   },
   {
     "organisation": "local-authority:NYUA",
     "name": "North Yorkshire Council",
     "dataset": "local-authority",
     "website": "https://www.northyorks.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000065"
   },
   {
     "organisation": "local-authority:NBL",
     "name": "Northumberland County Council",
     "dataset": "local-authority",
     "website": "https://www.northumberland.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000057"
   },
   {
     "organisation": "national-park-authority:Q72617890",
     "name": "Northumberland National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.northumberlandnationalpark.org.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000004"
   },
   {
     "organisation": "local-authority:NOW",
     "name": "Norwich City Council",
     "dataset": "local-authority",
     "website": "https://www.norwich.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000148"
   },
   {
     "organisation": "local-authority:NGM",
     "name": "Nottingham City Council",
     "dataset": "local-authority",
     "website": "https://www.nottinghamcity.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000018"
   },
   {
     "organisation": "local-authority:NUN",
     "name": "Nuneaton and Bedworth Borough Council",
     "dataset": "local-authority",
     "website": "https://www.nuneatonandbedworth.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000219"
   },
   {
     "organisation": "local-authority:OAD",
     "name": "Oadby and Wigston Borough Council",
     "dataset": "local-authority",
     "website": "https://oadby-wigston.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000135"
   },
   {
     "organisation": "development-corporation:Q20648596",
     "name": "Old Oak and Park Royal Development Corporation",
     "dataset": "development-corporation",
     "website": "https://www.london.gov.uk/about-us/organisations-we-work/old-oak-and-park-royal-development-corporation-opdc",
-    "project": null
+    "project": null,
+    "statistical_geography": "E51000002"
   },
   {
     "organisation": "local-authority:OLD",
     "name": "Oldham Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.oldham.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000004"
   },
   {
     "organisation": "local-authority:OXO",
     "name": "Oxford City Council",
     "dataset": "local-authority",
     "website": "https://www.oxford.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000178"
   },
   {
     "organisation": "national-park-authority:Q72617988",
     "name": "Peak District National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.peakdistrict.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000006"
   },
   {
     "organisation": "local-authority:PEN",
     "name": "Pendle Borough Council",
     "dataset": "local-authority",
     "website": "https://www.pendle.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000122"
   },
   {
     "organisation": "local-authority:PTE",
     "name": "Peterborough City Council",
     "dataset": "local-authority",
     "website": "https://www.peterborough.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000031"
   },
   {
     "organisation": "local-authority:PLY",
     "name": "Plymouth City Council",
     "dataset": "local-authority",
     "website": "https://www.plymouth.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000026"
   },
   {
     "organisation": "local-authority:POR",
     "name": "Portsmouth City Council",
     "dataset": "local-authority",
     "website": "https://www.portsmouth.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000044"
   },
   {
     "organisation": "local-authority:PRE",
     "name": "Preston City Council",
     "dataset": "local-authority",
     "website": "https://www.preston.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000123"
   },
   {
     "organisation": "local-authority:RDG",
     "name": "Reading Borough Council",
     "dataset": "local-authority",
     "website": "http://www.reading.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000038"
   },
   {
     "organisation": "local-authority:RCC",
     "name": "Redcar and Cleveland Borough Council",
     "dataset": "local-authority",
     "website": "https://www.redcar-cleveland.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000003"
   },
   {
     "organisation": "local-authority:RED",
     "name": "Redditch Borough Council",
     "dataset": "local-authority",
     "website": "https://www.redditchbc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000236"
   },
   {
     "organisation": "local-authority:REI",
     "name": "Reigate and Banstead Borough Council",
     "dataset": "local-authority",
     "website": "https://www.reigate-banstead.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000211"
   },
   {
     "organisation": "local-authority:RIB",
     "name": "Ribble Valley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.ribblevalley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000124"
   },
   {
     "organisation": "local-authority:RCH",
     "name": "Rochdale Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.rochdale.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000005"
   },
   {
     "organisation": "local-authority:ROC",
     "name": "Rochford District Council",
     "dataset": "local-authority",
     "website": "https://www.rochford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000075"
   },
   {
     "organisation": "local-authority:ROS",
     "name": "Rossendale Borough Council",
     "dataset": "local-authority",
     "website": "https://www.rossendale.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000125"
   },
   {
     "organisation": "local-authority:ROH",
     "name": "Rother District Council",
     "dataset": "local-authority",
     "website": "https://www.rother.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000064"
   },
   {
     "organisation": "local-authority:ROT",
     "name": "Rotherham Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.rotherham.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000018"
   },
   {
     "organisation": "local-authority:GRE",
     "name": "Royal Borough of Greenwich",
     "dataset": "local-authority",
     "website": "https://www.royalgreenwich.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E09000011"
   },
   {
     "organisation": "local-authority:KEC",
     "name": "Royal Borough of Kensington and Chelsea",
     "dataset": "local-authority",
     "website": "https://www.rbkc.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000020"
   },
   {
     "organisation": "local-authority:KTT",
     "name": "Royal Borough of Kingston upon Thames",
     "dataset": "local-authority",
     "website": "https://www.kingston.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E09000021"
   },
   {
     "organisation": "local-authority:WNM",
     "name": "Royal Borough of Windsor and Maidenhead",
     "dataset": "local-authority",
     "website": "https://www.rbwm.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000040"
   },
   {
     "organisation": "local-authority:RUG",
     "name": "Rugby Borough Council",
     "dataset": "local-authority",
     "website": "https://www.rugby.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000220"
   },
   {
     "organisation": "local-authority:RUN",
     "name": "Runnymede Borough Council",
     "dataset": "local-authority",
     "website": "https://www.runnymede.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000212"
   },
   {
     "organisation": "local-authority:RUS",
     "name": "Rushcliffe Borough Council",
     "dataset": "local-authority",
     "website": "https://www.rushcliffe.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000176"
   },
   {
     "organisation": "local-authority:RUH",
     "name": "Rushmoor Borough Council",
     "dataset": "local-authority",
     "website": "https://www.rushmoor.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000092"
   },
   {
     "organisation": "local-authority:RUT",
     "name": "Rutland County Council",
     "dataset": "local-authority",
     "website": "https://www.rutland.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000017"
   },
   {
     "organisation": "local-authority:SLF",
     "name": "Salford City Council",
     "dataset": "local-authority",
     "website": "https://www.salford.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000006"
   },
   {
     "organisation": "local-authority:SAW",
     "name": "Sandwell Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.sandwell.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000028"
   },
   {
     "organisation": "local-authority:SFT",
     "name": "Sefton Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.sefton.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000014"
   },
   {
     "organisation": "local-authority:SEV",
     "name": "Sevenoaks District Council",
     "dataset": "local-authority",
     "website": "https://www.sevenoaks.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000111"
   },
   {
     "organisation": "local-authority:SHF",
     "name": "Sheffield City Council",
     "dataset": "local-authority",
     "website": "https://www.sheffield.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000019"
   },
   {
     "organisation": "local-authority:SHR",
     "name": "Shropshire Council",
     "dataset": "local-authority",
     "website": "https://www.shropshire.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000051"
   },
   {
     "organisation": "local-authority:SLG",
     "name": "Slough Borough Council",
     "dataset": "local-authority",
     "website": "https://www.slough.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000039"
   },
   {
     "organisation": "local-authority:SOL",
     "name": "Solihull Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.solihull.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000029"
   },
   {
     "organisation": "local-authority:SUA",
     "name": "Somerset Council",
     "dataset": "local-authority",
     "website": "https://www.somerset.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000066"
   },
   {
     "organisation": "local-authority:SCA",
     "name": "South Cambridgeshire District Council",
     "dataset": "local-authority",
     "website": "https://www.scambs.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000012"
   },
   {
     "organisation": "local-authority:SDE",
     "name": "South Derbyshire District Council",
     "dataset": "local-authority",
     "website": "https://www.southderbyshire.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000039"
   },
   {
     "organisation": "national-park-authority:Q20198711",
     "name": "South Downs National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.southdowns.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000010"
   },
   {
     "organisation": "local-authority:SGC",
     "name": "South Gloucestershire Council",
     "dataset": "local-authority",
     "website": "https://www.southglos.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000025"
   },
   {
     "organisation": "local-authority:SHA",
     "name": "South Hams District Council",
     "dataset": "local-authority",
     "website": "https://www.southhams.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000044"
   },
   {
     "organisation": "local-authority:SHO",
     "name": "South Holland District Council",
     "dataset": "local-authority",
     "website": "https://www.sholland.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000140"
   },
   {
     "organisation": "local-authority:SKE",
     "name": "South Kesteven District Council",
     "dataset": "local-authority",
     "website": "https://www.southkesteven.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000141"
   },
   {
     "organisation": "local-authority:SNO",
     "name": "South Norfolk District Council",
     "dataset": "local-authority",
     "website": "https://www.south-norfolk.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000149"
   },
   {
     "organisation": "local-authority:SOX",
     "name": "South Oxfordshire District Council",
     "dataset": "local-authority",
     "website": "https://www.southoxon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000179"
   },
   {
     "organisation": "local-authority:SRI",
     "name": "South Ribble Borough Council",
     "dataset": "local-authority",
     "website": "https://www.southribble.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000126"
   },
   {
     "organisation": "local-authority:SST",
     "name": "South Staffordshire Council",
     "dataset": "local-authority",
     "website": "https://www.sstaffs.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000196"
   },
   {
     "organisation": "local-authority:STY",
     "name": "South Tyneside Council",
     "dataset": "local-authority",
     "website": "https://www.southtyneside.info",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000023"
   },
   {
     "organisation": "local-authority:STH",
     "name": "Southampton City Council",
     "dataset": "local-authority",
     "website": "https://www.southampton.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000045"
   },
   {
     "organisation": "local-authority:SOS",
     "name": "Southend-on-Sea Borough Council",
     "dataset": "local-authority",
     "website": "https://www.southend.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000033"
   },
   {
     "organisation": "local-authority:SPE",
     "name": "Spelthorne Borough Council",
     "dataset": "local-authority",
     "website": "https://www.spelthorne.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000213"
   },
   {
     "organisation": "local-authority:SAL",
     "name": "St Albans City and District Council",
     "dataset": "local-authority",
     "website": "https://www.stalbans.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000240"
   },
   {
     "organisation": "local-authority:SHN",
     "name": "St Helens Council",
     "dataset": "local-authority",
     "website": "https://www.sthelens.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000013"
   },
   {
     "organisation": "local-authority:STA",
     "name": "Stafford Borough Council",
     "dataset": "local-authority",
     "website": "https://www.staffordbc.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000197"
   },
   {
     "organisation": "local-authority:STF",
     "name": "Staffordshire Moorlands District Council",
     "dataset": "local-authority",
     "website": "https://www.staffsmoorlands.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000198"
   },
   {
     "organisation": "local-authority:STV",
     "name": "Stevenage Borough Council",
     "dataset": "local-authority",
     "website": "https://www.stevenage.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000243"
   },
   {
     "organisation": "local-authority:SKP",
     "name": "Stockport Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.stockport.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000007"
   },
   {
     "organisation": "local-authority:STT",
     "name": "Stockton-on-Tees Borough Council",
     "dataset": "local-authority",
     "website": "https://www.stockton.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000004"
   },
   {
     "organisation": "local-authority:STE",
     "name": "Stoke-on-Trent City Council",
     "dataset": "local-authority",
     "website": "https://www.stoke.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000021"
   },
   {
     "organisation": "local-authority:STR",
     "name": "Stratford-on-Avon District Council",
     "dataset": "local-authority",
     "website": "https://www.stratford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000221"
   },
   {
     "organisation": "local-authority:STO",
     "name": "Stroud District Council",
     "dataset": "local-authority",
     "website": "https://www.stroud.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000082"
   },
   {
     "organisation": "local-authority:SND",
     "name": "Sunderland City Council",
     "dataset": "local-authority",
     "website": "https://www.sunderland.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000024"
   },
   {
     "organisation": "local-authority:SUR",
     "name": "Surrey Heath Borough Council",
     "dataset": "local-authority",
     "website": "https://www.surreyheath.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000214"
   },
   {
     "organisation": "local-authority:SWL",
     "name": "Swale Borough Council",
     "dataset": "local-authority",
     "website": "https://www.swale.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000113"
   },
   {
     "organisation": "local-authority:SWD",
     "name": "Swindon Borough Council",
     "dataset": "local-authority",
     "website": "https://www.swindon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000030"
   },
   {
     "organisation": "local-authority:TAM",
     "name": "Tameside Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.tameside.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000008"
   },
   {
     "organisation": "local-authority:TAW",
     "name": "Tamworth Borough Council",
     "dataset": "local-authority",
     "website": "https://www.tamworth.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000199"
   },
   {
     "organisation": "local-authority:TAN",
     "name": "Tandridge District Council",
     "dataset": "local-authority",
     "website": "https://www.tandridge.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000215"
   },
   {
     "organisation": "local-authority:TEI",
     "name": "Teignbridge District Council",
     "dataset": "local-authority",
     "website": "https://www.teignbridge.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000045"
   },
   {
     "organisation": "local-authority:TFW",
     "name": "Telford & Wrekin Council",
     "dataset": "local-authority",
     "website": "https://www.telford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000020"
   },
   {
     "organisation": "local-authority:TEN",
     "name": "Tendring District Council",
     "dataset": "local-authority",
     "website": "https://www.tendringdc.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000076"
   },
   {
     "organisation": "local-authority:TES",
     "name": "Test Valley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.testvalley.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000093"
   },
   {
     "organisation": "local-authority:TEW",
     "name": "Tewkesbury Borough Council",
     "dataset": "local-authority",
     "website": "https://tewkesbury.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000083"
   },
   {
     "organisation": "local-authority:THA",
     "name": "Thanet District Council",
     "dataset": "local-authority",
     "website": "https://thanet.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000114"
   },
   {
     "organisation": "local-authority:THE",
     "name": "Three Rivers District Council",
     "dataset": "local-authority",
     "website": "https://www.threerivers.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000102"
   },
   {
     "organisation": "local-authority:THR",
     "name": "Thurrock Council",
     "dataset": "local-authority",
     "website": "https://www.thurrock.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000034"
   },
   {
     "organisation": "local-authority:TON",
     "name": "Tonbridge and Malling Borough Council",
     "dataset": "local-authority",
     "website": "https://www.tmbc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000115"
   },
   {
     "organisation": "local-authority:TOB",
     "name": "Torbay Council",
     "dataset": "local-authority",
     "website": "https://www.torbay.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000027"
   },
   {
     "organisation": "local-authority:TOR",
     "name": "Torridge District Council",
     "dataset": "local-authority",
     "website": "https://www.torridge.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000046"
   },
   {
     "organisation": "local-authority:TRF",
     "name": "Trafford Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.trafford.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000009"
   },
   {
     "organisation": "local-authority:TUN",
     "name": "Tunbridge Wells Borough Council",
     "dataset": "local-authority",
     "website": "https://www.tunbridgewells.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000116"
   },
   {
     "organisation": "local-authority:UTT",
     "name": "Uttlesford District Council",
     "dataset": "local-authority",
     "website": "https://www.uttlesford.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000077"
   },
   {
     "organisation": "local-authority:VAL",
     "name": "Vale of White Horse District Council",
     "dataset": "local-authority",
     "website": "https://www.whitehorsedc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000180"
   },
   {
     "organisation": "local-authority:WKF",
     "name": "Wakefield Metropolitan District Council",
     "dataset": "local-authority",
     "website": "https://www.wakefield.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000036"
   },
   {
     "organisation": "local-authority:WLL",
     "name": "Walsall Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.walsall.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000030"
   },
   {
     "organisation": "local-authority:WRT",
     "name": "Warrington Borough Council",
     "dataset": "local-authority",
     "website": "https://www.warrington.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000007"
   },
   {
     "organisation": "local-authority:WAW",
     "name": "Warwick District Council",
     "dataset": "local-authority",
     "website": "https://www.warwickdc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000222"
   },
   {
     "organisation": "local-authority:WAT",
     "name": "Watford Borough Council",
     "dataset": "local-authority",
     "website": "https://www.watford.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000103"
   },
   {
     "organisation": "local-authority:WAE",
     "name": "Waverley Borough Council",
     "dataset": "local-authority",
     "website": "https://www.waverley.gov.uk/",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000216"
   },
   {
     "organisation": "local-authority:WEA",
     "name": "Wealden District Council",
     "dataset": "local-authority",
     "website": "https://www.wealden.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000065"
   },
   {
     "organisation": "local-authority:WEW",
     "name": "Welwyn Hatfield Borough Council",
     "dataset": "local-authority",
     "website": "https://www.welhat.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000241"
   },
   {
     "organisation": "local-authority:WBK",
     "name": "West Berkshire Council",
     "dataset": "local-authority",
     "website": "https://www.westberks.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E06000037"
   },
   {
     "organisation": "local-authority:WDE",
     "name": "West Devon Borough Council",
     "dataset": "local-authority",
     "website": "https://www.westdevon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000047"
   },
   {
     "organisation": "local-authority:WLA",
     "name": "West Lancashire Borough Council",
     "dataset": "local-authority",
     "website": "https://www.westlancs.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000127"
   },
   {
     "organisation": "local-authority:WLI",
     "name": "West Lindsey District Council",
     "dataset": "local-authority",
     "website": "https://www.west-lindsey.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000142"
   },
   {
     "organisation": "local-authority:WNUA",
     "name": "West Northamptonshire Council",
     "dataset": "local-authority",
     "website": "https://www.westnorthants.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000062"
   },
   {
     "organisation": "local-authority:WOX",
     "name": "West Oxfordshire District Council",
     "dataset": "local-authority",
     "website": "https://www.westoxon.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000181"
   },
   {
     "organisation": "local-authority:WSK",
     "name": "West Suffolk Council",
     "dataset": "local-authority",
     "website": "https://www.westsuffolk.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000245"
   },
   {
     "organisation": "local-authority:WFUA",
     "name": "Westmorland and Furness Council",
     "dataset": "local-authority",
     "website": "https://www.westmorlandandfurness.gov.uk/",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000064"
   },
   {
     "organisation": "local-authority:WGN",
     "name": "Wigan Metropolitan Borough Council",
     "dataset": "local-authority",
     "website": "https://www.wigan.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E08000010"
   },
   {
     "organisation": "local-authority:WIL",
     "name": "Wiltshire Council",
     "dataset": "local-authority",
     "website": "https://wiltshire.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000054"
   },
   {
     "organisation": "local-authority:WIN",
     "name": "Winchester City Council",
     "dataset": "local-authority",
     "website": "https://www.winchester.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000094"
   },
   {
     "organisation": "local-authority:WRL",
     "name": "Wirral Borough Council",
     "dataset": "local-authority",
     "website": "https://www.wirral.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E08000015"
   },
   {
     "organisation": "local-authority:WOI",
     "name": "Woking Borough Council",
     "dataset": "local-authority",
     "website": "https://www.woking.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000217"
   },
   {
     "organisation": "local-authority:WOK",
     "name": "Wokingham Borough Council",
     "dataset": "local-authority",
     "website": "https://www.wokingham.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E06000041"
   },
   {
     "organisation": "local-authority:WOC",
     "name": "Worcester City Council",
     "dataset": "local-authority",
     "website": "https://www.worcester.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000237"
   },
   {
     "organisation": "local-authority:WOT",
     "name": "Worthing Borough Council",
     "dataset": "local-authority",
     "website": "https://www.adur-worthing.gov.uk",
-    "project": "open-digital-planning"
+    "project": "open-digital-planning",
+    "statistical_geography": "E07000229"
   },
   {
     "organisation": "local-authority:WYC",
     "name": "Wychavon District Council",
     "dataset": "local-authority",
     "website": "https://www.wychavon.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000238"
   },
   {
     "organisation": "local-authority:WYR",
     "name": "Wyre Borough Council",
     "dataset": "local-authority",
     "website": "https://www.wyre.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000128"
   },
   {
     "organisation": "local-authority:WYE",
     "name": "Wyre Forest District Council",
     "dataset": "local-authority",
     "website": "https://www.wyreforestdc.gov.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E07000239"
   },
   {
     "organisation": "national-park-authority:Q27178932",
     "name": "Yorkshire Dales National Park Authority",
     "dataset": "national-park-authority",
     "website": "https://www.yorkshiredales.org.uk",
-    "project": null
+    "project": null,
+    "statistical_geography": "E26000012"
   }
 ]

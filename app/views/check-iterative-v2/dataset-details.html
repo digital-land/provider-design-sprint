@@ -4,6 +4,16 @@
 {% set pageName %}{{dataset.name}} details{% endset %}
 {% set path_slug = version_path+"/organisations/"+organisation.organisation+"/"+dataset.dataset %}
 
+{% set showMap = [
+  "article-4-direction-area",
+  "brownfield-land",
+  "conservation-area",
+  "listed-building",
+  "listed-building-outline",
+  "tree",
+  "tree-preservation-zone"
+].includes(dataset.dataset) %}
+
 {% block header %}
 {% include "includes/_service-navigation-header.html" %}
 {% endblock %}
@@ -45,21 +55,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     {{ datasetNavigation({
-          active: "dataset-overview",
-          dataset: dataset,
-          organisation: organisation,
-          issue_count: tasks.length,
-          path_slug: path_slug
-        }) }}
+      active: "dataset-overview",
+      dataset: dataset,
+      organisation: organisation,
+      issue_count: tasks.length,
+      path_slug: path_slug
+    }) }}
   </div>
 </div>
 
+{% if showMap %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
-      class="govuk-!-margin-bottom-6">
+    <div id="map"></div>
   </div>
 </div>
+{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -211,4 +222,18 @@
 </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% if showMap %}
+    <script>
+      window.serverContext = {
+        containerId: 'map',
+        geoJsonUrl: "https://www.planning.data.gov.uk/entity.geojson?dataset={{ dataset.dataset }}&geometry_curie=statistical-geography:{{ organisation.statistical_geography }}&limit=500",
+        boundaryGeoJsonUrl: "http://submit.planning.data.gov.uk/api/lpa-boundary/{{ organisation.organisation }}"
+      }
+    </script>
+    <script src="/public/javascripts/map.bundle.js" type="module"></script>
+  {% endif %}
 {% endblock %}

@@ -3,6 +3,17 @@
 
 {% set pageName %}{{dataset.name}} details{% endset %}
 
+{% set showMap = [
+  "article-4-direction-area",
+  "brownfield-land",
+  "conservation-area",
+  "listed-building",
+  "listed-building-outline",
+  "tree",
+  "tree-preservation-zone"
+].includes(dataset.dataset) %}
+
+
 {% block header %}
 {% if "v2" in version_path %}
 {% if navigationOrganisationActive %}
@@ -64,12 +75,13 @@
   </div>
 </div>
 
+{% if showMap %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <img src="/public/images/dataset-details-map.png" alt="Map of Borechester conservation areas" style="width:100%"
-    class="govuk-!-margin-bottom-6">
+    <div id="map" class="app-map"></div>
   </div>
 </div>
+{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third">
@@ -256,4 +268,19 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% if showMap %}
+    <script>
+      window.serverContext = {
+        containerId: 'map',
+        geoJsonObj: JSON.parse(`{{ geoJsonObject | json | safe }}`),
+        boundaryGeoJsonObj: JSON.parse(`{{ boundaryGeoJsonObject | json | safe }}`)
+      }
+    </script>
+    <script src="/public/javascripts/map.bundle.js" type="module"></script>
+
+  {% endif %}
 {% endblock %}

@@ -1904,6 +1904,8 @@ router.get("/iterative-check-v2/organisations/:orgId", async (req, res) => {
   const locals = {};
   locals.version_path = "/iterative-check-v2";
   locals.organisation = getOrg(req.params.orgId);
+
+  console.log(locals.organisation)
   
   const orgSlug = req.params.orgId.replace(/:/, "_");
   const orgPath = path.join(__dirname, `../app/data/${orgSlug}/datasets.json`);
@@ -1911,7 +1913,59 @@ router.get("/iterative-check-v2/organisations/:orgId", async (req, res) => {
   if (fs.existsSync(orgPath)) {
     locals.datasets = require(orgPath);
   } else {
-    locals.datasets = require('../app/data/default/datasets.json');
+    const datasetQuery = {
+      sql: `SELECT
+              d.name,
+              p.dataset,
+              CASE
+                WHEN (rle.endpoint is null) THEN 'not-submitted'
+                WHEN (rle.status != '200') THEN 'error'
+                WHEN COUNT(
+                  CASE
+                    WHEN it.severity == 'error' THEN 1
+                    ELSE null
+                  END
+                ) > 0 THEN 'needs-fixing'
+                ELSE 'live'
+              END AS status,
+              COUNT(
+                CASE
+                  WHEN it.severity == 'error' THEN 1
+                  ELSE null
+                END
+              ) AS issue_count,
+              rle.status AS http_status,
+              p.provision_reason,
+              CASE
+                WHEN (p.provision_rule LIKE '%ODP%') THEN 'odp'
+              END as provision
+            FROM
+              provision p
+              LEFT JOIN organisation o ON o.organisation = p.organisation
+              LEFT JOIN reporting_latest_endpoints rle ON REPLACE(rle.organisation, '-eng', '') = p.organisation
+              AND rle.pipeline = p.dataset
+              LEFT JOIN issue i ON rle.resource = i.resource
+              AND rle.pipeline = i.dataset
+              LEFT JOIN issue_type it ON i.issue_type = it.issue_type
+              INNER JOIN dataset d ON d.dataset = p.dataset
+            WHERE
+              p.organisation = :p0
+              AND p.provision_reason IN ('expected', 'statutory')
+            GROUP BY
+              p.organisation,
+              p.dataset,
+              o.name,
+              rle.pipeline,
+              rle.endpoint
+            ORDER BY
+              p.dataset
+            `,
+      p0: req.params.orgId,
+      _shape: 'objects'
+    }
+
+    const datasetResponse = await queryDatasette(datasetQuery);
+    locals.datasets = datasetResponse.rows
   }
 
   locals.datasetCount = locals.datasets.length;
@@ -1942,7 +1996,8 @@ router.get("/iterative-check-v2/organisations/:orgId", async (req, res) => {
 router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", async (req, res) => {
   const locals = {};
   locals.version_path = "/iterative-check-v2";
-  locals.organisation = getOrg(req.params.orgId);
+  locals.organisation = getOrg(req.params.orgId, true);
+  console.log(locals.organisation)
   locals.dataset = getDataset(req.params.datasetId);
 
   const endpointQuery = {
@@ -1975,6 +2030,9 @@ router.get("/iterative-check-v2/organisations/:orgId/:datasetId/overview", async
   const endpointResponse = await queryDatasette(endpointQuery);
   locals.endpoints = endpointResponse.rows
   // locals.endpoints = require("../app/data/endpoints.json");
+
+  const boundaryResponse = await getBoundaryGeoJson(req.params.orgId);
+  locals.boundary_geojson = JSON.stringify(boundaryResponse);
 
   res.render("/check-iterative-v2/dataset-details", locals);
 })

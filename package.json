@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "govuk-prototype-kit dev",
+    "dev": "concurrently \"npx webpack --watch\" \"govuk-prototype-kit dev\"",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
   },
@@ -9,8 +9,16 @@
     "@govuk-prototype-kit/step-by-step": "2.2.3",
     "@x-govuk/govuk-prototype-components": "3.1.0",
     "@x-govuk/govuk-prototype-filters": "2.0.0",
+    "concurrently": "^9.1.2",
     "govuk-frontend": "5.8.0",
     "govuk-prototype-kit": "13.16.2",
-    "request": "^2.88.2"
+    "lodash": "^4.17.21",
+    "maplibre-gl": "^5.1.0",
+    "request": "^2.88.2",
+    "webpack": "^5.98.0",
+    "wellknown": "^0.5.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^6.0.1"
   }
 }

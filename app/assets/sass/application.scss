@@ -4,7 +4,7 @@
 //
 
 // Add extra styles here
-
+@import "node_modules/maplibre-gl/dist/maplibre-gl";
 @import "components/dataset-navigation";
 
 .task-div {
@@ -330,3 +330,15 @@ $app-hover-dark-background: #dddcdb;
   max-height: 20em;
   overflow: scroll;
 }
+
+.app-map {
+  height: 560px;
+  margin-bottom: govuk-spacing(6);
+}
+
+.app-c-map__popup-list-item {
+  border-left: 5px solid govuk-colour('blue');
+  padding-left: govuk-spacing(2);
+  margin-bottom: govuk-spacing(2);
+}
+
