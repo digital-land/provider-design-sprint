@@ -349,7 +349,6 @@ export class Map {
       if (!features.length) return
 
       const popupContent = document.createElement('div')
-      popupContent.classList.add('govuk-!-padding-2')
 
       if (features.length > popupMaxListLength) {
         const tooMany = document.createElement('p')
@@ -359,32 +358,40 @@ export class Map {
           Zoom in or turn off layers to narrow down your choice.`
         popupContent.appendChild(tooMany)
       } else {
-        const list = document.createElement('ul')
-        list.classList.add('app-c-map__popup-list', 'govuk-list')
-
-        // add heading
-        const heading = document.createElement('h4')
-        heading.classList.add('govuk-heading-s')
-        heading.textContent = `${features.length} ${features.length > 1 ? 'features' : 'feature'} selected`
-        list.appendChild(heading)
         features.forEach(feature => {
-          // create inset
-          const inset = document.createElement('li')
-          inset.classList.add('app-c-map__popup-list-item')
+          // add heading
+          const item = document.createElement('div')
+          item.classList.add('app-c-map__popup-list-item')
+
+          const heading = document.createElement('h4')
+          heading.classList.add('govuk-heading-s')
+          heading.textContent = capitalize(startCase(feature.properties.dataset))
+          
+          let message
+          if (feature.layer.id.includes('alternative-sources')) {
+            // add message
+            message = document.createElement('p')
+            message.classList.add('app-warning-message')
+            message.innerHTML = `This ${capitalize(startCase(feature.properties.dataset))} is from an alternative source`
+          }
 
           // feature text content
           const textContent = document.createElement('p')
-          textContent.classList.add('govuk-body-s', 'govuk-!-margin-top-0', 'govuk-!-margin-bottom-0')
-          textContent.innerHTML = `
-            ${capitalize(startCase(feature.properties.dataset)) || ''}<br/>
-            <strong>Ref:</strong> ${feature.properties.reference || ''}<br/>
-            ${feature.properties.name ?? ''}
-          `
+          textContent.classList.add('govuk-body-s')
+          textContent.innerHTML = `${feature.properties.name || ''} `
 
-          inset.appendChild(textContent)
-          list.appendChild(inset)
+          const link = document.createElement('a')
+          link.classList.add('govuk-link')
+          link.href = feature.properties.url || '#'
+          link.textContent = `Reference: ${feature.properties.reference}`
+
+          textContent.appendChild(link)
+
+          item.appendChild(heading)
+          if (message) item.appendChild(message)
+          item.appendChild(textContent)
+          popupContent.appendChild(item)
         })
-        popupContent.appendChild(list)
       }
 
       const popup = new maplibregl.Popup({
