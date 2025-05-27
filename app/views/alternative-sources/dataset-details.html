@@ -282,8 +282,8 @@
   {{ super() }}
   {% if showMap %}
     <script>
-      const lpaEntities = JSON.parse(`{{ lpaEntities | json | safe }}`);
-      const alternativeEntities = JSON.parse(`{{ alternativeEntities | json | safe }}`);
+      const lpaEntities = JSON.parse(`{{ lpaEntities | dump | safe }}`);
+      const alternativeEntities = JSON.parse(`{{ alternativeEntities | dump | safe }}`);
 
       const dataLayers = [
         {
@@ -300,7 +300,7 @@
 
       window.serverContext = {
         containerId: 'map',
-        boundaryGeoJsonObj: JSON.parse(`{{ boundaryGeoJsonObject | json | safe }}`),
+        boundaryGeoJsonObj: JSON.parse(`{{ boundaryGeoJsonObject | dump | safe }}`),
         data: dataLayers,
       }
     </script>
