@@ -11,112 +11,114 @@
   "listed-building-outline",
   "tree",
   "tree-preservation-zone"
-].includes(dataset.dataset) %}
-
-
-{% block header %}
-{% if "v2" in version_path %}
-{% if navigationOrganisationActive %}
-{% set active_section = { your_organisation: true } %}
-{% else %}
-{% set active_section = { all_organisations: true } %}
-{% endif %}
-{% include "includes/_service-navigation-header-v2.html" %}
-{% else %}
-{% include "includes/_service-navigation-header.html" %}
-{% endif %}
-{% endblock %}
-
-{% set checkUrl %}/iterative-check/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload{% endset %}
-{% set provideUrl %}/submit-dataset/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/lpa-details{% endset %}
-
-{% block beforeContent %}
-
-{{ super() }}
-
-{{ govukBreadcrumbs({
-  items: [
-  {
-    text: "Home",
-    href: version_path
-  },
-  {
-    text: "Organisations",
-    href: version_path + "/organisations"
-  },
-  {
-    text: organisation.name,
-    href: version_path + "/organisations/" + organisation.organisation
-  }
-  ]
-}) }}
-
-{% endblock %}
-
-{% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{organisation.name}}</span>
-    <h1 class="govuk-heading-xl">
-      {{ pageName }}
-    </h1>
-  </div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    {{ datasetNavigation({
-      active: "dataset-overview",
-      dataset: dataset,
-      organisation: organisation,
-      issue_count: tasks.length
-    }) }}
-  </div>
-</div>
-
-{% if showMap %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <div id="map" class="app-map"></div>
-  </div>
-</div>
-{% endif %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
-    <h2 class="govuk-heading-m dataset-actions-column" id="subsection-title">
-      Dataset actions
-    </h2>
-    <nav role="navigation" aria-labelledby="subsection-title">
-      <ul class="govuk-list">
-        <li>
-          <a href="{{ checkUrl }}">
-            Check dataset
-          </a>
-        </li>
-        <li>
-          <a href="{{ provideUrl }}">
-            Provide dataset
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            {{ dataset.name }} guidance
-          </a>
-        </li>
-      </ul>
-    </nav>
+  ].includes(dataset.dataset) %}
+  
+  
+  {% block header %}
+  {% if "v2" in version_path %}
+  {% if navigationOrganisationActive %}
+  {% set active_section = { your_organisation: true } %}
+  {% else %}
+  {% set active_section = { all_organisations: true } %}
+  {% endif %}
+  {% include "includes/_service-navigation-header-v2.html" %}
+  {% else %}
+  {% include "includes/_service-navigation-header.html" %}
+  {% endif %}
+  {% endblock %}
+  
+  {% set checkUrl %}/iterative-check/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload{% endset %}
+  {% set provideUrl %}/submit-dataset/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/lpa-details{% endset %}
+  
+  {% set pageSlug %}{{ version_path }}/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}{% endset %}
+  
+  {% block beforeContent %}
+  
+  {{ super() }}
+  
+  {{ govukBreadcrumbs({
+    items: [
+    {
+      text: "Home",
+      href: version_path
+    },
+    {
+      text: "Organisations",
+      href: version_path + "/organisations"
+    },
+    {
+      text: organisation.name,
+      href: version_path + "/organisations/" + organisation.organisation
+    }
+    ]
+  }) }}
+  
+  {% endblock %}
+  
+  {% block content %}
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">{{organisation.name}}</span>
+      <h1 class="govuk-heading-xl">
+        {{ pageName }}
+      </h1>
+    </div>
   </div>
   
-  <div class="govuk-grid-column-two-thirds">
-    {% if lpaEntities.length == 0 %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ datasetNavigation({
+        active: "dataset-overview",
+        dataset: dataset,
+        organisation: organisation,
+        issue_count: tasks.length
+      }) }}
+    </div>
+  </div>
+  
+  {% if showMap %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div id="map" class="app-map"></div>
+    </div>
+  </div>
+  {% endif %}
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m dataset-actions-column" id="subsection-title">
+        Dataset actions
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list">
+          <li>
+            <a href="{{ checkUrl }}">
+              Check dataset
+            </a>
+          </li>
+          <li>
+            <a href="{{ provideUrl }}">
+              Provide dataset
+            </a>
+          </li>
+          <li>
+            <a href="/guidance/">
+              {{ dataset.name }} guidance
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="govuk-grid-column-two-thirds">
+      {% if entitiesCount == 0 %}
       <h2 class="govuk-heading-l">Get started</h2>
       
       <p>You have not provided this dataset yet.</p>
       
       <p>Your data does not need to be complete or perfect to start. Any data we have from you means we can begin to index it and provide it on the platform. Start with what you have and improve it over time.</p>
-
+      
       <p>
         {{ govukButton({
           text: "Check dataset",
@@ -130,77 +132,77 @@
           href: provideUrl
         })}}
       </p>
-    {% endif %}
-
-    {% if alternativeEntities.length > 0 %}
+      {% endif %}
+      
+      {% if alternativeEntitiesCount > 0 %}
       <h2 class="govuk-heading-l">Alternative sources</h2>
       
-      <p>We have found {{ alternativeEntities.length }} records in your LPA from other sources. You can review and download these records to add to your dataset.</p>
+      {% set entitiesCountText %}{{ entitiesCount | plural("record") }}{% endset %}
+      {% set alternativeEntitiesCountText %}{{ alternativeEntitiesCount | plural("record") }}{% endset %}
+      
+      <p>We have found {{ alternativeEntitiesCountText }} in your LPA from other sources. You can review and download these records to add to your dataset.</p>
       
       <p>
         {{ govukButton({
           text: "Review alternative sources",
           isStartButton: true,
-          href: "#"
+          href: pageSlug + "/review-alternative-sources"
         })}}
       </p>
-    {% endif %}
-
-    <h2 class="govuk-heading-m" id="subsection-title">
-      Dataset details
-    </h2>
-
-    {% set entitiesCountText %}{{ entitiesCount | plural("record") }}{% endset %}
-    {% set alternativeEntitiesCountText %}{{ alternativeEntitiesCount | plural("record") }}{% endset %}
-    
-    {{ govukSummaryList({
-      rows: [
-      {
-        key: {
-          text: "Authoritive records provided by LPA"
+      {% endif %}
+      
+      <h2 class="govuk-heading-m" id="subsection-title">
+        Dataset details
+      </h2>
+      
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Authoritive records provided by LPA"
+          },
+          value: {
+            text: entitiesCountText
+          }
         },
-        value: {
-          text: entitiesCountText
-        }
-      },
-      {
-        key: {
-          text: "Records from alternative sources"
+        {
+          key: {
+            text: "Records from alternative sources"
+          },
+          value: {
+            text: alternativeEntitiesCountText
+          }
         },
-        value: {
-          text: alternativeEntitiesCountText
+        {
+          key: {
+            text: "Licence"
+          },
+          value: {
+            text: "No licence"
+          }
         }
-      },
-      {
-        key: {
-          text: "Licence"
-        },
-        value: {
-          text: "No licence"
-        }
-      }
-      ]
-    }) }}
-    
-    <h2 class="govuk-heading-m">Active endpoints</h2>
-    
-    <p>You have {{ endpoints.length | plural("endpoint") }} we are currently checking for data.</p>
-    
-    {% for endpoint in endpoints %}
+        ]
+      }) }}
+      
+      <h2 class="govuk-heading-m">Active endpoints</h2>
+      
+      <p>You have {{ endpoints.length | plural("endpoint") }} we are currently checking for data.</p>
+      
+      {% for endpoint in endpoints %}
       {% if endpoint.licence and endpoint.licence == "ogl3" %}
-        {% set licence = "Open Government Licence" %}
+      {% set licence = "Open Government Licence" %}
       {% else %}
-        {% set licence = "Unknown" %}
+      {% set licence = "Unknown" %}
       {% endif %}
-    
+      
       {% if endpoint.documentation_url is not defined or endpoint.documentation_url == "" %}
-        {% set documentation_url %}<p>Documentation URL missing</p>{% endset %}
+      {% set documentation_url %}<p>Documentation URL missing</p>{% endset %}
       {% else %}
-        {% set documentation_url %}
-          <code><a href="{{ endpoint.documentation_url }}">{{ endpoint.documentation_url }}</a></code>
-        {% endset %}
+      {% set documentation_url %}
+      <code><a href="{{ endpoint.documentation_url }}">{{ endpoint.documentation_url }}</a></code>
+      {% endset %}
       {% endif %}
-    
+      
       {{ govukSummaryList({
         card: {
           title: {
@@ -272,39 +274,36 @@
         }
         ]
       }) }}
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
-
+  
 {% endblock %}
-
+  
 {% block scripts %}
   {{ super() }}
   {% if showMap %}
-    <script>
-      const lpaEntities = JSON.parse(`{{ lpaEntities | dump | safe }}`);
-      const alternativeEntities = JSON.parse(`{{ alternativeEntities | dump | safe }}`);
-
-      const dataLayers = [
-        {
-          name: "{{ dataset.name }}",
-          dataset: "{{ dataset.dataset }}",
-          data: lpaEntities
-        },
-        {
-          name: "Alternative sources",
-          dataset: "alternative-sources",
-          data: alternativeEntities
-        }
-      ]
-
-      window.serverContext = {
-        containerId: 'map',
-        boundaryGeoJsonObj: JSON.parse(`{{ boundaryGeoJsonObject | dump | safe }}`),
-        data: dataLayers,
-      }
-    </script>
-    <script src="/public/javascripts/map.bundle.js" type="module"></script>
-
+  <script>
+  const dataLayers = [
+    {
+      name: "{{ dataset.name }}",
+      dataset: "{{ dataset.dataset }}",
+      url: `/api/{{ organisation.organisation }}/{{ dataset.dataset }}/data.geojson`
+    },
+    {
+      name: "Alternative sources",
+      dataset: "alternative-sources",
+      url: `/api/{{ organisation.organisation }}/{{ dataset.dataset }}/alternative-sources.geojson`
+    }
+  ]
+    
+  window.serverContext = {
+    containerId: 'map',
+    boundaryGeoJsonUrl: `/api/{{ organisation.organisation }}/boundary.geojson`,
+    data: dataLayers,
+  }
+</script>
+<script src="/public/javascripts/map.bundle.js" type="module"></script>
+  
   {% endif %}
 {% endblock %}

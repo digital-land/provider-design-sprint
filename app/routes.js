@@ -2393,3 +2393,8 @@ require('./routes/landing-iteration.js')
  * alternative sources - 2025-05-20                   *
 ***********************************************************/
 require('./routes/alternative-sources.js')
+
+/**********************************************************
+ * Proxy API routes for map data                          *
+***********************************************************/
+require('./routes/api.js')

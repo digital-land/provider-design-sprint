@@ -35,4 +35,15 @@ function convertToCSV(arr) {
   }).join('\n')
 }
 
-module.exports = { queryDatasette, getOrg, getDataset, convertToCSV };
+const getJsonResponse = async (url) => {
+  const response = await fetch(url).catch(e => console.error(e));
+
+  if (response.status != 200) {
+    console.error(response)
+  } else {
+    const json = await response.json();
+    return json
+  }
+}
+
+module.exports = { queryDatasette, getOrg, getDataset, convertToCSV, getJsonResponse };
