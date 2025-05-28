@@ -1,0 +1,113 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Review alternative sources" %}
+{% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Review alternative sources" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back to "+ dataset.name +" overview",
+  href: pageSlug+"/get-started-alternative-sources"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full app-map-with-side-panel">
+    <div class="app-map-side-panel">
+      <h3 class="govuk-heading-s">{{ dataset.name }}s</h3>
+
+      <ul class="govuk-list app-map-sidebar-list">
+        {% for entity in alternativeEntities.features %}
+        <li class="app-map-sidebar-list__item">
+            {{ entity.properties.name }}
+            <a href="{{ pageSlug }}/alternative-sources/{{ entity.properties.reference }}">
+              Reference: {{ entity.properties.reference }}
+            </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="map" class="app-map"></div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">
+      We have found {{ alternativeEntitiesCount }} conservation areas in your boundary from alternative sources
+    </h2>
+
+    <p>Alternative sources are third party sources which have not been provided by your organisation.</p>
+
+    <p>Download the data to review it. If it looks correct, you can add it to your existing datasets.</p>
+
+    <p>If you need to, you can edit the data before you publish it on your website.</p>
+
+    <form action="{{ pageSlug }}/review-handler" method="post">
+      {{ govukRadios({
+        name: "download_format",
+        fieldset: {
+          legend: {
+            text: "Which format do you want to download the data in?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            text: "CSV",
+            value: "csv"
+          },
+          {
+            text: "GeoJSON",
+            value: "geojson"
+          }
+        ]
+      })}}
+
+      {{ govukButton({
+        text: "Continue"
+      })}}
+    </form>
+
+    <p><a href="{{ pageSlug }}/overview">Back to conservation area overview</a></p>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+  {{ super() }}
+    <script>
+      const dataLayers = [
+        {
+          name: "Alternative sources",
+          dataset: "alternative-sources",
+          url: `/api/{{ organisation.organisation }}/{{ dataset.dataset }}/alternative-sources.geojson`
+        }
+      ]
+        
+      window.serverContext = {
+        containerId: 'map',
+        boundaryGeoJsonUrl: `/api/{{ organisation.organisation }}/boundary.geojson`,
+        data: dataLayers,
+      }
+    </script>
+    <script src="/public/javascripts/map.bundle.js" type="module"></script>
+{% endblock %}

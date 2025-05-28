@@ -41,5 +41,20 @@ router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async 
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
+  const lpaEntitiesUrl = `https://www.planning.data.gov.uk/entity.geojson?dataset=${ res.locals.dataset.dataset }&organisation_entity=${ res.locals.organisation.entity }&limit=500`;
+  const allEntitiesUrl = `https://www.planning.data.gov.uk/entity.geojson?dataset=${ res.locals.dataset.dataset }&geometry_curie=statistical-geography:${ res.locals.organisation.statistical_geography }&limit=500`;
+  
+  res.locals.lpaEntities = await getJsonResponse(lpaEntitiesUrl);
+  
+  const allEntites = await getJsonResponse(allEntitiesUrl);
+  res.locals.alternativeEntities = { type: "FeatureCollection", features: [] }
+  if (allEntites && allEntites.features && res.locals.lpaEntities && res.locals.lpaEntities.features) {
+    const lpaEntitySet = new Set(res.locals.lpaEntities.features.map(f => f.properties.entity));
+    res.locals.alternativeEntities.features = allEntites.features.filter(feature => !lpaEntitySet.has(feature.properties.entity));
+  }
+
+  res.locals.entitiesCount = res.locals.lpaEntities.features.length;
+  res.locals.alternativeEntitiesCount = res.locals.alternativeEntities.features.length;
+
   res.render("/alternative-sources/review-alternative-sources");
 })
