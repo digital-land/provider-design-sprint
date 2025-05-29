@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+{% set record_number = conservation_area_index|int + 1 %}
+
+{% set pageName %}Review record {{ entityObj.reference }}{% endset %}
+{% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
+
+{% block header %}
+{% set hideNav = true %}
+{% set serviceName = "Review alternative sources" %}
+{% include "includes/_service-navigation-header.html" %}
+{% endblock %}
+
+
+{% block beforeContent %}
+{% set back_link_url = pageSlug + "/review-record/" + (conservation_area_index|int -1) %}
+{% if conservation_area_index == 0 %}
+  {% set back_link_url = pageSlug + "/review-alternative-sources" %}
+{% endif %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: back_link_url
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ organisation.name }} — {{ dataset.name }}</span>
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div id="map" class="app-map"></div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set row_data = [] %}
+    {% for row_key, row_value in entityObj %}
+      {% if row_key == "geometry" %}
+        {% set row_value %}<code>{{ row_value|truncate(80) }}</code>{% endset %}
+      {% elseif row_key == "point" %}
+        {% set row_value %}<code>{{ row_value }}</code>{% endset %}
+      {% endif %}
+
+      {% if "url" in row_key %}
+        {% set row_value %}<a href="{{ row_value }}">{{ row_value|truncate(80) }}</a>{% endset %}
+      {% endif %}
+
+      {% set row_data = row_data.concat({
+        key: { text: row_key },
+        value: { html: row_value }
+      }) %}
+    {% endfor %}
+
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: "Record " + entityObj.reference
+        }
+      },
+      rows: row_data
+    }) }}
+
+    <p><a href="{{ pageSlug }}/review-alternative-sources">Back to review alternative data</a></p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+    <script>
+      const dataLayers = [
+        {
+          name: "Record {{ entityObj.reference }}",
+          dataset: "single-entity",
+          url: `/api/entity/{{ entityId }}.geojson`
+        }
+      ]
+        
+      window.serverContext = {
+        containerId: 'map',
+        boundaryGeoJsonUrl: `/api/{{ organisation.organisation }}/boundary.geojson`,
+        data: dataLayers,
+      }
+    </script>
+    <script src="/public/javascripts/map.bundle.js" type="module"></script>
+{% endblock %}

@@ -116,7 +116,7 @@ export class Map {
     })
     
     // Add map controls
-    // this.addControls(this.opts.interactive)
+    this.addControls(this.opts.interactive)
     
     this.map.on('load', async () => {
       // Store the first symbol layer id
@@ -141,10 +141,28 @@ export class Map {
           this.addGeoJsonObjsToMap(this.opts.data[i].data, layerStyles[i % layerStyles.length], this.opts.data[i].dataset)
         }
       }
+
+      try {
+        if (this.opts.data[0].dataset == "single-entity") {
+          // If the data is a single entity, set the map view to the bounding box
+          this.bbox = await this.generateBoundingBox(this.map.getSource('geometry-single-entity'))
+        } else {
+          // If the data is not a single entity, calculate the bounding box from the geometries
+          // const features = this.map.queryRenderedFeatures().filter(f => f.source.startsWith('geometry-') || f.source === 'boundary')
+          // const geometries = features.map(f => f.geometry)
+
+          // this.bbox = await calculateBoundingBoxFromGeometries(geometries.map(g => g.coordinates))
+
+              
+          this.bbox = await this.generateBoundingBox(this.map.getSource('boundary'))
+        }
+      } finally {
+        this.setMapViewToBoundingBox(this.bbox)
+      }
       
       // Add popup to map
       if (opts.interactive) this.addPopupToMap()
-      })
+    })
   }
   
   addControls (interactive = true) {
@@ -338,9 +356,6 @@ export class Map {
         'line-opacity': boundaryLineOpacity
       }
     }, this.firstMapLayerId)
-    
-    this.bbox = await this.generateBoundingBox(this.map.getSource('boundary'))
-    this.setMapViewToBoundingBox(this.bbox)
   }
   
   generateBoundingBox = async (source) => {
@@ -613,12 +628,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // set up event listeners for the sidebar items
     document.querySelectorAll('.app-map-sidebar-list__item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault()
-        const target = e.currentTarget
-        
-      })
-
       window.matchingFeatures = []
       
       item.addEventListener('mouseenter', (e) => {

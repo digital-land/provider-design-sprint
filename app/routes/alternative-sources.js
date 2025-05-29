@@ -61,3 +61,40 @@ router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async 
 
   res.render("/alternative-sources/review-alternative-sources");
 })
+
+router.get("/organisations/:orgId/:datasetId/:entityId", async (req, res) => {
+  res.locals.version_path = version;
+  res.locals.organisation = getOrg(req.params.orgId);
+  res.locals.dataset = getDataset(req.params.datasetId);
+
+  const entitySql = {
+    sql: `SELECT * FROM entity WHERE entity = :p0`,
+    p0: req.params.entityId,
+    _shape: 'objects'
+  }
+  
+  const entityResponse = await queryDatasette(entitySql, res.locals.dataset.dataset, 'json');
+
+  const organisationSql = {
+    sql: `SELECT * FROM organisation WHERE entity = :p0`,
+    p0: entityResponse.rows[0].organisation_entity,
+    _shape: 'objects'
+  }
+
+  const organisationEntityResponse = await queryDatasette(organisationSql, 'digital-land', 'json');
+
+  res.locals.entityObj = {
+    end_date: entityResponse.rows[0].end_date,
+    entry_date: entityResponse.rows[0].entry_date,
+    geometry: entityResponse.rows[0].geometry,
+    name: entityResponse.rows[0].name,
+    organisation: organisationEntityResponse.rows[0].name,
+    point: entityResponse.rows[0].point,
+    reference: entityResponse.rows[0].reference,
+    start_date: entityResponse.rows[0].start_date
+  }
+
+  res.locals.entityId = req.params.entityId;
+  
+  res.render("/alternative-sources/review-record");
+})

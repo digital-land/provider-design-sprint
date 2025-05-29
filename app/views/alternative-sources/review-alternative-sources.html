@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Review alternative sources" %}
+{% set pageName = "Review alternative data" %}
 {% set pageSlug %}{{version_path}}/organisations/{{organisation.organisation}}/{{dataset.dataset}}{% endset %}
 
 {% block header %}
@@ -36,7 +36,7 @@
         {% for entity in alternativeEntities.features %}
         <li class="app-map-sidebar-list__item" data-entity="{{ entity.properties.entity }}">
             {{ entity.properties.name }}
-            <a href="{{ pageSlug }}/alternative-sources/{{ entity.properties.reference }}">
+            <a href="{{ pageSlug }}/{{ entity.properties.entity }}">
               Reference: {{ entity.properties.reference }}
             </a>
         </li>
@@ -50,10 +50,10 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">
-      We have found {{ alternativeEntitiesCount }} conservation areas in your boundary from alternative sources
+      We have found {{ alternativeEntitiesCount }} conservation areas in your boundary from externasl organisations
     </h2>
 
-    <p>Alternative sources are third party sources which have not been provided by your organisation.</p>
+    <p>Alternative data comes from external organisations like Historic England, as well as data we’ve gathered from your organisation’s website.</p>
 
     <p>Download the data to review it. If it looks correct, you can add it to your existing datasets.</p>
 

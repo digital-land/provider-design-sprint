@@ -43,3 +43,11 @@ router.get("/:orgId/boundary.geojson", async (req, res) => {
 
   res.json(boundaryGeoJsonObject);
 })
+
+router.get("/entity/:entityId.:format", async (req, res) => {
+  const entityUrl = `https://www.planning.data.gov.uk/entity/${ req.params.entityId }.${ req.params.format}`;
+  console.log(`Fetching entity from: ${entityUrl}`);
+  const entityObject = await getJsonResponse(entityUrl); 
+
+  res.json(entityObject);
+})

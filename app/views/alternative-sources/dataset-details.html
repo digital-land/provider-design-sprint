@@ -135,16 +135,16 @@
       {% endif %}
       
       {% if alternativeEntitiesCount > 0 %}
-      <h2 class="govuk-heading-l">Alternative sources</h2>
+      <h2 class="govuk-heading-l">Alternative data</h2>
       
       {% set entitiesCountText %}{{ entitiesCount | plural("record") }}{% endset %}
       {% set alternativeEntitiesCountText %}{{ alternativeEntitiesCount | plural("record") }}{% endset %}
       
-      <p>We have found {{ alternativeEntitiesCountText }} in your LPA from other sources. You can review and download these records to add to your dataset.</p>
+      <p>We have found {{ alternativeEntitiesCountText }} in your LPA from external organisations. You can review and download these records to add to your dataset.</p>
       
       <p>
         {{ govukButton({
-          text: "Review alternative sources",
+          text: "Review alternative data",
           isStartButton: true,
           href: pageSlug + "/review-alternative-sources"
         })}}
