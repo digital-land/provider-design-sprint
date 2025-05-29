@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "concurrently \"npx webpack --watch\" \"govuk-prototype-kit dev\"",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start"
+    "start": "govuk-prototype-kit start",
+    "build": "npx webpack --mode production"
   },
   "dependencies": {
     "@govuk-prototype-kit/common-templates": "2.0.1",
