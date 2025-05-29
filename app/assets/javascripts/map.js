@@ -561,6 +561,49 @@ export const createMapFromServerContext = () => {
   return new Map(options)
 }
 
+export const simulateClick = (coords) => {
+  const event = {
+    type: 'click',
+    lngLat: [],
+    point: {}
+  }
+
+  event.lngLat = coords
+  event.point = window.map.map.project(coords)
+
+  window.map.map.fire(event)
+}
+
+export const findMiddlePoint = (geometry) => {
+  if (!geometry || geometry.length === 0) {
+    console.error('No geometry provided to find middle point')
+    return null
+  }
+
+  // Flatten nested arrays if needed (handles MultiPolygon, etc.)
+  const flattenCoords = (coords) => {
+    if (typeof coords[0] === 'number') return [coords]
+    return coords.flatMap(flattenCoords)
+  }
+
+  const flatCoords = flattenCoords(geometry)
+
+  let sumX = 0
+  let sumY = 0
+  let count = 0
+
+  flatCoords.forEach(([x, y]) => {
+    sumX += x
+    sumY += y
+    count++
+  })
+
+  if (count === 0) return null
+
+  return [sumX / count, sumY / count]
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   try {
     window.map = createMapFromServerContext()
@@ -591,6 +634,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (window.matchingFeatures.length > 0) {
           const filter = ['in', ['get', 'entity'], entityId]
           window.map.map.setFeatureState(window.matchingFeatures[0], { hover: true })
+          const middlePoint = findMiddlePoint(window.matchingFeatures[0].geometry.coordinates)
+          simulateClick(middlePoint)
         } else {
           console.warn('No matching features found for entity', entityId)
         }
