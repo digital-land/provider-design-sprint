@@ -389,7 +389,7 @@ export class Map {
   }
   
   setMapViewToBoundingBox (bbox) {
-    this.map.fitBounds(bbox, { padding: 20, duration: 0, maxZoom: 11 })
+    this.map.fitBounds(bbox, { padding: 20, duration: 0, maxZoom: 16 })
   }
   
   addPopupToMap () {
