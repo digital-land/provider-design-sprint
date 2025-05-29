@@ -50,7 +50,10 @@ router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async 
   res.locals.alternativeEntities = { type: "FeatureCollection", features: [] }
   if (allEntites && allEntites.features && res.locals.lpaEntities && res.locals.lpaEntities.features) {
     const lpaEntitySet = new Set(res.locals.lpaEntities.features.map(f => f.properties.entity));
-    res.locals.alternativeEntities.features = allEntites.features.filter(feature => !lpaEntitySet.has(feature.properties.entity));
+    res.locals.alternativeEntities.features = allEntites.features.filter(feature => !lpaEntitySet.has(feature.properties.entity)).sort((a, b) => {
+      return a.properties.name.localeCompare(b.properties.name);
+    }
+    );
   }
 
   res.locals.entitiesCount = res.locals.lpaEntities.features.length;

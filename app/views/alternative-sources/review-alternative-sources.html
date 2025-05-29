@@ -34,7 +34,7 @@
 
       <ul class="govuk-list app-map-sidebar-list">
         {% for entity in alternativeEntities.features %}
-        <li class="app-map-sidebar-list__item">
+        <li class="app-map-sidebar-list__item" data-entity="{{ entity.properties.entity }}">
             {{ entity.properties.name }}
             <a href="{{ pageSlug }}/alternative-sources/{{ entity.properties.reference }}">
               Reference: {{ entity.properties.reference }}

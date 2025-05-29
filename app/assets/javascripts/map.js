@@ -52,6 +52,13 @@ const layerStyles = [
   }
 ]
 
+const focusStyle = {
+  fillColor: '#ffdd00',
+  fillOpacity: 1,
+  lineColor: '#0b0c0c',
+  lineWidth: 4
+}
+
 
 const boundaryLineColor = mapColours.turquoise
 const boundaryLineOpacity = 1
@@ -134,7 +141,7 @@ export class Map {
           this.addGeoJsonObjsToMap(this.opts.data[i].data, layerStyles[i % layerStyles.length], this.opts.data[i].dataset)
         }
       }
-
+      
       // Add popup to map
       if (opts.interactive) this.addPopupToMap()
       })
@@ -227,7 +234,8 @@ export class Map {
     const name = `geometry-${slug}`
     this.map.addSource(name, {
       type: 'geojson',
-      data: url
+      data: url,
+      promoteId: 'entity'
     })
     
     this.addLayers(name, style, this)
@@ -237,7 +245,8 @@ export class Map {
     const name = `geometry-${slug}`
     this.map.addSource(name, {
       type: 'geojson',
-      data: geoJsonObjs
+      data: geoJsonObjs,
+      promoteId: 'entity'
     })
     
     this.addLayers(name, style, this)
@@ -271,12 +280,45 @@ export class Map {
       id: `${name}-border`,
       type: 'line',
       source: name,
-      layout: {},
       paint: {
         'line-color': style.lineColor,
         'line-width': style.lineWidth
       }
     }, mapInstance.firstMapLayerId)
+
+    if (document.querySelectorAll('.app-map-sidebar-list__item').length > 0) {
+      console.log('Adding focus layers to map')
+      mapInstance.map.addLayer({
+        id: 'focus',
+        type: 'fill',
+        source: name,
+        paint: {
+          'fill-color': focusStyle.fillColor,
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            1,
+            0
+          ]
+        }
+      }, mapInstance.firstMapLayerId);
+      
+      mapInstance.map.addLayer({
+        id: 'focus-border',
+        type: 'line',
+        source: name,
+        paint: {
+          'line-color': focusStyle.lineColor,
+          'line-width': focusStyle.lineWidth,
+          'line-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            1,
+            0
+          ]
+        }
+      }, mapInstance.firstMapLayerId);
+    }
   }
   
   async addBoundaryGeoJsonToMap (geoJsonUrl) {
@@ -296,7 +338,7 @@ export class Map {
         'line-opacity': boundaryLineOpacity
       }
     }, this.firstMapLayerId)
-
+    
     this.bbox = await this.generateBoundingBox(this.map.getSource('boundary'))
     this.setMapViewToBoundingBox(this.bbox)
   }
@@ -525,7 +567,46 @@ document.addEventListener("DOMContentLoaded", () => {
     window.map.map.on('error', err => {
       console.warn('map error', err)
     })
+
+    // set up event listeners for the sidebar items
+    document.querySelectorAll('.app-map-sidebar-list__item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const target = e.currentTarget
+        
+      })
+
+      window.matchingFeatures = []
+      
+      item.addEventListener('mouseenter', (e) => {
+        const target = e.currentTarget
+        const layerId = 'focus'
+        const entityId = target.dataset.entity  
+        
+        const layer = window.map.map.getLayer(layerId)
+        const alternativeFeatures = window.map.map.queryRenderedFeatures({ layers: [ layerId ] })
+        
+        window.matchingFeatures = alternativeFeatures.filter(feature => feature.properties.entity == entityId)
+        
+        if (window.matchingFeatures.length > 0) {
+          const filter = ['in', ['get', 'entity'], entityId]
+          window.map.map.setFeatureState(window.matchingFeatures[0], { hover: true })
+        } else {
+          console.warn('No matching features found for entity', entityId)
+        }
+        
+      })
+      
+      item.addEventListener('mouseleave', (e) => {
+        const target = e.currentTarget
+        const layerId = 'focus'
+        
+        window.map.map.setFeatureState(window.matchingFeatures[0], { hover: false})
+      })
+    })
   } catch (error) {
     console.error('Error creating map', error)
-  }      
+  }
+  
+  
 })
