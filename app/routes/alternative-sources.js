@@ -62,6 +62,14 @@ router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async 
   res.render("/alternative-sources/review-alternative-sources");
 })
 
+router.get("/organisations/:orgId/:datasetId/download-confirmation", async (req, res) => {
+  res.locals.version_path = version;
+  res.locals.organisation = getOrg(req.params.orgId);
+  res.locals.dataset = getDataset(req.params.datasetId);
+
+  res.render("/alternative-sources/download-confirmation");
+})
+
 router.get("/organisations/:orgId/:datasetId/:entityId", async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -98,3 +106,4 @@ router.get("/organisations/:orgId/:datasetId/:entityId", async (req, res) => {
   
   res.render("/alternative-sources/review-record");
 })
+

@@ -13,10 +13,7 @@
 
 
 {% block beforeContent %}
-{% set back_link_url = pageSlug + "/review-record/" + (conservation_area_index|int -1) %}
-{% if conservation_area_index == 0 %}
   {% set back_link_url = pageSlug + "/review-alternative-sources" %}
-{% endif %}
 
 {{ govukBackLink({
   text: "Back",

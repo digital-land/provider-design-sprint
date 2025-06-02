@@ -12,7 +12,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back to "+ dataset.name +" overview",
-  href: pageSlug+"/get-started-alternative-sources"
+  href: pageSlug+"/overview"
 }) }}
 {% endblock %}
 
@@ -50,7 +50,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">
-      We have found {{ alternativeEntitiesCount }} conservation areas in your boundary from externasl organisations
+      We have found {{ alternativeEntitiesCount }} conservation areas in your boundary from external organisations
     </h2>
 
     <p>Alternative data comes from external organisations like Historic England, as well as data we’ve gathered from your organisation’s website.</p>
@@ -59,7 +59,7 @@
 
     <p>If you need to, you can edit the data before you publish it on your website.</p>
 
-    <form action="{{ pageSlug }}/review-handler" method="post">
+    <form action="{{ pageSlug }}/download-confirmation" method="post">
       {{ govukRadios({
         name: "download_format",
         fieldset: {
