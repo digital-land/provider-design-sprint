@@ -1,6 +1,7 @@
 import parse from 'wellknown'
 import maplibregl from 'maplibre-gl'
 import { add, capitalize, map, startCase } from 'lodash'
+import { getApiToken, getFreshApiToken } from './os-api-token.js'
 
 const mapColours = {
   orange: '#C44200',
@@ -68,7 +69,7 @@ const pointOpacity = 0.8
 const pointRadius = 5
 const popupMaxListLength = 10
 
-const defaultOsMapStyle = '/public/static/map-layers/OS_VTS_3857_Light.json'
+const defaultOsMapStyle = '/public/static/OS_VTS_3857_Light.json'
 const fallbackMapStyle = 'https://api.maptiler.com/maps/basic-v2/style.json?key=ncAXR9XEn7JgHBLguAUw'
 const OS_API_ACCESS_TOKEN = 'clwU00Qa5AYZOdAoXcl4XenBq4ZMTC6t'
 
@@ -93,26 +94,27 @@ export class Map {
     this.bbox = this.opts.boundingBox ?? null
     this.map = new maplibregl.Map({
       container: this.opts.containerId,
-      style: this.opts.style ?? fallbackMapStyle,
+      style: this.opts.style ?? defaultOsMapStyle,
       zoom: 11,
       center: [-0.1298779, 51.4959698],
-      interactive: this.opts.interactive ?? true
-      // transformRequest: (url, resourceType) => {
-        //   if (url.indexOf('api.os.uk') > -1) {
-      //     if (!/[?&]key=/.test(url)) url += '?key=null'
+      interactive: this.opts.interactive ?? true,
+      transformRequest: (url, resourceType) => {
+        if (url.indexOf('api.os.uk') > -1) {
+          if (!/[?&]key=/.test(url)) url += '?key=null'
       
-      //     const requestToMake = {
-      //       url: url + '&srs=3857'
-      //     }
+          const requestToMake = {
+            url: url + '&srs=3857'
+          }
       
-      //     const token = OS_API_ACCESS_TOKEN
-      //     requestToMake.headers = {
-      //       Authorization: 'Bearer ' + token
-      //     }
+          const token = getApiToken()
+          console.log
+          requestToMake.headers = {
+            Authorization: 'Bearer ' + token
+          }
       
-      //     return requestToMake
-      //   }
-      // }
+          return requestToMake
+        }
+      }
     })
     
     // Add map controls
@@ -553,7 +555,7 @@ export const generatePaginatedGeoJsonLinks = async (geoJsonObj) => {
   return geoJsonLinks
 }
 
-export const createMapFromServerContext = () => {
+export const createMapFromServerContext = async () => {
   const { containerId, mapType, data, boundaryGeoJsonUrl } = window.serverContext
   const options = {
     containerId,
@@ -561,6 +563,14 @@ export const createMapFromServerContext = () => {
     boundaryGeoJsonUrl,
     interactive: mapType !== 'static',
     wktFormat: data === undefined
+  }
+
+  // fetch initial token
+  try {
+    await getFreshApiToken()
+  } catch (error) {
+    console.error('Error fetching OS Map API token', error.message)
+    options.style = fallbackMapStyle
   }
   
   // If only boundaryGeoJsonUrl is present, allow map to render
@@ -619,9 +629,9 @@ export const findMiddlePoint = (geometry) => {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   try {
-    window.map = createMapFromServerContext()
+    window.map = await createMapFromServerContext()
     window.map.map.on('error', err => {
       console.warn('map error', err)
     })
@@ -661,6 +671,4 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (error) {
     console.error('Error creating map', error)
   }
-  
-  
 })

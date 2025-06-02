@@ -51,3 +51,10 @@ router.get("/entity/:entityId.:format", async (req, res) => {
 
   res.json(entityObject);
 })
+
+router.get("/os/get-access-token", async (req, res) => { 
+  const osAccessTokenUrl = `https://submit.planning.data.gov.uk/api/os/get-access-token`;
+  const osAccessToken = await getJsonResponse(osAccessTokenUrl);
+
+  res.json(osAccessToken);
+})
