@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main, feature/containerisation]
+    branches: [main, hotfix/auto-deployment]
   workflow_dispatch:
     inputs:
       environment:
@@ -66,3 +66,5 @@ jobs:
       - run: docker push $DOCKER_REPO:${{ steps.vars.outputs.sha_short }}
 
       - run: docker push $DOCKER_REPO:main
+
+      - run: aws apprunner start-deployment --service-arn ${{ secrets.SERVICE_ARN }}
