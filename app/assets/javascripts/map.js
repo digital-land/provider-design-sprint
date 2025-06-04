@@ -107,7 +107,6 @@ export class Map {
           }
       
           const token = getApiToken()
-          console.log
           requestToMake.headers = {
             Authorization: 'Bearer ' + token
           }
@@ -161,12 +160,12 @@ export class Map {
       } finally {
         this.setMapViewToBoundingBox(this.bbox)
       }
-      
+
       // Add popup to map
       if (opts.interactive) this.addPopupToMap()
     })
   }
-  
+
   addControls (interactive = true) {
     this.map.addControl(new maplibregl.ScaleControl(), 'bottom-left')
     
@@ -306,6 +305,7 @@ export class Map {
       }
     }, mapInstance.firstMapLayerId)
 
+    // add focus layers if there are sidebar items
     if (document.querySelectorAll('.app-map-sidebar-list__item').length > 0) {
       console.log('Adding focus layers to map')
       mapInstance.map.addLayer({
@@ -424,6 +424,13 @@ export class Map {
             message = document.createElement('p')
             message.classList.add('app-warning-message')
             message.innerHTML = `This ${capitalize(startCase(feature.properties.dataset))} is from an alternative source`
+          }
+
+          if (feature.layer.id.includes('out-of-bounds')) {
+            // add message
+            message = document.createElement('p')
+            message.classList.add('app-warning-message')
+            message.innerHTML = `This ${capitalize(startCase(feature.properties.dataset))} is outside of your boundary`
           }
           
           // feature text content
@@ -644,14 +651,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const target = e.currentTarget
         const layerId = 'focus'
         const entityId = target.dataset.entity  
-        
-        const layer = window.map.map.getLayer(layerId)
         const alternativeFeatures = window.map.map.queryRenderedFeatures({ layers: [ layerId ] })
         
         window.matchingFeatures = alternativeFeatures.filter(feature => feature.properties.entity == entityId)
         
         if (window.matchingFeatures.length > 0) {
-          const filter = ['in', ['get', 'entity'], entityId]
           window.map.map.setFeatureState(window.matchingFeatures[0], { hover: true })
           const middlePoint = findMiddlePoint(window.matchingFeatures[0].geometry.coordinates)
           simulateClick(middlePoint)

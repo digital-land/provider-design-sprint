@@ -1,3 +1,7 @@
+/**********************************************************
+ * alternative-sources - 2025-05-20                       *
+***********************************************************/
+
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/alternative-sources')
 
@@ -6,10 +10,6 @@ const path = require("path");
 const version = '/alternative-sources'
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse } = require('./functions.js');
-
-/**********************************************************
- * alternative-sources - 2025-05-20                       *
-***********************************************************/
 
 router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
   
@@ -106,4 +106,3 @@ router.get("/organisations/:orgId/:datasetId/:entityId", async (req, res) => {
   
   res.render("/alternative-sources/review-record");
 })
-

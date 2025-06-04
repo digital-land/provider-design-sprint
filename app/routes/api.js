@@ -11,7 +11,41 @@ router.get("/:orgId/:datasetId/data.geojson", async (req, res) => {
 
   const lpaEntitiesUrl = `https://www.planning.data.gov.uk/entity.geojson?dataset=${ dataset.dataset }&organisation_entity=${ organisation.entity }&limit=500`;
   const lpaEntities = await getJsonResponse(lpaEntitiesUrl);
+
+  const outOfBoundsQuery= {
+    sql: `select * from expectation
+      where
+        "name" = :p0
+        and "organisation" = :p1
+        and "dataset" = :p2`,
+    p0: 'Check no entities are outside of the local planning authority boundary',
+    p1: organisation.organisation,
+    p2: dataset.dataset,
+    _shape: 'objects'
+  }
+
+  const outOfBoundsResults = await queryDatasette(outOfBoundsQuery);
+  let outOfBoundsEntities = []
   
+  if (outOfBoundsResults.rows && outOfBoundsResults.rows.length > 0) {    
+    const outOfBoundsDetails = JSON.parse(outOfBoundsResults.rows[0].details);
+    outOfBoundsEntities = outOfBoundsDetails.entities || [];
+  }
+
+  // Remove out of bounds entities from lpaEntities using the entity property as a key
+  if (lpaEntities && lpaEntities.features && outOfBoundsEntities.length > 0) {
+    const outOfBoundsSet = new Set(outOfBoundsEntities);
+    console.log(`Removing ${outOfBoundsSet.size} out of bounds entities from LPA entities`);
+    console.log(`Out of bounds entities: ${JSON.stringify(outOfBoundsEntities)}`);
+    console.log(`LPA entities before filtering: ${lpaEntities.features.length}`);
+    
+    lpaEntities.features = lpaEntities.features.filter(
+      feature => !outOfBoundsSet.has(feature.properties.entity)
+    );
+
+    console.log(`LPA entities after filtering: ${lpaEntities.features.length}`);
+  }
+
   res.json(lpaEntities);
 })
 
@@ -50,6 +84,36 @@ router.get("/entity/:entityId.:format", async (req, res) => {
   const entityObject = await getJsonResponse(entityUrl); 
 
   res.json(entityObject);
+})
+
+router.get("/:orgId/:datasetId/out-of-bounds.geojson", async (req, res) => {
+  const organisation = getOrg(req.params.orgId);
+  const dataset = getDataset(req.params.datasetId);
+
+  const outOfBoundsQuery= {
+    sql: `select * from expectation
+      where
+        "name" = :p0
+        and "organisation" = :p1
+        and "dataset" = :p2`,
+    p0: 'Check no entities are outside of the local planning authority boundary',
+    p1: organisation.organisation,
+    p2: dataset.dataset,
+    _shape: 'objects'
+  }
+
+  const outOfBoundsResults = await queryDatasette(outOfBoundsQuery);
+  let outOfBoundsEntities = []
+  
+  if (outOfBoundsResults.rows && outOfBoundsResults.rows.length > 0) {    
+    const outOfBoundsDetails = JSON.parse(outOfBoundsResults.rows[0].details);
+    outOfBoundsEntities = outOfBoundsDetails.entities || [];    
+  }
+
+  const outOfBoundsGeoJsonUrl = 'https://www.planning.data.gov.uk/entity.geojson?entity=' + outOfBoundsEntities.join('&entity=');
+  const outOfBoundsGeoJson = await getJsonResponse(outOfBoundsGeoJsonUrl);
+
+  res.json(outOfBoundsGeoJson);
 })
 
 router.get("/os/get-access-token", async (req, res) => { 

@@ -2390,9 +2390,14 @@ router.get('/expectations/organisations/:orgId/:datasetId/download-file', async 
 require('./routes/landing-iteration.js')
 
 /**********************************************************
- * alternative sources - 2025-05-20                   *
+ * alternative sources - 2025-05-20                       *
 ***********************************************************/
 require('./routes/alternative-sources.js')
+
+/**********************************************************
+ * out of bounds - 2025-06-02                             *
+***********************************************************/
+require('./routes/out-of-bounds.js')
 
 /**********************************************************
  * Proxy API routes for map data                          *
