@@ -12,7 +12,7 @@
 {% endif %}
 {% endset %}
 {% set taskLink %}
-<a href="/overview/v2/{{ organisation.organisation }}/dataset/{{ dataset.dataset }}/tasklist"
+<a href="{{ params.path_slug }}/tasklist"
   class="govuk-service-navigation__link">
   Task list
 </a>

@@ -1,0 +1,186 @@
+{% extends "layouts/main.html" %}
+{% from "components/dataset-navigation.html" import datasetNavigation %}
+
+{% set pageName %}{{dataset.name}} details{% endset %}
+
+  {% block header %}
+  {% if "v2" in version_path %}
+  {% if navigationOrganisationActive %}
+  {% set active_section = { your_organisation: true } %}
+  {% else %}
+  {% set active_section = { all_organisations: true } %}
+  {% endif %}
+  {% include "includes/_service-navigation-header-v2.html" %}
+  {% else %}
+  {% include "includes/_service-navigation-header.html" %}
+  {% endif %}
+  {% endblock %}
+  
+  {% set checkUrl %}/iterative-check/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload{% endset %}
+  {% set provideUrl %}/submit-dataset/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/lpa-details{% endset %}
+  
+  {% set pageSlug %}{{ version_path }}/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}{% endset %}
+  
+  {% block beforeContent %}
+  
+  {{ super() }}
+  
+  {{ govukBreadcrumbs({
+    items: [
+    {
+      text: "Home",
+      href: version_path
+    },
+    {
+      text: "Organisations",
+      href: version_path + "/organisations"
+    },
+    {
+      text: organisation.name,
+      href: version_path + "/organisations/" + organisation.organisation
+    }
+    ]
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+  
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{organisation.name}}</span>
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ datasetNavigation({
+      path_slug: pageSlug,
+      active: "task-list",
+      dataset: dataset,
+      organisation: organisation,
+      issue_count: 6
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    <h2 class="govuk-heading-m">
+      Issues you must fix
+    </h2>
+
+    <p>We cannot update any new information for these entries until these issues are resolved.</p>
+
+    {{ govukTaskList({
+      idPrefix: "must-fix-tasklist",
+      items: [
+        {
+          title: {
+            html: "2 records are missing a <b>reference</b>"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        },
+        {
+          title: {
+            html: "3 records are missing a <b>geometry</b>"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        },
+        {
+          title: {
+            html: "<b>name</b> column is missing values"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Must fix",
+              classes: "govuk-tag--red"
+            }
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Issues you should fix
+    </h2>
+
+    <p>Fix these issues to help improve your data's usefulness for data consumers.</p>
+
+    {{ govukTaskList({
+      idPrefix: "should-fix-tasklist",
+      items: [
+        {
+          title: {
+            html: "4 records have <b>start-date</b> fields that must be in YYYY-MM-DD format"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Should fix",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        },
+        {
+          title: {
+            html: "2 records have <b>entry-date</b> fields that must be in the past"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Should fix",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Improve the accuracy of your data
+    </h2>
+
+    {% set outOfBoundsTaskText %}You have {{ outOfBoundsCount | plural(dataset.name) }} outside of your boundary{% endset %}
+
+    {{ govukTaskList({
+      idPrefix: "improve-accuracy-tasklist",
+      items: [
+        {
+          title: {
+            text: outOfBoundsTaskText
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Improve accuracy",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+
+  </div>
+</div>
+
+
+{% endblock %}
