@@ -67,4 +67,4 @@ jobs:
 
       - run: docker push $DOCKER_REPO:main
 
-      - run: aws apprunner start-deployment --service-arn ${{ secrets.SERVICE_ARN }}
+      - run: aws apprunner start-deployment --service-arn ${{ secrets.SERVICE_ARN }} --region eu-west-2
