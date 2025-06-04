@@ -4,16 +4,7 @@
 {% set pageName %}{{dataset.name}} details{% endset %}
 
   {% block header %}
-  {% if "v2" in version_path %}
-  {% if navigationOrganisationActive %}
-  {% set active_section = { your_organisation: true } %}
-  {% else %}
-  {% set active_section = { all_organisations: true } %}
-  {% endif %}
-  {% include "includes/_service-navigation-header-v2.html" %}
-  {% else %}
   {% include "includes/_service-navigation-header.html" %}
-  {% endif %}
   {% endblock %}
   
   {% set checkUrl %}/iterative-check/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}/choose-upload{% endset %}

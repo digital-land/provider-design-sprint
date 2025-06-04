@@ -352,13 +352,17 @@ $app-hover-dark-background: #dddcdb;
   margin-bottom: govuk-spacing(3);
 }
 
-.app-warning-message {
+.app-c-map__popup-list-item .app-warning-message {
   @include govuk-font($size: 16, $weight: bold);
 
   display: block;
   margin-top: 0; // Reset any default browser margins for paragraphs
   margin-bottom: govuk-spacing(3);
   clear: both;
+}
+
+.app-warning-message {
+  @include govuk-font($size: 19, $weight: bold);
 
   color: govuk-colour('blue');
   border-left: 5px solid govuk-colour('blue');
