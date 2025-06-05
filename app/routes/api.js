@@ -35,15 +35,10 @@ router.get("/:orgId/:datasetId/data.geojson", async (req, res) => {
   // Remove out of bounds entities from lpaEntities using the entity property as a key
   if (lpaEntities && lpaEntities.features && outOfBoundsEntities.length > 0) {
     const outOfBoundsSet = new Set(outOfBoundsEntities);
-    console.log(`Removing ${outOfBoundsSet.size} out of bounds entities from LPA entities`);
-    console.log(`Out of bounds entities: ${JSON.stringify(outOfBoundsEntities)}`);
-    console.log(`LPA entities before filtering: ${lpaEntities.features.length}`);
     
     lpaEntities.features = lpaEntities.features.filter(
       feature => !outOfBoundsSet.has(feature.properties.entity)
     );
-
-    console.log(`LPA entities after filtering: ${lpaEntities.features.length}`);
   }
 
   res.json(lpaEntities);
@@ -80,7 +75,6 @@ router.get("/:orgId/boundary.geojson", async (req, res) => {
 
 router.get("/entity/:entityId.:format", async (req, res) => {
   const entityUrl = `https://www.planning.data.gov.uk/entity/${ req.params.entityId }.${ req.params.format}`;
-  console.log(`Fetching entity from: ${entityUrl}`);
   const entityObject = await getJsonResponse(entityUrl); 
 
   res.json(entityObject);

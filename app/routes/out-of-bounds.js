@@ -67,12 +67,12 @@ router.get("/organisations/:orgId/:datasetId/table", async (req, res) => {
       from column_field
       where field != "IGNORE"
       order by rowid`,
-    p0: res.locals.organisation.organisation,
     _shape: 'array'
   }
 
   res.locals.columns = await queryDatasette(columnsQuery, res.locals.dataset.dataset);
-  const datasetQuery = {
+
+  const entitiesQuery = {
     sql: `select *
       from entity
       where organisation_entity = :p0
@@ -81,11 +81,11 @@ router.get("/organisations/:orgId/:datasetId/table", async (req, res) => {
     _shape: 'objects'
   }
 
-  const datasetResults = await queryDatasette(datasetQuery, res.locals.dataset.dataset); 
+  const entitiesResults = await queryDatasette(entitiesQuery, res.locals.dataset.dataset); 
 
   // Parse the json property of each item and add the parsed properties to the item
-  if (datasetResults.rows) {
-    datasetResults.rows.forEach(item => {
+  if (entitiesResults.rows) {
+    entitiesResults.rows.forEach(item => {
       if (item.json) {
         try {
           const parsed = JSON.parse(item.json);
@@ -105,7 +105,7 @@ router.get("/organisations/:orgId/:datasetId/table", async (req, res) => {
     });
   }
 
-  res.locals.datasetEntities = datasetResults.rows || [];
+  res.locals.datasetEntities = entitiesResults.rows || [];
 
   const outOfBoundsQuery= {
     sql: `select * from expectation
@@ -130,6 +130,129 @@ router.get("/organisations/:orgId/:datasetId/table", async (req, res) => {
 
   res.render("/out-of-bounds/dataset-table");
 });
+
+
+router.get("/organisations/:orgId/:datasetId/detail/:entityId", async (req, res) => {
+  res.locals.version_path = version;
+  res.locals.organisation = getOrg(req.params.orgId);
+  res.locals.dataset = getDataset(req.params.datasetId);
+
+  const entitySql = {
+    sql: `SELECT * FROM entity WHERE entity = :p0`,
+    p0: req.params.entityId,
+    _shape: 'objects'
+  }
+  
+  const entityResponse = await queryDatasette(entitySql, res.locals.dataset.dataset, 'json');
+
+  if (entityResponse.rows && entityResponse.rows.length > 0) {
+    // Parse the json property of each item and add the parsed properties to the item
+    if (entityResponse.rows) {
+      entityResponse.rows.forEach(item => {
+        if (item.json) {
+          try {
+            const parsed = JSON.parse(item.json);
+            Object.assign(item, parsed);
+          } catch (e) {
+            console.error('Failed to parse item.json:', e, item.json);
+          }
+        }
+        // Change underscores in property names to hyphens
+        Object.keys(item).forEach(key => {
+          if (key.includes('_')) {
+            const newKey = key.replace(/_/g, '-');
+            item[newKey] = item[key];
+            delete item[key];
+          }
+        });
+      });
+    }
+
+    res.locals.entity = entityResponse.rows[0];
+
+    // Get all entities from this dataset for pagination
+    const allEntitiesQuery = {
+      sql: `SELECT entity FROM entity WHERE organisation_entity = :p0 ORDER BY reference`,
+      p0: res.locals.organisation.entity,
+      _shape: 'objects'
+    }
+    const allEntitiesResults = await queryDatasette(allEntitiesQuery, res.locals.dataset.dataset);
+    res.locals.allEntities = allEntitiesResults.rows || [];
+
+    // Find the index of the current entity in the allEntities array
+    res.locals.currentEntityIndex = res.locals.allEntities.findIndex(e => e.entity == req.params.entityId);
+  } else {
+    res.locals.entity = null;
+  }
+
+  const pageNum = res.locals.currentEntityIndex + 1 || 1;
+  const numEntries = res.locals.allEntities.length;
+
+  const paginationObj = {}
+  if (pageNum > 1) {
+    paginationObj.prevObj = {
+      href: version + req.path.replace(/(\d+)/, res.locals.allEntities[pageNum - 1].entity)
+    }
+  }
+
+  if (pageNum < numEntries) {
+    paginationObj.nextObj = {
+      href: version + req.path.replace(/(\d+)/, res.locals.allEntities[pageNum + 1].entity)
+    }
+  }
+
+  paginationObj.items = []
+  let prevSkip = false;
+  let nextSkip = false;
+  for (let i=1; i<=numEntries; i++) {
+
+    if (i == 1
+      || (i >= pageNum-2 && i <= pageNum+2)
+      || i == numEntries) {
+      
+      let item = {
+        number: i,
+        href: version + req.path.replace(/(\d+)/, res.locals.allEntities[i-1].entity)
+      }
+
+      if (i == pageNum) item.current = true;
+      paginationObj.items.push(item)
+    }
+    
+    if (i > 1 && (i <= pageNum-2) && !prevSkip) {
+      let item = {
+        ellipsis: true
+      }
+
+      paginationObj.items.push(item)
+      prevSkip = true
+    }
+    
+    if (i < numEntries && (i >= pageNum+2) && !nextSkip) {
+      let item = {
+        ellipsis: true
+      }
+
+      paginationObj.items.push(item)
+      nextSkip = true
+    }
+  }
+
+  res.locals.pagination_obj = paginationObj;
+
+  // get column names for the table
+  const columnsQuery = {
+    sql: `select distinct field
+      from column_field
+      where field != "IGNORE"
+      order by rowid`,
+    _shape: 'array'
+  }
+
+  res.locals.columns = await queryDatasette(columnsQuery, res.locals.dataset.dataset);
+
+  res.render("/out-of-bounds/entity-detail");
+})
 
 router.get("/organisations/:orgId/:datasetId/tasklist", async (req, res) => {  
   res.locals.version_path = version;

@@ -154,7 +154,6 @@ export class Map {
 
           // this.bbox = await calculateBoundingBoxFromGeometries(geometries.map(g => g.coordinates))
 
-              
           this.bbox = await this.generateBoundingBox(this.map.getSource('boundary'))
         }
       } finally {
