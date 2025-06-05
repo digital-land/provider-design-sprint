@@ -127,10 +127,10 @@ router.get("/organisations/:orgId/:datasetId/table", async (req, res) => {
   } else {
     res.locals.outOfBoundsEntities = [];
   }
+  res.locals.outOfBoundsCount = res.locals.outOfBoundsEntities.length;
 
   res.render("/out-of-bounds/dataset-table");
 });
-
 
 router.get("/organisations/:orgId/:datasetId/detail/:entityId", async (req, res) => {
   res.locals.version_path = version;
@@ -283,4 +283,90 @@ router.get("/organisations/:orgId/:datasetId/tasklist", async (req, res) => {
   console.log(res.locals.outOfBoundsEntities);
 
   res.render("/out-of-bounds/tasklist");
+})
+
+router.get("/organisations/:orgId/:datasetId/issue-table", async (req, res) => {
+  res.locals.version_path = version;
+  res.locals.organisation = getOrg(req.params.orgId);
+  res.locals.dataset = getDataset(req.params.datasetId);
+
+  const outOfBoundsQuery= {
+    sql: `select * from expectation
+      where
+        "name" = :p0
+        and "organisation" = :p1
+        and "dataset" = :p2`,
+    p0: 'Check no entities are outside of the local planning authority boundary',
+    p1: res.locals.organisation.organisation,
+    p2: res.locals.dataset.dataset,
+    _shape: 'objects'
+  }
+
+  const outOfBoundsResults = await queryDatasette(outOfBoundsQuery);
+
+  if (outOfBoundsResults.rows && outOfBoundsResults.rows.length > 0) {    
+    const OutOfBoundsDetails = JSON.parse(outOfBoundsResults.rows[0].details);
+    res.locals.outOfBoundsEntities = OutOfBoundsDetails.entities || [];    
+  } else {
+    res.locals.outOfBoundsEntities = [];
+  }
+
+  const columnsQuery = {
+    sql: `select distinct field
+      from column_field
+      where field != "IGNORE"
+      order by rowid`,
+    _shape: 'array'
+  }
+
+  res.locals.columns = await queryDatasette(columnsQuery, res.locals.dataset.dataset);
+  // Only select entities that are in outOfBoundsEntities
+  let entitiesQuery;
+  if (res.locals.outOfBoundsEntities.length > 0) {
+    // Use parameterized query for safety
+    const placeholders = res.locals.outOfBoundsEntities.map((_, i) => `:id${i}`).join(', ');
+    console.log(placeholders)
+    entitiesQuery = {
+      sql: `select *
+        from entity
+        where entity in (${placeholders})
+        order by reference`,
+      ...Object.fromEntries(res.locals.outOfBoundsEntities.map((id, i) => [`id${i}`, id])),
+      _shape: 'objects'
+    }
+  } else {
+    // No out of bounds entities, return empty result
+    entitiesQuery = {
+      sql: `select * from entity where 1=0`,
+      _shape: 'objects'
+    }
+  }
+
+  const entitiesResults = await queryDatasette(entitiesQuery, res.locals.dataset.dataset); 
+
+  // Parse the json property of each item and add the parsed properties to the item
+  if (entitiesResults.rows) {
+    entitiesResults.rows.forEach(item => {
+      if (item.json) {
+        try {
+          const parsed = JSON.parse(item.json);
+          Object.assign(item, parsed);
+        } catch (e) {
+          console.error('Failed to parse item.json:', e, item.json);
+        }
+      }
+      // Change underscores in property names to hyphens
+      Object.keys(item).forEach(key => {
+        if (key.includes('_')) {
+          const newKey = key.replace(/_/g, '-');
+          item[newKey] = item[key];
+          delete item[key];
+        }
+      });
+    });
+  }
+
+  res.locals.datasetEntities = entitiesResults.rows || [];
+
+  res.render("/out-of-bounds/issue-table");
 })

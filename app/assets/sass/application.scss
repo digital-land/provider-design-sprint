@@ -369,6 +369,10 @@ $app-hover-dark-background: #dddcdb;
   padding-left: govuk-spacing(2);
 }
 
+.app-warning-summary {
+  border-color: govuk-colour('blue');
+}
+
 .app-map-with-side-panel {
   display: flex;
   flex-direction: row;

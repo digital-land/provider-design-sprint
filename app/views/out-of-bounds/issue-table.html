@@ -1,0 +1,170 @@
+{% extends "layouts/main.html" %}
+{% from "components/dataset-navigation.html" import datasetNavigation %}
+
+{% set pageName %}Improve the accuracy of your data{% endset %}
+
+{% set showMap = [
+  "article-4-direction-area",
+  "brownfield-land",
+  "conservation-area",
+  "listed-building",
+  "listed-building-outline",
+  "tree",
+  "tree-preservation-zone"
+  ].includes(dataset.dataset) %}
+  
+  {% block header %}
+    {% include "includes/_service-navigation-header.html" %}
+  {% endblock %}
+  
+  {% set pageSlug %}{{ version_path }}/organisations/{{ organisation.organisation }}/{{ dataset.dataset }}{% endset %}
+  
+  {% block beforeContent %}
+  
+  {{ super() }}
+  
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: version_path
+      },
+      {
+        text: "Organisations",
+        href: version_path + "/organisations"
+      },
+      {
+        text: organisation.name,
+        href: version_path + "/organisations/" + organisation.organisation
+      },
+      {
+        text: "Task list",
+        href: pageSlug + "/task-list"
+      }
+    ]
+  }) }}
+  
+  {% endblock %}
+  
+  {% block content %}
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">{{organisation.name}}</span>
+      <h1 class="govuk-heading-xl">
+        {{ pageName }}
+      </h1>
+
+      {{ govukErrorSummary({
+        titleText: "The accuracy of your data could be improved",
+        descriptionText: "You have " + entityCount | plural(dataset.name) + " outside of your
+      boundary.",
+        classes: "app-warning-summary"
+      }) }}
+    </div>
+  </div>
+
+  {% if showMap %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div id="map" class="app-map"></div>
+    </div>
+  </div>
+  {% endif %} 
+    
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="app-scrollable-container dl-scrollable">
+        {% set headRows = [] %}
+        {% for row in columns %}
+          {% set cellData = { text: row.field, classes: "dl-table__header" } %}
+          {% set headRows = (headRows.push(cellData), headRows) %}
+        {% endfor %}
+
+        {% set rows = [] %}
+        {% for row in datasetEntities %}
+          {% set rowData = [] %}
+          {% for column in columns %}
+            {% set value = row[column.field] %}
+            {% if column.field == "reference" %}
+              {% set value %}<a href="{{ pageSlug }}/issue-detail/{{ row.entity }}">{{ value }}</a>{% endset %}
+            {% endif %}
+
+            {% if "url" in column.field %}
+              {% set value %}<a href="{{ value }}">{{ value | truncate(30) }}</a>{% endset %}
+            {% endif %}
+
+            {% if column.field == "geometry" or column.field == "point" %}
+              {% set value %}<code>{{ value | truncate(80) }}</code>{% endset %}
+            {% endif %}
+
+            {% if column.field == "geometry" and row.entity in outOfBoundsEntities %}
+              {% set value %}
+                <p class="app-warning-message">This record is outside of your boundary</p>
+                {{ value | safe }}
+              {% endset %}
+            {% endif %}
+
+
+            {% set cellData = { html: value, classes: "dl-table__cell" } %}
+
+            {% set rowData = (rowData.push(cellData), rowData) %}
+          {% endfor %}
+          {% set rows = (rows.push(rowData), rows) %}
+        {% endfor %}
+
+        {{ govukTable({
+          head: headRows,
+          rows: rows,
+          classes: "govuk-table dl-table dl-table--sticky"
+        }) }}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">How to fix this issue</h2>
+
+      <p>You have {{ entityCount | plural(dataset.name) }} outside of your
+      boundary. If the {{ dataset.name }}s should not be outside of the boundary,
+      update the geometry field with the correct location using the WGS84
+      coordinate reference system (if possible).</p>
+
+      <p>If you cannot do this, provide what you have and we can transform it
+      into WGS84.</p>
+      
+      <p>The platform will index your data again overnight and update the
+      dataset.</p>
+      
+      <p>If {{ organisation.name }} is responsible for the {{ dataset.name }}s outside of the boundary, let us know by emailing
+      <a href="mailto:digitalland@communities.gov.uk">digitalland@communities.gov.uk</a> and we will update our records to remove
+      this warning.</p>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block scripts %}
+  {{ super() }}
+  {% if showMap %}
+  <script>
+    const dataLayers = [
+      {
+        name: "Out of bounds {{ outOfBoundsCount | plural(dataset.name, showNumber=false) }}",
+        dataset: "out-of-bounds",
+        url: `/api/{{ organisation.organisation }}/{{ dataset.dataset }}/out-of-bounds.geojson`
+      }
+    ]
+
+    window.serverContext = {
+      containerId: 'map',
+      boundaryGeoJsonUrl: `/api/{{ organisation.organisation }}/boundary.geojson`,
+      data: dataLayers,
+    }
+  </script>
+  <script src="/public/javascripts/map.bundle.js" type="module"></script>
+  
+  {% endif %}
+{% endblock %}

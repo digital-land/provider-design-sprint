@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 {% from "components/dataset-navigation.html" import datasetNavigation %}
 
-{% set pageName %}{{dataset.name}} details{% endset %}
+{% set pageName %}{{dataset.name}} task list{% endset %}
 
   {% block header %}
   {% include "includes/_service-navigation-header.html" %}
@@ -158,7 +158,7 @@
           title: {
             text: outOfBoundsTaskText
           },
-          href: "#",
+          href: pageSlug + "/issue-table",
           status: {
             tag: {
               text: "Improve accuracy",
