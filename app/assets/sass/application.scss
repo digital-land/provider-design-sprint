@@ -361,11 +361,36 @@ $app-hover-dark-background: #dddcdb;
   clear: both;
 }
 
+.dl-summary-card-list__row--warning {
+  border-left: govuk-spacing(1) solid govuk-colour('blue');
+
+  .govuk-summary-list__key {
+    padding-left: govuk-spacing(3);
+  }
+
+  .app-warning-message {
+    border: 0;
+    padding: 0;
+    margin-top: govuk-spacing(3);
+  }
+}
+
 .app-warning-message {
   @include govuk-font($size: 19, $weight: bold);
 
   color: govuk-colour('blue');
   border-left: 5px solid govuk-colour('blue');
+  padding-left: govuk-spacing(2);
+}
+
+.dl-table .app-warning-message {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.dl-table .dl-table__cell--warning {
+  border-left: govuk-spacing(1) solid govuk-colour('blue');
   padding-left: govuk-spacing(2);
 }
 

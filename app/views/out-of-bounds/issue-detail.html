@@ -44,19 +44,22 @@
       {
         text: "Task list",
         href: pageSlug + "/tasklist"
+      },
+      {
+        text: "Issue table",
+        href: pageSlug + "/issue-table"
       }
     ]
   }) }}
   
   {% endblock %}
   
-  {% block content %}
-  
+{% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukBackLink({
-        href: pageSlug + "/tasklist",
-        text: "Back to task list"
+        text: "Back to issue table",
+        href: pageSlug + "/issue-table"
       }) }}
 
       <h1 class="govuk-heading-xl">
@@ -79,57 +82,62 @@
     </div>
   </div>
   {% endif %} 
-    
+        
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <div class="app-scrollable-container dl-scrollable">
-        {% set headRows = [] %}
-        {% for row in columns %}
-          {% set cellData = { text: row.field, classes: "dl-table__header" } %}
-          {% set headRows = (headRows.push(cellData), headRows) %}
-        {% endfor %}
+    <div class="govuk-grid-column-two-thirds">
 
-        {% set rows = [] %}
-        {% for row in datasetEntities %}
-          {% set rowData = [] %}
-          {% for column in columns %}
-            {% set value = row[column.field] %}
-            {% if column.field == "reference" %}
-              {% set value %}<a href="{{ pageSlug }}/issue-detail/{{ row.entity }}">{{ value }}</a>{% endset %}
-            {% endif %}
+    {% set row_data = [] %}
+    {% for field in columns %}
+      {% set row_classes = "" %}
+      {% set row_key = field.field %}
+      {% set row_value = entity[row_key] %}
+      
+      {% if row_key == "geometry" %}
+        {% set row_value %}<code>{{ row_value|truncate(80) }}</code>{% endset %}
+      {% elseif row_key == "point" %}
+        {% set row_value %}<code>{{ row_value }}</code>{% endset %}
+      {% endif %}
 
-            {% if "url" in column.field %}
-              {% set value %}<a href="{{ value }}">{{ value | truncate(30) }}</a>{% endset %}
-            {% endif %}
+      {% if "url" in row_key %}
+        {% set row_value %}<a href="{{ row_value }}">{{ row_value|truncate(80) }}</a>{% endset %}
+      {% endif %}
 
-            {% if column.field == "geometry" or column.field == "point" %}
-              {% set value %}<code>{{ value | truncate(80) }}</code>{% endset %}
-            {% endif %}
+      {% if field.field == "geometry" %}
+        {% set row_classes = "dl-summary-card-list__row--warning" %}
+        {% set row_value %}
+          {{ row_value | safe }}
+          <p class="app-warning-message">This {{ dataset.name }} is outside of your boundary</p>
+        {% endset %}
+      {% endif %}
 
-            {% if column.field == "geometry" and row.entity in outOfBoundsEntities %}
-              {% set value %}
-                <p class="app-warning-message">This record is outside of your boundary</p>
-                {{ value | safe }}
-              {% endset %}
-            {% endif %}
+      {% set row_data = row_data.concat({
+        classes: row_classes,
+        key: { text: row_key },
+        value: { html: row_value }
+      }) %}
+    {% endfor %}
 
+    {{ govukSummaryList({
+      card: {
+        title: {
+          text: entity.name + " " + entity.reference
+        }
+      },
+      rows: row_data
+    }) }}
 
-            {% set cellData = { html: value, classes: "dl-table__cell" } %}
+    </div>
 
-            {% set rowData = (rowData.push(cellData), rowData) %}
-          {% endfor %}
-          {% set rows = (rows.push(rowData), rows) %}
-        {% endfor %}
-
-        {{ govukTable({
-          head: headRows,
-          rows: rows,
-          classes: "govuk-table dl-table dl-table--sticky"
+    <div class="govuk-grid-column-two-thirds">
+      {% if outOfBoundsEntities.length > 1 %}
+        {{ govukPagination({
+          previous: pagination_obj.prevObj,
+          next: pagination_obj.nextObj,
+          items: pagination_obj.items
         }) }}
-      </div>
+      {% endif %}
     </div>
   </div>
-
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -151,21 +159,20 @@
       this warning.</p>
     </div>
   </div>
+{% endblock %}
 
-  {% endblock %}
-
-  {% block scripts %}
+{% block scripts %}
   {{ super() }}
   {% if showMap %}
   <script>
     const dataLayers = [
       {
-        name: "Out of bounds {{ outOfBoundsCount | plural(dataset.name, showNumber=false) }}",
-        dataset: "out-of-bounds",
-        url: `/api/{{ organisation.organisation }}/{{ dataset.dataset }}/out-of-bounds.geojson`
+        name: "{{ dataset.name }}",
+        dataset: "single-entity",
+        url: `/api/entity/{{ entity.entity }}.geojson`
       }
     ]
-
+      
     window.serverContext = {
       containerId: 'map',
       boundaryGeoJsonUrl: `/api/{{ organisation.organisation }}/boundary.geojson`,

@@ -91,6 +91,7 @@
           {% set rowData = [] %}
           {% for column in columns %}
             {% set value = row[column.field] %}
+            {% set cellClasses = "" %}
             {% if column.field == "reference" %}
               {% set value %}<a href="{{ pageSlug }}/detail/{{ row.entity }}">{{ value }}</a>{% endset %}
             {% endif %}
@@ -108,10 +109,11 @@
                 <p class="app-warning-message">This record is outside of your boundary</p>
                 {{ value | safe }}
               {% endset %}
+              {% set cellClasses = " dl-table__cell--warning" %}
             {% endif %}
 
 
-            {% set cellData = { html: value, classes: "dl-table__cell" } %}
+            {% set cellData = { html: value, classes: "dl-table__cell"+cellClasses } %}
 
             {% set rowData = (rowData.push(cellData), rowData) %}
           {% endfor %}
