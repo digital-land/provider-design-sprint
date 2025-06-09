@@ -6,10 +6,10 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/out-of-bounds')
 
 const path = require("path");
-
 const version = '/out-of-bounds';
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse } = require('./functions.js');
+const { createGOVUKPagination } = require('./modules.js');
 
 router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {  
   res.locals.version_path = version;
@@ -186,58 +186,10 @@ router.get("/organisations/:orgId/:datasetId/detail/:entityId", async (req, res)
   }
 
   const pageNum = res.locals.currentEntityIndex + 1 || 1;
-  const numEntries = res.locals.allEntities.length;
+  const pathBase = `${version}/organisations/${res.locals.organisation.organisation}/${res.locals.dataset.dataset}/detail/`
+  const hrefArray = res.locals.allEntities.map(e => pathBase + e.entity);
 
-  const paginationObj = {}
-  if (pageNum > 1) {
-    paginationObj.prevObj = {
-      href: version + req.path.replace(/(\d+)/, res.locals.allEntities[pageNum - 1].entity)
-    }
-  }
-
-  if (pageNum < numEntries) {
-    paginationObj.nextObj = {
-      href: version + req.path.replace(/(\d+)/, res.locals.allEntities[pageNum + 1].entity)
-    }
-  }
-
-  paginationObj.items = []
-  let prevSkip = false;
-  let nextSkip = false;
-  for (let i=1; i<=numEntries; i++) {
-
-    if (i == 1
-      || (i >= pageNum-2 && i <= pageNum+2)
-      || i == numEntries) {
-      
-      let item = {
-        number: i,
-        href: version + req.path.replace(/(\d+)/, res.locals.allEntities[i-1].entity)
-      }
-
-      if (i == pageNum) item.current = true;
-      paginationObj.items.push(item)
-    }
-    
-    if (i > 1 && (i <= pageNum-2) && !prevSkip) {
-      let item = {
-        ellipsis: true
-      }
-
-      paginationObj.items.push(item)
-      prevSkip = true
-    }
-    
-    if (i < numEntries && (i >= pageNum+2) && !nextSkip) {
-      let item = {
-        ellipsis: true
-      }
-
-      paginationObj.items.push(item)
-      nextSkip = true
-    }
-  }
-
+  const paginationObj = createGOVUKPagination(pageNum, { hrefArray: hrefArray })
   res.locals.pagination_obj = paginationObj;
 
   // get column names for the table
@@ -424,7 +376,7 @@ router.get("/organisations/:orgId/:datasetId/issue-detail/:entityId", async (req
 
     if (outOfBoundsResults.rows && outOfBoundsResults.rows.length > 0) {    
       const OutOfBoundsDetails = JSON.parse(outOfBoundsResults.rows[0].details);
-      res.locals.outOfBoundsEntities = OutOfBoundsDetails.entities || [];    
+      res.locals.outOfBoundsEntities = OutOfBoundsDetails.entities || [];
     } else {
       res.locals.outOfBoundsEntities = [];
     }
@@ -436,58 +388,10 @@ router.get("/organisations/:orgId/:datasetId/issue-detail/:entityId", async (req
   }
 
   const pageNum = res.locals.currentEntityIndex + 1 || 1;
-  const numEntries = res.locals.outOfBoundsEntities.length;
+  const pathBase = `${version}/organisations/${res.locals.organisation.organisation}/${res.locals.dataset.dataset}/issue-detail/`
+  const hrefArray = res.locals.outOfBoundsEntities.map(e => pathBase + e);
 
-  const paginationObj = {}
-  if (pageNum > 1) {
-    paginationObj.prevObj = {
-      href: version + req.path.replace(/(\d+)/, res.locals.outOfBoundsEntities[pageNum - 2])
-    }
-  }
-
-  if (pageNum < numEntries) {
-    paginationObj.nextObj = {
-      href: version + req.path.replace(/(\d+)/, res.locals.outOfBoundsEntities[pageNum])
-    }
-  }
-
-  paginationObj.items = []
-  let prevSkip = false;
-  let nextSkip = false;
-  for (let i=1; i<=numEntries; i++) {
-
-    if (i == 1
-      || (i >= pageNum-2 && i <= pageNum+2)
-      || i == numEntries) {
-      
-      let item = {
-        number: i,
-        href: version + req.path.replace(/(\d+)/, res.locals.outOfBoundsEntities[i-1])
-      }
-
-      if (i == pageNum) item.current = true;
-      paginationObj.items.push(item)
-    }
-    
-    if (i > 1 && (i <= pageNum-2) && !prevSkip) {
-      let item = {
-        ellipsis: true
-      }
-
-      paginationObj.items.push(item)
-      prevSkip = true
-    }
-    
-    if (i < numEntries && (i >= pageNum+2) && !nextSkip) {
-      let item = {
-        ellipsis: true
-      }
-
-      paginationObj.items.push(item)
-      nextSkip = true
-    }
-  }
-
+  const paginationObj = createGOVUKPagination(pageNum, { hrefArray: hrefArray })
   res.locals.pagination_obj = paginationObj;
 
   // get column names for the table
