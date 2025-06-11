@@ -149,7 +149,7 @@
       Improve the accuracy of your data
     </h2>
 
-    {% set outOfBoundsTaskText %}You have {{ outOfBoundsCount | plural(dataset.name) }} outside of your boundary{% endset %}
+    {% set outOfBoundsTaskText %}You have {{ outOfBoundsEntities.length | plural(dataset.name) }} outside of your boundary{% endset %}
 
     {{ govukTaskList({
       idPrefix: "improve-accuracy-tasklist",
