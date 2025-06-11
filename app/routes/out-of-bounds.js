@@ -9,7 +9,7 @@ const path = require("path");
 const version = '/out-of-bounds';
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse } = require('./functions.js');
-const { createGOVUKPagination } = require('./modules.js');
+const { createGOVUKPagination } = require('govuk-pagination-module');
 
 router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {  
   res.locals.version_path = version;

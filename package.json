@@ -12,6 +12,7 @@
     "@x-govuk/govuk-prototype-filters": "2.0.0",
     "concurrently": "^9.1.2",
     "govuk-frontend": "5.8.0",
+    "govuk-pagination-module": "^1.0.0",
     "govuk-prototype-kit": "13.16.2",
     "lodash": "^4.17.21",
     "maplibre-gl": "^5.1.0",
