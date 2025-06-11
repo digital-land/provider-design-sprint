@@ -4,8 +4,8 @@ import { add, capitalize, map, startCase } from 'lodash'
 import { getApiToken, getFreshApiToken } from './os-api-token.js'
 
 const mapColours = {
-  orange: '#C44200',
   purple: '#330165',
+  orange: '#C44200',
   turquoise: '#007A7A',
   pink: '#CD2380',
   green: '#217E01',
@@ -16,15 +16,15 @@ const mapColours = {
 
 const layerStyles = [
   {
-    lineColor: mapColours.orange,
-    lineWidth: 2,
-    fillColor: mapColours.orange,
-    fillOpacity: 0.2,
-  },
-  {
     lineColor: mapColours.purple,
     lineWidth: 2,
     fillColor: mapColours.purple,
+    fillOpacity: 0.2,
+  },
+  {
+    lineColor: mapColours.orange,
+    lineWidth: 2,
+    fillColor: mapColours.orange,
     fillOpacity: 0.2,
   },
   {
@@ -131,7 +131,7 @@ export class Map {
         if (this.opts.data[i].url) {
           // If the data is a URL, add it to the map
           console.log('Adding GeoJSON URL to map', this.opts.data[i])
-          this.addGeoJsonUrlsToMap(this.opts.data[i].url, layerStyles[i % layerStyles.length], this.opts.data[i].dataset)
+          this.addGeoJsonUrlsToMap(this.opts.data[i], layerStyles[i % layerStyles.length])
         } else if (this.opts.data[i].wkt) {
           // If the data is in WKT format, add it to the map
           console.log('Adding WKT data to map', this.opts.data[i].wkt)
@@ -139,7 +139,7 @@ export class Map {
         } else if (this.opts.data[i].data) {
           // If the data is a GeoJSON object, add it to the map
           console.log('Adding GeoJSON object to map', this.opts.data[i])
-          this.addGeoJsonObjsToMap(this.opts.data[i].data, layerStyles[i % layerStyles.length], this.opts.data[i].dataset)
+          this.addGeoJsonObjsToMap(this.opts.data[i].data, layerStyles[i % layerStyles.length], this.opts.data[i].dataset, this.opts.data[i].name)
         }
       }
 
@@ -248,22 +248,22 @@ export class Map {
     this.bbox = calculateBoundingBoxFromGeometries(geometries.map(g => g.coordinates))
   }
   
-  async addGeoJsonUrlsToMap (url, style, slug) {
-    const name = `geometry-${slug}`
+  async addGeoJsonUrlsToMap (data, style) {
+    const name = `geometry-${data.dataset}`
     this.map.addSource(name, {
       type: 'geojson',
-      data: url,
+      data: data.url,
       promoteId: 'entity'
     })
     
     this.addLayers(name, style, this)
   }
   
-  async addGeoJsonObjsToMap (geoJsonObjs, style, slug) {
-    const name = `geometry-${slug}`
+  async addGeoJsonObjsToMap (data, style) {
+    const name = `geometry-${data.dataset}`
     this.map.addSource(name, {
       type: 'geojson',
-      data: geoJsonObjs,
+      data: data,
       promoteId: 'entity'
     })
     
