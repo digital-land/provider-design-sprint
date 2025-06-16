@@ -124,8 +124,8 @@ router.post("/submit-endpoint-tree/confirmation", (req, res) => {
 
 const request = require("request");
 const _ = require("lodash");
-const camden = require("../app/data/camden.json");
-const camden2 = require("../app/data/camden2.json");
+const camden = require("../data/camden.json");
+const camden2 = require("../data/camden2.json");
 
 router.all("*", (req, res, next) => {
   res.locals.query = req.query;
