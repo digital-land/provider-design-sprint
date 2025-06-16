@@ -1,0 +1,54 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% set govukRebrand = true %}
+
+{% if (GOVUKPrototypeKit.isDevelopment) %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype",
+      text: "Manage your prototype"
+    }, {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% else %}
+  {% set footerItems = [
+    {
+      href: "/manage-prototype/clear-data",
+      text: "Clear data"
+    }
+  ] %}
+{% endif %}
+
+{% block footer %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukPhaseBanner({
+        tag: {
+          text: "Prototype"
+        },
+          html: 'This prototype is being tested with users in local planning authorities. It may change or stop working.',
+          classes: 'dl-phase-banner--footer'
+        }) }}
+    </div>
+  </div>
+</div>
+
+{{ govukFooter({
+  rebrand: true,
+  meta: {
+    items: footerItems,
+    visuallyHiddenTitle: "Footer links"
+  }
+}) }}
+
+{% endblock %}
