@@ -79,8 +79,27 @@
   
   {% if showMap %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-full app-map-container">
       <div id="map" class="app-map"></div>
+      <div class="app-map-legend">
+        <h4 class="govuk-heading-s">Legend</h4>
+        <ul class="app-map-legend-list">
+          <li class="app-map-legend-list__item">
+            <div class="legend-swatch legend-swatch--boundary"></div>
+            {{ organisation.name }} boundary
+          </li>
+          <li class="app-map-legend-list__item">
+            <div class="legend-swatch legend-swatch--1"></div>
+            {{ dataset.name }}s
+          </li>
+          {% if alternativeEntitiesCount > 0 %}
+          <li class="app-map-legend-list__item">
+            <div class="legend-swatch legend-swatch--2"></div>
+            {{ dataset.name }}s from alternative sources
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
   </div>
   {% endif %}
