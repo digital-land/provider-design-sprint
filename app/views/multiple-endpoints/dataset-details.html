@@ -99,91 +99,103 @@
     <p>You have {{ endpoints.length }} endpoints we are currently checking for data.</p>
 
     {% for endpoint in endpoints %}
-    {% if endpoint.licence == "ogl3" %}
-    {% set licence = "Open Government Licence" %}
-    {% else %}
-    {% set licence = "Unknown" %}
-    {% endif %}
+      {% if endpoint.licence == "ogl3" %}
+        {% set licence = "Open Government Licence" %}
+      {% else %}
+        {% set licence = "Unknown" %}
+      {% endif %}
 
-    {% if endpoint.documentation_url == "" %}
-    {% set documentation_url %}<p>Documentation URL missing</p>{% endset %}
-    {% else %}
-    {% set documentation_url %}
-    <code><a href="{{ endpoint.documentation_url }}">{{ endpoint.documentation_url }}</a></code>
-    {% endset %}
-    {% endif %}
+      {% if endpoint.documentation_url == "" %}
+        {% set documentation_url_classes %}dl-summary-card-list__row--error{% endset %}
+        {% set documentation_url %}<p class="govuk-error-message">Documentation URL missing</p>{% endset %}
+      {% else %}
+        {% set documentation_url %}
+          <code><a href="{{ endpoint.documentation_url }}">{{ endpoint.documentation_url }}</a></code>
+        {% endset %}
+      {% endif %}
 
-    {{ govukSummaryList({
-      card: {
-        title: {
-          text: "Endpoint "+(loop.length - loop.index0)
+      {% set endpoint_url %}<code><a href="{{endpoint.endpoint_url}}">{{endpoint.endpoint_url}}</a></code>{% endset %}
+      {% if endpoint.status != "200" %}
+        {% set endpoint_url_classes %}dl-summary-card-list__row--error{% endset %}
+        {% set endpoint_url %}
+          <p class="govuk-error-message">There was a {{endpoint.status}} error accessing the endpoint URL</p>
+          {{ endpoint_url | safe }}
+        {% endset %}
+      {% endif %}
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Endpoint "+(loop.length - loop.index0)
+          },
+          actions: {
+            items: [
+              {
+                href:"#",
+                text: "Edit",
+                visuallyHiddenText: " endpoint details"
+              },
+              {
+                href:"#",
+                text: "Retire",
+                visuallyHiddenText: " endpoint"
+              }
+            ]
+          }
         },
-        actions: {
-          items: [
-            {
-              href:"#",
-              text: "Edit",
-              visuallyHiddenText: " endpoint details"
+        rows: [
+          {
+            classes: endpoint_url_classes,
+            key: {
+              text: "Endpoint URL"
             },
-            {
-              href:"#",
-              text: "Retire",
-              visuallyHiddenText: " endpoint"
+            value: {
+              html: endpoint_url
             }
-          ]
-        }
-      },
-      rows: [
-        {
-          key: {
-            text: "Endpoint URL"
           },
-          value: {
-            html: '<code><a href="'+endpoint.endpoint_url+'">'+endpoint.endpoint_url+'</a></code>'
-          }
-        },
-        {
-          key: {
-            text: "Documentation URL"
+          {
+            classes: documentation_url_classes,
+            key: {
+              text: "Webpage URL"
+            },
+            value: {
+              html: documentation_url
+            }
           },
-          value: {
-            html: documentation_url
-          }
-        },
-        {
-          key: {
-            text: "Date added"
+          {
+            key: {
+              text: "Date added"
+            },
+            value: {
+              text: endpoint.date_added | govukDate
+            }
           },
-          value: {
-            text: endpoint.date_added | govukDate
-          }
-        },
-        {
-          key: {
-            text: "Endpoint last accessed"
+          {
+            key: {
+              text: "Endpoint last accessed"
+            },
+            value: {
+              text: endpoint.last_accessed | govukDateTime
+            }
           },
-          value: {
-            text: endpoint.last_accessed | govukDateTime
-          }
-        },
-        {
-          key: {
-            text: "Endpoint last updated"
+          {
+            key: {
+              text: "Endpoint last updated"
+            },
+            value: {
+              text: endpoint.last_updated | govukDate
+            }
           },
-          value: {
-            text: endpoint.last_updated | govukDate
+          {
+            key: {
+              text: "Licence"
+            },
+            value: {
+              text: licence
+            }
           }
-        },
-        {
-          key: {
-            text: "Licence"
-          },
-          value: {
-            text: licence
-          }
-        }
-      ]
-    }) }}
+        ]
+      }) }}
     {% endfor %}
   </div>
 
