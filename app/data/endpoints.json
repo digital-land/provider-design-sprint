@@ -66,7 +66,7 @@
     "endpoint_url": "https://www.brighton-hove.gov.uk/sites/brighton-hove.gov.uk/files/Brighton%26Hove_City_Council_Brownfield_Land_Register_2017_Validated.csv",
     "documentation_url": "",
     "licence": "",
-    "status": "200",
+    "status": "404",
     "date_added": "2019-12-01T00:00:00Z",
     "last_accessed": "2024-12-18T11:08:34Z",
     "last_updated": "2024-12-18"
@@ -75,7 +75,7 @@
     "endpoint_url": "https://www.brighton-hove.gov.uk/sites/brighton-hove.gov.uk/files/Brighton%26Hove_City_Council_Brownfield_Land_Register_1912017_Post%20Consult_0.csv",
     "documentation_url": "",
     "licence": "",
-    "status": "200",
+    "status": "500",
     "date_added": "2018-05-22T00:00:00Z",
     "last_accessed": "2024-12-18T11:08:34Z",
     "last_updated": "2024-12-18"
