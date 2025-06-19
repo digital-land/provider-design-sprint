@@ -4,6 +4,7 @@
 
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/alternative-sources')
+const asyncHandler = require('express-async-handler');
 
 const path = require("path");
 
@@ -11,7 +12,7 @@ const version = '/alternative-sources'
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse } = require('./functions.js');
 
-router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/overview", asyncHandler(async (req, res) => {
   
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -34,9 +35,9 @@ router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
   res.locals.alternativeEntitiesCount = res.locals.alternativeEntities.features.length;
   
   res.render("/alternative-sources/dataset-details");
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/review-alternative-sources",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
@@ -60,17 +61,17 @@ router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async 
   res.locals.alternativeEntitiesCount = res.locals.alternativeEntities.features.length;
 
   res.render("/alternative-sources/review-alternative-sources");
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/download-confirmation", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/download-confirmation",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/alternative-sources/download-confirmation");
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/:entityId", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/:entityId",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
@@ -105,4 +106,4 @@ router.get("/organisations/:orgId/:datasetId/:entityId", async (req, res) => {
   res.locals.entityId = req.params.entityId;
   
   res.render("/alternative-sources/review-record");
-})
+}))

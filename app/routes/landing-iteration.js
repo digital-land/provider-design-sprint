@@ -97,7 +97,7 @@ router.get('/:version_path/organisations', (req, res) => {
   res.render('/common/organisations.html', locals);
 })
 
-router.get('/:version_path/organisations/:orgId', async (req, res) => {
+router.get('/:version_path/organisations/:orgId',asyncHandler(async (req, res) => {
   const locals = {};
   locals.serviceName = "Check and provide planning data";
   locals.version_path = `/landing-iteration/${req.params.version_path}`;
@@ -139,11 +139,10 @@ router.get('/:version_path/organisations/:orgId', async (req, res) => {
   );
 
   locals.showBrownfieldNotice = locals.datasets.
-    find(x => x.dataset === 'brownfield-land').notice
+    find(x => x.dataset === 'brownfield-land').notice;
 
-
-  res.render('/landing-iteration/lpa-overview.html', locals)
-})
+  res.render('/landing-iteration/lpa-overview.html', locals);
+}))
 
 router.get("/:version_path/organisations/:orgId/:datasetId/overview", (req, res) => {
   const locals = {};
@@ -221,3 +220,5 @@ router.get('/v2/authentication-failed', (req, res) => {
 router.get(/\/(v1|v2)\/guidance/, (req, res) => {
   res.render('/landing-iteration/guidance.html')
 })
+
+module.exports = router

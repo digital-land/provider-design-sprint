@@ -3,6 +3,7 @@
 ***********************************************************/
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/expectations')
+const asyncHandler = require('express-async-handler');
 const fs = require("fs");
 
 const path = require("path");
@@ -11,14 +12,14 @@ const version = '/expectations';
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse, convertToCSV } = require('./functions.js');
 
-router.get(["/", "/start"], async (req, res) => {
+router.get(["/", "/start"],asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
 
   res.render("/common/landing", locals);
-})
+}))
 
-router.get("/organisations", async (req, res) => {
+router.get("/organisations",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
 
@@ -41,9 +42,9 @@ router.get("/organisations", async (req, res) => {
   }
 
   res.render("/common/organisations", locals);
-})
+}))
 
-router.get("/organisations/:orgId", async (req, res) => {
+router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -80,9 +81,9 @@ router.get("/organisations/:orgId", async (req, res) => {
     find(x => x.dataset === 'brownfield-land').notice
 
   res.render("/common/lpa-overview", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/overview",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -120,27 +121,27 @@ router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
   // locals.endpoints = require("../data/endpoints.json");
 
   res.render("/check-iterative-v2/dataset-details", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/get-started", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/get-started",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/expectations/get-started-alternative-sources", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/get-started-no-alternative-sources", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/get-started-no-alternative-sources",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/expectations/get-started", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/review-alternative-sources",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -150,7 +151,7 @@ router.get("/organisations/:orgId/:datasetId/review-alternative-sources", async 
   locals.conservation_area_count = locals.conservation_areas.length;
 
   res.render("/expectations/review-alternative-sources", locals);
-})
+}))
 
 router.post("/organisations/:orgId/:datasetId/review-handler", (req, res) => {
   const urlSlug = `/expectations/organisations/${req.params.orgId}/${req.params.datasetId}`;
@@ -167,7 +168,7 @@ router.post("/organisations/:orgId/:datasetId/review-handler", (req, res) => {
   }
 })
 
-router.get("/organisations/:orgId/:datasetId/review-record/:record_index?", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/review-record/:record_index?",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -182,9 +183,9 @@ router.get("/organisations/:orgId/:datasetId/review-record/:record_index?", asyn
   }
 
   res.render("/expectations/review-record", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/download-report", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/download-report",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -217,9 +218,9 @@ router.get("/organisations/:orgId/:datasetId/download-report", async (req, res) 
   }
   
   res.render("/expectations/download-report", locals);
-})
+}))
 
-router.get('/expectations/organisations/:orgId/:datasetId/download-file', async (req, res) => {
+router.get('/expectations/organisations/:orgId/:datasetId/download-file',asyncHandler(async (req, res) => {
   const conservation_areas = require("../data/alternative-conservation-areas.json");
 
   const selected_ids = [];
@@ -244,4 +245,4 @@ router.get('/expectations/organisations/:orgId/:datasetId/download-file', async 
 
   res.set({"Content-Disposition":`attachment; filename="${filename}"`});
   res.send(download_file);
-})
+}))

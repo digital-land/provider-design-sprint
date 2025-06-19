@@ -3,6 +3,7 @@
 ***********************************************************/
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/iterative-check');
+const asyncHandler = require('express-async-handler');
 
 const fs = require("fs");
 const path = require("path");
@@ -11,14 +12,14 @@ const version = '/iterative-check';
 
 const { queryDatasette, getOrg, getDataset } = require('./functions.js');
 
-router.get(["/", "/start"], async (req, res) => {
+router.get(["/", "/start"],asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
 
   res.render("/common/landing", locals);
-})
+}))
 
-router.get("/organisations", async (req, res) => {
+router.get("/organisations",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
 
@@ -41,9 +42,9 @@ router.get("/organisations", async (req, res) => {
   }
 
   res.render("/common/organisations", locals);
-})
+}))
 
-router.get("/organisations/:orgId", async (req, res) => {
+router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -77,98 +78,98 @@ router.get("/organisations/:orgId", async (req, res) => {
   );
 
   res.render("/check-iterative/lpa-overview", locals);
-})
+}))
 
 router.get("/organisations/:orgId/:datasetId", (req, res) => {
   res.redirect(`/iterative-check/organisations/${req.params.orgId}/${req.params.datasetId}/get-started`);
 })
 
-router.get("/organisations/:orgId/:datasetId/get-started", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/get-started",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/get-started", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/choose-upload", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/choose-upload",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/choose-upload", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/upload-data", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/upload-data",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/upload-data", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/checking-file", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/checking-file",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/checking-file", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/results", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/results",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/results-blocked", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/results-non-blocked", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/results-non-blocked",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/results-non-blocked", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/issue-blocking", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/issue-blocking",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/issue-detail-blocking", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/issue-non-blocking", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/issue-non-blocking",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/issue-detail-non-blocking", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/check-data", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/check-data",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/check-data", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/confirmation", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/confirmation",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative/confirmation", locals);
-})
+}))

@@ -1,12 +1,13 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/api')
+const asyncHandler = require('express-async-handler');
 
 const version = '/api'
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse } = require('./functions.js');
 
-router.get("/:orgId/:datasetId/data.geojson", async (req, res) => {
-  const organisation = getOrg(req.params.orgId);
+router.get("/:orgId/:datasetId/data.geojson",asyncHandler(async (req, res) => {
+  const organisation = getOrg(req.params.orgId, res);
   const dataset = getDataset(req.params.datasetId);
 
   const lpaEntitiesUrl = `https://www.planning.data.gov.uk/entity.geojson?dataset=${ dataset.dataset }&organisation_entity=${ organisation.entity }&limit=500`;
@@ -42,10 +43,10 @@ router.get("/:orgId/:datasetId/data.geojson", async (req, res) => {
   }
 
   res.json(lpaEntities);
-})
+}))
 
-router.get("/:orgId/:datasetId/alternative-sources.geojson", async (req, res) => {
-  const organisation = getOrg(req.params.orgId);
+router.get("/:orgId/:datasetId/alternative-sources.geojson",asyncHandler(async (req, res) => {
+  const organisation = getOrg(req.params.orgId, res);
   const dataset = getDataset(req.params.datasetId);
 
   const lpaEntitiesUrl = `https://www.planning.data.gov.uk/entity.geojson?dataset=${ dataset.dataset }&organisation_entity=${ organisation.entity }&limit=500`;
@@ -62,26 +63,26 @@ router.get("/:orgId/:datasetId/alternative-sources.geojson", async (req, res) =>
   }
 
   res.json(alternativeEntities);
-})
+}))
 
-router.get("/:orgId/boundary.geojson", async (req, res) => {
-  const organisation = getOrg(req.params.orgId);
+router.get("/:orgId/boundary.geojson",asyncHandler(async (req, res) => {
+  const organisation = getOrg(req.params.orgId, res);
 
   const boundaryGeoJsonUrl = `http://submit.planning.data.gov.uk/api/lpa-boundary/${ organisation.organisation }`
   const boundaryGeoJsonObject = await getJsonResponse(boundaryGeoJsonUrl);
 
   res.json(boundaryGeoJsonObject);
-})
+}))
 
-router.get("/entity/:entityId.:format", async (req, res) => {
+router.get("/entity/:entityId.:format",asyncHandler(async (req, res) => {
   const entityUrl = `https://www.planning.data.gov.uk/entity/${ req.params.entityId }.${ req.params.format}`;
   const entityObject = await getJsonResponse(entityUrl); 
 
   res.json(entityObject);
-})
+}))
 
-router.get("/:orgId/:datasetId/out-of-bounds.geojson", async (req, res) => {
-  const organisation = getOrg(req.params.orgId);
+router.get("/:orgId/:datasetId/out-of-bounds.geojson",asyncHandler(async (req, res) => {
+  const organisation = getOrg(req.params.orgId, res);
   const dataset = getDataset(req.params.datasetId);
 
   const outOfBoundsQuery= {
@@ -108,11 +109,11 @@ router.get("/:orgId/:datasetId/out-of-bounds.geojson", async (req, res) => {
   const outOfBoundsGeoJson = await getJsonResponse(outOfBoundsGeoJsonUrl);
 
   res.json(outOfBoundsGeoJson);
-})
+}))
 
-router.get("/os/get-access-token", async (req, res) => { 
+router.get("/os/get-access-token",asyncHandler(async (req, res) => { 
   const osAccessTokenUrl = `https://submit.planning.data.gov.uk/api/os/get-access-token`;
   const osAccessToken = await getJsonResponse(osAccessTokenUrl);
 
   res.json(osAccessToken);
-})
+}))

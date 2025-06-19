@@ -30,7 +30,7 @@ router.get("/organisations", (req, res) => {
   res.render("/overview/v2/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
 
-router.get("/:orgId", async (req, res) => {
+router.get("/:orgId",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -110,7 +110,7 @@ ORDER BY
   ).length;
 
   res.render("/overview/v2/lpa-overview", locals);
-});
+}));
 
 router.get("/:orgId/dataset/:datasetId/get-started", (req, res) => {
   const locals = {};
@@ -120,7 +120,7 @@ router.get("/:orgId/dataset/:datasetId/get-started", (req, res) => {
   res.render("/overview/v2/get-started.html", locals);
 });
 
-router.get("/:orgId/dataset/:datasetId", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -197,9 +197,9 @@ ORDER BY it.severity`,
   }
 
   res.render("/overview/v2/dataset-details", locals);
-});
+}));
 
-router.get("/:orgId/dataset/:datasetId/tasklist", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/tasklist",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -277,9 +277,9 @@ ORDER BY it.severity`,
   }
 
   res.render("/overview/v2/tasklist", locals);
-});
+}));
 
-router.get("/:orgId/dataset/:datasetId/http-error", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/http-error",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -322,9 +322,9 @@ GROUP BY
   locals.errorData = errorData.rows[0];
 
   res.render("/overview/v2/http-error", locals);
-});
+}));
 
-router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -527,9 +527,9 @@ where
   locals.pagination_obj = paginationObj;
   
   res.render("/overview/v2/error", locals);
-});
+}));
 
-router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType/table", async (req, res) => {
+router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType/table",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -753,4 +753,4 @@ order by
   locals.pagination_obj = paginationObj;
   
   res.render(`/overview/${req.params.version}/error-table`, locals);
-});
+}));
