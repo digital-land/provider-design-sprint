@@ -17,6 +17,7 @@ async function queryDatasette(queryObj, database='digital-land', format='json') 
 
   if (response.status != 200) {
     console.error(response)
+    throw new Error(`Failed to fetch from Datasette API: ${response.status} ${response.statusText}`);
   } else {
     const json = await response.json();
     return json
@@ -26,38 +27,31 @@ async function queryDatasette(queryObj, database='digital-land', format='json') 
 /**
  * Finds an organisation by its ID
  * @param {string} orgId - The organisation ID to search for
- * @param {Object} [res] - Express response object for HTTP error handling
  * @returns {Object|undefined} The organisation object if found, undefined otherwise
- * @throws {Error} When organisation is not found and res parameter is not provided
+ * @throws {Error} When organisation is not found
  */
-function getOrg(orgId, next) {
+function getOrg(orgId) {
   const organisations = require("../data/organisations.json");
   const org = organisations.find((x) => x.organisation == orgId);
 
   if (!org) {
     throw new Error("Organisation not found");
-  } else {
-    return org;
   }
+  return org;
 }
 
 /**
  * Finds a dataset by its ID
  * @param {string} datasetId - The dataset ID to search for
- * @param {Object} [res] - Express response object for HTTP error handling
  * @returns {Object|undefined} The dataset object if found, undefined otherwise
- * @throws {Error} When dataset is not found and res parameter is not provided
+ * @throws {Error} When dataset is not found
  */
-function getDataset(datasetId, res) {
+function getDataset(datasetId) {
   const datasets = require("../data/datasets.json");
   const dataset = datasets.find((x) => x.dataset == datasetId);
   if (!dataset) {
-    if (res) {
-      res.sendStatus(404).send("Dataset not found");
-      next();
-    }
     throw new Error("Dataset not found");
-  }
+  } 
   return dataset;
 }
 
@@ -85,6 +79,7 @@ const getJsonResponse = async (url) => {
 
   if (response.status != 200) {
     console.error(response)
+    throw new Error(`Failed to fetch from ${url}: ${response.status} ${response.statusText}`);
   } else {
     const json = await response.json();
     return json

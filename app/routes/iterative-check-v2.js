@@ -3,6 +3,7 @@
 ***********************************************************/
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/iterative-check-v2')
+const asyncHandler = require('express-async-handler');
 const fs = require("fs");
 
 const path = require("path");
@@ -11,14 +12,14 @@ const version = '/iterative-check-v2';
 
 const { queryDatasette, getOrg, getDataset, getJsonResponse, convertToCSV } = require('./functions.js');
 
-router.get(["/", "/start"], async (req, res) => {
+router.get(["/", "/start"],asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
 
   res.render("/common/landing", locals);
-})
+}))
 
-router.get("/organisations", async (req, res) => {
+router.get("/organisations",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
 
@@ -41,9 +42,9 @@ router.get("/organisations", async (req, res) => {
   }
 
   res.render("/common/organisations", locals);
-})
+}))
 
-router.get("/organisations/:orgId", async (req, res) => {
+router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
@@ -134,12 +135,12 @@ router.get("/organisations/:orgId", async (req, res) => {
     find(x => x.dataset === 'brownfield-land').notice
 
   res.render("/check-iterative-v2/lpa-overview", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/overview",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
-  locals.organisation = getOrg(req.params.orgId, true);
+  locals.organisation = getOrg(req.params.orgId, true, res);
   console.log(locals.organisation)
   locals.dataset = getDataset(req.params.datasetId);
 
@@ -178,27 +179,27 @@ router.get("/organisations/:orgId/:datasetId/overview", async (req, res) => {
   // locals.boundary_geojson = JSON.stringify(boundaryResponse);
 
   res.render("/check-iterative-v2/dataset-details", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/get-started", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/get-started",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/get-started", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/choose-upload", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/choose-upload",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/choose-upload", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/upload-data", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/upload-data",asyncHandler(async (req, res) => {
   if (req.session.data['upload_method'] == "url") {
     const url = `/iterative-check-v2/organisations/${req.params.orgId}/${req.params.datasetId}/endpoint-details`
     res.redirect(url)
@@ -210,86 +211,86 @@ router.get("/organisations/:orgId/:datasetId/upload-data", async (req, res) => {
 
     res.render("/check-iterative-v2/upload-data", locals);
   }
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/endpoint-details", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/endpoint-details",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/endpoint-details", locals);
-})
+}))
 
 
-router.get("/organisations/:orgId/:datasetId/checking-file", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/checking-file",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/checking-file", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/results", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/results",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/results-blocked", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/results-non-blocked", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/results-non-blocked",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/results-non-blocked", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/issue-blocking", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/issue-blocking",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/issue-detail-blocking", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/issue-non-blocking", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/issue-non-blocking",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/issue-detail-non-blocking", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/share-results", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/share-results",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/share-results", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/share-confirmation", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/share-confirmation",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/share-confirmation", locals);
-})
+}))
 
-router.get("/organisations/:orgId/:datasetId/confirmation", async (req, res) => {
+router.get("/organisations/:orgId/:datasetId/confirmation",asyncHandler(async (req, res) => {
   const locals = {};
   locals.version_path = version;
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
 
   res.render("/check-iterative-v2/confirmation", locals);
-})
+}))

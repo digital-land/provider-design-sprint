@@ -8,13 +8,13 @@ const version = '/multiple-endpoints';
 
 const { getOrg, getDataset } = require('./functions.js');
 
-router.get("/organisations/:orgId/:datasetId", (req, res) => {
+router.get("/organisations/:orgId/:datasetId", (req, res, next) => {
   const locals = {};
   locals.version_path = version;
-  locals.organisation = getOrg(req.params.orgId);
+  locals.organisation = getOrg(req.params.orgId, next);
   locals.dataset = getDataset(req.params.datasetId);
 
   locals.endpoints = require("../data/endpoints.json");
-
+    
   res.render("/multiple-endpoints/dataset-details", locals);
 })
