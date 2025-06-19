@@ -1,6 +1,7 @@
 // v2 routes for user research session July 24
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/overview/v2');
+const asyncHandler = require('express-async-handler');
 
 const { queryDatasette, getOrg, getDataset } = require('./functions.js');
 
