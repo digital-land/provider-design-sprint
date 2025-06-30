@@ -50,8 +50,5 @@ The app is deployed automatically to Amazon App Runner when the main branch is u
 ## Licence
 See `LICENCE.txt` for details.
 
-## Contact
-For questions or feedback, contact the project team at planning.data@communities.gov.uk
-
 ---
 _Last updated: 30 June 2025_
