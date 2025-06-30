@@ -43,6 +43,10 @@ These designs are documented in our [design history](https://submit-planning-dat
 - `app/views/common` - Common pages that are reused across different designs
 - `webpack.config.mjs` – Asset bundling config
 
+## Deployment
+
+The app is deployed automatically to Amazon App Runner when the main branch is updated
+
 ## Licence
 See `LICENCE.txt` for details.
 
