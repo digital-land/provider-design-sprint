@@ -1,12 +1,6 @@
-{% if govukRebrand == true %}
-  {% set applyRebrand = true %}
-{% else %}
-  {% set applyRebrand = false %}
-{% endif %}
-
 {{ govukHeader({
   classes: "govuk-header--full-width-border",
-  rebrand: applyRebrand
+  rebrand: govukRebrand
 }) }}
 
 {% if hideNav != true %}

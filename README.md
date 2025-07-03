@@ -6,6 +6,8 @@
 
 The service is being developed by the [Digital Planning team](https://mhclgdigital.blog.gov.uk/category/digital-planning/) at the Ministry of Housing, Communities and Local Government (MHCLG).
 
+The prototype can be viewed at: [https://provider-design.prototype.planning.data.gov.uk/](https://provider-design.prototype.planning.data.gov.uk/)
+
 These designs are documented in our [design history](https://submit-planning-data.designhistory.app/).
 
 ## Getting Started

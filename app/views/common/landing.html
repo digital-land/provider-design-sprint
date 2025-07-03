@@ -1,4 +1,9 @@
-{% extends "layouts/rebrand.html" %}
+{% if govukRebrand %}
+  {% set layout = "layouts/rebrand.html" %}
+{% else %}
+  {% set layout = "layouts/main.html" %}
+{% endif %}
+{% extends layout %}
 
 {% block pageTitle %}
 {{ serviceName }}
