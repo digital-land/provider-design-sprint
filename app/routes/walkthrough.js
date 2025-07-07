@@ -130,6 +130,10 @@ router.get("/organisations/:orgId/:datasetId/overview",asyncHandler(async (req, 
   res.render("/out-of-bounds/dataset-details");
 }))
 
+router.get("/organisations/:orgId/:datasetId/get-started", (req, res) => {
+  res.redirect(`${version}/organisations/${req.params.orgId}/${req.params.datasetId}/overview`);
+})
+
 // Dataset table
 router.get("/organisations/:orgId/:datasetId/table",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
