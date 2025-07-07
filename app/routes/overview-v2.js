@@ -530,7 +530,7 @@ where
   res.render("/overview/v2/error", locals);
 }));
 
-router.get("/overview/:version?/:orgId/dataset/:datasetId/error/:resourceId/:issueType/table",asyncHandler(async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType/table",asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -753,5 +753,5 @@ order by
   locals.page_num = pageNum;
   locals.pagination_obj = paginationObj;
   
-  res.render(`/overview/${req.params.version}/error-table`, locals);
+  res.render(`/overview/v2/error-table`, locals);
 }));

@@ -61,6 +61,11 @@ require('./routes/alternative-sources.js')
 require('./routes/out-of-bounds.js')
 
 /**********************************************************
+ * walkthrough - 2025-07-01                               *
+***********************************************************/
+require('./routes/walkthrough.js')
+
+/**********************************************************
  * Proxy API routes for map data                          *
 ***********************************************************/
 require('./routes/api.js')

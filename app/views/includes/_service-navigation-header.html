@@ -1,16 +1,23 @@
 {{ govukHeader({
-  classes: "govuk-header--full-width-border"
+  classes: "govuk-header--full-width-border",
+  rebrand: govukRebrand === true
 }) }}
 
 {% if hideNav != true %}
+{% if active_section === null %}
+ {% set active = false %}
+{% else %}
+  {% set active = true %}
+{% endif %}
+
 {% set navItems = [
     {
-      href: "/overview/v2/organisations",
+      href: version_path+"/organisations",
       text: "Find your organisation",
-      active: true
+      active: active
     },
     {
-      href: "/guidance",
+      href: version_path+"/guidance",
       text: "Guidance"
     }
   ] %}
@@ -18,8 +25,11 @@
 {% set navItems = [] %}
 {% endif %}
 
+{% set navClasses %}{{ "govuk-service-navigation--inverse" if inverseHeader }}{% endset %}
+ 
 {{ govukServiceNavigation({
   serviceName: serviceName,
   serviceUrl: "/",
-  navigation: navItems
+  navigation: navItems,
+  classes: navClasses
 }) }}
