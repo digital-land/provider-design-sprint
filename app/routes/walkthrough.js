@@ -6,6 +6,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/walkthrough')
 const asyncHandler = require('express-async-handler');
 
+const fs = require("fs");
 const path = require("path");
 const version = '/walkthrough';
 
@@ -13,15 +14,14 @@ const { queryDatasette, getOrg, getDataset, getJsonResponse } = require('./funct
 const { createGOVUKPagination } = require('govuk-pagination-module');
 
 // Landing
-router.get(["/", "/start"],asyncHandler(async (req, res) => {
+router.get(["/", "/start"], asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.govukRebrand = true; // Use new branding for the walkthrough
-  console.log("govukRebrand", res.locals.govukRebrand);
   res.render("/common/landing");
 }))
 
 // Choose organisation
-router.get("/organisations",asyncHandler(async (req, res) => {
+router.get("/organisations", asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.govukRebrand = true;
   
@@ -29,8 +29,8 @@ router.get("/organisations",asyncHandler(async (req, res) => {
   res.locals.alphabetisedOrgs = {};
   let currLetter = "";
 
-  for (const org in locals.organisations) {
-    if (Object.hasOwnProperty.call(locals.organisations, org)) {
+  for (const org in res.locals.organisations) {
+    if (Object.hasOwnProperty.call(res.locals.organisations, org)) {
       const thisOrg = res.locals.organisations[org];
       let firstLetter = thisOrg.name[0];
 
@@ -61,22 +61,22 @@ router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
     res.locals.datasets = require('../data/default/datasets.json');
   }
 
-  res.locals.datasetCount = locals.datasets.length;
-  res.locals.datasetsSubmitted = locals.datasets.filter(
+  res.locals.datasetCount = res.locals.datasets.length;
+  res.locals.datasetsSubmitted = res.locals.datasets.filter(
     (row) => row.status != "not-submitted"
   ).length;
-  res.locals.datasetErrors = locals.datasets.filter(
+  res.locals.datasetErrors = res.locals.datasets.filter(
     (row) => row.status == "error"
   ).length;
-  res.locals.datasetIssues = locals.datasets.filter(
+  res.locals.datasetIssues = res.locals.datasets.filter(
     (row) => row.issue_count > 0
   ).length;
 
-  res.locals.statutoryDatasets = locals.datasets.filter(
-    (row) => row.provision == "statutory"
+  res.locals.statutoryDatasets = res.locals.datasets.filter(
+    (row) => row.provision_reason == "statutory"
   );
 
-  res.locals.odpDatasets = locals.datasets.filter(
+  res.locals.odpDatasets = res.locals.datasets.filter(
     (row) => row.provision == "odp"
   );
 
@@ -84,24 +84,6 @@ router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
 }))
 
 // Dataset details
-
-// Dataset table
-
-// Dataset record detail
-
-// Tasklist
-
-// Issue table
-
-// Issue detail
-
-// Check flow
-
-// Provide flow
-
-// Review alternative sources
-
-
 router.get("/organisations/:orgId/:datasetId/overview",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -148,6 +130,7 @@ router.get("/organisations/:orgId/:datasetId/overview",asyncHandler(async (req, 
   res.render("/out-of-bounds/dataset-details");
 }))
 
+// Dataset table
 router.get("/organisations/:orgId/:datasetId/table",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -223,6 +206,7 @@ router.get("/organisations/:orgId/:datasetId/table",asyncHandler(async (req, res
   res.render("/out-of-bounds/dataset-table");
 }))
 
+// Dataset record detail
 router.get("/organisations/:orgId/:datasetId/detail/:entityId",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -297,6 +281,7 @@ router.get("/organisations/:orgId/:datasetId/detail/:entityId",asyncHandler(asyn
   res.render("/out-of-bounds/entity-detail");
 }))
 
+// Tasklist
 router.get("/organisations/:orgId/:datasetId/tasklist",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -326,6 +311,7 @@ router.get("/organisations/:orgId/:datasetId/tasklist",asyncHandler(async (req, 
   res.render("/out-of-bounds/tasklist");
 }))
 
+// Issue table
 router.get("/organisations/:orgId/:datasetId/issue-table",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
@@ -412,6 +398,7 @@ router.get("/organisations/:orgId/:datasetId/issue-table",asyncHandler(async (re
   res.render("/out-of-bounds/issue-table");
 }))
 
+// Issue detail
 router.get("/organisations/:orgId/:datasetId/issue-detail/:entityId",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
   res.locals.organisation = getOrg(req.params.orgId);
