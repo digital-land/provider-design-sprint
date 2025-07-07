@@ -4,11 +4,17 @@
 }) }}
 
 {% if hideNav != true %}
+{% if active_section === null %}
+ {% set active = false %}
+{% else %}
+  {% set active = true %}
+{% endif %}
+
 {% set navItems = [
     {
       href: version_path+"/organisations",
       text: "Find your organisation",
-      active: true
+      active: active
     },
     {
       href: version_path+"/guidance",
