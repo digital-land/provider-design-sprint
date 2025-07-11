@@ -49,7 +49,7 @@ router.get("/organisations", asyncHandler(async (req, res) => {
 // LPA overview
 router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
-  res.locals.newBranding = true;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   
   const orgSlug = req.params.orgId.replace(/:/, "_");
@@ -86,6 +86,7 @@ router.get("/organisations/:orgId",asyncHandler(async (req, res) => {
 // Dataset details
 router.get("/organisations/:orgId/:datasetId/overview",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
   res.locals.endpoints = require(path.join(__dirname, "../data/endpoint-single.json"));
@@ -137,6 +138,7 @@ router.get("/organisations/:orgId/:datasetId/get-started", (req, res) => {
 // Dataset table
 router.get("/organisations/:orgId/:datasetId/table",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
@@ -213,6 +215,7 @@ router.get("/organisations/:orgId/:datasetId/table",asyncHandler(async (req, res
 // Dataset record detail
 router.get("/organisations/:orgId/:datasetId/detail/:entityId",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
@@ -288,6 +291,7 @@ router.get("/organisations/:orgId/:datasetId/detail/:entityId",asyncHandler(asyn
 // Tasklist
 router.get("/organisations/:orgId/:datasetId/tasklist",asyncHandler(async (req, res) => {  
   res.locals.version_path = version;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
@@ -318,6 +322,7 @@ router.get("/organisations/:orgId/:datasetId/tasklist",asyncHandler(async (req, 
 // Issue table
 router.get("/organisations/:orgId/:datasetId/issue-table",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
@@ -405,6 +410,7 @@ router.get("/organisations/:orgId/:datasetId/issue-table",asyncHandler(async (re
 // Issue detail
 router.get("/organisations/:orgId/:datasetId/issue-detail/:entityId",asyncHandler(async (req, res) => {
   res.locals.version_path = version;
+  res.locals.govukRebrand = true;
   res.locals.organisation = getOrg(req.params.orgId);
   res.locals.dataset = getDataset(req.params.datasetId);
 
