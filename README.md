@@ -47,10 +47,9 @@ These designs are documented in our [design history](https://submit-planning-dat
 
 ## Deployment
 
-The app is deployed automatically to Amazon App Runner when the main branch is updated
+The app is deployed automatically to AWS (as a container in ECS) when the main branch is updated.
 
 ## Licence
 See `LICENCE.txt` for details.
 
 ---
-_Last updated: 30 June 2025_

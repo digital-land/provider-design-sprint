@@ -13,5 +13,3 @@ usage-data-config.json
 
 *.bundle.js
 secret.json
-
-package-lock.json
