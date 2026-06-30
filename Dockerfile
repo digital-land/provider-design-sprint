@@ -1,9 +1,10 @@
-FROM node:24.1.0
+ARG NODE_VERSION
+FROM node:${NODE_VERSION}
 
 WORKDIR /usr/prototype
 
 COPY . .
 
-RUN npm install
+RUN npm ci
 
 ENTRYPOINT npm run dev

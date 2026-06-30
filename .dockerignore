@@ -1,0 +1,6 @@
+node_modules/
+.git/
+.env
+.tmp/
+.DS_Store
+*.bundle.js
