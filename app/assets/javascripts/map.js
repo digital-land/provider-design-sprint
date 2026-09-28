@@ -1,5 +1,5 @@
 import parse from 'wellknown'
-import maplibregl from 'maplibre-gl'
+import * as maplibregl from 'maplibre-gl'
 import { add, capitalize, map, startCase } from 'lodash'
 import { getApiToken, getFreshApiToken } from './os-api-token.js'
 

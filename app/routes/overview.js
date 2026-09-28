@@ -1,7 +1,6 @@
 // initial dashboard designs
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/overview');
-const request = require("request");
 const { getOrg, getDataset } = require('./functions.js');
 
 
@@ -41,7 +40,7 @@ router.get("/:orgId", (req, res) => {
   res.render("/overview/lpa-overview-list", locals);
 });
 
-router.get("/:orgId/v1", (req, res) => {
+router.get("/:orgId/v1", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -74,11 +73,10 @@ router.get("/:orgId/v1", (req, res) => {
 
   let lpaData = {};
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      lpaData = JSON.parse(body);
+  try {
+    const response = await fetch(endpoint);
+    if (response.status == 200) {
+      lpaData = await response.json();
       locals.datasets = lpaData.rows;
 
       locals.datasetCount = locals.datasets.length;
@@ -90,10 +88,12 @@ router.get("/:orgId/v1", (req, res) => {
 
       res.render("/overview/lpa-overview-v1", locals);
     }
-  });
+  } catch (error) {
+    return console.log(error);
+  }
 });
 
-router.get("/:orgId/v2", (req, res) => {
+router.get("/:orgId/v2", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -165,11 +165,10 @@ ORDER BY
 
   let lpaData = {};
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      lpaData = JSON.parse(body);
+  try {
+    const response = await fetch(endpoint);
+    if (response.status == 200) {
+      lpaData = await response.json();
       locals.datasets = lpaData.rows;
 
       locals.datasetCount = locals.datasets.length;
@@ -187,7 +186,9 @@ ORDER BY
 
       res.render("/overview/lpa-overview-v2", locals);
     }
-  });
+  } catch (error) {
+    return console.log(error);
+  }
 });
 
 router.get("/:orgId/dataset/:datasetId", (req, res) => {
@@ -206,7 +207,7 @@ router.get("/:orgId/dataset/:datasetId/get-started", (req, res) => {
   res.render("/overview/get-started.html", locals);
 });
 
-router.get("/:orgId/dataset/:datasetId/tasklist", (req, res) => {
+router.get("/:orgId/dataset/:datasetId/tasklist", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -269,21 +270,22 @@ router.get("/:orgId/dataset/:datasetId/tasklist", (req, res) => {
 
   let taskData = {};
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      taskData = JSON.parse(body);
+  try {
+    const response = await fetch(endpoint);
+    if (response.status == 200) {
+      taskData = await response.json();
       locals.tasks = taskData.rows;
 
       console.log(locals);
 
       res.render("/overview/tasklist", locals);
     }
-  });
+  } catch (error) {
+    return console.log(error);
+  }
 });
 
-router.get("/:orgId/dataset/:datasetId/http-error", (req, res) => {
+router.get("/:orgId/dataset/:datasetId/http-error", async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -329,21 +331,22 @@ GROUP BY
 
   let errorData = {};
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      errorData = JSON.parse(body);
+  try {
+    const response = await fetch(endpoint);
+    if (response.status == 200) {
+      errorData = await response.json();
       locals.errorData = errorData.rows[0];
 
       console.log(locals);
 
       res.render("/overview/http-error", locals);
     }
-  });
+  } catch (error) {
+    return console.log(error);
+  }
 });
 
-router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", (req, res) => {
+router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
   let locals = {};
   const organisations = require("../data/organisations.json");
   const datasets = require("../data/datasets.json");
@@ -393,16 +396,17 @@ router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", (req, res)
 
   let errorData = {};
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      errorData = JSON.parse(body);
+  try {
+    const response = await fetch(endpoint);
+    if (response.status == 200) {
+      errorData = await response.json();
       locals.errorData = errorData.rows;
 
       console.log(locals);
 
       res.render("/overview/error", locals);
     }
-  });
+  } catch (error) {
+    return console.log(error);
+  }
 });

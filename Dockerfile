@@ -1,5 +1,5 @@
 ARG NODE_VERSION
-FROM node:${NODE_VERSION}-slim
+FROM node:${NODE_VERSION}-trixie-slim
 
 WORKDIR /usr/prototype
 
