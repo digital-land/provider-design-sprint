@@ -1,6 +1,7 @@
 // v1 routes for user research session July 24
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/overview/v1');
+const asyncHandler = require('express-async-handler');
 const { queryDatasette, getOrg, getDataset } = require('./functions.js');
 
 
@@ -30,7 +31,7 @@ router.get("/organisations", (req, res) => {
   res.render("/overview/v1/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
 
-router.get("/:orgId", async (req, res) => {
+router.get("/:orgId", asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -81,7 +82,7 @@ router.get("/:orgId", async (req, res) => {
   } catch (error) {
     return console.log(error);
   }
-});
+}));
 
 router.get("/:orgId/dataset/:datasetId/get-started", (req, res) => {
   const locals = {};

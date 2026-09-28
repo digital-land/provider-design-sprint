@@ -1,5 +1,6 @@
 const govukPrototypeKit = require("govuk-prototype-kit");
 const router = govukPrototypeKit.requests.setupRouter();
+const asyncHandler = require('express-async-handler');
 
 router.post("/columnMappingArticle4/upload-method", (req, res) => {
   try {
@@ -286,7 +287,7 @@ router.use("/submit-endpoint/*", (req, res, next) => {
   next();
 });
 
-router.get("/submit-endpoint-*/lpa-details", async (req, res) => {
+router.get("/submit-endpoint-*/lpa-details", asyncHandler(async (req, res) => {
   const lpaDataUrl =
     "https://www.planning.data.gov.uk/entity.json?dataset=local-authority&limit=400";
 
@@ -312,7 +313,7 @@ router.get("/submit-endpoint-*/lpa-details", async (req, res) => {
   } catch (error) {
     return console.log(error);
   }
-});
+}));
 
 router.get("/submit-endpoint-*/choose-dataset", (req, res) => {
   let options = [

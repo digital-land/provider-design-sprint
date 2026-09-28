@@ -1,6 +1,7 @@
 // initial dashboard designs
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/overview');
+const asyncHandler = require('express-async-handler');
 const { getOrg, getDataset } = require('./functions.js');
 
 
@@ -40,7 +41,7 @@ router.get("/:orgId", (req, res) => {
   res.render("/overview/lpa-overview-list", locals);
 });
 
-router.get("/:orgId/v1", async (req, res) => {
+router.get("/:orgId/v1", asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -91,9 +92,9 @@ router.get("/:orgId/v1", async (req, res) => {
   } catch (error) {
     return console.log(error);
   }
-});
+}));
 
-router.get("/:orgId/v2", async (req, res) => {
+router.get("/:orgId/v2", asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -189,7 +190,7 @@ ORDER BY
   } catch (error) {
     return console.log(error);
   }
-});
+}));
 
 router.get("/:orgId/dataset/:datasetId", (req, res) => {
   const locals = {};
@@ -207,7 +208,7 @@ router.get("/:orgId/dataset/:datasetId/get-started", (req, res) => {
   res.render("/overview/get-started.html", locals);
 });
 
-router.get("/:orgId/dataset/:datasetId/tasklist", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/tasklist", asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -283,9 +284,9 @@ router.get("/:orgId/dataset/:datasetId/tasklist", async (req, res) => {
   } catch (error) {
     return console.log(error);
   }
-});
+}));
 
-router.get("/:orgId/dataset/:datasetId/http-error", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/http-error", asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
   locals.dataset = getDataset(req.params.datasetId);
@@ -344,9 +345,9 @@ GROUP BY
   } catch (error) {
     return console.log(error);
   }
-});
+}));
 
-router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req, res) => {
+router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", asyncHandler(async (req, res) => {
   let locals = {};
   const organisations = require("../data/organisations.json");
   const datasets = require("../data/datasets.json");
@@ -409,4 +410,4 @@ router.get("/:orgId/dataset/:datasetId/error/:resourceId/:issueType", async (req
   } catch (error) {
     return console.log(error);
   }
-});
+}));
