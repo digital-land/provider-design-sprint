@@ -1,5 +1,6 @@
 const govukPrototypeKit = require("govuk-prototype-kit");
 const router = govukPrototypeKit.requests.setupRouter();
+const asyncHandler = require('express-async-handler');
 
 router.post("/columnMappingArticle4/upload-method", (req, res) => {
   try {
@@ -122,7 +123,6 @@ router.post("/submit-endpoint-tree/confirmation", (req, res) => {
 
 // ======================
 
-const request = require("request");
 const _ = require("lodash");
 const camden = require("../data/camden.json");
 const camden2 = require("../data/camden2.json");
@@ -287,17 +287,16 @@ router.use("/submit-endpoint/*", (req, res, next) => {
   next();
 });
 
-router.get("/submit-endpoint-*/lpa-details", (req, res) => {
+router.get("/submit-endpoint-*/lpa-details", asyncHandler(async (req, res) => {
   const lpaDataUrl =
     "https://www.planning.data.gov.uk/entity.json?dataset=local-authority&limit=400";
 
   let lpaData = {};
 
-  request(lpaDataUrl, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      lpaData = JSON.parse(body);
+  try {
+    const response = await fetch(lpaDataUrl);
+    if (response.status == 200) {
+      lpaData = await response.json();
       lpaArray = [];
 
       lpaData.entities.forEach((lpa) => {
@@ -311,8 +310,10 @@ router.get("/submit-endpoint-*/lpa-details", (req, res) => {
         lpaData: lpaArray,
       });
     }
-  });
-});
+  } catch (error) {
+    return console.log(error);
+  }
+}));
 
 router.get("/submit-endpoint-*/choose-dataset", (req, res) => {
   let options = [

@@ -1,5 +1,7 @@
 import parse from 'wellknown'
-import maplibregl from 'maplibre-gl'
+import * as maplibregl from 'maplibre-gl'
+import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
+import 'maplibre-gl/dist/maplibre-gl-shared.mjs?url'
 import { add, capitalize, map, startCase } from 'lodash'
 import { getApiToken, getFreshApiToken } from './os-api-token.js'
 
@@ -88,6 +90,9 @@ const OS_API_ACCESS_TOKEN = 'clwU00Qa5AYZOdAoXcl4XenBq4ZMTC6t'
 * @property {boolean} [wktFormat] - Optional - Indicates whether the data is in WKT format. Default is false.
 * @property {number[]} [boundingBox] - Optional - The bounding box coordinates [minX, minY, maxX, maxY] to set the initial view of the map.
 */
+// maplibre-gl 6 derives the worker URL from import.meta.url, which webpack rewrites to a file:// URL
+maplibregl.setWorkerUrl(maplibreWorkerUrl)
+
 export class Map {
   constructor (opts) {
     this.opts = opts

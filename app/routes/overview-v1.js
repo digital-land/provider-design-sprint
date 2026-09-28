@@ -1,7 +1,7 @@
 // v1 routes for user research session July 24
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/overview/v1');
-const request = require("request");
+const asyncHandler = require('express-async-handler');
 const { queryDatasette, getOrg, getDataset } = require('./functions.js');
 
 
@@ -31,7 +31,7 @@ router.get("/organisations", (req, res) => {
   res.render("/overview/v1/organisations", { alphabetisedOrgs: alphabetisedOrgs });
 });
 
-router.get("/:orgId", (req, res) => {
+router.get("/:orgId", asyncHandler(async (req, res) => {
   const locals = {};
   locals.organisation = getOrg(req.params.orgId);
 
@@ -64,11 +64,10 @@ router.get("/:orgId", (req, res) => {
 
   let lpaData = {};
 
-  request(endpoint, (error, response, body) => {
-    if (error) {
-      return console.log(error);
-    } else if (response.statusCode == 200) {
-      lpaData = JSON.parse(body);
+  try {
+    const response = await fetch(endpoint);
+    if (response.status == 200) {
+      lpaData = await response.json();
       locals.datasets = lpaData.rows;
 
       locals.datasetCount = locals.datasets.length;
@@ -80,8 +79,10 @@ router.get("/:orgId", (req, res) => {
 
       res.render("/overview/v1/lpa-overview", locals);
     }
-  });
-});
+  } catch (error) {
+    return console.log(error);
+  }
+}));
 
 router.get("/:orgId/dataset/:datasetId/get-started", (req, res) => {
   const locals = {};
