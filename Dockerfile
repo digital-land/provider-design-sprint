@@ -14,4 +14,9 @@ COPY --chown=node:node . .
 
 RUN npm ci
 
+# Set after npm ci so devDependencies (e.g. webpack-cli) are still installed.
+# Production mode enables password auth and disables /manage-prototype.
+# Override via the container environment (e.g. ECS task definition) if needed.
+ENV NODE_ENV=production
+
 ENTRYPOINT npm run dev
